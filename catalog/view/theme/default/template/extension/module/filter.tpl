@@ -1,0 +1,165 @@
+
+<div class="panel panel-default">
+  <!--div class="panel-heading"><?php echo $heading_title; ?></div-->
+  
+
+  <div class="list-group" id="">
+    <?php foreach ($filter_groups as $filter_group) { ?>
+      <div class="filter_main">
+        <span class="filter_head"><a class="list-group-item"> <?php echo $filter_group['name']; ?> </a></span>
+        <div id="filter-group<?php echo $filter_group['filter_group_id']; ?>" class="sub_main">
+          <?php foreach ($filter_group['filter'] as $filter) { ?> 
+              <div class="checkbox">
+                <label>
+                  <?php if (in_array($filter['filter_id'], $filter_category)) { ?>
+                  <input type="checkbox" name="filter[]" id="pro_filter" value="<?php echo $filter['filter_id']; ?>" checked="checked" />
+                  <?php echo $filter['name']; ?>
+                  <?php } else { ?>
+                  <input type="checkbox" name="filter[]" id="pro_filter" value="<?php echo $filter['filter_id']; ?>" id="ddd"/>
+                  <?php echo $filter['name']; ?>
+                  <?php } ?>
+                </label>
+              </div>
+              
+            <?php } ?>
+          <?php /* ?> <select class="devel_group<?php echo $filter_group['filter_group_id']; ?>" name="filter[]" id="devel_group">
+               <option value="0" ><?php echo $filter_group['name']; ?> </option>
+            <?php foreach ($filter_group['filter'] as $filter) { ?> 
+                 
+                    <?php if (in_array($filter['filter_id'], $filter_category)) { ?>
+                        <option value="<?php echo $filter['filter_id']; ?>" selected >  <?php echo $filter['name']; ?></option> 
+                    <?php } else { ?> 
+                        <option value="<?php echo $filter['filter_id']; ?>"  ><?php echo $filter['name']; ?></option> 
+                    <?php } ?>
+              
+            <?php } ?> 
+            </select><?php */ ?>
+          </div>
+      </div>
+      
+      
+    <?php } ?>
+  </div>
+
+  <!--div class="panel-footer text-right">
+    <button type="button" id="button-filter" class="btn btn-primary"><?php echo $button_filter; ?></button>
+  </div-->
+</div>
+
+
+
+  <!-- <div class="list-group">
+    <?php foreach ($filter_groups as $filter_group) { ?>
+    <a class="list-group-item"><?php echo $filter_group['name']; ?></a>
+    <div class="list-group-item">
+      <div id="filter-group<?php echo $filter_group['filter_group_id']; ?>">
+        <?php foreach ($filter_group['filter'] as $filter) { ?>
+        <div class="checkbox">
+          <label>
+            <?php if (in_array($filter['filter_id'], $filter_category)) { ?>
+            <input type="checkbox" name="filter[]" value="<?php echo $filter['filter_id']; ?>" checked="checked" />
+            <?php echo $filter['name']; ?>
+            <?php } else { ?>
+            <input type="checkbox" name="filter[]" value="<?php echo $filter['filter_id']; ?>" id="ddd"/>
+            <?php echo $filter['name']; ?>
+            <?php } ?>
+          </label>
+        </div>
+        <?php } ?>
+      </div>
+    </div>
+    <?php } ?>
+  </div> --> 
+
+<script type="text/javascript">
+
+    $("select").change(function(){
+      
+        filter = [];
+        $("#devel_group option").each(function()
+          {
+           if( $(this).prop('selected')){ filter.push(this.value); };
+        });
+        
+        location = '<?php echo $action; ?>&filter='+ filter.join(',');
+         
+    });
+
+     
+
+    /*$("input[type='checkbox']").change(function(){
+      filter = [];
+      $("#pro_filter:checked").each(function()
+        {
+         if( $(this).prop('checked')){ filter.push(this.value); };
+      });
+      
+      location = '<?php // echo $action; ?>&filter='+ filter.join(',');
+    })*/
+
+    
+
+ /*   $('.list-group-item').click(function(){
+      $(".sub_main").removeClass("sub_main_2");
+      $(this).parent().next().addClass('sub_main_2');
+    })*/
+  
+
+    $('.list-group-item').click(function(){
+     if($(this).parent().next().hasClass('sub_main_2'))
+         { 
+         $(this).parent().next().removeClass('sub_main_2');
+         }
+    else {
+    $(".sub_main").removeClass("sub_main_2");
+    $(this).parent().next().addClass('sub_main_2');
+    }
+    })
+
+ if($(window).width() > 769){   
+    /*$('html').click(function(e) {
+      if(!$(e.target).hasClass('list-group-item') ) 
+    { 
+  $(".sub_main").removeClass("sub_main_2");
+    } 
+    }); */
+    
+    $('html').click(function(e) {
+      if(!$(e.target).parent().parent().hasClass('filter_main') ) 
+    { 
+  //$(".sub_main").removeClass("sub_main_2");
+    } 
+    }); 
+    
+ };
+
+ /*if($(window).width() < 768){   console.log('hello');
+  $('html').click(function(e) {
+      if(!$(e.target).parent().parent().hasClass('.filter_main') ) 
+    { 
+    
+  $(".filterBox").removeClass("show");
+  
+  
+    } 
+     
+    }); 
+ 
+ }
+*/
+
+
+</script>
+
+<!-- <script type="text/javascript"><!--
+$('#button-filter').on('click', function() {
+  filter = [];
+
+  $('input[name^=\'filter\']:checked').each(function(element) {
+    filter.push(this.value);
+  });
+console.log(filter);
+  //location = '<?php echo $action; ?>&filter=' + filter.join(',');
+});
+//</script> -->
+

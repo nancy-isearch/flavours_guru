@@ -1,0 +1,126 @@
+<modification>
+
+	<id>Endless Scroller default theme patch</id>
+	<version>1.8.5</version>
+	<vqmver>2.5.0</vqmver>
+	<author>bull5-i</author>
+
+	<file name="catalog/view/theme/default/template/common/header.tpl">
+		<operation info="Add custom CSS definitions">
+			<search position="before"><![CDATA[</head>]]></search>
+			<add><![CDATA[
+<?php if ($es_status) { ?>
+<style type="text/css">
+.es-p{height:20px}.img-lazy{display:none}
+<?php if ($es_use_sticky_footer) { ?>#es-sf{display:none;}.es-sf-c{background:#fff;height:42px;padding-top:4px}.es-sf{position:fixed;bottom:0;left:0;z-index:1000;width:100%;}<?php } ?>
+.es-l{color:#999;text-align:center;display:none}.es-l .fa{margin-right:5px}.es-lt{text-decoration:none}
+<?php if ($es_use_more) { ?>.es-md{text-align:center;width:100%;display:none;}<?php } ?>
+<?php if ($es_use_back_to_top) { ?>.back-to-top{position:fixed;z-index:1099;right:5px;bottom:0px;padding:8px;cursor:pointer;outline:none;display:none;transition:color .2s;color:#888}.back-to-top .fa{font-size:45px;}.back-to-top:hover{color:#2a6496;}<?php } ?>
+</style>
+<?php } ?>
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/default/template/common/footer.tpl">
+		<operation info="Add back-to-top element">
+			<search position="after"><![CDATA[
+			</footer>
+			]]></search>
+			<add><![CDATA[
+<?php if ($es_status && $es_use_back_to_top) { ?><div class="back-to-top" title="<?php echo $text_back_to_top; ?>"><i class="fa fa-arrow-circle-up"></i></div><?php } ?>
+			]]></add>
+		</operation>
+	</file>
+
+	<file path="catalog/view/theme/default/template/product/" name="category.tpl,search.tpl,manufacturer_info.tpl,special.tpl">
+		<operation info="Add ID to the product list container">
+			<search position="replace" offset="-1"><![CDATA[
+			<?php foreach ($products as $product) { ?>
+			]]></search>
+			<add><![CDATA[
+	  <div class="row" id="es-c">
+		<?php foreach ($products as $product) { ?>
+			]]></add>
+		</operation>
+		<operation info="Add ID to each product container for anchoring">
+			<search position="replace"><![CDATA[
+			<div class="product-layout product-list col-xs-6">
+			]]></search>
+			<add><![CDATA[<div class="product-layout product-list col-xs-6" id="p<?php echo $product['product_id']; ?>">]]></add>
+		</operation>
+		<operation info="Add lazy image load class to product images">
+			<search position="iafter"><![CDATA[img-responsive]]></search>
+			<add><![CDATA[ img-lazy]]></add>
+		</operation>
+		<operation info="Make product images lazy loading">
+			<search position="replace"><![CDATA[<img src="<?php echo $product['thumb']; ?>"]]></search>
+			<add><![CDATA[<?php if ($es_status) { ?><noscript><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></noscript><img src="<?php echo $placeholder_img; ?>" data-src="<?php echo $product['thumb']; ?>"<?php } else { ?><img src="<?php echo $product['thumb']; ?>"<?php } ?>]]></add>
+		</operation>
+		<operation info="Replace original pagination">
+			<search position="replace"><![CDATA[
+			<?php echo $pagination; ?>
+			]]></search>
+			<add><![CDATA[
+  <?php if (empty($es_status)) { ?>
+  <?php echo $pagination; ?>
+  <?php } else { ?>
+  <div class="es-p" id="es-p">
+	<div class="es-l"><i class="fa fa-refresh fa-spin"></i><span class="es-lt"></span></div>
+	<?php if ($use_more) { ?><div class="es-md"><button type="button" class="btn btn-primary es-m"><?php echo $text_more_results; ?></button></div><?php } ?>
+	<div class="es-op"><?php echo $pagination; ?></div>
+  </div>
+  <?php } ?>
+			]]></add>
+		</operation>
+		<operation info="Replace original results text">
+			<search position="replace"><![CDATA[
+			<?php echo $results; ?>
+			]]></search>
+			<add><![CDATA[
+  <?php if (empty($es_status)) { ?>
+  <?php echo $results; ?>
+  <?php } else { ?>
+  <div class="es-r"><?php echo $results; ?></div>
+  <?php } ?>
+			]]></add>
+		</operation>
+		<operation info="Add sticky footer">
+			<search position="iafter"><![CDATA[
+			<?php echo $content_bottom; ?>
+			]]></search>
+			<add><![CDATA[
+<?php if (!empty($es_status) && isset($use_sticky_footer)) { ?>
+<div class="es-sf" id="es-sf">
+	<div class="container">
+		<div class="row">
+			<div class="es-sf-c <?php echo ($column_left && $column_right) ? 'col-sm-offset-3 col-sm-6' : (($column_left && !$column_right) ? 'col-sm-offset-3 col-sm-9' : ((!$column_left && $column_right) ? 'col-sm-9' : 'col-sm-12')); ?>">
+				<div class="row">
+					<div class="col-sm-6 text-left">
+						<div class="es-p" id="es-p">
+							<div class="es-l"><i class="fa fa-refresh fa-spin"></i><span class="es-lt"></span></div>
+							<?php if ($use_more) { ?><div class="es-md"><button type="button" class="btn btn-primary es-m"><?php echo $text_more_results; ?></button></div><?php } ?>
+						</div>
+					</div>
+					<div class="col-sm-6 text-right"><div class="es-r"><?php echo $results; ?></div></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<?php } ?>
+			]]></add>
+		</operation>
+		<operation info="Add custom JavaScript">
+			<search position="before"><![CDATA[
+			<?php echo $footer; ?>
+			]]></search>
+			<add><![CDATA[
+<?php if (!empty($es_status)) { ?><script type="text/javascript"><!--
+!function(e,o){var t=parseInt("<?php echo $total_products; ?>",10),n=parseInt("<?php echo $start_page; ?>",10),a=parseInt("<?php echo $current_page; ?>",10),l=parseInt("<?php echo $page_limit; ?>",10),i=parseInt("<?php echo $bottom_pixels; ?>",10),c=parseInt("<?php echo $use_more_after; ?>",10),r=parseInt("<?php echo $auto_load_counter; ?>",10),s="<?php echo $text_showing; ?>",d="<?php echo $text_loading; ?>",p="<?php echo $next_page_link; ?>",f=null;e.use_fade_in=parseInt("<?php echo (int)$use_fade_in; ?>"),e.update_path=function(){if(window.history&&history.pushState&&f){var e=window.location,t=e.protocol+"//"+e.host+e.pathname+o.query.remove("page").set("pages",n+"-"+a).hash(f).toString(["route"]);window.history.replaceState(null,null,t)}},"function"!=typeof e.onBeforeAdd&&(e.onBeforeAdd=function(){o("#es-c").children(":not(.clearfix)").attr("data-state","loaded").removeAttr("style")}),"function"!=typeof e.onAdd&&(e.onAdd=function(t,n){o("#es-c").append(t.data),e.load_lazy_images(),e.use_fade_in?o("#es-c").children("[data-state!=loaded]:not(.clearfix)").hide().fadeInWithDelay(function(){n.resolve()}):n.resolve()}),"function"!=typeof e.onAfterAdd&&(e.onAfterAdd=function(){view=localStorage.getItem("display");var e=o("#column-right, #column-left").length,t="";if("list"==view)o("#es-c").children("[data-state!=loaded]:not(.clearfix)").attr("class","product-layout product-list col-xs-6");else{var n;2==e?(n="product-layout product-grid col-lg-6 col-md-6 col-sm-12 col-xs-6"):1==e?(n="product-layout product-grid col-lg-3 col-md-4 col-sm-6 col-xs-6"):(n="product-layout product-grid col-lg-3 col-md-3 col-sm-6 col-xs-6"),o("#es-c").children("[data-state!=loaded]:not(.clearfix)").attr("class",n)}}),e.load_lazy_images=function(){var e=o.Deferred();return o("img.img-lazy").show().lazy({bind:"event",enableThrottle:!0,effect:"fadeIn",effectTime:150,afterLoad:function(e){e.removeClass("img-lazy")},onFinishedAll:function(){e.resolve()}}),e.promise()},load_next_page=function(){var i=o.Deferred();return o.ajax({type:"POST",dataType:"json",url:p+(a+1),beforeSend:function(){var e=++a*l>t?t:a*l;o(".es-lt").html(d.replace("{start}",(a-1)*l+1).replace("{end}",e).replace("{total}",t)),o(".es-l").fadeIn(200)}}).done(function(t,n,a){t&&t.success&&t.data?(e.update_path(),o.when(e.onBeforeAdd(t)).then(e.onAdd(t,i)).then(e.onAfterAdd(t))):t&&t.error&&t.error_type&&"maintenance"==t.error_type?window.location.reload():window&&window.console&&window.console.log&&window.console.log("ES.error",t,n,a)}).fail(function(e,o){"parsererror"==o&&window&&window.console&&window.console.log&&window.console.log("ES.error",o,e)}).always(function(){var e=a*l>t?t:a*l;o(".es-l").fadeOut(200),o(".es-r").html(s.replace("{start}",(n-1)*l+1).replace("{end}",e).replace("{total}",t))}),i.promise()}<?php if ($use_fade_in) { ?>,o.fn.fadeInWithDelay=function(e){var t=this.length>25?10:25,n=o.Deferred(),a=n;return this.each(function(){var e=this;a=a.pipe(function(){return o.Deferred(function(n){o(e).delay(t).fadeIn(75,function(){o(this).removeAttr("style"),n.resolve()})}).promise()})}),n.resolve(),o.when(a).done(function(){"function"==typeof e&&e.call()}),this}<?php } ?>,o(function(){var d,p=!1,u=a*l>t?t:a*l;o(".es-op").hide(),o(".es-r").html(s.replace("{start}",(n-1)*l+1).replace("{end}",u).replace("{total}",t)),e.load_lazy_images(),o(window).scroll(function(){d&&clearTimeout(d),d=setTimeout(function(){o.each(o("#es-c").children(),function(){return o(this).offset().top>=o(window).scrollTop()&&this.id?(f=this.id,e.update_path(),!1):!0})},500)})<?php if ($use_back_top) { ?>,o(window).scroll(function(){o(this).scrollTop()>300?o(".back-to-top").fadeIn(200):o(".back-to-top").fadeOut(200)}),o("body").on("click",".back-to-top",function(){o("html, body").animate({scrollTop:0},700)})<?php } ?><?php if ($use_sticky_footer) { ?>,o(window).scroll(function(){o("#es-p").length&&o("#es-c").length&&(o(window).scrollTop()>o("#es-c").offset().top&&o(window).scrollTop()+o(window).height()<o("#es-p").offset().top?p||(o("#es-sf").fadeIn(),o("#es-sf .es-l").hide(),p=!0):(p=!1,o("#es-sf").hide()))})<?php } ?><?php if (!$use_more) { ?>,o(window).endlessScroll({contentTarget:"#es-c",bottomPixels:i,callback:function(e,t){load_next_page().done(function(){o.isFunction(t)&&t.call()})},ceaseFire:function(){return a>=Math.ceil(t/l)?!0:!1}})<?php } else if ($use_more && $use_more_after == 0){ ?>,o("body").on("click",".es-m",function(){o(".es-m").fadeOut(200).promise().done(function(){load_next_page().done(function(){t>=a*l+1&&o(".es-m").fadeIn(200)})})}),t>a*l&&o(".es-md").show()<?php } else { ?>,o(window).endlessScroll({contentTarget:"#es-c",bottomPixels:i,callback:function(e,n){r++,load_next_page().done(function(){o.isFunction(n)&&n.call(),r>=c&&t>=a*l+1&&o(".es-m").fadeIn(200)})},ceaseFire:function(){return a>=Math.ceil(t/l)?!0:r>=c?!0:!1}}),o("body").on("click",".es-m",function(){o(".es-m").fadeOut(200).promise().done(function(){load_next_page().done(function(){r=0})})}),t>a*l&&(o(".es-m").hide(),o(".es-md").show()),r>=c&&t>=a*l+1&&o(".es-m").fadeIn(200)<?php } ?>,o(window).trigger("scroll")})}(window.bull5i=window.bull5i||{},jQuery);
+//--></script><?php } ?>
+			]]></add>
+		</operation>
+	</file>
+
+</modification>

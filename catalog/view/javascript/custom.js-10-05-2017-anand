@@ -1,0 +1,45 @@
+jQuery(document).ready(function(){
+
+	// max height of  blocks after slider
+	var elementHeights = jQuery('.giftBlocks > .col-sm-2 span a').map(function() {
+	return jQuery(this).height();
+	}).get();
+	var maxHeight = Math.max.apply(null, elementHeights);
+	jQuery('.giftBlocks > .col-sm-2 span a').height(maxHeight);
+
+	if(jQuery(window).width()<768){
+		jQuery(".dropdown-menu ul.list-unstyled > li > a").click(function(){
+			jQuery("ul.list-unstyled > li > ul").hide();
+			jQuery("ul.list-unstyled > li > a").removeAttr('class');
+			jQuery(this).addClass('active');
+			jQuery(this).next().show();
+			return false;
+		})
+	} else 
+		jQuery(".dropdown-menu ul.list-unstyled > li > a").removeAttr('href');
+
+
+
+	jQuery(".hFcontent span.readmore").click(function(){
+	    jQuery(this).siblings().toggleClass("show");
+	    jQuery(this).siblings().children("span").toggleClass("show");	
+	    jQuery(this).toggleClass("show");	
+	});
+
+	jQuery(".menu-close").click(function(){
+		jQuery(".btn-navbar").trigger("click");
+	})
+
+
+
+$('.container').on( 'mousewheel DOMMouseScroll', function (e) { 
+  
+  var e0 = e.originalEvent;
+  var delta = e0.wheelDelta || -e0.detail;
+
+  this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+  e.preventDefault();  
+});
+
+
+})

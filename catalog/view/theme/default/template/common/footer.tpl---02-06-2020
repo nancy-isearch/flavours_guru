@@ -1,0 +1,95 @@
+<footer>
+<div class="checkoutbox">
+<span>Need Help?</span> Call us on <span>+91 813 0961 414</span>
+</div>
+	<div id="advanced-newsletter-box">
+    	<div class="container">
+        <div class="footer-col">
+        <div class="heading-title">SIGN UP FOR EMAIL OFFERS & UPDATES</div>
+        <div class="heading-title errorNews" style="display:block; color:darkred"></div>
+        <div class="input-group box-newsletter-subscribe" id="mail-box">
+            <input type="text" name="email" value="" class="newsletterInpt" placeholder="Enter Your E-Mail Address"/>
+            <span class="input-group-btn">
+            <button class="btn btn-default enter-subscribe" type="button">Go</button>
+            </span>
+        </div>
+        </div>
+                <div class="footer-col">
+                <h6>CONNECT WITH US</h6>
+                <div class="socialIcon">
+        	<a href="https://www.facebook.com/flavoursgurubakery" target="_blank"> <img src="catalog/view/theme/default/image/fb-icon.png" alt="Facebook" /></a>
+        	<a href="https://twitter.com/flavoursguru" target="_blank"><img src="catalog/view/theme/default/image/twitter-icon.png" alt="Twitter" /></a>
+        	<a href="https://www.instagram.com/flavoursguru/" target="_blank"><img src="catalog/view/theme/default/image/intagram.png" alt="Instagram" /></a>
+          <a href="https://in.pinterest.com/flavoursgurudm/" target="_blank"><img src="catalog/view/theme/default/image/pintrest-icon.png" alt="Instagram" /></a>
+          <!-- <a href="https://www.pinterest.com/flavoursgurudm/" target="_blank"><img src="catalog/view/theme/default/image/pinterest-icon.png" alt="Instagram" /></a> -->
+
+        </div>
+                </div>
+                <div class="footer-col">
+                <h6>SECURE ORDERING & TRANSACTIONS</h6>
+                <img class="visa_paypal" src="catalog/view/theme/default/image/payment-getway.png" alt="Google Plus" />
+                </div>                
+</div>
+<script type="text/javascript">
+    new AdvancedNewsletter({
+        container_id: '#advanced-newsletter-box',
+        input_id: 'input[name=email]',
+        submit_id: '.enter-subscribe'
+    });
+</script>
+	</div>
+	
+
+  <div class="container">
+    <div class="row chooseLocation">
+    	<ul>
+      <?php if($informations){?>
+      <?php foreach ($informations as $information) { ?>
+          <li><a href="<?php echo $information['href']; ?>"><?php echo $information['title']; ?></a></li>
+          <?php } ?>
+      <?php }?>
+       <?php /* ?><li><a href="http://www.flavoursguru.com/">Blog</a></li> <?php */ ?>
+       <li><a href="<?php echo $contact; ?>">Contact Us</a></li>
+       <!-- <li><a href="<?php echo $sitemap; ?>">Sitemaptest</a></li> -->
+  </ul>
+        
+    </div>
+    
+    <p><?php /*?> <?php echo $powered; ?><?php */?>  &copy; Copyright All Rights Reserved.</p>
+  </div>
+</footer>
+
+
+
+<script type="text/javascript">
+    jQuery('.version').text(NProgress.version);
+    NProgress.start();
+    jQuery(window).load(function() {
+      NProgress.done();
+    });
+</script>
+
+
+<?php
+//utm campaign
+
+if(isset($_GET['utm_campaign']) && $_GET['utm_campaign']!="")
+  $_SESSION['custom_utm_campaign']=$_GET['utm_campaign'];
+?>
+
+<div class="loadingbox" style="display: none;">
+  <span><img class="visa_paypal" src="catalog/view/theme/default/image/loading.gif" alt="loader" /></span>
+</div>
+
+<!-----Fresh Chat Code ---->
+<!-- <script>
+  function initFreshChat() {
+    window.fcWidget.init({
+      token: "6e129ee4-a639-427a-938e-873187c26155",
+      host: "https://wchat.in.freshchat.com"
+    });
+  }
+  function initialize(i,t){var e;i.getElementById(t)?initFreshChat():((e=i.createElement("script")).id=t,e.async=!0,e.src="https://wchat.in.freshchat.com/js/widget.js",e.onload=initFreshChat,i.head.appendChild(e))}function initiateCall(){initialize(document,"freshchat-js-sdk")}window.addEventListener?window.addEventListener("load",initiateCall,!1):window.attachEvent("load",initiateCall,!1);
+</script> -->
+<!-----End Fresh Chat Code ---->
+</body></html>

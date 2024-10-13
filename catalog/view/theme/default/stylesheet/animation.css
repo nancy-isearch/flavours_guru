@@ -1,0 +1,56 @@
+.animation {
+    -webkit-animation: lds-heart 1s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation: lds-heart 1s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+@keyframes lds-heart {
+  0% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  5% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  39% {
+    -webkit-transform: scale(0.95);
+    transform: scale(0.95);
+  }
+  45% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  60% {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes lds-heart {
+  0% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  5% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  39% {
+    -webkit-transform: scale(0.95);
+    transform: scale(0.95);
+  }
+  45% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  60% {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}

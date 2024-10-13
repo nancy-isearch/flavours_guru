@@ -1,0 +1,85 @@
+
+<div class="panel panel-default">
+  <!--div class="panel-heading"><?php echo $heading_title; ?></div-->
+  
+
+  <div class="list-group" id="">
+    <?php foreach ($filter_groups as $filter_group) { ?>
+    <!--a class="list-group-item"> <?php echo $filter_group['name']; ?> </a-->
+      <div class="list-group-item">
+          <div id="filter-group<?php echo $filter_group['filter_group_id']; ?>">
+          <select class="devel_group<?php echo $filter_group['filter_group_id']; ?>" name="filter[]" id="devel_group">
+               <option value="0" ><?php echo $filter_group['name']; ?> </option>
+            <?php foreach ($filter_group['filter'] as $filter) { ?> 
+                 
+                    <?php if (in_array($filter['filter_id'], $filter_category)) { ?>
+                        <option value="<?php echo $filter['filter_id']; ?>" selected >  <?php echo $filter['name']; ?></option> 
+                    <?php } else { ?> 
+                        <option value="<?php echo $filter['filter_id']; ?>"  ><?php echo $filter['name']; ?></option> 
+                    <?php } ?>
+              
+            <?php } ?>
+            </select>
+          </div> 
+      </div>
+    <?php } ?>
+  </div>
+
+  <!--div class="panel-footer text-right">
+    <button type="button" id="button-filter" class="btn btn-primary"><?php echo $button_filter; ?></button>
+  </div-->
+</div>
+
+
+
+  <!-- <div class="list-group">
+    <?php foreach ($filter_groups as $filter_group) { ?>
+    <a class="list-group-item"><?php echo $filter_group['name']; ?></a>
+    <div class="list-group-item">
+      <div id="filter-group<?php echo $filter_group['filter_group_id']; ?>">
+        <?php foreach ($filter_group['filter'] as $filter) { ?>
+        <div class="checkbox">
+          <label>
+            <?php if (in_array($filter['filter_id'], $filter_category)) { ?>
+            <input type="checkbox" name="filter[]" value="<?php echo $filter['filter_id']; ?>" checked="checked" />
+            <?php echo $filter['name']; ?>
+            <?php } else { ?>
+            <input type="checkbox" name="filter[]" value="<?php echo $filter['filter_id']; ?>" id="ddd"/>
+            <?php echo $filter['name']; ?>
+            <?php } ?>
+          </label>
+        </div>
+        <?php } ?>
+      </div>
+    </div>
+    <?php } ?>
+  </div> --> 
+
+<script type="text/javascript">
+
+    $("select").change(function(){
+      
+        filter = [];
+        $("#devel_group option").each(function()
+          {
+           if( $(this).prop('selected')){ filter.push(this.value); };
+        });
+        
+        location = '<?php echo $action; ?>&filter='+ filter.join(',');
+         
+    }); 
+
+</script>
+
+<!-- <script type="text/javascript"><!--
+$('#button-filter').on('click', function() {
+  filter = [];
+
+  $('input[name^=\'filter\']:checked').each(function(element) {
+    filter.push(this.value);
+  });
+console.log(filter);
+  //location = '<?php echo $action; ?>&filter=' + filter.join(',');
+});
+//</script> -->
+

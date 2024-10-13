@@ -1,0 +1,183 @@
+<?php echo $header; ?>
+<div class="container top_positionn">
+  <div class="row"><?php echo $column_left; ?>
+    <?php if ($column_left && $column_right) { ?>
+    <?php $class = 'col-sm-6'; ?>
+    <?php } elseif ($column_left || $column_right) { ?>
+    <?php $class = 'col-sm-9'; ?>
+    <?php } else { ?>
+    <?php $class = 'col-sm-12'; ?>
+    <?php } ?>
+    <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?><?php echo $content_bottom; ?>
+    
+    <h1 class="maintitle">Flowers &amp; Gift Delivery- On Time, Every Time</h1>
+    
+    <div class="col-sm-12 giftBlocks">
+        <div class="col-sm-2"><a href="/under-499"><img src="catalog/view/theme/default/image/gifts.png" alt="Under - Rs 499" /></a> <span><a href="/under-499">Under - Rs499</a></span></div>
+        <?php /*<div class="col-sm-2"><a href="/rakhi-for-brother"><img src="catalog/view/theme/default/image/rakhi.png" alt="Rakhi" /></a> <span><a href="/rakhi-for-brother">Raksha Bandhan</a></span></div>*/ ?>
+    	<div class="col-sm-2"><a href="/gift-hampers"><img src="catalog/view/theme/default/image/giftshamper.png" alt="gift-hamper" /></a><span><a href="/gift-hampers">Gift Hamper</a></span></div>
+    	<div class="col-sm-2"><a href="/gifts-for-her"><img src="catalog/view/theme/default/image/female.png" alt="gift-for-her" /></a><span><a href="/gifts-for-her">Gift for her</a></span></div>
+    	<div class="col-sm-2"><a href="/gifts-for-him"><img src="catalog/view/theme/default/image/male.png" alt="gift-for-him" /></a><span><a href="/gifts-for-him">Gift for him</a></span></div>
+    	<div class="col-sm-2"><a href="/same-day-delivery"><img src="catalog/view/theme/default/image/sameday.png" alt="sameday-delivery" /></a><span><a href="/same-day-delivery">Same Day Delivery</a></span></div>
+    	<div class="col-sm-2"><a href="/birthday/gifts"><img src="catalog/view/theme/default/image/birthday.png" alt="world-wide-delivery" /></a><span><a href="/birthday/gifts">Birthday Gifts</a></span></div> 
+    </div> 
+    
+  <?php /*  <div class="col-sm-12 giftBlocks">
+            <?php 
+                 foreach($category as $result){ 
+                     $cat_name = $result['name'];
+                     $cat_image = $result['image']; 
+                     $cat_id = $result['category_id']; 
+                     $path = $result['path'];  
+            ?>
+                <div class="col-sm-2"><a href="<?php echo $path ; ?>">
+                <img src="image/<?php echo $cat_image; ?>" alt="<?php echo $cat_name; ?>" /></a> <span>
+                <a href="<?php echo $path ; ?>"><?php echo $cat_name; ?></a></span></div>    
+         <?php } ?>
+     </div> */ ?>
+  
+     <?php foreach($home_category as $catlist){ ?>
+        <div class="col-sm-12 homeCategoryBlocks">
+             <div class="homeHeading"> <h2> <?php echo $catlist['title']; ?> </h2> <a href="<?php echo $catlist['url']; ?>"> View All </a> </div>
+             <?php foreach($catlist['products'] as $catpro){ ?>
+             <div class="col-sm-3">
+                <a href="<?php echo $catpro['href']; ?>"><img src="<?php echo $catpro['image'] ?>" alt="<?php echo $catpro['name'];?>" /></a>
+                <a href="<?php echo $catpro['href']; ?>"> <div class="productName"> <?php echo $catpro['name'];?> </div></a>
+                <?php /*<div class="price"><?php echo $catpro['price'];?></div>*/ ?>
+                <?php if ($catpro['price']) { ?>
+                    <p class="price product-thumb">
+                      <?php if (!$catpro['special']) { ?>
+                      <?php echo $catpro['price']; ?>
+                      <?php } else { ?>
+                       <span class="price-new"> <?php echo $catpro['special']; ?> </span> <span class="price-old"> <?php echo $catpro['price']; ?> </span>
+                      <?php } ?>
+                    </p>
+                <?php } ?>
+                <a href="<?php echo $catpro['href']; ?>" class="buynow">Buy Now</a>
+            </div>
+            <?php  } ?>
+        </div>
+
+     <?php } ?>
+
+     <?php /* ?>
+     <div class="col-sm-12 homeCategoryBlocks">
+
+         <div class="homeHeading"> <h2> <?php echo $category_content['first_cat_data'][0]['catname']; ?> </h2> <a href="<?php echo $category_content['first_cat_data'][0]['category_id']; ?>"> View All </a> </div>
+         <?php foreach($category_content['first_cat_data'] as $catproductContent){ ?>
+         <div class="col-sm-3">
+            <a href="<?php echo $catproductContent['href']; ?>"><img src="<?php echo 'image/'.$catproductContent['image'];?>" alt="<?php echo $catproductContent['name'];?>" /></a>
+            <a href="<?php echo $catproductContent['href']; ?>"> <div class="productName"> <?php echo $catproductContent['name'];?> </div></a>
+            <div class="price"><?php echo $catproductContent['price'];?></div>
+            <a href="<?php echo $catproductContent['href']; ?>" class="buynow">Buy Now</a>
+        </div>
+        <?php   } ?>
+        
+    </div>
+    
+    <div class="col-sm-12 homeCategoryBlocks">
+        <div class="homeHeading"><h2><?php echo $category_content['second_cat_data'][0]['catname']; ?></h2> <a href="<?php echo $category_content['second_cat_data'][0]['category_id']; ?>">View All</a></div>
+        <?php foreach($category_content['second_cat_data'] as $catproductContent){ ?>
+        <div class="col-sm-3">
+            <a href="<?php echo $catproductContent['href']; ?>"><img src="<?php echo 'image/'.$catproductContent['image'];?>" alt="<?php echo $catproductContent['name'];?>" /></a>
+            <a href="<?php echo $catproductContent['href']; ?>"><div class="productName"><?php echo $catproductContent['name'];?></div></a>
+            <div class="price"><?php echo $catproductContent['price'];?></div>
+            <a href="<?php echo $catproductContent['href']; ?>" class="buynow">Buy Now</a>
+        </div>
+        <?php   } ?>
+    </div>
+    
+    <div class="col-sm-12 homeCategoryBlocks">
+        <div class="homeHeading"><h2><?php echo $category_content['third_cat_data'][0]['catname']; ?></h2> <a href="<?php echo $category_content['third_cat_data'][0]['category_id']; ?>">View All</a></div>
+        
+        <?php foreach($category_content['third_cat_data'] as $catproductContent){ ?>
+        <div class="col-sm-3">
+            <a href="<?php echo $catproductContent['href']; ?>"><img src="<?php echo 'image/'.$catproductContent['image'];?>" alt="<?php echo $catproductContent['name'];?>" /></a>
+            <a href="<?php echo $catproductContent['href']; ?>"><div class="productName"><?php echo $catproductContent['name'];?></div></a>
+            <div class="price"><?php echo $catproductContent['price'];?></div>
+            <a href="<?php echo $catproductContent['href']; ?>" class="buynow">Buy Now</a>
+        </div>
+        <?php   } ?>
+    </div>
+    
+    <div class="col-sm-12 homeCategoryBlocks">
+        <div class="homeHeading"><h2><?php echo $category_content['fourth_cat_data'][0]['catname']; ?></h2> <a href="<?php echo $category_content['fourth_cat_data'][0]['category_id']; ?>">View All</a></div>
+        
+        <?php foreach($category_content['fourth_cat_data'] as $catproductContent){ ?>
+        <div class="col-sm-3">
+            <a href="<?php echo $catproductContent['href']; ?>"><img src="<?php echo 'image/'.$catproductContent['image'];?>" alt="<?php echo $catproductContent['name'];?>" /></a>
+            <a href="<?php echo $catproductContent['href']; ?>"><div class="productName"><?php echo $catproductContent['name'];?></div></a>
+            <div class="price"><?php echo $catproductContent['price'];?></div>
+            <a href="<?php echo $catproductContent['href']; ?>" class="buynow">Buy Now</a>
+        </div>
+        <?php   } ?>
+    </div>
+    
+    <div class="col-sm-12 homeCategoryBlocks">
+        <div class="homeHeading"><h2><?php echo $category_content['fifth_cat_data'][0]['catname']; ?></h2> <a href="<?php echo $category_content['fifth_cat_data'][0]['category_id']; ?>">View All</a></div>
+        
+        <?php foreach($category_content['fifth_cat_data'] as $catproductContent){ ?>
+        <div class="col-sm-3">
+            <a href="<?php echo $catproductContent['href']; ?>"><img src="<?php echo 'image/'.$catproductContent['image'];?>" alt="<?php echo $catproductContent['name'];?>" /></a>
+            <a href="<?php echo $catproductContent['href']; ?>"><div class="productName"><?php echo $catproductContent['name'];?></div></a>
+            <div class="price"><?php echo $catproductContent['price'];?></div>
+            <a href="<?php echo $catproductContent['href']; ?>" class="buynow">Buy Now</a>
+        </div>
+        <?php   } ?>
+    </div> <php */ ?>
+        
+    <div class="col-sm-12 mainInfo">
+    <div class="col-sm-3">
+        <img src="catalog/view/theme/default/image/cities-covered.png" alt="More Than 250+ Cities Covered" />
+        <span>
+            More Than<br /> <strong>250+</strong><br /> Cities Covered
+        </span>
+    </div>
+    <div class="col-sm-3">
+        <img src="catalog/view/theme/default/image/choose-products.png" alt="Choose From 50,000+ Products" />
+        <span>
+            Choose From<br /> <strong>50,000+</strong><br /> Products
+        </span>
+    </div>
+    <div class="col-sm-3">
+                <img src="catalog/view/theme/default/image/delivery-countries.png" alt="Delivery in 100+ Countries" />
+                <span>
+                    Delivery in<br /> <strong>100+</strong><br /> Countries
+                </span>
+            </div>
+    <div class="col-sm-3">
+                <img src="catalog/view/theme/default/image/happy-customers.png" alt="More Than 2,00000+ Happy Customers" />
+                <span>
+                    More Than<br /> <strong>2,00000+</strong><br /> Happy Customers
+                </span>
+            </div>
+                        
+    </div>
+    
+    <div class="col-sm-12 homeFootContent">
+    	<div class="hFcontent">
+        	<h2>Book My Flowers- India’s Top Most Online Florist Delivering Fresh Flowers in 300+ cities</h2>
+            <p>Expressing emotions is a beautiful feeling! Some people like expressing with words while other just use gifts as the best medium to express their thoughts. <span class="text"> Out of all the gifting options, there is nothing that can beat the gorgeous and lovely flowers. The fragrance of fresh flowers is a therapy in itself and can transform a bad day into a good one. We are proud to be in this beautiful industry for the last 8 years as one of the top florist in India. It is a great responsibility to deliver fresh flowers online and we are trying our best to provide our customers with the best of services. Book My Flowers has a robust delivery network that helps the company to fulfil the orders to 300+ cities on time. So whether you want to send a bouquet of red roses or orchids online, rest assured your order will be delivered on time.</span></p>
+        <span class="readmore-upper">Read More</span>
+        </div>
+        
+        <div class="footer-text">
+        <h2>Online Flower Delivery for all Occasions Made Easy</h2> 
+<p>The importance of flowers cannot be described. Be it any occasion and the first and foremost thing that you think of gifting is a beautiful arrangement of flowers. Flowers can say a lot that your heart cannot express. The immense happiness of seeing your loved ones smile on receiving the bouquet of red roses is unmatched. We have just made this experience smooth and convenient for you by bringing the flower shop right inside your living room. Simply login to our website and place an order for fresh flowers, beautiful floral arrangements, flower baskets etc. and send them to your near and dear ones. We are your one stop florists for all your flower delivery needs. The best part about online flower delivery is that you do not need a special occasion to order. Any day can be made special with flowers! If you are looking for <a href="/birthday/flowers">birthday flowers online</a> or <a href="/anniversary/flowers">anniversary flowers</a> we have a huge variety of flowers to choose from.</p>  
+<h2>Same Day and Midnight Delivery across India</h2>
+<p>When we deliver flowers online in India and International countries, we understand the fact they have to be delivered fresh. So in order to make sure that whenever you place an order, only fresh flowers are delivered- we have a wide and extended delivery network of flower delivery services. We have the <a href="/same-day-delivery">same day delivery</a> and midnight delivery across India to cater to all your special flower delivery requests. Whether you have to send gifts to your loved ones in Delhi, Mumbai, Bangalore, Pune, Kolkata, Chennai, Hyderabad or Gurgaon, we are there to deliver your emotions. Our delivery networks cover the length and breadth of India. Flowers are perfect gift options for all occasions and are extremely important in making a relationship stronger. With the amazing variety of <a href="/flower-bouquets">flower bouquets</a>, fresh flowers, bunch etc. you will never be short of options for your near and dear ones. Buy flowers online from Book My Flowers, most preferred florist online and mesmerize your friends and family.</p>
+<h2>Send Flowers to USA and Other Countries Online with Ease</h2>
+<p>Who doesn’t like the fragrance of beautiful fresh flowers or a gorgeous flowering plant at their work desk? Roses, Orchids, Carnations, Gerberas, Lilies etc. make everything look better. There are always a lot of emotions involved behind sending flowers and love is one of them. We understand your emotions and also the fact that when your near and dear ones are away in other countries, how tough it is to find <a href="/gifts">best gifting options</a> for them. So BookMyFlowers caters to all your international flower delivery requests from India and we have a wide network of top florists in USA, UK, Canada and Australia etc. You can easily send flowers online to USA from India and other countries with our trusted website easily. We guarantee you an exceptional delivery experience.</p>
+<h2>One Stop Shop for All Gifting Needs- Cakes, Flowers, Plants & Gifts</h2>
+<p>If you thought that we only sold flowers, that’s not right! Being a decorated florist is our USP but we have a huge plethora of <a href="/cakes">cakes</a>, <a href="/plants">plants</a>, personalized gifts and flowers as well. Our delivery services ensure that your gifts reaches your near and dear ones on time. If you are looking for a midnight cake delivery in India, we are there for you to help you plan the perfect surprise party for your friends. Our collection of <a href="/personalized-gifts">personalized gifts</a> is quite unique and you will be happy to place the order for your friends and family. Gifts are definitely important in making someone feel special and we want to make the entire experience amazing for you.</p>
+        </div>
+<span class="readmore-less">Read Less</span>        
+        
+        
+        
+    </div>
+    
+    </div>
+    <?php echo $column_right; ?></div>
+</div>
+<?php echo $footer; ?>

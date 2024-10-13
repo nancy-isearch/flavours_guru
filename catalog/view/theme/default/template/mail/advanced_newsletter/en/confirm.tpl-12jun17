@@ -1,0 +1,36 @@
+<div style="width: 680px; font-family:Georgia,'Times New Roman',Times,serif; font-size:16px; line-height: 21px; color:#444">
+	<div style=" width:100%; float:left; text-align:center; padding-top:15px; border-top:3px solid #ddd;">
+		<a href="<?php echo HTTP_SERVER ?>"">
+			<img src="<?php echo HTTP_SERVER.'image/catalog/images/logo.png' ?>"" style="margin-bottom: 20px; width:200px; border:none;" />
+		</a>
+	</div>
+	Hi there, <br>
+	We just letting you know, you or someone have subscribed to newsletter on the our store. Please confirm for us that you doing this by
+	click on <a href="<?php echo $url_agree?>">Yes it me</a> or <a href="<?php echo $url_unagree?>">No, please dont</a><br><br>
+	(Keep this email, you can re-subscribe anytime.)<br><br>
+
+	Thanks,
+	Book My Flowers
+
+	<div style="border:1px solid #ddd; font-family:Georgia,'Times New Roman',Times,serif; margin-top: 20px">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td width="10">&nbsp;</td>
+					<td width="100%" align="center"><table width="100%">
+						<tbody><tr>
+							<td align="right"><a href="tel:+91 92124 22000" style="font-size:18px; font-weight:400; color:#565656; font-family:Georgia, 'Times New Roman', Times, serif; text-decoration:none;">
+								<img src="<?php echo HTTP_SERVER; ?>image/catalog/images/need-help.png" alt="" style="width:100%; max-width:150px;"></a></td>
+								<td align="left" valign="top"><a href="tel:+91 99500 11 111" style="font-size:16px; font-weight:400; line-height:30px; color:#565656; font-family:Georgia, 'Times New Roman', Times, serif; text-decoration:none;">+91 99500 11 111</a></td>
+							</tr>
+						</tbody></table></td>
+						<td width="10">&nbsp;</td>
+					</tr>
+			</tbody>
+		</table>
+	</div>
+
+</div>
+
+
+

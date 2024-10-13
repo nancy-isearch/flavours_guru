@@ -1,0 +1,41 @@
+User-agent: Googlebot
+Allow: /
+
+#
+# robots.txt for https://www.flavoursguru.com/
+
+User-agent: *
+Disallow: /login
+Disallow: /account
+Disallow: /advancedlogin
+Disallow: /advancedlogingoogle
+Disallow: /download
+Disallow: /edit
+Disallow: /forgotten
+Disallow: /logout
+Disallow: /password
+Disallow: /recurring
+Disallow: /reset
+Disallow: /transaction
+Disallow: /affliate-edit
+Disallow: /affliate-forgotten
+Disallow: /affliate-login
+Disallow: /affliate-logout
+Disallow: /affliate-password
+Disallow: /affliate-payment
+Disallow: /affliate-register
+Disallow: /affliate-success
+Disallow: /affliate-tracking
+Disallow: /affliate-transaction
+Disallow: /checkout
+Disallow: /checkout-success
+Disallow: /header1
+Disallow: /helper
+Disallow: /response
+Disallow: /search
+Disallow: /*?*
+Disallow: /*?
+
+
+#Sitemaps
+Sitemap: https://www.flavoursguru.com/sitemap.xml

@@ -1,0 +1,666 @@
+<?php
+class ControllerShippingType extends Controller {
+	private $error = array();
+
+	public function index() {
+		$this->load->language('shipping/type');
+
+		$this->document->setTitle($this->language->get('heading_title'));
+
+		$this->load->model('shipping/type');
+
+		$this->getList();
+	}
+
+	public function edit() {
+
+		$this->load->language('shipping/type');
+
+		$this->document->setTitle($this->language->get('heading_title'));
+ 
+		$this->load->model('shipping/type');
+
+		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+			$this->model_shipping_type->edittype($this->request->get['type_id'], $this->request->post);
+			   $timeslot = $this->request->post['timeslot']; 
+				 $this->model_shipping_type->deleteShippingTimeSlot($this->request->get['type_id']); 
+				 
+				$i=0;
+				foreach($timeslot as $timeslote){ //edit time slote 
+						   $this->model_shipping_type->addshippingTimeSlot($this->request->get['type_id'], $timeslote);  
+				 
+				} 
+			 
+			$this->session->data['success'] = $this->language->get('text_success');
+
+			$url = '';
+
+			if (isset($this->request->get['filter_name'])) {
+				$url .= '&filter_name=' . urlencode(html_entity_decode($this->request->get['filter_name'], ENT_QUOTES, 'UTF-8'));
+			}
+
+			if (isset($this->request->get['sort'])) {
+				$url .= '&sort=' . $this->request->get['sort']; 
+			}
+
+			if (isset($this->request->get['order'])) {
+				$url .= '&order=' . $this->request->get['order'];
+			}
+ 
+			if (isset($this->request->get['page'])) {
+				$url .= '&page=' . $this->request->get['page'];
+			}
+
+			$this->response->redirect($this->url->link('shipping/type', 'token=' . $this->session->data['token'] . $url, true));
+		}
+
+		$this->gettypeform();
+	}
+
+	public function delete() {
+
+		$this->load->language('shipping/type');
+
+		$this->document->setTitle($this->language->get('heading_title'));
+
+		$this->load->model('shipping/type');
+
+		if (isset($this->request->post['selected']) && $this->validateDelete()) {
+			foreach ($this->request->post['selected'] as $type_id) {
+				$this->model_shipping_type->deletetype($type_id);
+			}
+
+			$this->session->data['success'] = $this->language->get('text_success');
+
+			$url = '';
+
+			if (isset($this->request->get['filter_name'])) {
+				$url .= '&filter_name=' . urlencode(html_entity_decode($this->request->get['filter_name'], ENT_QUOTES, 'UTF-8'));
+			}
+
+
+			if (isset($this->request->get['sort'])) {
+				$url .= '&sort=' . $this->request->get['sort'];
+			}
+
+			if (isset($this->request->get['order'])) {
+				$url .= '&order=' . $this->request->get['order'];
+			}
+
+			if (isset($this->request->get['page'])) {
+				$url .= '&page=' . $this->request->get['page'];
+			}
+
+			$this->response->redirect($this->url->link('shipping/type', 'token=' . $this->session->data['token'] . $url, true));
+		}
+
+		$this->getList();
+	}
+
+	protected function getList() {
+		
+		if (isset($this->request->get['filter_name'])) {
+			$filter_name = $this->request->get['filter_name'];
+		} else {
+			$filter_name = null;
+		}
+
+		if (isset($this->request->get['sort'])) {
+			$sort = $this->request->get['sort'];
+		} else {
+			$sort = 'pd.name';
+		}
+
+		if (isset($this->request->get['order'])) {
+			$order = $this->request->get['order'];
+		} else {
+			$order = 'ASC';
+		}
+
+		if (isset($this->request->get['page'])) {
+			$page = $this->request->get['page'];
+		} else {
+			$page = 1;
+		}
+
+		$url = '';
+
+		if (isset($this->request->get['filter_name'])) {
+			$url .= '&filter_name=' . urlencode(html_entity_decode($this->request->get['filter_name'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['sort'])) {
+			$url .= '&sort=' . $this->request->get['sort'];
+		}
+
+		if (isset($this->request->get['order'])) {
+			$url .= '&order=' . $this->request->get['order'];
+		}
+
+		if (isset($this->request->get['page'])) {
+			$url .= '&page=' . $this->request->get['page'];
+		}
+
+		$data['breadcrumbs'] = array();
+
+		$data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
+			'href' => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], true)
+		);
+
+		$data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
+			'href' => $this->url->link('shipping/type', 'token=' . $this->session->data['token'] . $url, true)
+		);
+
+		$data['add'] = $this->url->link('shipping/type/typeadd', 'token=' . $this->session->data['token'] . $url, true);
+		$data['copy'] = $this->url->link('shipping/type/copy', 'token=' . $this->session->data['token'] . $url, true);
+		$data['delete'] = $this->url->link('shipping/type/delete', 'token=' . $this->session->data['token'] . $url, true);
+
+		$data['cities'] = array();
+
+		$filter_data = array(
+			'filter_name'	  => $filter_name,
+			'sort'            => $sort,
+			'order'           => $order,
+			'start'           => ($page - 1) * $this->config->get('config_limit_admin'),
+			'limit'           => $this->config->get('config_limit_admin')
+		);
+
+		$cities_total = $this->model_shipping_type->getTotalShippingslot($filter_data);
+		
+		$results = $this->model_shipping_type->getShippingslot($filter_data);
+
+		
+
+
+		foreach ($results as $result) {
+
+			$data['cities'][] = array(
+				'type_id' => $result['id'],
+				'typename'      => $result['name'],
+				'description'    => $result['description'],
+				'duration'       => $result['duration'],
+				'leadtime'	=>	$result['leadtime'],
+				'city_group_id'	=> $result['city_group_id'],
+				'holiday_id'	=>	$result['holiday_id'],
+				'shipping_charge'=>	$result['shipping_charge'],
+				'buffertime'	=>	$result['buffertime'],
+				'leadtime'	=>	$result['leadtime'],
+				'status'     => $result['active'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),
+				'edit'       => $this->url->link('shipping/type/edit', 'token=' . $this->session->data['token'] . '&type_id=' . $result['id'] . $url, true)
+			);
+		}
+
+		$data['heading_title'] = $this->language->get('heading_title');
+
+		$data['text_list'] = $this->language->get('text_list');
+		$data['text_enabled'] = $this->language->get('text_enabled');
+		$data['text_disabled'] = $this->language->get('text_disabled');
+		$data['text_no_results'] = $this->language->get('text_no_results');
+		$data['text_confirm'] = $this->language->get('text_confirm');
+
+		$data['entry_name'] = $this->language->get('entry_name');
+
+		$data['column_name'] = $this->language->get('column_name');
+		$data['column_description'] = $this->language->get('column_description');
+		$data['column_Duration'] = $this->language->get('column_Duration');
+		$data['column_timeslot'] = $this->language->get('column_timeslot');
+		$data['column_cutoff'] = $this->language->get('column_cutoff');
+		$data['column_citygp'] = $this->language->get('column_citygp');
+		$data['column_holiday'] = $this->language->get('column_holiday');
+		$data['column_status'] = $this->language->get('column_status');
+		$data['column_action'] = $this->language->get('column_action');
+		$data['column_shipping_charge'] = $this->language->get('column_shipping_charge');
+		$data['column_date_available'] = $this->language->get('column_date_available');
+
+		$data['button_copy'] = $this->language->get('button_copy');
+		$data['button_add'] = $this->language->get('button_add');
+		$data['button_edit'] = $this->language->get('button_edit');
+		$data['button_delete'] = $this->language->get('button_delete');
+		$data['button_filter'] = $this->language->get('button_filter');
+
+		$data['token'] = $this->session->data['token'];
+
+		if (isset($this->error['warning'])) {
+			$data['error_warning'] = $this->error['warning'];
+		} else {
+			$data['error_warning'] = '';
+		}
+
+		if (isset($this->session->data['success'])) {
+			$data['success'] = $this->session->data['success'];
+
+			unset($this->session->data['success']);
+		} else {
+			$data['success'] = '';
+		}
+
+		if (isset($this->request->post['selected'])) {
+			$data['selected'] = (array)$this->request->post['selected'];
+		} else {
+			$data['selected'] = array();
+		}
+
+		$url = '';
+
+		if (isset($this->request->get['filter_name'])) {
+			$url .= '&filter_name=' . urlencode(html_entity_decode($this->request->get['filter_name'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if ($order == 'ASC') {
+			$url .= '&order=DESC';
+		} else {
+			$url .= '&order=ASC';
+		}
+
+		if (isset($this->request->get['page'])) {
+			$url .= '&page=' . $this->request->get['page'];
+		}
+
+		$data['sort_name'] = $this->url->link('shipping/type', 'token=' . $this->session->data['token'] . '&sort=pd.name' . $url, true);
+		$data['sort_model'] = $this->url->link('shipping/type', 'token=' . $this->session->data['token'] . '&sort=p.model' . $url, true);
+		$data['sort_price'] = $this->url->link('shipping/type', 'token=' . $this->session->data['token'] . '&sort=p.price' . $url, true);
+		$data['sort_quantity'] = $this->url->link('shipping/type', 'token=' . $this->session->data['token'] . '&sort=p.quantity' . $url, true);
+		$data['sort_status'] = $this->url->link('shipping/type', 'token=' . $this->session->data['token'] . '&sort=p.status' . $url, true);
+		$data['sort_order'] = $this->url->link('shipping/type', 'token=' . $this->session->data['token'] . '&sort=p.sort_order' . $url, true);
+
+		$url = '';
+
+		if (isset($this->request->get['filter_name'])) {
+			$url .= '&filter_name=' . urlencode(html_entity_decode($this->request->get['filter_name'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['sort'])) {
+			$url .= '&sort=' . $this->request->get['sort'];
+		}
+
+		if (isset($this->request->get['order'])) {
+			$url .= '&order=' . $this->request->get['order'];
+		}
+
+		$pagination = new Pagination();
+		$pagination->total = $cities_total;
+		$pagination->page = $page;
+		$pagination->limit = $this->config->get('config_limit_admin');
+		$pagination->url = $this->url->link('shipping/cities', 'token=' . $this->session->data['token'] . $url . '&page={page}', true);
+
+		$data['pagination'] = $pagination->render();
+
+		$data['results'] = sprintf($this->language->get('text_pagination'), ($cities_total) ? (($page - 1) * $this->config->get('config_limit_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_limit_admin')) > ($cities_total - $this->config->get('config_limit_admin'))) ? $cities_total : ((($page - 1) * $this->config->get('config_limit_admin')) + $this->config->get('config_limit_admin')), $cities_total, ceil($cities_total / $this->config->get('config_limit_admin')));
+
+		$data['filter_name'] = $filter_name;
+		$data['sort'] = $sort;
+		$data['order'] = $order;
+
+		$data['header'] = $this->load->controller('common/header');
+		$data['column_left'] = $this->load->controller('common/column_left');
+		$data['footer'] = $this->load->controller('common/footer');
+		$this->response->setOutput($this->load->view('shipping/type_list', $data));
+	}
+
+	protected function validateForm() {
+		if (!$this->user->hasPermission('modify', 'shipping/type')) {
+			$this->error['warning'] = $this->language->get('error_permission');
+		}
+
+		if ((utf8_strlen($this->request->post['typename']) < 1) || (utf8_strlen($this->request->post['typename']) > 64)) {
+			$this->error['typename'] = $this->language->get('error_model');
+		}
+
+		if ($this->error && !isset($this->error['warning'])) {
+			$this->error['warning'] = $this->language->get('error_warning');
+		}
+
+		return !$this->error;
+	}
+
+	protected function validateDelete() {
+		if (!$this->user->hasPermission('modify', 'shipping/type')) {
+			$this->error['warning'] = $this->language->get('error_permission');
+		}
+
+		return !$this->error;
+	}
+
+	protected function validateCopy() {
+		if (!$this->user->hasPermission('modify', 'shipping/type')) {
+			$this->error['warning'] = $this->language->get('error_permission');
+		}
+
+		return !$this->error;
+	}
+
+	protected function gettypeform() {
+		$data['heading_title'] = $this->language->get('heading_title');
+
+		$data['text_form'] = !isset($this->request->get['product_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
+		$data['text_enabled'] = $this->language->get('text_enabled');
+		$data['text_disabled'] = $this->language->get('text_disabled');
+		$data['text_none'] = $this->language->get('text_none');
+		$data['text_yes'] = $this->language->get('text_yes');
+		$data['text_no'] = $this->language->get('text_no');
+		$data['text_plus'] = $this->language->get('text_plus');
+		$data['text_minus'] = $this->language->get('text_minus');
+		$data['text_default'] = $this->language->get('text_default');
+		$data['text_option'] = $this->language->get('text_option');
+		$data['text_option_value'] = $this->language->get('text_option_value');
+		$data['text_select'] = $this->language->get('text_select');
+		$data['text_percent'] = $this->language->get('text_percent');
+		$data['text_amount'] = $this->language->get('text_amount');
+
+		$data['entry_name'] = $this->language->get('entry_name');
+		$data['entry_description'] = $this->language->get('entry_description');
+		$data['entry_meta_title'] = $this->language->get('entry_meta_title');
+		$data['entry_meta_description'] = $this->language->get('entry_meta_description');
+		$data['entry_meta_keyword'] = $this->language->get('entry_meta_keyword');
+		$data['entry_keyword'] = $this->language->get('entry_keyword');
+		$data['entry_model'] = $this->language->get('entry_model');
+		$data['entry_Duration'] = $this->language->get('entry_Duration');
+		$data['entry_timeslot'] = $this->language->get('entry_timeslot');
+		$data['entry_cutoff'] = $this->language->get('entry_cutoff');
+		$data['entry_citygp'] = $this->language->get('entry_citygp');
+		$data['entry_holiday'] = $this->language->get('entry_holiday');
+		$data['entry_status'] = $this->language->get('entry_status');
+		$data['entry_shipping_charge'] = $this->language->get('entry_shipping_charge');
+		$data['entry_date_available'] = $this->language->get('entry_date_available');
+		$data['entry_buffertime'] = $this->language->get('entry_buffertime');
+		$data['entry_leadtime'] = $this->language->get('entry_leadtime');
+		
+		$data['help_keyword'] = $this->language->get('help_keyword');
+		$data['help_country'] = $this->language->get('help_country');
+		$data['help_state'] = $this->language->get('help_state');
+		$data['help_pincode'] = $this->language->get('help_pincode');
+		$data['help_jan'] = $this->language->get('help_jan');
+		$data['help_isbn'] = $this->language->get('help_isbn');
+		$data['help_mpn'] = $this->language->get('help_mpn');
+		$data['help_minimum'] = $this->language->get('help_minimum');
+		$data['help_manufacturer'] = $this->language->get('help_manufacturer');
+		$data['help_stock_status'] = $this->language->get('help_stock_status');
+		$data['help_points'] = $this->language->get('help_points');
+		$data['help_category'] = $this->language->get('help_category');
+		$data['help_filter'] = $this->language->get('help_filter');
+		$data['help_download'] = $this->language->get('help_download');
+		$data['help_related'] = $this->language->get('help_related');
+		$data['help_tag'] = $this->language->get('help_tag');
+
+		$data['button_save'] = $this->language->get('button_save');
+		$data['button_cancel'] = $this->language->get('button_cancel');
+		$data['button_attribute_add'] = $this->language->get('button_attribute_add');
+		$data['button_option_add'] = $this->language->get('button_option_add');
+		$data['button_option_value_add'] = $this->language->get('button_option_value_add');
+		$data['button_discount_add'] = $this->language->get('button_discount_add');
+		$data['button_special_add'] = $this->language->get('button_special_add');
+		$data['button_image_add'] = $this->language->get('button_image_add');
+		$data['button_remove'] = $this->language->get('button_remove');
+		$data['button_recurring_add'] = $this->language->get('button_recurring_add');
+
+		$data['tab_general'] = $this->language->get('tab_general');
+		
+
+		if (isset($this->error['warning'])) {
+			$data['error_warning'] = $this->error['warning'];
+		} else {
+			$data['error_warning'] = '';
+		}
+
+		if (isset($this->error['name'])) {
+			$data['error_name'] = $this->error['name'];
+		} else {
+			$data['error_name'] = array();
+		}
+
+		if (isset($this->error['meta_title'])) {
+			$data['error_meta_title'] = $this->error['meta_title'];
+		} else {
+			$data['error_meta_title'] = array();
+		}
+
+		if (isset($this->error['model'])) {
+			$data['error_model'] = $this->error['model'];
+		} else {
+			$data['error_model'] = '';
+		}
+
+		if (isset($this->error['keyword'])) {
+			$data['error_keyword'] = $this->error['keyword'];
+		} else {
+			$data['error_keyword'] = '';
+		}
+
+		$url = '';
+
+		if (isset($this->request->get['filter_name'])) {
+			$url .= '&filter_name=' . urlencode(html_entity_decode($this->request->get['filter_name'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['sort'])) {
+			$url .= '&sort=' . $this->request->get['sort'];
+		}
+
+		if (isset($this->request->get['order'])) {
+			$url .= '&order=' . $this->request->get['order'];
+		}
+
+		if (isset($this->request->get['page'])) {
+			$url .= '&page=' . $this->request->get['page'];
+		}
+
+		$data['breadcrumbs'] = array();
+
+		$data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
+			'href' => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], true)
+		);
+
+		$data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
+			'href' => $this->url->link('shipping/cities', 'token=' . $this->session->data['token'] . $url, true)
+		);
+
+		if (!isset($this->request->get['type_id'])) {
+			$data['action'] = $this->url->link('shipping/type/typeadd', 'token=' . $this->session->data['token'] . $url, true);
+		} else {
+			$data['action'] = $this->url->link('shipping/type/edit', 'token=' . $this->session->data['token'] . '&type_id=' . $this->request->get['type_id'] . $url, true);
+		}
+
+		$data['cancel'] = $this->url->link('shipping/type', 'token=' . $this->session->data['token'] . $url, true);
+		$data['shiptimeslote']='';
+		if (isset($this->request->get['type_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+			$type_info = $this->model_shipping_type->gettypebyID($this->request->get['type_id']);
+			$data['shiptimeslote'] = $this->model_shipping_type->getshiptimeslot($this->request->get['type_id']);
+		}
+
+		$data['token'] = $this->session->data['token'];
+
+		$this->load->model('localisation/language');
+
+		$data['languages'] = $this->model_localisation_language->getLanguages();
+
+		
+
+		if (isset($this->request->post['name'])) {
+			$data['model'] = $this->request->post['name'];
+		} elseif (!empty($type_info)) {
+			$data['model'] = $type_info['name'];
+		} else {
+			$data['model'] = '';
+		}
+
+		if (isset($this->request->post['description'])) {
+			$data['typedescription'] = $this->request->post['description'];
+		} elseif (!empty($type_info)) {
+			$data['typedescription'] = $type_info['description'];
+		} else {
+			$data['typedescription'] = '';
+		}
+
+		if (isset($this->request->post['duration'])) {
+			$data['duration'] = $this->request->post['duration'];
+		} elseif (!empty($type_info)) {
+			$data['duration'] = $type_info['duration'];
+		} else {
+			$data['duration'] = '';
+		}
+
+		if (isset($this->request->post['active'])) {
+			$data['status'] = $this->request->post['active'];
+		} elseif (!empty($type_info)) {
+			$data['status'] = $type_info['active'];
+		} else {
+			$data['status'] = true;
+		}
+
+		if (isset($this->request->post['city_group_id'])) {
+			$data['citygroupid'] = $this->request->post['city_group_id'];
+		} elseif (!empty($type_info)) {
+			$data['citygroupid'] = $type_info['city_group_id'];
+		} else {
+			$data['citygroupid'] = true;
+		}
+
+		if (isset($this->request->post['cutoff_time'])) {
+			$data['cutofftime'] = $this->request->post['cutoff_time'];
+		} elseif (!empty($type_info)) {
+			$data['cutofftime'] = $type_info['cutoff_time'];
+		} else {
+			$data['cutofftime'] = true;
+		}
+
+		if (isset($this->request->post['holiday_id'])) {
+			$data['holidayid'] = $this->request->post['holiday_id'];
+		} elseif (!empty($type_info)) {
+			$data['holidayid'] = $type_info['holiday_id'];
+		} else {
+			$data['holidayid'] = true;
+		}
+		 
+		if (isset($this->request->post['shipping_holiday'])) {
+			$data['shipping_holyday'] = $this->request->post['shipping_holiday'];
+		} elseif (!empty($type_info)) {
+			$data['shipping_holyday'] = $type_info['shipping_holyday'];
+		} else {
+			$data['shipping_holyday'] = true;
+		}
+
+		if (isset($this->request->post['shipping_charge'])) {
+			$data['shippingcharge'] = $this->request->post['shipping_charge'];
+		} elseif (!empty($type_info)) {
+			$data['shippingcharge'] = $type_info['shipping_charge'];
+		} else {
+			$data['shippingcharge'] = true;
+		}
+
+		if (isset($this->request->post['buffertime'])) {
+			$data['buffertime'] = $this->request->post['buffertime'];
+		} elseif (!empty($type_info)) {
+			$data['buffertime'] = $type_info['buffertime'];
+		} else {
+			$data['buffertime'] = '';
+		}
+
+		if (isset($this->request->post['leadtime'])) {
+			$data['leadtime'] = $this->request->post['leadtime'];
+		} elseif (!empty($type_info)) {
+			$data['leadtime'] = $type_info['leadtime'];
+		} else {
+			$data['leadtime'] = '';
+		}
+
+
+		$this->load->model('shipping/type');
+		$data['citygp']=$this->model_shipping_type->getcitygroup();
+		$data['shippingholiday']=$this->model_shipping_type->getshippingholiday();
+		$data['timeslots']=$this->model_shipping_type->gettimeslot();
+		$data['header'] = $this->load->controller('common/header');
+		$data['column_left'] = $this->load->controller('common/column_left');
+		$data['footer'] = $this->load->controller('common/footer');
+		$this->response->setOutput($this->load->view('shipping/type_form', $data));
+	}
+
+	public function typeadd(){
+		
+		$this->load->language('shipping/type');
+
+		$this->document->setTitle($this->language->get('heading_title'));
+
+		$this->load->model('shipping/type');
+
+		if (($this->request->server['REQUEST_METHOD'] == 'POST')) {
+			$insert_id = $this->model_shipping_type->addtype($this->request->post);
+			 $timeslot = $this->request->post['timeslot'];
+		 
+				foreach($timeslot as $timeslote){ //edit time slote
+					 
+						 $this->model_shipping_type->addshippingTimeSlot($insert_id, $timeslote);
+				 
+				} 
+			$this->session->data['success'] = $this->language->get('text_success');
+
+			$url = '';
+
+			if (isset($this->request->get['filter_name'])) {
+				$url .= '&filter_name=' . urlencode(html_entity_decode($this->request->get['filter_name'], ENT_QUOTES, 'UTF-8'));
+			}
+
+			if (isset($this->request->get['sort'])) {
+				$url .= '&sort=' . $this->request->get['sort'];
+			}
+
+			if (isset($this->request->get['order'])) {
+				$url .= '&order=' . $this->request->get['order'];
+			}
+
+			if (isset($this->request->get['page'])) {
+				$url .= '&page=' . $this->request->get['page'];
+			}
+
+			$this->response->redirect($this->url->link('shipping/type', 'token=' . $this->session->data['token'] . $url, true));
+		}
+
+		$this->gettypeform();
+	}
+
+	public function autocomplete() {
+		$json = array();
+		if (isset($this->request->get['filter_name'])) {
+
+			$this->load->model('shipping/type');
+			
+			if (isset($this->request->get['filter_name'])) {
+				$filter_name = $this->request->get['filter_name'];
+			} else {
+				$filter_name = '';
+			}
+
+			if (isset($this->request->get['limit'])) {
+				$limit = $this->request->get['limit'];
+			} else {
+				$limit = 5;
+			}
+
+			$filter_data = array(
+				'filter_name'  => $filter_name,
+				'start'        => 0,
+				'limit'        => $limit
+			);
+
+
+			$results = $this->model_shipping_type->getShippingslot($filter_data);
+			foreach ($results as $result) {
+				
+			$json[] = array(
+					'id' => $result['id'],
+					'name'       => strip_tags(html_entity_decode($result['name'], ENT_QUOTES, 'UTF-8'))
+					
+				);
+			}
+		}
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
+
+	
+	
+}

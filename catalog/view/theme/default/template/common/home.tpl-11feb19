@@ -1,0 +1,232 @@
+<?php echo $header; ?>
+
+
+<link href="https://www.flavoursguru.com/catalog/view/theme/default/stylesheet/animation.css" rel="stylesheet">
+<div class="container top_positionn">
+  <div class="row"><?php echo $column_left; ?>
+    <?php if ($column_left && $column_right) { ?>
+    <?php $class = 'col-sm-6'; ?>
+    <?php } elseif ($column_left || $column_right) { ?>
+    <?php $class = 'col-sm-9'; ?>
+    <?php } else { ?>
+    <?php $class = 'col-sm-12'; ?>
+    <?php } ?>
+    <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?><?php echo $content_bottom; ?>
+      <div class="hometop">
+        <div class="homecontainer">
+          <div class="homemaster">
+            <h1 class="maintitle">Cakes &amp; Gift Delivery- On Time, Every Time</h1>
+            <div class="col-sm-12 giftBlocks" style="margin-top: 10px;">
+              <div class="col-sm-2"><a href="/chocolate-bouquet"><img src="catalog/view/theme/default/image/icn1.png" height="50px" width="50px" alt="Under - Rs 499" /></a> <span><a href="/chocolate-bouquet">Chocolate Bouquet</a></span></div>
+              <div class="col-sm-2"><a href="/cup-cakes"><img src="catalog/view/theme/default/image/icn2.png" alt="Birthday Gifts" height="50px" width="50px" /></a><span><a href="/cup-cakes">Cup Cakes</a></span></div>
+              <div class="col-sm-2"><a href="/gourmet-hampers"><img src="catalog/view/theme/default/image/icn3.png" alt="sameday-delivery" height="50px" width="50px" /></a><span><a href="/gourmet-hampers">Gourmet Hampers</a></span></div>
+              <div class="col-sm-2"><a href="/Pastries"><img src="catalog/view/theme/default/image/icn4.png" alt="personalized gifts" height="50px" width="50px" /></a><span><a href="/Pastries">Pastries</a></span></div>
+              <div class="col-sm-2"><a href="/photo-cakes"><img src="catalog/view/theme/default/image/icn5.png" alt="Plants" height="50px" width="50px" /></a><span><a href="/photo-cakes">Photo Cakes</a></span></div>
+              <div class="col-sm-2"><a href="/classic-cakes"><img src="catalog/view/theme/default/image/icn6.png" alt="gift-hamper" height="50px" width="50px" /></a><span><a href="/classic-cakes">Premium Flavour Cakes</a></span></div>
+            </div>
+            <div class="col-sm-12 twobanneer">
+              <div class="row">
+                <div class="col-sm-6"><a href="/index.php?route=information/customize"><img src="catalog/view/theme/default/image/banner-s.jpg" alt="" /></a></div>
+                <div class="col-sm-6"><a href="/3d-cakes?pages=1-1#p555"><img src="catalog/view/theme/default/image/banner2s.jpg" alt="" /></a></div>
+              </div>
+            </div>
+            <?php /*  <div class="col-sm-12 giftBlocks">
+<?php 
+foreach($category as $result){ 
+ $cat_name = $result['name'];
+ $cat_image = $result['image']; 
+ $cat_id = $result['category_id']; 
+ $path = $result['path'];  
+?>
+<div class="col-sm-2"><a href="<?php echo $path ; ?>">
+<img src="image/<?php echo $cat_image; ?>" alt="<?php echo $cat_name; ?>" /></a> <span>
+<a href="<?php echo $path ; ?>"><?php echo $cat_name; ?></a></span></div>    
+<?php } ?>
+</div> */ ?>
+            <?php foreach($home_category as $catlist){ ?>
+            <div class="col-sm-12 homeCategoryBlocks">
+              <div class="homeHeading">
+                <h2> <?php echo $catlist['title']; ?> </h2>
+                <a href="<?php echo $catlist['url']; ?>"> View All </a> </div>
+              <?php foreach($catlist['products'] as $catpro){ ?>
+              <div class="col-sm-3"> <a href="<?php echo $catpro['href']; ?>"><img src="<?php echo $catpro['image'] ?>" alt="<?php echo $catpro['name'];?>" /></a> <a href="<?php echo $catpro['href']; ?>">
+                <div class="productName"> <?php echo $catpro['name'];?> </div>
+                </a>
+                <?php /*<div class="price"><?php echo $catpro['price'];?></div>*/ ?>
+                <?php if ($catpro['price']) { ?>
+                <p class="price product-thumb">
+                  <?php if (!$catpro['special']) { ?>
+                  <?php echo $catpro['price']; ?>
+                  <?php } else { ?>
+                  <span class="price-new"> <?php echo $catpro['special']; ?> </span> <span class="price-old"> <?php echo $catpro['price']; ?> </span>
+                  <?php } ?>
+                </p>
+                <?php } ?>
+                <a href="<?php echo $catpro['href']; ?>" class="buynow">Buy Now</a> </div>
+              <?php  } ?>
+            </div>
+            <?php } ?>
+            <?php /* ?>
+<div class="col-sm-12 homeCategoryBlocks">
+
+<div class="homeHeading"> <h2> <?php echo $category_content['first_cat_data'][0]['catname']; ?> </h2> <a href="<?php echo $category_content['first_cat_data'][0]['category_id']; ?>"> View All </a> </div>
+<?php foreach($category_content['first_cat_data'] as $catproductContent){ ?>
+<div class="col-sm-3">
+<a href="<?php echo $catproductContent['href']; ?>"><img src="<?php echo 'image/'.$catproductContent['image'];?>" alt="<?php echo $catproductContent['name'];?>" /></a>
+<a href="<?php echo $catproductContent['href']; ?>"> <div class="productName"> <?php echo $catproductContent['name'];?> </div></a>
+<div class="price"><?php echo $catproductContent['price'];?></div>
+<a href="<?php echo $catproductContent['href']; ?>" class="buynow">Buy Now</a>
+</div>
+<?php   } ?>
+
+</div>
+
+<div class="col-sm-12 homeCategoryBlocks">
+<div class="homeHeading"><h2><?php echo $category_content['second_cat_data'][0]['catname']; ?></h2> <a href="<?php echo $category_content['second_cat_data'][0]['category_id']; ?>">View All</a></div>
+<?php foreach($category_content['second_cat_data'] as $catproductContent){ ?>
+<div class="col-sm-3">
+<a href="<?php echo $catproductContent['href']; ?>"><img src="<?php echo 'image/'.$catproductContent['image'];?>" alt="<?php echo $catproductContent['name'];?>" /></a>
+<a href="<?php echo $catproductContent['href']; ?>"><div class="productName"><?php echo $catproductContent['name'];?></div></a>
+<div class="price"><?php echo $catproductContent['price'];?></div>
+<a href="<?php echo $catproductContent['href']; ?>" class="buynow">Buy Now</a>
+</div>
+<?php   } ?>
+</div>
+
+<div class="col-sm-12 homeCategoryBlocks">
+<div class="homeHeading"><h2><?php echo $category_content['third_cat_data'][0]['catname']; ?></h2> <a href="<?php echo $category_content['third_cat_data'][0]['category_id']; ?>">View All</a></div>
+
+<?php foreach($category_content['third_cat_data'] as $catproductContent){ ?>
+<div class="col-sm-3">
+<a href="<?php echo $catproductContent['href']; ?>"><img src="<?php echo 'image/'.$catproductContent['image'];?>" alt="<?php echo $catproductContent['name'];?>" /></a>
+<a href="<?php echo $catproductContent['href']; ?>"><div class="productName"><?php echo $catproductContent['name'];?></div></a>
+<div class="price"><?php echo $catproductContent['price'];?></div>
+<a href="<?php echo $catproductContent['href']; ?>" class="buynow">Buy Now</a>
+</div>
+<?php   } ?>
+</div>
+
+<div class="col-sm-12 homeCategoryBlocks">
+<div class="homeHeading"><h2><?php echo $category_content['fourth_cat_data'][0]['catname']; ?></h2> <a href="<?php echo $category_content['fourth_cat_data'][0]['category_id']; ?>">View All</a></div>
+
+<?php foreach($category_content['fourth_cat_data'] as $catproductContent){ ?>
+<div class="col-sm-3">
+<a href="<?php echo $catproductContent['href']; ?>"><img src="<?php echo 'image/'.$catproductContent['image'];?>" alt="<?php echo $catproductContent['name'];?>" /></a>
+<a href="<?php echo $catproductContent['href']; ?>"><div class="productName"><?php echo $catproductContent['name'];?></div></a>
+<div class="price"><?php echo $catproductContent['price'];?></div>
+<a href="<?php echo $catproductContent['href']; ?>" class="buynow">Buy Now</a>
+</div>
+<?php   } ?>
+</div>
+
+<div class="col-sm-12 homeCategoryBlocks">
+<div class="homeHeading"><h2><?php echo $category_content['fifth_cat_data'][0]['catname']; ?></h2> <a href="<?php echo $category_content['fifth_cat_data'][0]['category_id']; ?>">View All</a></div>
+
+<?php foreach($category_content['fifth_cat_data'] as $catproductContent){ ?>
+<div class="col-sm-3">
+<a href="<?php echo $catproductContent['href']; ?>"><img src="<?php echo 'image/'.$catproductContent['image'];?>" alt="<?php echo $catproductContent['name'];?>" /></a>
+<a href="<?php echo $catproductContent['href']; ?>"><div class="productName"><?php echo $catproductContent['name'];?></div></a>
+<div class="price"><?php echo $catproductContent['price'];?></div>
+<a href="<?php echo $catproductContent['href']; ?>" class="buynow">Buy Now</a>
+</div>
+<?php   } ?>
+</div> <php */ ?>
+            <div class="col-sm-12 mainInfo"> 
+              <!--<div class="col-sm-3"> <img src="catalog/view/theme/default/image/cities-covered.png" alt="More Than 250+ Cities Covered" /> <span> More Than<br />
+<strong>250+</strong><br />
+Cities Covered </span> </div> -->
+              <div class="col-sm-4"> <img src="catalog/view/theme/default/image/choose-products.png" alt="Choose From 50,000+ Products" /> <span> Choose From<br />
+                <strong>500+</strong><br />
+                Cakes </span> </div>
+              <div class="col-sm-4"> <img src="catalog/view/theme/default/image/delivery-countries.png" alt="Delivery in 100+ Countries" /> <span> Express Delivery <br />
+                <strong> < 3 </strong><br />
+                hours </span> </div>
+              <div class="col-sm-4"> <img src="catalog/view/theme/default/image/happy-customers.png" alt="More Than 2,00000+ Happy Customers" /> <span> Trusted with<br />
+                <strong>4.8 &#9733</strong><br />
+                Google Review </span> </div>
+            </div>
+            <div class="col-sm-12 homeFootContent"> <?php echo $home_footer_text ?> </div>
+            <script>
+$(document).ready(function(){
+var screenwidth = $(window).width();
+if(screenwidth < 767){
+$(".homeFootContent").append("<button id='show'>Read More</button> ");
+$(".homeFootContent").append("<button id='hidetext'>Read Less</button>");
+$("#hidetext").hide();
+$("#show").click(function(){
+$('.homeFootContent').addClass('show');
+$("#show").hide();
+$("#hidetext").show();
+});
+$("#hidetext").click(function(){
+$('.homeFootContent').removeClass('show');
+$("#hidetext").hide();
+$("#show").show();
+});
+
+}
+});
+</script>
+            <div class="top slider">
+              <div class="master">
+               <h2 class="re-title">REVIEWS</h2>
+                <div class="carousel type-two-carousel">
+      <div class="type-card-wrapper">
+        <div class="type-card">
+         <div class="tmls-testimonial">
+                      <p>Superb tasty cakes with amazing ambience.they are not just excellent in providing tasty cakes with creative ideas (with the option to customise the style) but have also taken good care of cleanliness. Best place to visit &amp; order. You can't get enough with it!</p>
+                      <div class="tmls-name">Komal Lang</div>
+                    </div>
+        </div>
+      </div>
+      <div class="type-card-wrapper">
+        <div class="type-card">
+         <div class="tmls-testimonial">
+                      <p>Thank you Flavours guru, another amazing cake. I was delighted with it and it went down very well... delicious. Will be in touch for the next event.</p>
+                      <div class="tmls-name">Gopal Singh Rajput</div>
+                    </div>
+        </div>
+      </div>
+      <div class="type-card-wrapper">
+        <div class="type-card">
+         <div class="tmls-testimonial">
+                      <p><span>Thank u for the yummy cake and timely delivery. My son is super happy. Thank you for making his day special.</span></p>
+                      <div class="tmls-name">Sowmiya Kasturirangan</div>
+                    </div>
+        </div>
+      </div>
+      <div class="type-card-wrapper">
+        <div class="type-card">
+        <div class="tmls-testimonial">
+                      <p><span>Flavour Guru....as the name suggest is truly guru of flavours...luv their cakes...taste is awesome n lovely presentation...totally worth giving a try.… </span></p>
+                      <div class="tmls-name">Varsha Singh</div>
+                    </div>
+        </div>
+      </div>
+      <div class="type-card-wrapper">
+        <div class="type-card">
+         <div class="tmls-testimonial">
+                      <p><span>Hang on this is just the right place for you to satisfy your sweet tooth and the hunger pangs. Must try!</span></p>
+                      <div class="tmls-name">Niha Imtiaz</div>
+                    </div>
+        </div>
+      </div>
+      <div class="type-card-wrapper">
+        <div class="type-card">
+         <div class="tmls-testimonial">
+                      <p><span>I ordered for Red valvet choclate brownie cake and walnut choclate cake..I must say the cakes were awesome and very tasty..every bite of red valvet is rich in terms of walnuts..Superb job</span></p>
+                      <div class="tmls-name">Pallavi Chand</div>
+                    </div>
+        </div>
+      </div>
+     
+    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php echo $column_right; ?></div>
+</div>
+<?php echo $footer; ?> 

@@ -1,0 +1,189 @@
+<?php echo $header; ?>
+<div class="container top_positionn">
+ 
+  <ul class="breadcrumb">
+     <?php 
+        $i=1; 
+        $Totlbrdcum = count($breadcrumbs); 
+        foreach($breadcrumbs as $breadcrumb) {  
+         if($Totlbrdcum==$i){  
+      ?> 
+          <li><span class="" style="color: #35a8d4;"><?php echo $breadcrumb['text']; ?> </span></li>
+      <?php  } else { ?>
+          <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?> </a></li> 
+      <?php } $i++; }   ?>
+  </ul>
+  <div class="row"><?php echo $column_left; ?>
+    <?php if ($column_left && $column_right) { ?>
+    <?php $class = 'col-sm-6'; ?>
+    <?php } elseif ($column_left || $column_right) { ?>
+    <?php $class = 'col-sm-9'; ?>
+    <?php } else { ?>
+    <?php $class = 'col-sm-12'; ?>
+    <?php } ?>
+    <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
+   
+   <div class="contact">
+   
+   <div class="contact_left">
+    <h1 class="categoryTitle">How can we help you?</h1>
+
+<div class="contact_help_you">
+
+<div class="my_account_top">
+
+<div class="other_link ">
+
+
+<div id="common" style="display:block;">
+
+
+<h5>Did not find your answer yet? Write to us here:</h5>
+<div class="address_book_row_form">
+  <form action="<?php echo $action; ?>" method="post" id="contactForm" enctype="multipart/form-data" class="form-horizontal">
+        <fieldset>
+          <div class="form-group required">
+            <label class="col-sm-2" for="input-orderNo"><?php echo 'Order No'; ?></label>
+            <div class="col-sm-6">
+              <input type="text" name="orderNo" value="<?php echo $orderNo; ?>" id="input-orderNo" class="form-control" />
+              <?php if ($error_orderNo) { ?>
+              <div class="text-danger"><?php echo $error_orderNo; ?></div>
+              <?php } ?>
+            </div>
+          </div>
+
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-name"><?php echo $entry_name; ?></label>
+            <div class="col-sm-6">
+              <input type="text" name="name" value="<?php echo $name; ?>" id="input-name" class="form-control" />
+              <?php if ($error_name) { ?>
+              <div class="text-danger"><?php echo $error_name; ?></div>
+              <?php } ?>
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-email"><?php echo $entry_email; ?></label>
+            <div class="col-sm-6">
+              <input type="text" name="email" value="<?php echo $email; ?>" id="input-email" class="form-control" />
+              <?php if ($error_email) { ?>
+              <div class="text-danger"><?php echo $error_email; ?></div>
+              <?php } ?>
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-sm-2 " for="input-phone"><?php echo 'Phone No.'; ?></label>
+            <div class="col-sm-6">
+              <input type="text" name="phone" value="<?php echo $phone; ?>" id="input-phone" maxlength="10" class="form-control" />
+              <?php if ($error_phone) { ?>
+              <div class="text-danger" ><?php echo $error_phone; ?></div>
+              <?php } else { ?>
+               <div class="text-danger" id="errortelephoneMsg"> </div>
+               <?php } ?>
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-enquiry"><?php echo $entry_enquiry; ?></label>
+            <div class="col-sm-6">
+              <textarea name="enquiry" rows="6" id="input-enquiry" class="form-control heightauto"><?php echo $enquiry; ?></textarea>
+              <?php if ($error_enquiry) { ?>
+              <div class="text-danger" ><?php echo $error_enquiry; ?></div>
+              <?php } ?>
+            </div>
+          </div>
+          <?php echo $captcha; ?>
+        </fieldset>
+        <div class="buttons formbutton">
+          <div class="pull-left">
+            <input class="btn btn-primary" type="button" id="submits" value="<?php echo $button_submit; ?>" />
+          </div>
+        </div>
+      </form>
+<br><br>
+<br></div>
+</div>
+
+
+
+
+
+
+</div>
+
+</div>
+</div>
+<div class="contact_call_us">
+<p>Call Us:</p>
+<p>Pick up the phone and call us at</p>
+<p>India - <strong>+91 9212255500</strong></p>
+</div>
+ 
+</div>
+<div class="contact_right __web-inspector-hide-shortcut__">
+<div class="cont_ordser_email_call ">
+ 
+ <div class="cont_ordser_email_call_colum">
+<img src="catalog/view/theme/default/image/email.png" alt="email" />
+
+<h4>MAIL US</h4>
+<p>Bookmyflowers.com<br>
+Ashram Marg<br>
+Mandi Road,Gadaipur<br>
+New Delhi-110030</p>   
+<p>To place an order,<br>
+ E-MAIL For Customer Service, <br>
+<a href="mailto:support@bookmyflowers.com">support@bookmyflowers.com</a></p>
+</div>
+ 
+</div>
+</div>
+
+<script type="text/javascript">
+        
+           $('#input-phone').keypress(function(e) {
+             var a = [];
+			 a.push(8);
+               var k = e.which;
+                 var textLength = $(this).val().length;
+                     
+               for (i = 48; i < 58; i++)
+                   a.push(i);
+
+               if (!(a.indexOf(k)>=0))
+                   e.preventDefault();
+           });
+       
+
+ 
+$(document).ready(function(){
+  $("#input-phone").focusout(function(){
+   var textLength = $(this).val().length;
+   if(textLength>10 || textLength<10){
+      
+     $("#errortelephoneMsg").text("Please enter 10 digit valid number").addClass("text-danger");
+   }else{
+    $("#errortelephoneMsg").text("").addClass("text-danger");
+   }
+ }); 
+}); 
+
+$('#submits').click(function(){
+var textLength = $('#input-phone').val().length;
+ 
+  if(textLength >10 || textLength <10){
+   
+     $("#errortelephoneMsg").text("Please enter 10 digit valid number").addClass("text-danger");
+     return false;
+   } else {
+    document.getElementById('contactForm').submit();
+    return true;
+   }
+
+});
+</script>
+  
+   </div>
+      
+      <?php echo $content_bottom; ?></div>
+    <?php echo $column_right; ?></div>
+</div>
+<?php echo $footer; ?>

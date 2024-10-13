@@ -1,0 +1,117 @@
+<?php echo $header; ?>
+<div class="container">
+  <ul class="breadcrumb">
+    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+    <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
+    <?php } ?>
+  </ul>
+  <div class="row"><?php echo $column_left; ?>
+    <?php if ($column_left && $column_right) { ?>
+    <?php $class = 'col-sm-6'; ?>
+    <?php } elseif ($column_left || $column_right) { ?>
+    <?php $class = 'col-sm-9'; ?>
+    <?php } else { ?>
+    <?php $class = 'col-sm-12'; ?>
+    <?php } ?>
+
+     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
+     <div class="">
+     <h1 class="">Order Details</h1>
+        <div class="oDetails oLeft"> 
+
+        </div>
+        <div class="oDetails oRight"> 
+        
+        </div>
+     </div>
+    <pre> 
+      Order Details
+      <?php echo "<pre>";
+      echo $Userdetails['firstname'].' '.$Userdetails['lastname'];
+      echo $Userdetails['date_added'];
+      echo $Userdetails['payment_method'];
+      echo $Userdetails['shipping_method'];
+
+      echo $Userdetails['email'] ;
+      echo $Userdetails['telephone'];
+      echo $Userdetails['status'];
+
+  echo   'Payment Address';
+      echo $Userdetails['shipping_firstname'].' '.$Userdetails['shipping_lastname'];
+      echo $Userdetails['shipping_lastname'];
+      echo $Userdetails['shipping_company'];
+      echo $Userdetails['shipping_address_1'];
+      echo $Userdetails['shipping_address_2'];
+      echo $Userdetails['shipping_city']; 
+      echo $Userdetails['shipping_postcode']; 
+      echo $Userdetails['shipping_country'];
+
+      echo $Userdetails['shipping_zone'];
+
+?>
+    <h1>Order Summary</h1>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <td class="text-right">Order ID</td>
+              <td class="text-left">Image</td>
+              <td class="text-right">Name</td>
+              <td class="text-left">Quantity</td>
+              <td class="text-right">Price</td>
+              <td class="text-right">Total</td>
+              <td class="text-left">Date Added</td>
+           
+            </tr>
+          </thead>
+          <tbody>
+          <?php foreach($orders as $order) { ?>
+              <tr>
+              <td class="text-right">#<?php echo $order['order_id']; ?></td>
+              <td class="text-left"><img class="imgSize" width="50px"  src="<?php echo $order['image']; ?>" ></td> 
+              <td class="text-right"><?php echo $order['name']; ?></td>
+              <td class="text-left"><?php echo $order['qty']; ?></td>
+              <td class="text-right"> <?php echo $order['price']; ?></td>
+              <td class="text-left"><?php echo $order['total']; ?></td>
+              <td class="text-left"><?php echo $order['date_added']; ?></td> 
+            </tr>
+           <?php } ?>  
+            <tr>
+              <td class="text-right"></td>
+              <td class="text-left"></td>
+              <td class="text-right"></td>
+              <td class="text-left"></td>
+              <td class="text-right">Sub-Total:</td>
+              <td class="text-left"><?php echo $order['Alltotal']; ?></td>
+              <td class="text-left"></td> 
+            </tr>      <tr>
+              <td class="text-right"></td>
+              <td class="text-left"></td>
+              <td class="text-right"></td>
+              <td class="text-left"></td>
+              <td class="text-right">Free Shipping:</td>
+              <td class="text-left"><?php echo '0'; ?></td>
+              <td class="text-left"></td> 
+            </tr>      <tr>
+              <td class="text-right"></td>
+              <td class="text-left"></td>
+              <td class="text-right"></td>
+              <td class="text-left"></td>
+              <td class="text-right">Total:</td>
+              <td class="text-left"><?php echo $order['Alltotal']; ?></td>
+              <td class="text-left"></td> 
+            </tr>         
+            </tbody>
+        </table>
+      </div>
+ 
+    </pre>
+      <h1><?php echo $heading_title; ?></h1>
+      <?php echo $text_message; ?>
+      <div class="buttons">
+        <div class="pull-right"><a href="<?php echo $continue; ?>" class="btn btn-primary"><?php echo $button_continue; ?></a></div>
+      </div>
+      <?php echo $content_bottom; ?></div>
+    <?php echo $column_right; ?></div>
+</div>
+<?php echo $footer; ?>
