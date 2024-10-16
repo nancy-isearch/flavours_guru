@@ -57,6 +57,18 @@
                 </div>
               </div>
 
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-payment_method">Payment Method</label>
+                <div class="col-sm-10">
+                  <select class="form-control" name="payment_method">
+                    <option>Please Select</option>
+                    <option value="upi_bank">UPI/Bank</option>
+                    <option value="razorpay">Razorpay</option>
+                    <option value="payment_due">Payment Due</option>
+                  </select>
+                </div>
+              </div>
+
               <div class="text-right">
                 <button type="submit" data-toggle="tooltip" title="Save Changes" class="btn btn-primary">Save Changes</button>
               </div>

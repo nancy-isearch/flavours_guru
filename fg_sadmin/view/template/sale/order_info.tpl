@@ -305,7 +305,13 @@
         <?php /*}*/ ?>
       </div>
     </div>
-    <div class="panel panel-default">
+    <?php
+    date_default_timezone_set('Asia/Kolkata');
+    $inputTime = strtotime($date_added_raw);
+    $currentTime = time();
+     ?>
+    
+    <div class="panel panel-default" <?php echo (($currentTime - $inputTime) < 300) ? "style='display: none;'" : '' ?>>
       <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-comment-o"></i> <?php echo $text_history; ?></h3>
       </div>
@@ -527,7 +533,14 @@
                       <option value="7">Design Issue</option>
                       <option value="8">Wrong Cake Message</option>
                       <option value="9">Wrong Flavour</option>
-                      <option value="10">Taste Issue</option>
+                      <option value="11">Broken/Melted delivery</option>
+                      <option value="12">Behaviour issue</option>
+                      <option value="13">False Updation</option>
+                      <option value="14">Hygeine Issue</option>
+                      <option value="15">Less Weight</option>
+                      <option value="16">Card Message Missing</option>
+                      <option value="17">Early Delivery</option>
+                      <option value="18">Colour Complaint</option>
                     </select>
                   </div>
                 </div>
