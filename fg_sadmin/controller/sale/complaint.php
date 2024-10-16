@@ -380,7 +380,7 @@ class ControllerSaleComplaint extends Controller {
 		$data['statuses'] = array('1' => 'Open', '2' => 'In Progress', '3' => 'Close');
 		$data['faults'] = array('1' => 'Delivery Boy', '2' => 'Kitchen Team', '3' => 'Support Executive');
 		$data['resolutions'] = array('1' => 'Discount on Next Purchase', '2' => 'Apology', '3' => 'Redelivery', '4' => 'Refund', '5' => 'GC', '6' => 'Complimentary Delivery');
-		$data['complaintstype'] = array('1' => 'Non Delivery', '2' => 'Late Delivery', '3' => 'Partial Delivery', '4' => 'No Cake Message', '5' => 'Quality Issue', '6' => 'Broken Delivery', '7' => 'Design Issue', '8' => 'Wrong Cake Message', '9' => 'Wrong Flavour', '10' => 'Taste Issue');
+		$data['complaintstype'] = array('1' => 'Non Delivery', '2' => 'Late Delivery', '3' => 'Partial Delivery', '4' => 'No Cake Message', '5' => 'Quality Issue', '6' => 'Broken Delivery', '7' => 'Design Issue', '8' => 'Wrong Cake Message', '9' => 'Wrong Flavour', '10' => 'Taste Issue', '11' => 'Broken/Melted delivery', '12' => 'Behaviour issue', '13' => 'False Updation', '14' => 'Hygeine Issue', '15' => 'Less Weight', '16' => 'Card Message Missing', '17' => 'Early Delivery', '18' => 'Colour Complaint');
 		$data['adminusers'] = $this->model_sale_complaint->adminusers();
 		//echo "<pre />"; print_r($data); die();
 		$this->response->setOutput($this->load->view('sale/complaint_list', $data));
@@ -745,7 +745,7 @@ class ControllerSaleComplaint extends Controller {
 		$statuses = array('1' => 'Open', '2' => 'In Progress', '3' => 'Close');
 		$faults = array('1' => 'Delivery Boy', '2' => 'Kitchen Team', '3' => 'Support Executive');
 		$resolutions = array('1' => 'Discount on Next Purchase', '2' => 'Apology', '3' => 'Redelivery', '4' => 'Refund', '5' => 'GC', '6' => 'Complimentary Delivery');
-		$complaintstype = array('1' => 'Non Delivery', '2' => 'Late Delivery', '3' => 'Partial Delivery', '4' => 'No Cake Message', '5' => 'Quality Issue', '6' => 'Broken Delivery', '7' => 'Design Issue', '8' => 'Wrong Cake Message', '9' => 'Wrong Flavour', '10' => 'Taste Issue');
+		$complaintstype = array('1' => 'Non Delivery', '2' => 'Late Delivery', '3' => 'Partial Delivery', '4' => 'No Cake Message', '5' => 'Quality Issue', '6' => 'Broken Delivery', '7' => 'Design Issue', '8' => 'Wrong Cake Message', '9' => 'Wrong Flavour', '10' => 'Taste Issue', '11' => 'Broken/Melted delivery', '12' => 'Behaviour issue', '13' => 'False Updation', '14' => 'Hygeine Issue', '15' => 'Less Weight', '16' => 'Card Message Missing', '17' => 'Early Delivery', '18' => 'Colour Complaint');
 		$all = array();
 		foreach ($results as $rslt) {
 			$aa = array();

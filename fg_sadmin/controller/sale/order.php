@@ -1172,6 +1172,8 @@ $dataaa = (array)$shipInfo;
 
 			$data['date_added'] = date('d-F-Y h:i A',strtotime($order_info['date_added']));
 
+			$data['date_added_raw'] = $order_info['date_added'];
+
 			$data['firstname'] = $order_info['firstname'];
 			$data['lastname'] = $order_info['lastname'];
 
@@ -1901,10 +1903,9 @@ $dataaa = (array)$shipInfo;
 			}
 		}
 		
-		if($this->request->post['order_status_id'] == $orderDetail['order_status_id']){
-			$json['error'] = 'Can not save same status again!';
-			$this->response->addHeader('Content-Type: application/json');
-			$this->response->setOutput(json_encode($json));
+		if($this->request->post['order_status_id'] == $orderDetail['order_status_id'] && $orderDetail['order_status_id'] == 2){
+			$json['error'] = 'Order already has PROCESSING Status. Can not change it again.';
+			echo json_encode($json);
 			die;
 		}
 
@@ -2544,7 +2545,8 @@ $dataaa = (array)$shipInfo;
 
 			$data_array = [
 				'new_comment' => $comment,
-				'trans_id' => $this->request->post['trans_id']
+				'trans_id' => $this->request->post['trans_id'],
+				'payment_method' => $this->request->post['payment_method']
 			];
 
 			//echo "<pre />"; print_r($data_array); die;

@@ -1218,7 +1218,7 @@ class ModelSaleOrder extends Model {
 	}
 
 	public function editOrderSpecialInstruction($order_id, $data) {
-		$this->db->query("UPDATE " . DB_PREFIX . "order SET comment = '" . $data['new_comment'] . "', custom_field = '". $data['trans_id'] ."' WHERE order_id = '" . (int)$order_id . "'");
+		$this->db->query("UPDATE " . DB_PREFIX . "order SET comment = '" . $data['new_comment'] . "', custom_field = '". $data['trans_id'] ."', payment_method = '" . $this->db->escape($data['payment_method']) . "' WHERE order_id = '" . (int)$order_id . "'");
 	}
 
 	public function assignOrderVendor($order_id, $vendor_id) {
