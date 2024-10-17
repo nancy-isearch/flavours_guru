@@ -15,6 +15,12 @@ class ModelCatalogCategory extends Model {
 		return $query->rows;
 	}
 
+	public function getMultiParentCategory($id){
+		$query = $this->db->query("SELECT  * FROM " . DB_PREFIX . "category_multiparent c WHERE c.id = '" . (int)$id . "'");
+		return $query->row;
+	}
+
+
 	public function getpathId($category_id){
 	
 		$query = $this->db->query("SELECT path_id FROM `oc_category_path` WHERE category_id = '" . (int)$category_id . "'");
