@@ -86,7 +86,7 @@
                   <td class="text-left"><?php echo (empty($odb['odstatus'])) ? "Not Started Yet" : $statuses[$odb['odstatus']]; ?></td>
                   <td class="text-right">
                     <?php if(empty($odb['odstatus'])){ ?>
-                    <input type="hidden" class="id_hidden" value="<?php echo $odb['id']; ?>">
+                    <input type="hidden" class="id_hidden" value="<?php echo $odb['order_id']; ?>">
                     <button class="btn btn-primary btn-sm self_assign" type="button">Start</button>
                   <?php } else { ?>
                     <a href="<?php echo $odb['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
@@ -181,7 +181,7 @@ $('input[name=\'filter_name\']').autocomplete({
       method : 'POST',
       data: {id: id},
       success: function(json) {
-        alert('Self assigned successfully!');
+        alert('Self started successfully!');
         location.reload();
       }
     });
