@@ -311,6 +311,14 @@ class ControllerCommonColumnLeft extends Controller {
 				);	
 			}
 
+			if ($this->user->hasPermission('access', 'sale/odb')) {
+				$sale[] = array(
+					'name'	   => 'ODB',
+					'href'     => $this->url->link('sale/odb', 'token=' . $this->session->data['token'], true),
+					'children' => array()		
+				);	
+			}
+
 			if ($this->user->hasPermission('access', 'sale/complaint')) {
 				$sale[] = array(
 					'name'	   => 'Order Complaint',
