@@ -169,10 +169,10 @@ class ControllerProductProduct extends Controller {
 		}
 
 		if(isset($product_info['weight']) && !empty($product_info['weight'])){
-			$breadcrumpCatDetail = $this->model_catalog_category->getCategory($product_info['weight']);
+			$breadcrumpCatDetail = $this->model_catalog_category->getMultiParentCategory($product_info['weight']);
 			$data['breadcrumbs'][] = array(
-					'text' => $breadcrumpCatDetail['name'],
-					'href' => $this->url->link('product/category', 'path=' . $product_info['weight'])
+					'text' => $breadcrumpCatDetail['title'],
+					'href' => $this->url->link('product/category', 'path=' . $breadcrumpCatDetail['category_id'])
 				);
 		}
 
