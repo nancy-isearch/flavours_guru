@@ -742,7 +742,8 @@ class ControllerSaleOdb extends Controller {
 
 	public function selfAssign(){
 		$this->load->model('sale/odb');
-		$this->model_sale_odb->selfAssign($_POST['id']);	
+		$dd = $this->model_sale_odb->selfAssign($_POST['id']);	
+		echo json_encode(array("status" => $dd));
 	}
 
 	public function downloadcsv(){

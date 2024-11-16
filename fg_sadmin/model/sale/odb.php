@@ -19,7 +19,7 @@ class ModelSaleOdb extends Model {
 	}
 
 	public function getOrdersForOdb(){
-		$sql = "SELECT oc.*, od.status odstatus, od.id oid FROM oc_order oc left join oc_odb od ON oc.order_id = od.order_id WHERE oc.date_forshipping BETWEEN DATE_SUB(CURDATE(), INTERVAL 1 YEAR) AND  DATE_SUB(CURDATE(), INTERVAL 1 YEAR) + INTERVAL 3 DAY ";
+		$sql = "SELECT oc.*, od.status odstatus, od.id oid FROM oc_order oc left join oc_odb od ON oc.order_id = od.order_id WHERE oc.order_status_id = 7 AND oc.date_forshipping BETWEEN DATE_SUB(CURDATE(), INTERVAL 1 YEAR) AND  DATE_SUB(CURDATE(), INTERVAL 1 YEAR) + INTERVAL 3 DAY ";
 
 		$tmp = false;
 		if (!empty($data['customer_name'])) {
@@ -86,7 +86,7 @@ class ModelSaleOdb extends Model {
 
 	public function getTotalOdb($data = array()) 
 	{
-		$sql = "SELECT COUNT(DISTINCT oc.order_id) AS total FROM oc_order oc left join oc_odb od ON oc.order_id = od.order_id WHERE oc.date_forshipping BETWEEN DATE_SUB(CURDATE(), INTERVAL 1 YEAR) AND  DATE_SUB(CURDATE(), INTERVAL 1 YEAR) + INTERVAL 3 DAY ";
+		$sql = "SELECT COUNT(DISTINCT oc.order_id) AS total FROM oc_order oc left join oc_odb od ON oc.order_id = od.order_id WHERE oc.order_status_id = 7 AND oc.date_forshipping BETWEEN DATE_SUB(CURDATE(), INTERVAL 1 YEAR) AND  DATE_SUB(CURDATE(), INTERVAL 1 YEAR) + INTERVAL 3 DAY ";
 		
 		$tmp = false;
 		if (!empty($data['customer_name'])) {
@@ -158,7 +158,20 @@ class ModelSaleOdb extends Model {
 	}
 
 	public function selfAssign($id){
-		$this->db->query("INSERT INTO " . DB_PREFIX . "odb SET status = 1, order_id = '" . $id . "', created_by = '".$this->user->getId()."', created_at = NOW()");
-		return true;
+		$query = $this->db->query("SELECT order_id, customer_id, telephone, payment_mobile, date_forshipping FROM oc_order where order_id = '".$id."'");
+		$data1 = $query->row;
+		
+		$date_forshipping = date('Y-m-d', strtotime('+1 year', strtotime($data1['date_forshipping'])));
+		
+		$data2 = $this->db->query("SELECT * FROM oc_order where date_forshipping = '".$date_forshipping."' AND (customer_id = '".$data1['customer_id']."' OR telephone = '".$data1['telephone']."' OR payment_mobile = '".$data1['payment_mobile']."')")->row;
+		
+		if(count($data2) == 0){
+			$this->db->query("INSERT INTO " . DB_PREFIX . "odb SET status = 1, order_id = '" . $id . "', created_by = '".$this->user->getId()."', created_at = NOW()");
+			return true;	
+		} else {
+			$this->db->query("INSERT INTO " . DB_PREFIX . "odb SET status = 5, order_id = '" . $id . "', created_by = '".$this->user->getId()."', created_at = NOW()");
+			return false;
+		}	
+		
 	}
 }

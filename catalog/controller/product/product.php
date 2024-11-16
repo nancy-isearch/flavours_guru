@@ -1136,7 +1136,13 @@ class ControllerProductProduct extends Controller {
 		$addons=array();
 		$counter=0;
 		$skiphead=true;
+		$cityId = $this->request->post['cityId'];
+		$addData = array();
 		while (($line = fgetcsv($file)) !== FALSE) {
+		  	if($skiphead){$skiphead=false; continue;}
+		  	$addData[$line[0]][] = array($line[1], $line[2]);
+		 }
+		foreach ($addData[$cityId] as $line) {
 		  	if($skiphead){$skiphead=false; continue;}
 		  	$pros = explode('|', $line[1]);
 		  	if(is_array($pros) && count($pros) > 0){

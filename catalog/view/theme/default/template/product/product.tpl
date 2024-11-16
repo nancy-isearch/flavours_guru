@@ -1962,7 +1962,7 @@
                $.ajax({
                  type: "POST",
                  url: <?= '"'.HTTP_SERVER.'index.php?route=product/product/getAddons"' ?>,
-                 data: {proId:<?= $product_id; ?>},
+                 data: {proId:<?= $product_id; ?>,cityId:cityIdFromPincode},
                  cache: false,
                  success: function(data){
                    $('.loadingbox').hide();
