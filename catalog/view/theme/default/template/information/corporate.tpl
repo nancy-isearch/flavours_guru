@@ -206,7 +206,76 @@
            </div>
         </div>
       </div>
-
+<div class="best-seller-section col-md-12 col-sm-12 col-xs-12 section-m-b" style="display: none;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12 p-l-0 p-r-0">
+          <p class="section-title col-md-12 col-sm-12 col-xs-12 p-l-0 text-center">Corporate Gifts</p>
+          <!-- <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+            <a href="javascript:void(0)" class="view-all-btn">View All</a>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row cakes-for-kids-row">
+      <div class="treanding-slide col-md-12 col-sm-12 col-xs-12 p-l-0 p-r-0 cakes-for-kids">
+          <div class="slide">
+            <a href="/kids/boys">
+              <div class="best-seller-pd-col">
+                <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Cake-for-Boys.jpg" alt="Cake designed with blue icing and toy cars, ideal for celebrating a boy's special day.">
+                <div class="text-center">
+                  <h4 class="product-name-title mt-20 mb-20">Cake for Boys</h4>
+                  <div class="home-secondary-btn">
+                    View All
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="slide">
+            <a href="/kids/girls">
+              <div class="best-seller-pd-col">
+                <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Cake-for-Girls.jpg" alt=" A cake decorated with a girl holding balloons and a rainbow, perfect for a girl's celebration.">
+                <div class="text-center">
+                  <h4 class="product-name-title mt-20 mb-20">Cake for Girls</h4>
+                  <div class="home-secondary-btn">
+                    View All
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="slide">
+            <a href="/birthday/1st-birthday">
+              <div class="best-seller-pd-col">
+                <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/First-Birthday.jpg" alt=" A cake with a teddy bear on top and a number one on the side. Perfect for a first birthday celebration.">
+                <div class="text-center">
+                  <h4 class="product-name-title mt-20 mb-20">First Birthday</h4>
+                  <div class="home-secondary-btn">
+                    View All
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="slide">
+            <a href="/birthday/half-birthday">
+              <div class="best-seller-pd-col">
+                <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Half-Birthday.jpg" alt="Half Birthday cakes">
+                <div class="text-center">
+                  <h4 class="product-name-title mt-20 mb-20">Half Birthday</h4>
+                  <div class="home-secondary-btn">
+                    View All
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
 <script type="text/javascript">
         
  $('#input-phone').keypress(function(e) {
@@ -276,6 +345,40 @@ $(document).ready(function(){
     }
   ]
 }); 
+});
+
+$('.treanding-slide').slick({
+infinite: false,
+slidesToShow: 4,
+slidesToScroll: 1,
+//centerMode: true,
+//variableWidth: true,
+//arrows: true,
+//autoplay: true,
+//autoplaySpeed: 2000,
+responsive: [
+    {
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1
+      }
+    },
+    {
+      breakpoint: 991,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1
+      }
+    },
+    {
+      breakpoint: 767,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1
+      }
+    }
+  ]
 }); 
 
 $('#submits').click(function(){
