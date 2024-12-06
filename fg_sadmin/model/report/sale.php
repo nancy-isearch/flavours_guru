@@ -429,7 +429,7 @@ class ModelReportSale extends Model {
 		}
 
 
-		$sql = "SELECT date_added dd, order_id FROM oc_order_history WHERE order_id IN ('".implode("','", $allOrderIds)."') AND order_status_id = 7 GROUP BY order_id;";
+		$sql = "SELECT date_added dd, order_id FROM oc_order_history WHERE order_id IN ('".implode("','", $allOrderIds)."') AND order_status_id = 7";
 		$query = $this->db->query($sql);
 		$allDD = array();
 		foreach ($query->rows as $key => $value) {
@@ -438,12 +438,19 @@ class ModelReportSale extends Model {
 
 		foreach ($allOrder as $key => $val) {
 			foreach ($val as $value) {
-				$dd = $allDD[$value['order_id']];
+				if(isset($allDD[$value['order_id']])){
+					$dd = $allDD[$value['order_id']];	
+					$delivered = "Yes";
+				} else {
+					$dd = '';
+					$delivered = "No";
+				}
+				
 				$del1 = '';
 				$del2 = '';
-				if(isset($dd['dd']) && !empty($dd['dd'])){
-					$del1 = date('d/m/Y', strtotime($dd['dd']));
-					$del2 = date('H:s', strtotime($dd['dd']));
+				if(!empty($dd)){
+					$del1 = date('d/m/Y', strtotime($dd));
+					$del2 = date('H:s', strtotime($dd));
 				}
 
 				$ddate = '';
@@ -485,7 +492,8 @@ class ModelReportSale extends Model {
 
 		
 		//echo "<pre />"; print_r($allProcessing['43174']['created_by']); die();
-		$sql = "SELECT op.*, o.total ototal, o.vendor_id, o.order_status_id status, o.order_id, o.date_added, o.firstname, o.lastname, o.telephone, o.payment_method, o.shipping_postcode, o.custom_field, o.added_by, o.is_admin_order, o.boy_id FROM oc_order o INNER JOIN oc_order_product op ON o.order_id = op.order_id INNER JOIN oc_order_history oh ON o.order_id = oh.order_id WHERE oh.order_status_id = '7' ";
+
+		$sql = "SELECT oh.order_id FROM oc_order_history oh WHERE oh.order_status_id = '7' ";
 
 		if (!empty($data['filter_date_start'])) {
 			$sql .= " AND DATE(oh.date_added) >= '" . $this->db->escape($data['filter_date_start']) . "'";
@@ -496,19 +504,15 @@ class ModelReportSale extends Model {
 		}
 
 		$sql .= " ORDER BY oh.date_added DESC";
-
-		if (isset($data['start']) || isset($data['limit'])) {
-			if ($data['start'] < 0) {
-				$data['start'] = 0;
-			}
-
-			if ($data['limit'] < 1) {
-				$data['limit'] = 20;
-			}
-
-			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
+		$query = $this->db->query($sql);
+		$allHistoryOrderIds = array();
+		foreach ($query->rows as $order) {
+			$allHistoryOrderIds[] = $order['order_id'];
 		}
-		//echo $sql; die();
+
+
+		$sql = "SELECT op.*, o.total ototal, o.vendor_id, o.order_status_id status, o.order_id, o.date_added, o.firstname, o.lastname, o.telephone, o.payment_method, o.shipping_postcode, o.custom_field, o.added_by, o.is_admin_order, o.boy_id FROM oc_order o INNER JOIN oc_order_product op ON o.order_id = op.order_id WHERE o.order_id IN ('".implode("','", $allHistoryOrderIds)."')";
+
 		$query = $this->db->query($sql);
 
 		$allOrderIds = array();
@@ -543,7 +547,7 @@ class ModelReportSale extends Model {
 		}
 
 
-		$sql = "SELECT date_added dd, order_id FROM oc_order_history WHERE order_id IN ('".implode("','", $allOrderIds)."') AND order_status_id = 7 GROUP BY order_id;";
+		$sql = "SELECT date_added dd, order_id FROM oc_order_history WHERE order_id IN ('".implode("','", $allOrderIds)."') AND order_status_id = 7";
 		$query = $this->db->query($sql);
 		$allDD = array();
 		foreach ($query->rows as $key => $value) {
@@ -552,12 +556,19 @@ class ModelReportSale extends Model {
 
 		foreach ($allOrder as $key => $val) {
 			foreach ($val as $value) {
-				$dd = $allDD[$value['order_id']];
+				if(isset($allDD[$value['order_id']])){
+					$dd = $allDD[$value['order_id']];	
+					$delivered = "Yes";
+				} else {
+					$dd = '';
+					$delivered = "No";
+				}
+				
 				$del1 = '';
 				$del2 = '';
-				if(isset($dd['dd']) && !empty($dd['dd'])){
-					$del1 = date('d/m/Y', strtotime($dd['dd']));
-					$del2 = date('H:i:s', strtotime($dd['dd']));
+				if(!empty($dd)){
+					$del1 = date('d/m/Y', strtotime($dd));
+					$del2 = date('H:s', strtotime($dd));
 				}
 
 				$ddate = '';
