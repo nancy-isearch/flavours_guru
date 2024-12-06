@@ -439,6 +439,7 @@ class ControllerCheckoutCart extends Controller {
 					$newarr['Shipping Date'] = date('d-m-Y', strtotime($this->request->post['delivery_date']));
 					$newarr['Shipping Type'] = $this->request->post['shippingtype'];
 					$newarr['Shipping Time'] = $this->request->post['specifictime'];
+					$newarr['product_expiry_time'] = $this->request->post['specificexpirytime'];
 					$skip = true;
 
 					$sess = array('proId' => $this->request->post['product_id'], 'city' => $this->request->post['cityN'], 'shipping_price' => $this->request->post['shipping_price']);

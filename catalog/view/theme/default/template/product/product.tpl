@@ -1224,6 +1224,7 @@
                         <input type="hidden" name="data-city-id" id="data-city-id"/ >
                         <input type="hidden" id="timeslotData" value='' />
                         <input type="hidden" id="specifictime" name="specifictime" value='' />
+                        <input type="hidden" id="specificexpirytime" name="specificexpirytime" value='' />
                         <input type="hidden" class="delivery_date" name="delivery_date">
                         <input type="hidden" class="shippingtype" name="shippingtype">
                         <input type="hidden" class="pincodeN" name="pincodeN">
@@ -2520,12 +2521,15 @@
    function setDataToHiddenInputs(){
     $('input[type=radio][name=shippingtimeslotnew]').change(function(){
       var slot = $(this).val();
+      var finalTime = $(this).attr("finalTime");
+      var finalExpiryTime = finalTime !== undefined ? finalTime : '';
       var datetimeshipping = $('.delivery_date').val();
       var shippingmethodtype = $('.shippingtype').val();
       
       $('.shippingmethod').text(shippingmethodtype);
       $('.timeslot').text(slot);
       $('#specifictime').val(slot);
+      $('#specificexpirytime').val(finalExpiryTime);
       $('.show-date-time-selected').show();
       $('.show-date-time-toselected').hide();
       var mydate = new Date(datetimeshipping);
@@ -2637,6 +2641,7 @@
 					// Step 4: Convert the result back to HH:MM format
 					var newHours = Math.floor(newTimeDecimal); // Get the integer part for hours
 					var newMinutes = Math.round((newTimeDecimal - newHours) * 60); // Get the fractional part as minutes
+					var newSeconds = Math.round(((newTimeDecimal - newHours) * 60 - newMinutes) * 60);
 
 					// Handle edge cases
 					if (newMinutes === 60) {
@@ -2647,15 +2652,18 @@
 					    newHours = 0;
 					}
 
-					// Format as HH:MM (24-hour format)
-					var finalTime = `${newHours.toString().padStart(2, '0')}:${newMinutes.toString().padStart(2, '0')}`;
+					var currentDate = new Date();
+					var formattedDate = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}-${currentDate.getDate().toString().padStart(2, '0')}`;
+
+					var finalTime = `${formattedDate} ${newHours.toString().padStart(2, '0')}:${newMinutes.toString().padStart(2, '0')}:${newSeconds.toString().padStart(2, '0')}`;
+
 
 					console.log('Cut off time for: ' +value.timeslot_from + ' - ' + value.timeslot_to+' = '+finalTime);
 					//
 
 
                    if (calculatedTime>matchTime) {
-                      types += '<li class="timeslottable"><a data-shippingmethod="UGT_CALL_DEL-'+abc+'" class="timeslotdetails" data-ga-title="'+value.timeslot_from + ' - ' + value.timeslot_to+'" tabindex="0"><input type="radio"  value="'+value.timeslot_from + ' - ' + value.timeslot_to+'" class="input-group-field applycoupon shippingtime" name="shippingtimeslotnew" id="UGT_CALL_DEL-'+abc+'" tabindex="0"><label class="time-slot-lable" for="UGT_CALL_DEL-'+abc+'"><span class="rdo-span"></span><span class="timesloter">'+value.timeslot_from + ' - ' + value.timeslot_to+'</span></label></a></li>';
+                      types += '<li class="timeslottable"><a data-shippingmethod="UGT_CALL_DEL-'+abc+'" class="timeslotdetails" data-ga-title="'+value.timeslot_from + ' - ' + value.timeslot_to+'" tabindex="0"><input type="radio"  value="'+value.timeslot_from + ' - ' + value.timeslot_to+'" finalTime="'+finalTime+'" class="input-group-field applycoupon shippingtime" name="shippingtimeslotnew" id="UGT_CALL_DEL-'+abc+'" tabindex="0"><label class="time-slot-lable" for="UGT_CALL_DEL-'+abc+'"><span class="rdo-span"></span><span class="timesloter">'+value.timeslot_from + ' - ' + value.timeslot_to+'</span></label></a></li>';
                       abc++
                    }
                     oldArr.push(value.id);
