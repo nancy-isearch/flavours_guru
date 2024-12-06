@@ -728,7 +728,7 @@ function addonpopup(){
       $.ajax({
        type: "POST",
        url: <?= '"'.HTTP_CATALOG.'index.php?route=product/product/getAddons"' ?>,
-       data: {proId:cur_product_id},
+       data: {proId:cur_product_id, cityId:cur_city_id},
        cache: false,
        success: function(data){
         $('.proTOP').show();

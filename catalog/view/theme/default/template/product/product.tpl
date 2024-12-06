@@ -1521,7 +1521,7 @@
                     <li class="active"><a href="#tab-description" data-toggle="tab"><?= $tab_description; ?></a></li>
                     <li><a href="#tab-disclaimer" data-toggle="tab">Delivery Info</a></li>
                     <?php if ($review_status) { ?>
-                    <li class="show_review_slider" style="display: none;"><a href="#tab-review" data-toggle="tab"><?= $tab_review; ?></a></li>
+                    <li class="show_review_slider"><a href="#tab-review" data-toggle="tab"><?= $tab_review; ?></a></li>
                     <?php } ?>
                  </ul>
               </div>
@@ -2613,7 +2613,47 @@
                    
                    var from_time = value.timeslot_to.split(':');
                    var calculatedTime = parseFloat(from_time[0])+parseFloat(from_time[1]/60);
-                   console.log("This is match=>"+matchTime+" This is database=>"+calculatedTime+" This is curr=>"+cur_time);
+                   //console.log("This is match=>"+matchTime+" This is database=>"+calculatedTime+" This is curr=>"+cur_time);
+
+
+
+                   //here
+
+                   var timeDifference = calculatedTime - matchTime;
+                   // Assuming timeDifference is already calculated as a decimal value
+					// Step 1: Get the current time in decimal format
+					var currentHours = d.getHours(); // Get current hour
+					var currentMinutes = d.getMinutes(); // Get current minutes
+					var currentTimeDecimal = currentHours + currentMinutes / 60;
+
+					// Step 2: Add the timeDifference
+					var newTimeDecimal = currentTimeDecimal + timeDifference;
+
+					// Step 3: Handle overflow for times beyond 24 hours
+					if (newTimeDecimal >= 24) {
+					    newTimeDecimal -= 24; // Wrap back within 24 hours
+					}
+
+					// Step 4: Convert the result back to HH:MM format
+					var newHours = Math.floor(newTimeDecimal); // Get the integer part for hours
+					var newMinutes = Math.round((newTimeDecimal - newHours) * 60); // Get the fractional part as minutes
+
+					// Handle edge cases
+					if (newMinutes === 60) {
+					    newMinutes = 0;
+					    newHours += 1;
+					}
+					if (newHours === 24) {
+					    newHours = 0;
+					}
+
+					// Format as HH:MM (24-hour format)
+					var finalTime = `${newHours.toString().padStart(2, '0')}:${newMinutes.toString().padStart(2, '0')}`;
+
+					console.log('Cut off time for: ' +value.timeslot_from + ' - ' + value.timeslot_to+' = '+finalTime);
+					//
+
+
                    if (calculatedTime>matchTime) {
                       types += '<li class="timeslottable"><a data-shippingmethod="UGT_CALL_DEL-'+abc+'" class="timeslotdetails" data-ga-title="'+value.timeslot_from + ' - ' + value.timeslot_to+'" tabindex="0"><input type="radio"  value="'+value.timeslot_from + ' - ' + value.timeslot_to+'" class="input-group-field applycoupon shippingtime" name="shippingtimeslotnew" id="UGT_CALL_DEL-'+abc+'" tabindex="0"><label class="time-slot-lable" for="UGT_CALL_DEL-'+abc+'"><span class="rdo-span"></span><span class="timesloter">'+value.timeslot_from + ' - ' + value.timeslot_to+'</span></label></a></li>';
                       abc++
