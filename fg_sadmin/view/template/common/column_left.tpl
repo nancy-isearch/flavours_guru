@@ -63,6 +63,9 @@
         <a href="<?php echo $vendorsale ?>"><i class="fa fa-shopping-cart fw"></i> <span>Sales</span></a>
       </li>
       <li id="menu-dashboard">
+        <a href="<?php echo $ticket ?>"><i class="fa fa-shopping-cart fw"></i> <span>Order Tickets</span></a>
+      </li>
+      <li id="menu-dashboard">
         <a href="<?php echo $vendorsalereport ?>"><i class="fa fa-bar-chart-o fw"></i> <span>Sales Report</span></a>
       </li>
     </ul>

@@ -1954,6 +1954,18 @@ $dataaa = (array)$shipInfo;
 		$this->response->setOutput(json_encode($json));
 	}
 
+	public function addOrderTicket() {
+		$order_id = $this->request->get['order_id'];
+		$this->load->model('sale/order');
+
+		$detail = $this->request->post['issue_detail'];
+		
+		$this->model_sale_order->addOrderTicket($order_id, $this->request->post['issue_type'], $detail);
+		$json['success'] = 'Order ticket added successfully!';
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
+
 	public function addPPPrice() {
 		$order_id = $this->request->get['order_id'];
 		$this->load->model('sale/order');

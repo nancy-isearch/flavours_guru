@@ -326,6 +326,14 @@ class ControllerCommonColumnLeft extends Controller {
 					'children' => array()		
 				);	
 			}
+
+			if ($this->user->hasPermission('access', 'sale/ticket')) {
+				$sale[] = array(
+					'name'	   => 'Order Ticket',
+					'href'     => $this->url->link('sale/ticket', 'token=' . $this->session->data['token'], true),
+					'children' => array()		
+				);	
+			}
 			
 			// Voucher
 			$voucher = array();
@@ -1053,6 +1061,7 @@ class ControllerCommonColumnLeft extends Controller {
 			}
 
 			$data['vendorsale'] = $this->url->link('sale/vendororder', 'token=' . $this->session->data['token'], true);
+			$data['ticket'] = $this->url->link('sale/ticket', 'token=' . $this->session->data['token'], true);
 			$data['boysale'] = $this->url->link('sale/boyorder', 'token=' . $this->session->data['token'], true);
 			$data['vendorsalereport'] = $this->url->link('report/sale_order_detail_vendor', 'token=' . $this->session->data['token'], true);
 

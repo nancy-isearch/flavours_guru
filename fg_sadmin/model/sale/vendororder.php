@@ -713,4 +713,8 @@ class ModelSaleVendororder extends Model {
 
 		return $product_attribute_group_data;
 	}
+
+	public function addOrderTicket($order_id, $issue_type, $issue_detail){
+		$this->db->query("INSERT INTO `" . DB_PREFIX . "order_ticket` SET order_id = '" . $order_id . "', issue_type = '".$issue_type."', issue_detail = '".$issue_detail."', status=1, created_by = '".$this->user->getId()."', created_at=NOW()");
+	}
 }

@@ -558,6 +558,40 @@
           </div>
       </div>
     </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-bell"></i> Add Ticket</h3>
+      </div>
+      <div class="panel-body">
+        <div class="row" id="tab-history">
+            <fieldset>
+              <form class="form-horizontal">
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-order-status">Issue Type</label>
+                  <div class="col-sm-10">
+                    <select name="ticket_issue_type" id="input-order-complaint" class="form-control order_status_update">
+                      <option value="0">Please select</option>
+                      <option value="1">Non Delivery</option>
+                      <option value="2">Late Delivery</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-comment">Issue Detail</label>
+                  <div class="col-sm-10">
+                    <textarea name="issue_detail" rows="8" id="input-comment" class="form-control"></textarea>
+                  </div>
+                </div>
+              </form>
+            </fieldset>
+            <div class="text-right">
+              <button id="button-ticket" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Create Ticket</button>
+            </div>
+          </div>
+      </div>
+    </div>
+
   </div>
 
 
@@ -1235,6 +1269,30 @@ $('#button-complaint').on('click', function() {
       $('.alert').remove();
 
       alert("Complaint added successfully");
+    },
+    error: function(xhr, ajaxOptions, thrownError) {
+      alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+    }
+  });
+});
+
+$('#button-ticket').on('click', function() {
+
+  $.ajax({
+    url: 'index.php?route=sale/order/addOrderTicket&token=<?php echo $token; ?>&store_id=<?php echo $store_id; ?>&order_id=<?php echo $order_id; ?>',
+    type: 'post',
+    dataType: 'json',
+    data: 'issue_type=' + encodeURIComponent($('select[name=\'ticket_issue_type\']').val()) + '&issue_detail=' + encodeURIComponent($('textarea[name=\'issue_detail\']').val()),
+    beforeSend: function() {
+      $('#button-ticket').button('loading');
+    },
+    complete: function() {
+      $('#button-ticket').button('reset');
+    },
+    success: function(json) {
+      $('.alert').remove();
+
+      alert("Ticket added successfully");
     },
     error: function(xhr, ajaxOptions, thrownError) {
       alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);

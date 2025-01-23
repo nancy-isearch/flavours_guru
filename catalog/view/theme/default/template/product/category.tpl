@@ -1091,7 +1091,7 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
             <div class="image"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive img-zoom" /></div>
             <div class="product_sort_detail">
               <div class="caption" style="margin-bottom: 0;">
-                <p class="cat_product_title" style="margin: 8px 0 10px 0;height:auto;"><?php echo $product['name']; ?>
+                <p class="cat_product_title" style="margin: 8px 0 10px 0;height:auto;"><span class="cat-mob-prd-title"><?php echo $product['name']; ?></span>
                   <span class="product-info-detail" proId="<?php echo $product['product_id']; ?>" title="<?php echo $product['name']; ?>" hrftag="<?php echo $product['href']; ?>"><i class="fa fa-info-circle"></i></span>
                 </p>
                 <div class="display-flex align-items-center space-between">

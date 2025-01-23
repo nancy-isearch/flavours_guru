@@ -102,19 +102,13 @@
               </div>
             </a>
             <p>Women’s<br> Day</p>
-          </li> */ ?>
-          <li>
-            <a href="/christmas" class="hover-zoom-col">
-              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/christmas.jpg" alt="Christmas cake">
-            </a>
-            <p>Christmas</p>
           </li>
           <li>
             <a href="/new-year-1st-jan" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-year-cake.jpg" alt="New year cake">
             </a>
             <p>New Year</p>
-          </li>
+          </li>  */ ?>
           <li>
             <a href="/customize" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/custom-cakes.png" alt="a customised three-layered orange cake">
@@ -127,12 +121,12 @@
             </a>
             <p>Combos</p>
           </li>
-          <!-- <li>
+          <li>
             <a href="/new-arrival-cakes" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/fresh-arrivals.png" alt="Fresh Arrivals cakes">  
             </a>
             <p>Fresh Arrivals</p>
-          </li> -->
+          </li>
           <li>
             <a href="/heart-shape" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/heart-shape.png" alt="Red heart-shaped cake topped with strawberries">  
@@ -157,12 +151,12 @@
             </a>
             <p>Premium</p>
           </li>
-          <!-- <li>
+          <li>
             <a href="/photo-cakes" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/photo-cake.png" alt="A photo frame featuring a cake and cupcakes">  
             </a>
             <p>Photo Cakes</p>
-          </li> -->
+          </li>
            <?php /*<li>
             <a href="/custom-theme-cakes" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/theme-cake.png" alt="Theme Cakes">  
@@ -192,30 +186,6 @@
         <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/new-images/valentine-day-desk.webp" alt="valentines day - Flavours Guru">
         <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/new-images/valentine-day-mob.webp" alt="valentines day - Flavours Guru">
       </a> */ ?>
-       <a href="/christmas">
-        <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/christmas-banner-web.webp" alt="christmas cake online">
-        <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/christmas-banner-mobile.webp" alt="christmas cake">
-        <div class="banner-overlay-content">
-          <div class="banner-title-row">
-            <p class="banner-first-title text-white" style="background: #6AA245;color: #ffffff;">Celebrate the season with</p>
-            <h2 class="mb-10 banner-title text-white"><span style="color: #ffffff;">Our Delicious<br> Christmas Cakes!</h2>
-            <p class="text-white banner-sm-title mb-30"></p>
-            <div class="home-primary-btn white-bg-btn" style="box-shadow: 0px 4px 0px 0px #6AA245;background:#ffffff;color: #272727;">Order Now</div>  
-          </div>
-        </div>
-      </a>
-      <a href="/new-year-1st-jan">
-        <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/new-year-web.webp" alt="new year cake online">
-        <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/new-year-mobile.webp" alt="new year cake online 2">
-        <div class="banner-overlay-content">
-          <div class="banner-title-row">
-            <p class="banner-first-title text-white" style="background: #FBB637;color: #272727;">Celebrate the season with</p>
-            <h2 class="mb-10 banner-title text-white"><span style="color: #ffffff;">Our Delicious<br> New Year Cakes!</h2> 
-            <p class="text-white banner-sm-title mb-30"></p>
-            <div class="home-primary-btn white-bg-btn" style="border: 1.5px solid #ffffff;background: #5C175E;color: #ffffff;">Order Now</div>  
-          </div>
-        </div>
-      </a>
       <a href="/custom-theme-cakes">
         <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/new-images/desktop-customized-cake.webp" alt="Cake your imagination">
         <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/new-images/mobile-customized-cake.webp" alt="Cake your imagination">

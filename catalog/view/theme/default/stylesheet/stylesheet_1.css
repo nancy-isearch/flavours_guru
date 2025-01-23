@@ -561,7 +561,7 @@ i.fa.fa-heart{font-size:0;background:url(../image/wishlist-heart.png) no-repeat 
 .space-between {
     justify-content: space-between;
 }
-.product-thumb .cat_product_title{font-size:15px;margin-bottom:5px;text-overflow:ellipsis;height:18px;width:100%;overflow:hidden;white-space:nowrap;}
+.product-thumb .cat_product_title{font-size:15px;margin-bottom:5px;text-overflow:ellipsis;height:18px;width:98%;overflow:hidden;white-space:nowrap;}
 .product-thumb .cat_product_title a{font-size:16px;font-weight: 600;color: #222;}
 .cityDateShipping .label{font-size:15px;font-weight:300;color:#646464;text-align:left;margin:12px 0 0 0;}
 .cityDateShipping input[type=text], .cityDateShipping select, div#ajaxtargetdiv, div#ajaxtargetdiv1{width:100%;background:#ffffff;border:1px solid #F65F73;height:43px;padding:0 0 0 15px;-moz-border-radius:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;border-radius:5px;font-size:15px;font-weight:300;line-height:43px;}
@@ -3770,6 +3770,12 @@ a.box-advancedloginf{
     border-radius: 30px;
     transition: 0.3s;
     background: #ffffff;
+    width: 100%;
+}
+.cat-mob-prd-title{
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 .mt-40{
 	margin-top: 40px;
@@ -5257,6 +5263,9 @@ button#button-cart-2 {
 	  	background: #F65F73;
 	  	color: #ffffff;
 	  	transition: 0.3s;
+	  }
+	  .category_main_row_col .product-grid .product-thumb .image{
+	  	height: 265px;
 	  }
 }
 
