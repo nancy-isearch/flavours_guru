@@ -105,7 +105,7 @@
 .kids_cake_category{
 	display: none;
 }
-.birthday_category, .new_year_banner, .regular_cakes_category, .anniversary_category{
+.birthday_category, .new_year_banner, .regular_cakes_category, .anniversary_category, .christmas_category, .newyear_category{
 	display: none;
 }
 .product-category-29 .kids_cake_category{
@@ -116,6 +116,12 @@
 }
 .product-category-50 .birthday_category{
 	display: block;
+}
+.product-category-90 .christmas_category{
+  display: block;
+}
+.product-category-65 .newyear_category{
+  display: block;
 }
 .home-header-tab{
 	margin-top: 15px;
@@ -137,7 +143,7 @@
   width: 100%;
 }
 body.product-category-65.offermsg .container.top_positionn{
-  margin-top: 15px;
+  /*margin-top: 15px;*/
 }
 .topfilterrow.filter-fixdown, .topfilterrow.filter-fixup{
   background:none;
@@ -581,9 +587,9 @@ body.product-category-65.offermsg .container.top_positionn{
       <a href="javascript:void(0)" class="btn-orange btn apply_filter_btn">APPLY</a>
     </div>
 </div>
-<div class="new_year_banner">
+<!-- <div class="new_year_banner">
   <img class="img-responsive" src="catalog/view/theme/default/image/newyearsale.webp" alt="New Year Cakes - Flavours Guru" />
-</div>
+</div> -->
 <div class="container top_positionn category_main_row_col">
   <ul class="breadcrumb">
   <?php 
@@ -698,48 +704,146 @@ body.product-category-65.offermsg .container.top_positionn{
   </div>
   <div class="anniversary_category home-header-tab ">
   	<div class="container xs-p-r-0 xs-p-l-0">
-		<div class="row">
-			<ul>
-				<li>
-					<a href="/heart-shape" class="hover-zoom-col">
-					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/heart-shape-cakes.webp" alt="">
-					</a>
-					<p>Heart Shape</p>
-				</li>
-				<li>
-					<a href="/classic-cakes" class="hover-zoom-col">
-					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/premium-flavours-2.webp" alt="">
-					</a>
-					<p>Premium</p>
-				</li>
-				<li>
-					<a href="/premium-cakes" class="hover-zoom-col">
-					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/luxury-design-cakes.webp" alt="">
-					</a>
-					<p>Luxury</p>
-				</li>
-				<li>
-					<a href="/fusion-cakes" class="hover-zoom-col">
-					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/fusion-cakes.webp" alt="">
-					</a>
-					<p>Fusion</p>
-				</li>
-				<li>
-					<a href="/multi-tier-cakes" class="hover-zoom-col">
-					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/multi-tier-cakes.webp" alt="">
-					</a>
-					<p>Multi Tier</p>
-				</li>
-				<li>
-					<a href="/regular-cakes" class="hover-zoom-col">
-					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/regular-cakes.webp" alt="">
-					</a>
-					<p>Regular</p>
-				</li>
-			</ul>
-		</div>
-	</div>
+  		<div class="row">
+  			<ul>
+  				<li>
+  					<a href="/heart-shape" class="hover-zoom-col">
+  					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/heart-shape-cakes.webp" alt="">
+  					</a>
+  					<p>Heart Shape</p>
+  				</li>
+  				<li>
+  					<a href="/classic-cakes" class="hover-zoom-col">
+  					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/premium-flavours-2.webp" alt="">
+  					</a>
+  					<p>Premium</p>
+  				</li>
+  				<li>
+  					<a href="/premium-cakes" class="hover-zoom-col">
+  					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/luxury-design-cakes.webp" alt="">
+  					</a>
+  					<p>Luxury</p>
+  				</li>
+  				<li>
+  					<a href="/fusion-cakes" class="hover-zoom-col">
+  					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/fusion-cakes.webp" alt="">
+  					</a>
+  					<p>Fusion</p>
+  				</li>
+  				<li>
+  					<a href="/multi-tier-cakes" class="hover-zoom-col">
+  					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/multi-tier-cakes.webp" alt="">
+  					</a>
+  					<p>Multi Tier</p>
+  				</li>
+  				<li>
+  					<a href="/regular-cakes" class="hover-zoom-col">
+  					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/regular-cakes.webp" alt="">
+  					</a>
+  					<p>Regular</p>
+  				</li>
+  			</ul>
+  		</div>
+  	</div>
   </div>
+
+  <div class="christmas_category home-header-tab ">
+    <div class="container xs-p-r-0 xs-p-l-0">
+      <div class="row">
+        <ul>
+          <li>
+            <a href="/christmas/christmas-cup-cake" class="hover-zoom-col">
+              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/christmas-cupcake.jpg" alt="Christmas cake">
+            </a>
+            <p>Cup Cake</p>
+          </li>
+          <li>
+            <a href="/christmas/plum-cakes" class="hover-zoom-col">
+              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/plum-cakes.jpg" alt="Christmas cake">
+            </a>
+            <p>Plum Cakes</p>
+          </li>
+          <li>
+            <a href="/new-year-1st-jan" class="hover-zoom-col">
+              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-year-cake.jpg" alt="New year cake">
+            </a>
+            <p>New Year</p>
+          </li>
+          <li>
+            <a href="/flower-combo" class="hover-zoom-col">
+              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/flower-combos.png" alt="Flower and cake combos ">
+            </a>
+            <p>Combos</p>
+          </li>
+          <li>
+            <a href="/regular-cakes" class="hover-zoom-col">
+            <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/regular-cakes.webp" alt="">
+            </a>
+            <p>Regular</p>
+          </li>
+          <li>
+            <a href="/classic-cakes" class="hover-zoom-col">
+            <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/premium-flavours-2.webp" alt="">
+            </a>
+            <p>Premium</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="newyear_category home-header-tab ">
+    <div class="container xs-p-r-0 xs-p-l-0">
+      <div class="row">
+        <ul>
+          <!-- <li>
+            <a href="/new-year-1st-jan" class="hover-zoom-col">
+              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-year-cake.jpg" alt="New year cake">
+            </a>
+            <p>New Year</p>
+          </li> -->
+          <li>
+            <a href="/christmas" class="hover-zoom-col">
+              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/christmas.jpg" alt="Christmas cake">
+            </a>
+            <p>Christmas</p>
+          </li>
+          <li>
+            <a href="/christmas/plum-cakes" class="hover-zoom-col">
+              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/plum-cakes.jpg" alt="Christmas cake">
+            </a>
+            <p>Plum Cakes</p>
+          </li>
+          <li>
+            <a href="/flower-combo" class="hover-zoom-col">
+              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/flower-combos.png" alt="Flower and cake combos ">
+            </a>
+            <p>Combos</p>
+          </li>
+          <li>
+            <a href="/regular-cakes" class="hover-zoom-col">
+            <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/regular-cakes.webp" alt="">
+            </a>
+            <p>Regular</p>
+          </li>
+          <li>
+            <a href="/classic-cakes" class="hover-zoom-col">
+            <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/premium-flavours-2.webp" alt="">
+            </a>
+            <p>Premium</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+<?php
+$actual_link = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; 
+if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
+  <div class="mt-30">
+    <p>Ho Ho Ho! The merriest season of cakes is here all again. After crossing the entire year, the joyous time of Christmas celebration has approached all again. Adding more into the merriment of one of the biggest holiday seasons of the year, here we have come up with an exclusive line of online Christmas Cakes at <a href="https://www.flavoursguru.com/" target="_blank">Flavoursguru.com</a>. Boasting the most wonderful, delightful, unique, and attractive Christmas Cakes, the trendy Christmas Cakes collection is sure to sort out your festive cake shopping desires in a matter of just a few clicks and without going high on the budget. With us, customers can get an excellent selection of Christmas cakes online in India with fast, reliable, and timely delivery services. Apart from the best Christmas cakes ideas 2024, you can also trust us for the same day delivery and even free delivery to send cakes to India on Christmas online. So, let's explore the range below.</p>
+  </div>
+<?php } ?>
+  
+
   <div class="regular_cakes_category">
   	<div class="row">
   		<div class="col-md-6 col-sm-6 col-xs-6 xs-mb-15">
