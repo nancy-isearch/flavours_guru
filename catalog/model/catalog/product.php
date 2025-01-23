@@ -750,7 +750,8 @@ class ModelCatalogProduct extends Model {
 			if ($dateTime->diff(new DateTime)->format('%R') == '+') {
 			  $inc = 1;
 			}
-			$data[] = array('id' => $row['id'], 'pincode' => $row['pincode'], 'date' => date('Y-m-d', strtotime("+".$row['lead_day']+$inc." days")));
+			//$data[] = array('id' => $row['id'], 'pincode' => $row['pincode'], 'date' => date('Y-m-d', strtotime("+".$row['lead_day']+$inc." days")));
+			$data[] = array('id' => $row['id'], 'pincode' => $row['pincode'], 'date' => date('Y-m-d', strtotime("+" . ($row['lead_day'] + $inc) . " days")));
 		}
 		return $data;
 	}
