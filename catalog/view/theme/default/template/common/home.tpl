@@ -8,7 +8,7 @@
   <title></title>
   
 </head> -->
-<?php /* <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> */ ?>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 <style type="text/css">
   /*@media screen and (min-width: 1367px){
     .container {
@@ -83,7 +83,7 @@
 </style>
   <div class="col-md-12 col-sm-12 col-xs-12 home-header-tab mb-15">
     <div class="offer-split">
-      <p class="mb-0">Get upto Rs. 100 discount. Use coupon <span style="color: #F65F73;font-weight: 700;font-size: 14px;">WELCOME</span></p>
+      <p class="mb-0">Limited Period Offer! Use code <span style="color: #F65F73;font-weight: 700;font-size: 14px;">WELCOME15</span> Avail 15% Off.</p>
     </div>
     <div class="container xs-p-r-0 xs-p-l-0">
       <div class="row">
@@ -109,6 +109,15 @@
             </a>
             <p>New Year</p>
           </li>  */ ?>
+          <li>
+            <a href="/valentines.php" class="hover-zoom-col">
+              <div class="position-relative">
+                <img style="border-radius: 50%" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/icon-bg.jpg" alt="">
+                <lottie-player class="gif-icon" src="catalog/view/theme/default/image/Home/valenrine-heart.json" background="transparent" speed="1" loop="" autoplay=""></lottie-player>
+              </div>
+            </a>
+            <p>Valentine's<br> Day</p>
+          </li>
           <li>
             <a href="/customize" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/custom-cakes.png" alt="a customised three-layered orange cake">
@@ -151,12 +160,12 @@
             </a>
             <p>Premium</p>
           </li>
-          <li>
+          <!-- <li>
             <a href="/photo-cakes" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/photo-cake.png" alt="A photo frame featuring a cake and cupcakes">  
             </a>
             <p>Photo Cakes</p>
-          </li>
+          </li> -->
            <?php /*<li>
             <a href="/custom-theme-cakes" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/theme-cake.png" alt="Theme Cakes">  
@@ -186,6 +195,30 @@
         <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/new-images/valentine-day-desk.webp" alt="valentines day - Flavours Guru">
         <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/new-images/valentine-day-mob.webp" alt="valentines day - Flavours Guru">
       </a> */ ?>
+      <a href="/valentines.php">
+        <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/valentines-desktop.webp" alt="Cake your Valentine">
+        <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/valentines-mobile.webp" alt="Valentine day cake">
+        <div class="banner-overlay-content">
+          <div class="banner-title-row"> 
+            <p class="banner-first-title text-white" style="background: #A51E40;">Happy Valentine’s Day</p>
+            <h2 class="mb-10 banner-title text-white"><span class="text-white">Always in Love</span><br> Valentine’s Day Cake</h2>
+            <p class="text-white banner-sm-title mb-30">Explore 2025 New Arrivals!</p>
+            <div class="home-primary-btn" style="background: #291019;border:1px solid #ffffff;color: #ffffff;">Order Now</div>  
+          </div>
+        </div>
+      </a>
+      <a href="/luxury-flowers">
+        <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/flower-desktop.webp" alt="Cake your imagination">
+        <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/flower-mobile.webp" alt="Cake your imagination">
+        <div class="banner-overlay-content">
+          <div class="banner-title-row">
+            <p class="banner-first-title text-white" style="background: #E98A46;">Luxury Flowers</p>
+            <h2 class="mb-10 banner-title text-white"><span class="text-white">Express Your Love</span><br> With Exclusivity</h2>
+            <p class="text-white banner-sm-title mb-30"></p>
+            <div class="home-primary-btn white-bg-btn" style="box-shadow: 0px 4px 0px 0px #F1547B;">Order Now</div>  
+          </div>
+        </div>
+      </a>
       <a href="/custom-theme-cakes">
         <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/new-images/desktop-customized-cake.webp" alt="Cake your imagination">
         <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/new-images/mobile-customized-cake.webp" alt="Cake your imagination">

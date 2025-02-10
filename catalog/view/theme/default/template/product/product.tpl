@@ -2132,7 +2132,7 @@
       $.ajax({
           type: "POST",
           url: <?php echo '"'.HTTP_SERVER.'index.php?route=product/product/getPincodesList"' ?>,
-          data: {pins:pins},
+          data: {proId:<?php echo $product_id; ?>,pins:pins},
           cache: false,
           success: function(data){
             var data = jQuery.parseJSON(data);

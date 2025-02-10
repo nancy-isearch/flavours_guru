@@ -1100,8 +1100,10 @@ class ControllerProductProduct extends Controller {
 
 	public function getPincodesList(){
 		$pincode = $this->request->post['pins'];
+		$proId = $this->request->post['proId'];
+		
 		$this->load->model('catalog/product');
-		$data = $this->model_catalog_product->getPincodesList($pincode);
+		$data = $this->model_catalog_product->getPincodesList($pincode, $proId);
 		print_r(json_encode($data));
 	}
 	

@@ -709,11 +709,23 @@ class ModelCatalogProduct extends Model {
 		return $query->rows;
 	}
 
-	public function getPincodesList($pincode){
+	public function getPincodesList($pincode, $proId){
 		$sql = "Select p.*, c.display_name as name, c.holidays from oc_shipping_pincodes p inner join oc_shipping_cities c ON p.shipping_cities_id = c.id where p.pincode LIKE '".$pincode."%' AND p.status=1";
 		$query = $this->db->query($sql);
 		$dd = array();
+		$allData = array();
+		$isCustomExist = false;
+		$custom = array('10595', '10596', '10597', '10598');
 		foreach ($query->rows as $key => $value) {
+			$allData[] = $value;
+			if(in_array($value['shipping_cities_id'], $custom)){
+				$isCustomExist = true;
+			}
+		}
+		foreach ($allData as $key => $value) {
+			if($isCustomExist && !in_array($value['shipping_cities_id'], $custom) && $proId >= 9658 && $proId <= 9703){
+				continue;
+			}
 			$holiall = array();
 			if(!empty($value['holidays'])){
 				$holid = explode(',', $value['holidays']);

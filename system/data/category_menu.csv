@@ -1,4 +1,18 @@
 Categories in Header,Sub-Categories Under Non-Clickable Name,Sub-Categories,Sub-Categories URL's
+Valentine's Day,Gift Category,Valentine Cakes,valentines-day/valentines-day-cake
+,,Valentine Flowers,valentines-day/valentines-day-flowers
+,,Valentine Combos,valentines-day/valentines-day-combo
+,,Sale,valentines-day/sale
+,,Valentine Gifts,valentines-day/valentines-day-gift
+,,Serenades,valentines-day/serenades
+,Valentine Week,Rose Day,rose-day
+,,Propose Day,propose-day
+,,Chocolate Day,chocolate-day
+,,Teddy Day,teddy-day
+,,Promise Day,promise-day
+,,Hug Day,hug-day
+,,Kiss Day,kiss-day
+,,Valentine Day,valentines.php
 All Cakes,By Type,Regular Cakes,regular-cakes
 ,,Designer Cream Cakes,designer-cream-cake
 ,,Photo Cakes,photo-cakes
@@ -120,21 +134,6 @@ Anniversary Cakes,Anniversary ,All Anniversary Cakes,anniversary
 ,,25th Anniversary,anniversary/25th-anniversary
 ,,50th Anniversary,anniversary/50th-anniversary
 ,,Love Anniversary,anniversary/love-anniversary
-Cakes By Cities,Delhi NCR,Cakes in Delhi,cakes/delhi
-,,Cakes in Faridabad,cakes/faridabad
-,,Cakes in Ghaziabad,cakes/ghaziabad
-,,Cakes in Noida,cakes/noida
-,,Cakes in Greater Noida,cakes/greater-noida
-,,Cakes in Gurgaon,cakes/gurgaon
-,,Cakes in Sohna,cakes/sohna
-,Other Cities,Cakes in Chandigarh,cakes/chandigarh
-,,Cakes in Panchkuka,cakes/panchkula
-,,Cakes in Zirakpur,cakes/zirakpur
-,,Cakes in Mohali,cakes/mohali
-,,Cakes in Patna,cakes/patna
-,,Cakes in Varanasi,cakes/varanasi
-,,Cakes in Lucknow,cakes/lucknow
-,,Cakes in Hyderabad,cakes/hyderabad
 Cakes By Occasions,Public Occasions,Father's Day,fathers-day
 ,,Friendship Day,friendship-day
 ,,Rakhi,rakhi
