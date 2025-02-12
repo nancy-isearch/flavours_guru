@@ -83,7 +83,7 @@
 </style>
   <div class="col-md-12 col-sm-12 col-xs-12 home-header-tab mb-15">
     <div class="offer-split">
-      <p class="mb-0">Limited Period Offer! Use code <span style="color: #F65F73;font-weight: 700;font-size: 14px;">WELCOME15</span> Avail 15% Off.</p>
+      <p class="mb-0">Limited Period Offer! Use code <span style="color: #F65F73;font-weight: 700;font-size: 14px;">CAKE12</span> Avail 12% Off.</p>
     </div>
     <div class="container xs-p-r-0 xs-p-l-0">
       <div class="row">
