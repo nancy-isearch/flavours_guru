@@ -8,7 +8,7 @@
   <title></title>
   
 </head> -->
-<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<?php /* <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> */ ?>
 <style type="text/css">
   /*@media screen and (min-width: 1367px){
     .container {
@@ -108,7 +108,7 @@
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-year-cake.jpg" alt="New year cake">
             </a>
             <p>New Year</p>
-          </li>  */ ?>
+          </li>  
           <li>
             <a href="/valentines.php" class="hover-zoom-col">
               <div class="position-relative">
@@ -117,7 +117,7 @@
               </div>
             </a>
             <p>Valentine's<br> Day</p>
-          </li>
+          </li>*/ ?>
           <li>
             <a href="/customize" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/custom-cakes.png" alt="a customised three-layered orange cake">
@@ -160,12 +160,12 @@
             </a>
             <p>Premium</p>
           </li>
-          <!-- <li>
+          <li>
             <a href="/photo-cakes" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/photo-cake.png" alt="A photo frame featuring a cake and cupcakes">  
             </a>
             <p>Photo Cakes</p>
-          </li> -->
+          </li>
            <?php /*<li>
             <a href="/custom-theme-cakes" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/theme-cake.png" alt="Theme Cakes">  
@@ -194,7 +194,7 @@
        <?php /* <a href="/valentines.php">
         <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/new-images/valentine-day-desk.webp" alt="valentines day - Flavours Guru">
         <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/new-images/valentine-day-mob.webp" alt="valentines day - Flavours Guru">
-      </a> */ ?>
+      </a>
       <a href="/valentines.php">
         <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/valentines-desktop.webp" alt="Cake your Valentine">
         <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/valentines-mobile.webp" alt="Valentine day cake">
@@ -206,7 +206,7 @@
             <div class="home-primary-btn" style="background: #291019;border:1px solid #ffffff;color: #ffffff;">Order Now</div>  
           </div>
         </div>
-      </a>
+      </a> */ ?>
       <a href="/luxury-flowers">
         <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/flower-desktop.webp" alt="Cake your imagination">
         <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/flower-mobile.webp" alt="Cake your imagination">
@@ -409,8 +409,11 @@
   <div class="best-seller-section col-md-12 col-sm-12 col-xs-12 section-m-b">
     <div class="container">
       <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12 p-l-0 p-r-0">
-          <p class="section-title col-md-12 col-sm-12 col-xs-12 p-l-0">Bestselling Cakes</p>
+        <div class="row display-flex align-items-center">
+          <p class="section-title col-md-6 col-sm-6 col-xs-8 p-l-0">Bestselling Cakes</p>
+          <!-- <div class="col-md-6 col-sm-6 col-xs-4 text-right p-r-0 hidden-xs mb-20">
+            <a href="https://www.flavoursguru.com/valentines.php" class="home-primary-btn position-relative">View All</a>
+          </div> -->
         </div>
         <div class="row">
           <div class="treanding-slide col-md-12 col-sm-12 col-xs-12 p-l-0 p-r-0">
@@ -433,7 +436,11 @@
                </div>
              <?php   } ?>
           </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 text-center p-r-0 visible-xs" style="margin-top: 15px;">
+            <a href="https://www.flavoursguru.com/valentines.php" class="home-primary-btn position-relative">View All</a>
+          </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -523,10 +530,10 @@
         <div class="row">
           <div class="col-md-6 mb-15 position-relative">
             <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Birthday-Cakes.jpg" alt="A colorful mixture of birthday cakes with various designs and decorations">
-            <div class="overlay-occasions-col text-center">
+            <a class="overlay-occasions-col text-center" href="/birthday">
               <div class="inner-overlay-cta-col"> 
                 <p>Birthday Cakes</p>
-                <a class="display-flex align-items-center overlay-cta" href="/birthday">
+                <div class="display-flex align-items-center overlay-cta">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <path d="M8.74999 3L7.86612 3.88389C7.37796 4.37205 7.37796 5.16351 7.86612 5.65166C8.35427 6.13982 9.14573 6.13982 9.63388 5.65166C10.122 5.16351 10.122 4.37205 9.63388 3.88389L8.74999 3Z" fill=""/>
                   <path d="M15.25 3L14.3661 3.88389C13.878 4.37205 13.878 5.16351 14.3661 5.65166C14.8543 6.13982 15.6457 6.13982 16.1339 5.65166C16.622 5.16351 16.622 4.37205 16.1339 3.88389L15.25 3Z" fill=""/>
@@ -536,16 +543,16 @@
                   <path d="M17.6646 16.9415C18.3997 17.309 19.1998 17.4928 20 17.4928V18.5207C20 19.3491 19.3284 20.0207 18.5 20.0207H5.5C4.67157 20.0207 4 19.3491 4 18.5207V17.4928C4.80016 17.4928 5.60032 17.309 6.33541 16.9415C7.38329 16.4175 8.61671 16.4175 9.66459 16.9415C11.1348 17.6766 12.8652 17.6766 14.3354 16.9415C15.3833 16.4175 16.6167 16.4175 17.6646 16.9415Z" fill=""/>
                   </svg>
                   <span>View More Cakes</span>
-                </a>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
           <div class="col-md-6 mb-15 position-relative">
             <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Anniversary-Cakes.jpg" alt="Anniversary Cake featuring a couple, held by a hand">
-            <div class="overlay-occasions-col text-center">
+            <a class="overlay-occasions-col text-center" href="/anniversary">
               <div class="inner-overlay-cta-col"> 
                 <p>Anniversary Cakes</p>
-                <a class="display-flex align-items-center overlay-cta" href="/anniversary">
+                <div class="display-flex align-items-center overlay-cta">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <path d="M8.74999 3L7.86612 3.88389C7.37796 4.37205 7.37796 5.16351 7.86612 5.65166C8.35427 6.13982 9.14573 6.13982 9.63388 5.65166C10.122 5.16351 10.122 4.37205 9.63388 3.88389L8.74999 3Z" fill=""/>
                   <path d="M15.25 3L14.3661 3.88389C13.878 4.37205 13.878 5.16351 14.3661 5.65166C14.8543 6.13982 15.6457 6.13982 16.1339 5.65166C16.622 5.16351 16.622 4.37205 16.1339 3.88389L15.25 3Z" fill=""/>
@@ -555,18 +562,18 @@
                   <path d="M17.6646 16.9415C18.3997 17.309 19.1998 17.4928 20 17.4928V18.5207C20 19.3491 19.3284 20.0207 18.5 20.0207H5.5C4.67157 20.0207 4 19.3491 4 18.5207V17.4928C4.80016 17.4928 5.60032 17.309 6.33541 16.9415C7.38329 16.4175 8.61671 16.4175 9.66459 16.9415C11.1348 17.6766 12.8652 17.6766 14.3354 16.9415C15.3833 16.4175 16.6167 16.4175 17.6646 16.9415Z" fill=""/>
                   </svg>
                   <span>View More Cakes</span>
-                </a>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
         <div class="row">
           <div class="position-relative col-md-12 col-sm-12 col-xs-12">
             <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Bachelorette-Party.jpg" alt="A cake with a woman sitting on top, celebrating a Bachelorette Party">
-            <div class="overlay-occasions-col text-center">
+            <a class="overlay-occasions-col text-center" href="/bachelorette-cake">
                 <div class="inner-overlay-cta-col"> 
                   <p>Bachelorette Party</p>
-                  <a class="display-flex align-items-center overlay-cta" href="/bachelorette-cake">
+                  <div class="display-flex align-items-center overlay-cta">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <path d="M8.74999 3L7.86612 3.88389C7.37796 4.37205 7.37796 5.16351 7.86612 5.65166C8.35427 6.13982 9.14573 6.13982 9.63388 5.65166C10.122 5.16351 10.122 4.37205 9.63388 3.88389L8.74999 3Z" fill=""/>
                   <path d="M15.25 3L14.3661 3.88389C13.878 4.37205 13.878 5.16351 14.3661 5.65166C14.8543 6.13982 15.6457 6.13982 16.1339 5.65166C16.622 5.16351 16.622 4.37205 16.1339 3.88389L15.25 3Z" fill=""/>
@@ -576,18 +583,18 @@
                   <path d="M17.6646 16.9415C18.3997 17.309 19.1998 17.4928 20 17.4928V18.5207C20 19.3491 19.3284 20.0207 18.5 20.0207H5.5C4.67157 20.0207 4 19.3491 4 18.5207V17.4928C4.80016 17.4928 5.60032 17.309 6.33541 16.9415C7.38329 16.4175 8.61671 16.4175 9.66459 16.9415C11.1348 17.6766 12.8652 17.6766 14.3354 16.9415C15.3833 16.4175 16.6167 16.4175 17.6646 16.9415Z" fill=""/>
                   </svg>
                     <span>View More Cakes</span>
-                  </a>
+                  </div>
                 </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
       <div class="col-md-3 col-sm-3 col-xs-12 position-relative  mb-15">
         <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Romantic-Love.jpg" alt="A selection of beautifully decorated cakes perfect for celebrating romantic love">
-        <div class="overlay-occasions-col text-center">
+        <a class="overlay-occasions-col text-center" href="/anniversary/love-anniversary">
           <div class="inner-overlay-cta-col"> 
             <p>Romantic Love</p>
-            <a class="display-flex align-items-center overlay-cta" href="/anniversary/love-anniversary">
+            <div class="display-flex align-items-center overlay-cta" >
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <path d="M8.74999 3L7.86612 3.88389C7.37796 4.37205 7.37796 5.16351 7.86612 5.65166C8.35427 6.13982 9.14573 6.13982 9.63388 5.65166C10.122 5.16351 10.122 4.37205 9.63388 3.88389L8.74999 3Z" fill=""/>
                   <path d="M15.25 3L14.3661 3.88389C13.878 4.37205 13.878 5.16351 14.3661 5.65166C14.8543 6.13982 15.6457 6.13982 16.1339 5.65166C16.622 5.16351 16.622 4.37205 16.1339 3.88389L15.25 3Z" fill=""/>
@@ -597,18 +604,18 @@
                   <path d="M17.6646 16.9415C18.3997 17.309 19.1998 17.4928 20 17.4928V18.5207C20 19.3491 19.3284 20.0207 18.5 20.0207H5.5C4.67157 20.0207 4 19.3491 4 18.5207V17.4928C4.80016 17.4928 5.60032 17.309 6.33541 16.9415C7.38329 16.4175 8.61671 16.4175 9.66459 16.9415C11.1348 17.6766 12.8652 17.6766 14.3354 16.9415C15.3833 16.4175 16.6167 16.4175 17.6646 16.9415Z" fill=""/>
                   </svg>
               <span>View More Cakes</span>
-            </a>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
       <div class="col-md-3">
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12 position-relative  mb-15">
             <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Wedding-Cakes.jpg" alt="Newlyweds slicing into a wedding cake together">
-            <div class="overlay-occasions-col text-center">
+            <a class="overlay-occasions-col text-center" href="/wedding">
                 <div class="inner-overlay-cta-col"> 
                   <p>Wedding Cakes</p>
-                  <a class="display-flex align-items-center overlay-cta" href="/wedding">
+                  <div class="display-flex align-items-center overlay-cta">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <path d="M8.74999 3L7.86612 3.88389C7.37796 4.37205 7.37796 5.16351 7.86612 5.65166C8.35427 6.13982 9.14573 6.13982 9.63388 5.65166C10.122 5.16351 10.122 4.37205 9.63388 3.88389L8.74999 3Z" fill=""/>
                   <path d="M15.25 3L14.3661 3.88389C13.878 4.37205 13.878 5.16351 14.3661 5.65166C14.8543 6.13982 15.6457 6.13982 16.1339 5.65166C16.622 5.16351 16.622 4.37205 16.1339 3.88389L15.25 3Z" fill=""/>
@@ -618,16 +625,16 @@
                   <path d="M17.6646 16.9415C18.3997 17.309 19.1998 17.4928 20 17.4928V18.5207C20 19.3491 19.3284 20.0207 18.5 20.0207H5.5C4.67157 20.0207 4 19.3491 4 18.5207V17.4928C4.80016 17.4928 5.60032 17.309 6.33541 16.9415C7.38329 16.4175 8.61671 16.4175 9.66459 16.9415C11.1348 17.6766 12.8652 17.6766 14.3354 16.9415C15.3833 16.4175 16.6167 16.4175 17.6646 16.9415Z" fill=""/>
                   </svg>
                     <span>View More Cakes</span>
-                  </a>
+                  </div>
                 </div>
-            </div>
+            </a>
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12 position-relative">
             <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Baby-Shower-Cakes.jpg" alt="A baby shower cake beautifully decorated for the celebration.">
-            <div class="overlay-occasions-col text-center">
+            <a class="overlay-occasions-col text-center" href="/baby-shower-cakes">
                 <div class="inner-overlay-cta-col"> 
                   <p>Baby Shower Cakes</p>
-                  <a class="display-flex align-items-center overlay-cta" href="/baby-shower-cakes">
+                  <div class="display-flex align-items-center overlay-cta">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <path d="M8.74999 3L7.86612 3.88389C7.37796 4.37205 7.37796 5.16351 7.86612 5.65166C8.35427 6.13982 9.14573 6.13982 9.63388 5.65166C10.122 5.16351 10.122 4.37205 9.63388 3.88389L8.74999 3Z" fill=""/>
                   <path d="M15.25 3L14.3661 3.88389C13.878 4.37205 13.878 5.16351 14.3661 5.65166C14.8543 6.13982 15.6457 6.13982 16.1339 5.65166C16.622 5.16351 16.622 4.37205 16.1339 3.88389L15.25 3Z" fill=""/>
@@ -637,9 +644,9 @@
                   <path d="M17.6646 16.9415C18.3997 17.309 19.1998 17.4928 20 17.4928V18.5207C20 19.3491 19.3284 20.0207 18.5 20.0207H5.5C4.67157 20.0207 4 19.3491 4 18.5207V17.4928C4.80016 17.4928 5.60032 17.309 6.33541 16.9415C7.38329 16.4175 8.61671 16.4175 9.66459 16.9415C11.1348 17.6766 12.8652 17.6766 14.3354 16.9415C15.3833 16.4175 16.6167 16.4175 17.6646 16.9415Z" fill=""/>
                   </svg>
                     <span>View More Cakes</span>
-                  </a>
+                  </div>
                 </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -649,10 +656,10 @@
         <div class="slide">
           <div class="mb-15 position-relative">
             <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Birthday-Cakes.jpg" alt="Flavours Guru">
-            <div class="overlay-occasions-col text-center">
+            <a class="overlay-occasions-col text-center" href="/birthday">
               <div class="inner-overlay-cta-col"> 
                 <p>Birthday Cakes</p>
-                <a class="display-flex align-items-center overlay-cta" href="/birthday">
+                <div class="display-flex align-items-center overlay-cta">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <path d="M8.74999 3L7.86612 3.88389C7.37796 4.37205 7.37796 5.16351 7.86612 5.65166C8.35427 6.13982 9.14573 6.13982 9.63388 5.65166C10.122 5.16351 10.122 4.37205 9.63388 3.88389L8.74999 3Z" fill=""/>
                   <path d="M15.25 3L14.3661 3.88389C13.878 4.37205 13.878 5.16351 14.3661 5.65166C14.8543 6.13982 15.6457 6.13982 16.1339 5.65166C16.622 5.16351 16.622 4.37205 16.1339 3.88389L15.25 3Z" fill=""/>
@@ -662,18 +669,18 @@
                   <path d="M17.6646 16.9415C18.3997 17.309 19.1998 17.4928 20 17.4928V18.5207C20 19.3491 19.3284 20.0207 18.5 20.0207H5.5C4.67157 20.0207 4 19.3491 4 18.5207V17.4928C4.80016 17.4928 5.60032 17.309 6.33541 16.9415C7.38329 16.4175 8.61671 16.4175 9.66459 16.9415C11.1348 17.6766 12.8652 17.6766 14.3354 16.9415C15.3833 16.4175 16.6167 16.4175 17.6646 16.9415Z" fill=""/>
                   </svg>
                   <span>View More Cakes</span>
-                </a>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
         <div class="slide">
           <div class="mb-15 position-relative">
             <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/anniversary-cake-mob.jpg" alt="Anniversary Cake featuring a couple, held by a hand">
-            <div class="overlay-occasions-col text-center">
+            <a class="overlay-occasions-col text-center" href="/anniversary">
               <div class="inner-overlay-cta-col"> 
                 <p>Anniversary Cakes</p>
-                <a class="display-flex align-items-center overlay-cta" href="/anniversary">
+                <div class="display-flex align-items-center overlay-cta">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <path d="M8.74999 3L7.86612 3.88389C7.37796 4.37205 7.37796 5.16351 7.86612 5.65166C8.35427 6.13982 9.14573 6.13982 9.63388 5.65166C10.122 5.16351 10.122 4.37205 9.63388 3.88389L8.74999 3Z" fill=""/>
                   <path d="M15.25 3L14.3661 3.88389C13.878 4.37205 13.878 5.16351 14.3661 5.65166C14.8543 6.13982 15.6457 6.13982 16.1339 5.65166C16.622 5.16351 16.622 4.37205 16.1339 3.88389L15.25 3Z" fill=""/>
@@ -683,18 +690,18 @@
                   <path d="M17.6646 16.9415C18.3997 17.309 19.1998 17.4928 20 17.4928V18.5207C20 19.3491 19.3284 20.0207 18.5 20.0207H5.5C4.67157 20.0207 4 19.3491 4 18.5207V17.4928C4.80016 17.4928 5.60032 17.309 6.33541 16.9415C7.38329 16.4175 8.61671 16.4175 9.66459 16.9415C11.1348 17.6766 12.8652 17.6766 14.3354 16.9415C15.3833 16.4175 16.6167 16.4175 17.6646 16.9415Z" fill=""/>
                   </svg>
                   <span>View More Cakes</span>
-                </a>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
         <div class="slide">
           <div class="mb-15 position-relative">
             <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/romantic.webp" alt="A selection of beautifully decorated cakes perfect for celebrating romantic love">
-            <div class="overlay-occasions-col text-center">
+            <a class="overlay-occasions-col text-center" href="/anniversary/love-anniversary">
               <div class="inner-overlay-cta-col"> 
                 <p>Romantic Love</p>
-                <a class="display-flex align-items-center overlay-cta" href="/anniversary/love-anniversary">
+                <div class="display-flex align-items-center overlay-cta">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <path d="M8.74999 3L7.86612 3.88389C7.37796 4.37205 7.37796 5.16351 7.86612 5.65166C8.35427 6.13982 9.14573 6.13982 9.63388 5.65166C10.122 5.16351 10.122 4.37205 9.63388 3.88389L8.74999 3Z" fill=""/>
                   <path d="M15.25 3L14.3661 3.88389C13.878 4.37205 13.878 5.16351 14.3661 5.65166C14.8543 6.13982 15.6457 6.13982 16.1339 5.65166C16.622 5.16351 16.622 4.37205 16.1339 3.88389L15.25 3Z" fill=""/>
@@ -704,18 +711,18 @@
                   <path d="M17.6646 16.9415C18.3997 17.309 19.1998 17.4928 20 17.4928V18.5207C20 19.3491 19.3284 20.0207 18.5 20.0207H5.5C4.67157 20.0207 4 19.3491 4 18.5207V17.4928C4.80016 17.4928 5.60032 17.309 6.33541 16.9415C7.38329 16.4175 8.61671 16.4175 9.66459 16.9415C11.1348 17.6766 12.8652 17.6766 14.3354 16.9415C15.3833 16.4175 16.6167 16.4175 17.6646 16.9415Z" fill=""/>
                   </svg>
                   <span>View More Cakes</span>
-                </a>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
         <div class="slide">
           <div class="mb-15 position-relative">
             <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/wedding.webp" alt="Newlyweds slicing into a wedding cake together">
-            <div class="overlay-occasions-col text-center">
+            <a class="overlay-occasions-col text-center" href="/wedding">
               <div class="inner-overlay-cta-col"> 
                 <p>Wedding Cakes</p>
-                <a class="display-flex align-items-center overlay-cta" href="/wedding">
+                <div class="display-flex align-items-center overlay-cta">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <path d="M8.74999 3L7.86612 3.88389C7.37796 4.37205 7.37796 5.16351 7.86612 5.65166C8.35427 6.13982 9.14573 6.13982 9.63388 5.65166C10.122 5.16351 10.122 4.37205 9.63388 3.88389L8.74999 3Z" fill=""/>
                   <path d="M15.25 3L14.3661 3.88389C13.878 4.37205 13.878 5.16351 14.3661 5.65166C14.8543 6.13982 15.6457 6.13982 16.1339 5.65166C16.622 5.16351 16.622 4.37205 16.1339 3.88389L15.25 3Z" fill=""/>
@@ -725,18 +732,18 @@
                   <path d="M17.6646 16.9415C18.3997 17.309 19.1998 17.4928 20 17.4928V18.5207C20 19.3491 19.3284 20.0207 18.5 20.0207H5.5C4.67157 20.0207 4 19.3491 4 18.5207V17.4928C4.80016 17.4928 5.60032 17.309 6.33541 16.9415C7.38329 16.4175 8.61671 16.4175 9.66459 16.9415C11.1348 17.6766 12.8652 17.6766 14.3354 16.9415C15.3833 16.4175 16.6167 16.4175 17.6646 16.9415Z" fill=""/>
                   </svg>
                   <span>View More Cakes</span>
-                </a>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
         <div class="slide">
           <div class="mb-15 position-relative">
             <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/bachelorette.webp" alt="A cake with a woman sitting on top, celebrating a Bachelorette Party">
-            <div class="overlay-occasions-col text-center">
+            <a class="overlay-occasions-col text-center" href="/bachelorette-cake">
               <div class="inner-overlay-cta-col"> 
                 <p>Bachelorette Party</p>
-                <a class="display-flex align-items-center overlay-cta" href="/bachelorette-cake">
+                <div class="display-flex align-items-center overlay-cta" >
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <path d="M8.74999 3L7.86612 3.88389C7.37796 4.37205 7.37796 5.16351 7.86612 5.65166C8.35427 6.13982 9.14573 6.13982 9.63388 5.65166C10.122 5.16351 10.122 4.37205 9.63388 3.88389L8.74999 3Z" fill=""/>
                   <path d="M15.25 3L14.3661 3.88389C13.878 4.37205 13.878 5.16351 14.3661 5.65166C14.8543 6.13982 15.6457 6.13982 16.1339 5.65166C16.622 5.16351 16.622 4.37205 16.1339 3.88389L15.25 3Z" fill=""/>
@@ -746,18 +753,18 @@
                   <path d="M17.6646 16.9415C18.3997 17.309 19.1998 17.4928 20 17.4928V18.5207C20 19.3491 19.3284 20.0207 18.5 20.0207H5.5C4.67157 20.0207 4 19.3491 4 18.5207V17.4928C4.80016 17.4928 5.60032 17.309 6.33541 16.9415C7.38329 16.4175 8.61671 16.4175 9.66459 16.9415C11.1348 17.6766 12.8652 17.6766 14.3354 16.9415C15.3833 16.4175 16.6167 16.4175 17.6646 16.9415Z" fill=""/>
                   </svg>
                   <span>View More Cakes</span>
-                </a>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
         <div class="slide">
           <div class="mb-15 position-relative">
             <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/baby.webp" alt="A baby shower cake beautifully decorated for the celebration.">
-            <div class="overlay-occasions-col text-center">
+            <a class="overlay-occasions-col text-center" href="/baby-shower-cakes">
               <div class="inner-overlay-cta-col"> 
                 <p>Baby Shower Cakes</p>
-                <a class="display-flex align-items-center overlay-cta" href="/baby-shower-cakes">
+                <div class="display-flex align-items-center overlay-cta">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <path d="M8.74999 3L7.86612 3.88389C7.37796 4.37205 7.37796 5.16351 7.86612 5.65166C8.35427 6.13982 9.14573 6.13982 9.63388 5.65166C10.122 5.16351 10.122 4.37205 9.63388 3.88389L8.74999 3Z" fill=""/>
                   <path d="M15.25 3L14.3661 3.88389C13.878 4.37205 13.878 5.16351 14.3661 5.65166C14.8543 6.13982 15.6457 6.13982 16.1339 5.65166C16.622 5.16351 16.622 4.37205 16.1339 3.88389L15.25 3Z" fill=""/>
@@ -767,9 +774,9 @@
                   <path d="M17.6646 16.9415C18.3997 17.309 19.1998 17.4928 20 17.4928V18.5207C20 19.3491 19.3284 20.0207 18.5 20.0207H5.5C4.67157 20.0207 4 19.3491 4 18.5207V17.4928C4.80016 17.4928 5.60032 17.309 6.33541 16.9415C7.38329 16.4175 8.61671 16.4175 9.66459 16.9415C11.1348 17.6766 12.8652 17.6766 14.3354 16.9415C15.3833 16.4175 16.6167 16.4175 17.6646 16.9415Z" fill=""/>
                   </svg>
                   <span>View More Cakes</span>
-                </a>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>

@@ -140,28 +140,17 @@ class ControllerSaleTicket extends Controller {
 	}
 
 	protected function getList() {
-		if (isset($this->request->get['customer_name'])) {
-			$customer_name = $this->request->get['customer_name'];
-		} else {
-			$customer_name = null;
-		}
-
-		if (isset($this->request->get['customer_email'])) {
-			$customer_email = $this->request->get['customer_email'];
-		} else {
-			$customer_email = null;
-		}
-
-		if (isset($this->request->get['customer_phone'])) {
-			$customer_phone = $this->request->get['customer_phone'];
-		} else {
-			$customer_phone = null;
-		}
 
 		if (isset($this->request->get['status'])) {
 			$status = $this->request->get['status'];
 		} else {
 			$status = null;
+		}
+
+		if (isset($this->request->get['issue_type'])) {
+			$issue_type = $this->request->get['issue_type'];
+		} else {
+			$issue_type = null;
 		}
 
 		if (isset($this->request->get['sort'])) {
@@ -180,6 +169,7 @@ class ControllerSaleTicket extends Controller {
 		$data['customer_email'] = $customer_email;
 		$data['customer_phone'] = $customer_phone;
 		$data['status'] = $status;
+		$data['issue_type'] = $issue_type;
 
 		if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];
@@ -189,20 +179,12 @@ class ControllerSaleTicket extends Controller {
 
 		$url = '';
 
-		if (isset($this->request->get['customer_name'])) {
-			$url .= '&customer_name=' . urlencode(html_entity_decode($this->request->get['customer_name'], ENT_QUOTES, 'UTF-8'));
-		}
-
-		if (isset($this->request->get['customer_email'])) {
-			$url .= '&customer_email=' . urlencode(html_entity_decode($this->request->get['customer_email'], ENT_QUOTES, 'UTF-8'));
-		}
-
-		if (isset($this->request->get['customer_phone'])) {
-			$url .= '&customer_phone=' . urlencode(html_entity_decode($this->request->get['customer_phone'], ENT_QUOTES, 'UTF-8'));
-		}
-
 		if (isset($this->request->get['status'])) {
 			$url .= '&status=' . urlencode(html_entity_decode($this->request->get['status'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['issue_type'])) {
+			$url .= '&issue_type=' . urlencode(html_entity_decode($this->request->get['issue_type'], ENT_QUOTES, 'UTF-8'));
 		}
 		
 		if (isset($this->request->get['sort'])) {
@@ -236,10 +218,8 @@ class ControllerSaleTicket extends Controller {
 		$data['cities'] = array();
 
 		$filter_data = array(
-			'customer_name'	  => $customer_name,
-			'customer_email'	  => $customer_email,
-			'customer_phone'	  => $customer_phone,
 			'status'	  => $status,
+			'issue_type'	  => $issue_type,
 			'sort'            => $sort,
 			'order'           => $order,
 			'start'           => ($page - 1) * $this->config->get('config_limit_admin'),
@@ -378,16 +358,11 @@ class ControllerSaleTicket extends Controller {
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
-		$data['statuses'] = array('1' => 'Open', '2' => 'In Progress', '3' => 'Close');
-		$data['issuesType'] = $this->getIssues();
+		$data['statuses'] = $this->model_sale_ticket->allTicketStatuses();
+		$data['issuesType'] = $this->model_sale_ticket->allTicketTypes();
 		$data['adminusers'] = $this->model_sale_ticket->adminusers();
 		//echo "<pre />"; print_r($data); die();
 		$this->response->setOutput($this->load->view('sale/ticket_list', $data));
-	}
-
-	public function getIssues(){
-		$issues = array('1' => 'Non Delivery', '2' => 'Late Delivery', '3' => 'Partial Delivery', '4' => 'No Cake Message', '5' => 'Quality Issue', '6' => 'Broken Delivery', '7' => 'Design Issue', '8' => 'Wrong Cake Message', '9' => 'Wrong Flavour', '10' => 'Taste Issue', '11' => 'Broken/Melted delivery', '12' => 'Behaviour issue', '13' => 'False Updation', '14' => 'Hygeine Issue', '15' => 'Less Weight', '16' => 'Card Message Missing', '17' => 'Early Delivery', '18' => 'Colour Complaint');
-		return $issues;
 	}
 
 	protected function getForm() {

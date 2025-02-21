@@ -18,13 +18,34 @@ class ModelSaleTicket extends Model {
 		return $query->rows;
 	}
 
+	public function getTicketDetailsForOrder($order_id) {
+		$query = $this->db->query("select * from ".DB_PREFIX."order_ticket WHERE order_id = '" . (int)$order_id . "' ");
+		$ticketDetails = $query->rows;
+		$ticketComments = array();
+		$adminUsers = array();
+		$allData = array();
+		if($ticketDetails){
+			foreach ($ticketDetails as $key => $value) {
+				$ticketComments = $this->db->query("select * from ".DB_PREFIX."order_ticket_comment WHERE order_ticket_id = '" . (int)$value['id'] . "' ")->rows;
+				$allData[] = array("ticketDetails" => $value, "ticketComments" => $ticketComments);
+			}
+			
+		}
+		
+		return $allData;
+	}
+
 	public function getTickets($data = array()) {
-		$sql = "select *, oc.status cstatus, oc.created_at ccreated_at, oc.id cid from ".DB_PREFIX."order_ticket oc inner join oc_order o on oc.order_id = o.order_id";
+		$sql = "select *, oc.status cstatus, oc.created_at ccreated_at, oc.id cid from ".DB_PREFIX."order_ticket oc inner join oc_order o on oc.order_id = o.order_id WHERE oc.id > 0 ";
 
 		if (!empty($data['status'])) {
-			$sql .= " WHERE status LIKE '%" . $this->db->escape($data['status']) . "%'";
+			$sql .= " AND oc.status = '" . $this->db->escape($data['status']) . "'";
 		} else {
-			$sql .= " WHERE oc.status != 3";
+			$sql .= " AND oc.status != 3";
+		}
+
+		if (!empty($data['issue_type'])) {
+			$sql .= " AND oc.issue_type='" . $this->db->escape($data['issue_type']) . "'";
 		}
 
 		if($this->user->getGroupId() == 14){
@@ -138,5 +159,13 @@ class ModelSaleTicket extends Model {
 
 	public function addOrderTicket($order_id, $issue_type, $issue_detail){
 		$this->db->query("INSERT INTO `" . DB_PREFIX . "order_ticket` SET order_id = '" . $order_id . "', issue_type = '".$issue_type."', issue_detail = '".$issue_detail."', status=1, created_by = '".$this->user->getId()."', created_at=NOW()");
+	}
+
+	public function allTicketTypes(){
+		return array('Product Not Available', 'Delay in Delivery', 'Broken in transit', 'Change in Design', 'Partial Delivery', 'Address wrong/ Incomplete', 'Image not received', 'Unable to contact Recipient', 'Recipient not available');
+	}
+
+	public function allTicketStatuses(){
+		return array('1' => 'Open', '2' => 'In Progress', '3' => 'Close');
 	}
 }

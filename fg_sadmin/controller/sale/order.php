@@ -1636,6 +1636,11 @@ $dataaa = (array)$shipInfo;
 			$data['shipPopup'] = $this->model_sale_order->getShipingDetails();
 			$data['updateHistory'] = $this->model_sale_order->getOrderUpdateHistory($this->request->get['order_id']);
 
+			$this->load->model('sale/ticket');
+			$data['ticketTypes'] = $this->model_sale_ticket->allTicketTypes();
+			$data['ticketStatues'] = $this->model_sale_ticket->allTicketStatuses();
+			$data['tickets'] = $this->model_sale_ticket->getTicketDetailsForOrder($this->request->get['order_id']);
+			$data['adminUsers'] = $this->model_sale_order->getAllAdminUsers();
 			//echo "<pre />"; print_r($data); die();
 
 			$data['header'] = $this->load->controller('common/header');
@@ -1956,11 +1961,11 @@ $dataaa = (array)$shipInfo;
 
 	public function addOrderTicket() {
 		$order_id = $this->request->get['order_id'];
-		$this->load->model('sale/order');
+		$this->load->model('sale/ticket');
 
 		$detail = $this->request->post['issue_detail'];
 		
-		$this->model_sale_order->addOrderTicket($order_id, $this->request->post['issue_type'], $detail);
+		$this->model_sale_ticket->addOrderTicket($order_id, $this->request->post['issue_type'], $detail);
 		$json['success'] = 'Order ticket added successfully!';
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));

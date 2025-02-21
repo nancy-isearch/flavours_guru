@@ -223,7 +223,7 @@ Greater Noida | Chandigarh | Lucknow | Varanasi | Hyderabad | Mohali | Panchkula
             <form class="login-form-popup">
               <div class="form-group position-relative">
                 <label>Email *</label>
-                <input type="text" class="email-input" id="email-input_1" placeholder="Enter Email ID" name="">
+                <input type="email" class="email-input" id="email-input_1" placeholder="Enter Email ID" name="">
                 <div class="envlope-icon">
                   <svg style="width: 25px;" width="52" height="39" viewBox="0 0 52 39" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M0.343895 5.97954L25.73 18.6726L51.1164 5.97938C50.9249 2.64493 48.1602 0 44.7778 0H6.68252C3.30004 0 0.535328 2.64501 0.343895 5.97954Z" fill="#F65F73"/>
@@ -421,7 +421,7 @@ function showloginpop(){
   $('.backfromotp').click(function(){
   registerProcess = 0;
   $('.otp-verify-col').hide();
-  $('.login_col').show();
+  $('.ac_registor_col').show();
  })
 
  var registerIputFields = ['gst_name', 'gst_phone_code', 'gst_phone', 'gst_email'];
@@ -445,6 +445,7 @@ function showloginpop(){
           $('.login_col').hide();
            if(data.status == 1){
             $('.otp-verify-col').show();
+            $('.ac_registor_col').hide();
             $('.mobilenumhide').html(data.mobile);
            } else {
             $('.mobile-error-msg').html(data.message);
@@ -507,15 +508,15 @@ function showloginpop(){
   //$('.bg-img').fadeOut();
  })
  var mobile = '';
- var inp = '';
+ const inp = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
  $('.email_contine').click(function(){
-  inp = $('#email-input_1').val();
-  if(!inp){
-    alert("Please enter email");
+  email_inp = $('#email-input_1').val();
+  if(!inp.test($('#email-input_1').val())){
+    alert("Please enter valid email");
   } else {
     $.ajax({
         url: 'index.php?route=account/login/sendEmailMobileLoginOtp',
-        data: "email=" + inp,
+        data: "email=" + email_inp,
         type: 'post',
         success: function(data) {
           data = JSON.parse(data);
@@ -523,10 +524,11 @@ function showloginpop(){
            if(data.status == 1){
             mobile = data.actualMobile;
             $('.otp-verify-col').show();
+            $('.ac_registor_col').hide();
             $('.mobilenumhide').html(data.mobile);
            } else if(data.status == 2){
             $('.ac_registor_col').show();
-            $('#gst_email').val(inp);
+            $('#gst_email').val(email_inp);
             $('#gst_name').val(data.name);
             $("#gst_name").prop("readonly",true);
             $("#gst_email").prop("readonly",true);
@@ -536,7 +538,7 @@ function showloginpop(){
            } else {
             $('.ac_registor_col').show();
             $('#gst_name').val("");
-            $('#gst_email').val(inp);
+            $('#gst_email').val(email_inp);
             $("#gst_name").prop("readonly",false);
             $("#gst_email").prop("readonly",true);
             $('.register_heding').html("Register");
@@ -554,7 +556,7 @@ function showloginpop(){
  $('.resend_otp').click(function(){
   $.ajax({
         url: 'index.php?route=account/login/sendEmailMobileLoginOtp',
-        data: "email=" + inp,
+        data: "email=" + email_inp,
         type: 'post',
         success: function(data) {
           data = JSON.parse(data);
@@ -591,6 +593,13 @@ function showloginpop(){
       $("#error").empty();
       //$('#button-shipping-address').attr('disabled',false);
     }
+  });
+
+  $(".phone-enter").keydown(function(event) {
+    if(event.ctrlKey==true && (event.which == '118' || event.which == '86')) {
+      alert('You can not copy and paste please write us here the your valid mobile number');
+      event.preventDefault();
+     }
   });
 
   if ($(window).width() < 767) {

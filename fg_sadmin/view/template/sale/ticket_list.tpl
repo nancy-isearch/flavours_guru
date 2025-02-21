@@ -26,32 +26,28 @@
         <h3 class="panel-title"><i class="fa fa-list"></i> <?php echo $text_list; ?></h3>
       </div>
       <div class="panel-body">
-        <div style="display: none;">
-          <div class="well">
-            <div class="row">
-              <form method="post" action="index.php?route=sale/complaint/downloadcsv&token=<?php echo $token; ?>">
-              <div class="col-sm-12">
-                <div class="form-group col-sm-6">
-                  <label class="control-label" for="input-date-start">Date Start</label>
-                  <div class="input-group date">
-                    <input type="text" name="filter_date_start" value="<?php echo $filter_date_start; ?>" placeholder="Date Start" data-date-format="YYYY-MM-DD" id="input-date-start" class="form-control" />
-                    <span class="input-group-btn">
-                    <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
-                    </span></div>
-                </div>
-                <div class="form-group col-sm-6">
-                  <label class="control-label" for="input-date-end">Date End</label>
-                  <div class="input-group date">
-                    <input type="text" name="filter_date_end" value="<?php echo $filter_date_end; ?>" placeholder="Date End" data-date-format="YYYY-MM-DD" id="input-date-end" class="form-control" />
-                    <span class="input-group-btn">
-                    <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
-                    </span></div>
-                </div>
+        <div class="well">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group col-sm-6">
+                <label class="control-label" for="input-name">Issue Type</label>
+                <select class="form-control" name="issue_type" id="issue_type">
+                  <option value="">Please Select</option>
+                  <?php foreach ($issuesType as $key => $value) { ?>
+                    <option value="<?php echo $key; ?>" <?php echo (!empty($issue_type) && $issue_type == $key) ? 'selected' : '' ?>><?php echo $value; ?></option>
+                  <?php } ?>
+                </select>
               </div>
-              <div class="col-sm-12">
-                <button type="submit" class="btn btn-primary btn-xs pull-left" style="margin-left: 15px;"> Download CSV</button>
+              <div class="form-group col-sm-6">
+                <label class="control-label" for="input-name">Status</label>
+                <select class="form-control" name="status" id="status">
+                  <option value="">Please Select</option>
+                  <?php foreach ($statuses as $key => $value) { ?>
+                    <option value="<?php echo $key; ?>" <?php echo ($status == $key) ? 'selected' : '' ?>><?php echo $value; ?></option>
+                  <?php } ?>
+                </select>
               </div>
-              </form>
+              <button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-filter"></i> <?php echo $button_filter; ?></button>
             </div>
           </div>
         </div>
@@ -87,7 +83,7 @@
                         if($c > 0){
                           echo "<br><br>";
                         }
-                        echo $value['comment']." - ".ucfirst($adminusers[$value['added_by']]);
+                        echo $value['comment']." - ".ucfirst($adminusers[$value['added_by']]) .' | '.date('d/m/Y h:i:a', strtotime($value['date_added']));
                         $c++;
 
                       } ?>
@@ -129,32 +125,19 @@
   </div>
   <script type="text/javascript">
 $('#button-filter').on('click', function() {
-	var url = 'index.php?route=sale/followup&token=<?php echo $token; ?>';
-
-	var customer_name = $('input[name=\'customer_name\']').val();
-
-	if (customer_name) {
-		url += '&customer_name=' + encodeURIComponent(customer_name);
-	}
-
-  var customer_email = $('input[name=\'customer_email\']').val();
-
-  if (customer_email) {
-    url += '&customer_email=' + encodeURIComponent(customer_email);
-  }
-
-  var customer_phone = $('input[name=\'customer_phone\']').val();
-
-  if (customer_phone) {
-    url += '&customer_phone=' + encodeURIComponent(customer_phone);
-  }
+  var url = 'index.php?route=sale/ticket&token=<?php echo $token; ?>';
 
   var status = $('#status').val();
   if (status) {
     url += '&status=' + encodeURIComponent(status);
   }
 
-	location = url;
+  var issue_type = $('#issue_type').val();
+  if (issue_type) {
+    url += '&issue_type=' + encodeURIComponent(issue_type);
+  }
+
+  location = url;
 });
 </script>
   <script type="text/javascript">

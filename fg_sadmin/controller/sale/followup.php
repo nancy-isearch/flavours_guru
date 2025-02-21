@@ -762,7 +762,6 @@ class ControllerSaleFollowup extends Controller {
 		header('Content-Disposition: attachment; filename=followup-'.date("d-m-Y").'.csv');
 		$output = fopen('php://output', 'w');
 		fputcsv($output, array('Name', 'Number', 'Email', 'Type', 'Disposition', 'Created Date', 'Created Time', 'Disposed Date', 'Disposed Time', 'Disposed By'));
-		$status = array('1' => 'New Lead', '2' => 'Not Interested', '3' => 'Number Busy', '4' => 'Call Back', '5' => 'Order Placed', '6' => 'Not Answering', '7' => 'Closed', '8' => 'Duplicate entry', '9' => 'Connected on Wati', '10' => 'Wrong Number');
 		$all = array();
 		foreach ($results as $rslt) {
 			$aa = array();
@@ -770,7 +769,7 @@ class ControllerSaleFollowup extends Controller {
 			$aa[] = $rslt['customer_phone'];
 			$aa[] = $rslt['customer_email'];
 			$aa[] = ucfirst($rslt['type']);
-			$aa[] = $status[$rslt['fstatus']];
+			$aa[] = $this->getStatus()[$rslt['fstatus']];
 			$aa[] = (empty($rslt['fdate_added'])) ? '' : date("d-m-Y", strtotime($rslt['fdate_added']));
 			$aa[] = (empty($rslt['fdate_added'])) ? '' : date("H:i A", strtotime($rslt['fdate_added']));
 			$aa[] = (empty($rslt['cdate_added'])) ? '' : date("d-m-Y", strtotime($rslt['cdate_added']));

@@ -602,6 +602,12 @@ body.addon-overflow{overflow:hidden;}
     resize: none;
     -webkit-appearance: initial;
 }
+select.product_input{
+	-webkit-appearance: auto;
+}
+select.product_input option{
+	color: #22303D;
+}
 .product_tab_band{
 	padding: 15px;
 	background: #FEEFF1;

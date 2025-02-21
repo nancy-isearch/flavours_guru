@@ -311,7 +311,7 @@
     $currentTime = time();
      ?>
     
-    <div class="panel panel-default" <?php echo (($currentTime - $inputTime) < 300) ? "style='display: none;'" : '' ?>>
+    <div class="panel panel-default" <?php echo (($currentTime - $inputTime) < 60) ? "style='display: none;'" : '' ?>>
       <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-comment-o"></i> <?php echo $text_history; ?></h3>
       </div>
@@ -561,7 +561,7 @@
 
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-bell"></i> Add Ticket</h3>
+        <h3 class="panel-title"><i class="fa fa-bell"></i> Ticket</h3>
       </div>
       <div class="panel-body">
         <div class="row" id="tab-history">
@@ -571,9 +571,9 @@
                   <label class="col-sm-2 control-label" for="input-order-status">Issue Type</label>
                   <div class="col-sm-10">
                     <select name="ticket_issue_type" id="input-order-complaint" class="form-control order_status_update">
-                      <option value="0">Please select</option>
-                      <option value="1">Non Delivery</option>
-                      <option value="2">Late Delivery</option>
+                      <?php foreach ($ticketTypes as $ticketKey => $ticketType) { ?>
+                      	<option value="<?php echo $ticketKey ?>"><?php echo $ticketType ?></option>
+                      <?php } ?>
                     </select>
                   </div>
                 </div>
@@ -589,6 +589,55 @@
               <button id="button-ticket" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Create Ticket</button>
             </div>
           </div>
+      </div>
+      <div class="panel-body">
+      	<div class="row">
+      		<table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <td class="text-left">Ticket Id</td>
+                  <td class="text-left">Issue Type</td>
+                  <td class="text-left">Issue Details</td>
+                  <td class="text-left">Vendor</td>
+                  <td class="text-left">Created</td>
+                  <td class="text-left">Status</td>
+                </tr>
+              </thead>
+              <tbody>
+                <?php if ($tickets) { ?>
+                <?php foreach ($tickets as $ticket) { ?>
+                <tr>
+                  <td class="text-left"><?php echo $ticket['ticketDetails']['id']; ?></td>
+                  <td class="text-left"><?php echo $ticketTypes[$ticket['ticketDetails']['issue_type']]; ?></td>
+                  <td class="text-left">
+                    <?php echo $ticket['ticketDetails']['issue_detail']; ?>
+                      <br><br>
+                      
+                      <?php $c = 0; foreach ($ticket['ticketComments'] as $key => $value) {
+                        if($c == 0){
+                          echo "<b>Comments:</b><br>";
+                        }
+                        if($c > 0){
+                          echo "<br><br>";
+                        }
+                        echo $value['comment']." ---- ".ucfirst($adminUsers[$value['added_by']]['username']) .' | '.date('d/m/Y h:i:a', strtotime($value['date_added']));
+                        $c++;
+
+                      } ?>
+                    </td>
+                  <td class="text-left"><?php echo ucfirst($adminUsers[$vendor_id]['username']); ?></td>
+                  <td class="text-left"><?php echo date('d/m/Y', strtotime($ticket['ticketDetails']['created_at'])); ?></td>
+                  <td class="text-left"><?php echo $ticketStatues[$ticket['ticketDetails']['status']]; ?></td>
+                </tr>
+                <?php } ?>
+                <?php } else { ?>
+                <tr>
+                  <td class="text-center" colspan="8"><?php echo $text_no_results; ?></td>
+                </tr>
+                <?php } ?>
+              </tbody>
+            </table>
+      	</div>
       </div>
     </div>
 
@@ -1293,6 +1342,7 @@ $('#button-ticket').on('click', function() {
       $('.alert').remove();
 
       alert("Ticket added successfully");
+      window.location.reload();
     },
     error: function(xhr, ajaxOptions, thrownError) {
       alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);

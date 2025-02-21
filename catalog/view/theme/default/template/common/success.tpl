@@ -72,6 +72,9 @@
     border-top: 0 !important;
     padding-top: 0;
   }
+  .succ-prd-dtl tr:last-child{
+  	display: none;
+  }
   @media screen and (max-width: 767px){
     .place-order-success{
       width: 100%;
@@ -172,7 +175,7 @@
           <div class="btm-card-band text-center mb-15">
             <p class="mb-0 font-weight-600">Shipping Details</p>
           </div>
-          <table class="table cart_table mb-0">
+          <table class="table cart_table mb-0 succ-prd-dtl">
             
             <?php foreach ($shipInfo as $key => $value) { ?>
             <tr>
