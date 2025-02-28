@@ -163,7 +163,13 @@ class ModelSaleOdb extends Model {
 		
 		$date_forshipping = date('Y-m-d', strtotime('+1 year', strtotime($data1['date_forshipping'])));
 		
-		$data2 = $this->db->query("SELECT * FROM oc_order where date_forshipping = '".$date_forshipping."' AND (customer_id = '".$data1['customer_id']."' OR telephone = '".$data1['telephone']."' OR payment_mobile = '".$data1['payment_mobile']."')")->row;
+		$sqlCon = "";
+		if($data1['customer_id']){
+			$sqlCon = "customer_id = '".$data1['customer_id']."' OR";
+		}
+
+
+		$data2 = $this->db->query("SELECT * FROM oc_order where date_forshipping = '".$date_forshipping."' AND ( ".$sqlCon." telephone = '".$data1['telephone']."' OR payment_mobile = '".$data1['payment_mobile']."')")->row;
 		
 		if(count($data2) == 0){
 			$this->db->query("INSERT INTO " . DB_PREFIX . "odb SET status = 1, order_id = '" . $id . "', created_by = '".$this->user->getId()."', created_at = NOW()");

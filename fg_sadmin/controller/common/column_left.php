@@ -1086,6 +1086,12 @@ class ControllerCommonColumnLeft extends Controller {
 			} else {
 				$data['statsshow16'] = true;
 			}
+
+			if($this->user->getGroupId() && ($this->user->getGroupId() == 22)){
+				$data['menus'] = array();
+				$data['statsshow22'] = false;
+				$data['odb'] = $this->url->link('sale/odb', 'token=' . $this->session->data['token'], true);
+			}
 			$data['pnc'] = $this->url->link('sale/pnc', 'token=' . $this->session->data['token'], true);
 			if($showOrder){
 				$data['order'] = $this->url->link('sale/order', 'token=' . $this->session->data['token'], true);

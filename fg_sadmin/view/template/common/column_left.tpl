@@ -91,6 +91,14 @@
       </li>
     </ul>
   <?php } ?>
+  <?php if(isset($statsshow22) && !$statsshow22){ ?>
+  here123
+    <ul id="menu">
+      <li id="menu-dashboard">
+        <a href="<?php echo $odb ?>"><i class="fa fa-shopping-cart fw"></i> <span>ODB</span></a>
+      </li>
+    </ul>
+  <?php } ?>
 
   <?php if(isset($addOrderAdmin) && !empty($addOrderAdmin)){ ?>
     <ul id="menu">
