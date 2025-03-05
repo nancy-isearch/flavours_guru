@@ -158,6 +158,11 @@ class ModelSaleOdb extends Model {
 	}
 
 	public function selfAssign($id){
+		$existing = $this->db->query("SELECT * FROM oc_odb where order_id = '".$id."'")->row;
+		if($existing){
+			return 1;
+		}
+
 		$query = $this->db->query("SELECT order_id, customer_id, telephone, payment_mobile, date_forshipping FROM oc_order where order_id = '".$id."'");
 		$data1 = $query->row;
 		
@@ -173,10 +178,10 @@ class ModelSaleOdb extends Model {
 		
 		if(count($data2) == 0){
 			$this->db->query("INSERT INTO " . DB_PREFIX . "odb SET status = 1, order_id = '" . $id . "', created_by = '".$this->user->getId()."', created_at = NOW()");
-			return true;	
+			return 2;	
 		} else {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "odb SET status = 5, order_id = '" . $id . "', created_by = '".$this->user->getId()."', created_at = NOW()");
-			return false;
+			return 3;
 		}	
 		
 	}

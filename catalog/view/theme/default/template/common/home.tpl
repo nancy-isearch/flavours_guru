@@ -117,7 +117,22 @@
               </div>
             </a>
             <p>Valentine's<br> Day</p>
+          </li>
+          <li>
+            <a href="/womens-day" class="hover-zoom-col">
+              <div class="position-relative">
+               <img style="border-radius: 50%" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/icon-bg.jpg" alt=""> 
+               <lottie-player class="gif-icon" src="catalog/view/theme/default/image/Home/women.json" background="transparent" speed="1" loop="" autoplay=""></lottie-player>
+              </div>
+            </a>
+            <p>Women’s<br> Day</p>
           </li>*/ ?>
+          <li>
+            <a href="/womens-day" class="hover-zoom-col">
+              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/womens-day.png" alt="a customised three-layered orange cake">
+            </a>
+            <p>Women’s Day</p>
+          </li>
           <li>
             <a href="/customize" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/custom-cakes.png" alt="a customised three-layered orange cake">
@@ -160,12 +175,12 @@
             </a>
             <p>Premium</p>
           </li>
-          <li>
+          <!-- <li>
             <a href="/photo-cakes" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/photo-cake.png" alt="A photo frame featuring a cake and cupcakes">  
             </a>
             <p>Photo Cakes</p>
-          </li>
+          </li> -->
            <?php /*<li>
             <a href="/custom-theme-cakes" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/theme-cake.png" alt="Theme Cakes">  

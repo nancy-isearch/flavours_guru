@@ -103,7 +103,7 @@
             </table>
           </div>
         <div class="row">
-          <div class="col-sm-6 text-left"><?php echo $pagination; ?></div>
+          <div class="col-sm-6 text-left" style="display: none;"><?php echo $pagination; ?></div>
           <div class="col-sm-6 text-right"><?php echo $results; ?></div>
         </div>
       </div>
@@ -182,7 +182,9 @@ $('input[name=\'filter_name\']').autocomplete({
       data: {id: id},
       success: function(json) {
         var json = JSON.parse(json)
-        if(json.status){
+        if(json.status == 1){
+          alert('Already started!');  
+        } else if(json.status == 2){
           alert('Self started successfully!');  
         } else {
           alert('Order is already placed for this lead!');
