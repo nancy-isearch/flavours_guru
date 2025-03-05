@@ -1420,8 +1420,8 @@ class ControllerProductProduct extends Controller {
 		foreach ($rows as $row) {
 			$ids[] = $row['order_id'];
 			$send1 = array();
-			$send1['template_name'] = 'pncv2180724';
-			$send1['broadcast_name'] = 'pncv2180724';
+			$send1['template_name'] = 'pnc0503252';
+			$send1['broadcast_name'] = 'pnc0503252';
 			$send1['parameters'][] = array('name' => 'name', 'value' => $row['payment_firstname']);
 			$send1['parameters'][] = array('name' => 'order_amount', 'value' => $row['total']);
 			$send1['parameters'][] = array('name' => 'agent', 'value' => 'Vivek');
