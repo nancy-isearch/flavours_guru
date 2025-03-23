@@ -752,23 +752,23 @@ class ControllerSaleOdb extends Controller {
 		$results = $this->model_sale_odb->csvdata($filter_data);
 		$adminusers = $this->model_sale_odb->adminusers();
 		header('Content-Type: text/csv; charset=utf-8');
-		header('Content-Disposition: attachment; filename=pnc-'.date("d-m-Y").'.csv');
+		header('Content-Disposition: attachment; filename=odb-'.date("d-m-Y").'.csv');
 		$output = fopen('php://output', 'w');
-		fputcsv($output, array('Order ID', 'Name', 'Number', 'Email', 'Disposition', 'Created Date', 'Created Time', 'Disposed Date', 'Disposed Time', 'Disposed By'));
-		$status = array('1' => 'New Lead', '2' => 'Not Interested', '3' => 'Number Busy', '4' => 'Call Back', '5' => 'Order Placed', '6' => 'Not Answering', '7' => 'Closed', '8' => 'Duplicate entry', '9' => 'Connected on Wati', '10' => 'Wrong Number');
+		fputcsv($output, array('Order ID', 'ODB ID', 'Name', 'Number', 'Email', 'Current ODB Status', 'ODB Created At', 'ODB Created By', 'Order Date Date', 'Order Delivery Date'));
+		$status = $this->getStatus();
 		$all = array();
 		foreach ($results as $rslt) {
 			$aa = array();
 			$aa[] = $rslt['mainid'];
+			$aa[] = $rslt['fcid'];
 			$aa[] = $rslt['payment_firstname'];
 			$aa[] = $rslt['payment_mobile'];
 			$aa[] = $rslt['payment_email'];
-			$aa[] = $status[$rslt['fstatus']];
-			$aa[] = (empty($rslt['fdate_added'])) ? '' : date("d-m-Y", strtotime($rslt['fdate_added']));
-			$aa[] = (empty($rslt['fdate_added'])) ? '' : date("H:i A", strtotime($rslt['fdate_added']));
-			$aa[] = (empty($rslt['cdate_added'])) ? '' : date("d-m-Y", strtotime($rslt['cdate_added']));
-			$aa[] = (empty($rslt['cdate_added'])) ? '' : date("H:i A", strtotime($rslt['cdate_added']));
-			$aa[] = (empty($rslt['caddedby'])) ? '' : $adminusers[$rslt['caddedby']];
+			$aa[] = $status[$rslt['fcstatus']];
+			$aa[] = (empty($rslt['fcdate_added'])) ? '' : date("d-m-Y H:i A", strtotime($rslt['fcdate_added']));
+			$aa[] = (empty($rslt['fcaddedby'])) ? '' : $adminusers[$rslt['fcaddedby']];
+			$aa[] = (empty($rslt['fdate_added'])) ? '' : date("d-m-Y H:i A", strtotime($rslt['fdate_added']));
+			$aa[] = (empty($rslt['date_forshipping'])) ? '' : date("d-m-Y", strtotime($rslt['date_forshipping']));
 			$all[] = $aa;
 		}
 		if (count($all) > 0) {

@@ -26,7 +26,35 @@
         <h3 class="panel-title"><i class="fa fa-list"></i> <?php echo $text_list; ?></h3>
       </div>
       <div class="panel-body">
-        
+        <div>
+          <div class="well">
+            <div class="row">
+              <form method="post" action="index.php?route=sale/odb/downloadcsv&token=<?php echo $token; ?>">
+              <div class="col-sm-12">
+                <div class="form-group col-sm-6">
+                  <label class="control-label" for="input-date-start">Date Start</label>
+                  <div class="input-group date">
+                    <input type="text" name="filter_date_start" value="<?php echo $filter_date_start; ?>" placeholder="Date Start" data-date-format="YYYY-MM-DD" id="input-date-start" class="form-control" />
+                    <span class="input-group-btn">
+                    <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                    </span></div>
+                </div>
+                <div class="form-group col-sm-6">
+                  <label class="control-label" for="input-date-end">Date End</label>
+                  <div class="input-group date">
+                    <input type="text" name="filter_date_end" value="<?php echo $filter_date_end; ?>" placeholder="Date End" data-date-format="YYYY-MM-DD" id="input-date-end" class="form-control" />
+                    <span class="input-group-btn">
+                    <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                    </span></div>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <button type="submit" class="btn btn-primary btn-xs pull-left" style="margin-left: 15px;"> Download CSV</button>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
         <div class="well">
           <div class="row">
             <div class="col-sm-12">

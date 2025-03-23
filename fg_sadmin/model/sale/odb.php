@@ -125,18 +125,17 @@ class ModelSaleOdb extends Model {
 
 	public function csvdata($data){
 		$date = date('Y-m-d',strtotime('-15 days'));
-		$sql = "SELECT *, f.order_id mainid, f.date_added fdate_added, fc.date_added cdate_added, f.pnc_status fstatus, fc.added_by caddedby FROM oc_order f LEFT JOIN oc_pnc_comment fc on f.order_id = fc.order_id where f.order_status_id = 0 ";
+		$sql = "SELECT *, fc.id fcid, f.order_id mainid, f.date_added fdate_added, fc.created_at fcdate_added, f.order_status_id fstatus, fc.status fcstatus, fc.created_by fcaddedby FROM oc_odb fc  LEFT JOIN oc_order f on f.order_id = fc.order_id where f.order_status_id >= 0 ";
 
 		if (!empty($data['filter_date_start'])) {
-			$sql .= " AND DATE(f.date_added) >= '" . $this->db->escape($data['filter_date_start']) . "'";
+			$sql .= " AND DATE(fc.created_at) >= '" . $this->db->escape($data['filter_date_start']) . "'";
 		}
 
 		if (!empty($data['filter_date_end'])) {
-			$sql .= " AND DATE(f.date_added) <= '" . $this->db->escape($data['filter_date_end']) . "'";
+			$sql .= " AND DATE(fc.created_at) <= '" . $this->db->escape($data['filter_date_end']) . "'";
 		}
 
 		$sql .= " ORDER BY fc.id asc";
-		//echo $sql; die();
 		$query = $this->db->query($sql);
 		$rows = $query->rows;
 		$data = array();
