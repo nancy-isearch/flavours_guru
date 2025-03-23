@@ -337,6 +337,26 @@ body.product-category-65.offermsg .container.top_positionn{
 .responseFilter h2{
 	font-size: 18px;
 }
+@media screen and (min-width:991px){
+  .product-layout.product-list{
+    width:25% !important;
+  }
+}
+@media screen and (min-width:991px) and (max-width: 1200px){
+  .row.category.category_main_col{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .category_main_row_col .product-grid .product-thumb .image {
+    height: 200px;
+  }
+  .category_main_row_col .product-thumb {
+    height: 330px !important;
+  }
+  .product-grid .product-thumb .caption{
+    padding: 0;
+  }
+}
 @media screen and (max-width: 767px){
   .product-info-detail{
     visibility: visible;
@@ -1354,42 +1374,24 @@ function closetags($html) {
 
 <script type="application/ld+json">
 {
-"@context": "http://schema.org",
+"@context": "https://schema.org",
 "@type": "Product",
 "description": "<?php echo $heading_title; ?>",
 "name": "<?php echo $heading_title; ?>",
 <?php if(isset($allreviews['cnt']) && !empty($allreviews['cnt']) && $allreviews['cnt'] > 0) { ?>
 "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "<?php echo $allreviews['average'] ?>",
-    "reviewCount": "<?php echo $allreviews['cnt']; ?>"
+    "ratingValue": <?php echo $allreviews['average'] ?>,
+    "reviewCount": <?php echo $allreviews['cnt']; ?>
   },
-  "review": [
-  <?php $v = 0; foreach ($allreviews['all'] as $value) { $v++; ?>
-    {
-      "@type": "Review",
-      "author": {
-          "@type": "Person",
-          "name": "<?php echo $value['author'] ?>"
-        },
-      "datePublished": "<?php echo date('Y-m-d', strtotime($value['date_added'])) ?>",
-      "reviewBody": "<?php echo $value['text'] ?>",
-      "reviewRating": {
-        "@type": "Rating",
-        "bestRating": "5",
-        "ratingValue": "<?php echo $value['rating'] ?>",
-        "worstRating": "1"
-      }
-    } <?php if($v < $allreviews['cnt']) {echo ',';} ?>
-  <?php } ?>
-  ],
 
   <?php } ?>
   "offers": {
           "@type": "AggregateOffer",
-          "lowPrice": "<?php echo $pMinPrice; ?>",
-          "highPrice": "<?php echo $pMaxPrice; ?>",
-          "priceCurrency": "INR"
+          "lowPrice": <?php echo round($pMinPrice); ?>,
+          "highPrice": <?php echo round($pMaxPrice); ?>,
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock"
         }
 }
 </script>

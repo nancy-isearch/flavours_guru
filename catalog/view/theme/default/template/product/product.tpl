@@ -1209,7 +1209,7 @@
                       <div class="close-pincode-list">
                         <svg class="" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"></path></svg>
                       </div>
-                      <div style="color: red; display: none;" class="soorypincode">Sorry, this pincode is not serviceable.</div>
+                      <div style="color: red; display: none;" class="soorypincode">This product can not be delivered at the desired location.</div>
                       <div style="color: green; display: none;" class="availablepincode">Delivery is available for this pincode.</div>
                       <div class="pincodelist custom-scroll">
                       </div>
@@ -2152,6 +2152,7 @@
             } else {
               $('.soorypincode').show();
               $('.pincodelist').empty();
+              cityIdFromPincode = 0;
             }
           }
       })
@@ -3094,7 +3095,7 @@
     <?php if(isset($ptotalreviews) && $ptotalreviews) { ?>
       <span itemscope itemprop="aggregateRating" itemtype="http://schema.org/AggregateRating">
         <meta itemprop="reviewCount" content="<?php echo $ptotalreviews; ?>">
-        <meta itemprop="ratingValue" content="<?php echo $prating; ?>">
+        <meta itemprop="ratingValue" content="<?php echo $raverage; ?>">
       </span>
     <?php } ?>
     <?php foreach($reviewresults as $result) { ?>

@@ -607,7 +607,7 @@ function fetchDetails(){
       $.ajax({
           type: "POST",
           url: <?php echo '"'.HTTP_CATALOG.'index.php?route=product/product/getPincodesList"' ?>,
-          data: {pins:pins},
+          data: {pins:pins,proId:cur_product_id},
           cache: false,
           success: function(data){
             var data = jQuery.parseJSON(data);

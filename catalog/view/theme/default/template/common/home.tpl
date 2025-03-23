@@ -126,13 +126,13 @@
               </div>
             </a>
             <p>Women’s<br> Day</p>
-          </li>*/ ?>
+          </li>
           <li>
             <a href="/womens-day" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/womens-day.png" alt="a customised three-layered orange cake">
             </a>
             <p>Women’s Day</p>
-          </li>
+          </li>*/ ?>
           <li>
             <a href="/customize" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/custom-cakes.png" alt="a customised three-layered orange cake">
@@ -175,12 +175,12 @@
             </a>
             <p>Premium</p>
           </li>
-          <!-- <li>
+          <li>
             <a href="/photo-cakes" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/photo-cake.png" alt="A photo frame featuring a cake and cupcakes">  
             </a>
             <p>Photo Cakes</p>
-          </li> -->
+          </li>
            <?php /*<li>
             <a href="/custom-theme-cakes" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/theme-cake.png" alt="Theme Cakes">  

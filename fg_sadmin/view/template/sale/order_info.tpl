@@ -932,7 +932,7 @@
     $.ajax({
       url: '/index.php?route=product/product/getPincodesList',
       type: 'post',
-      data: 'pins='+popuppincode,
+      data: 'pins='+popuppincode+'&proId='+main_product_id,
       dataType: 'json',
       success: function(data) {
         $('.citypopup').val(data[0].name);

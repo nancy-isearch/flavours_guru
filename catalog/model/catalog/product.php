@@ -710,7 +710,12 @@ class ModelCatalogProduct extends Model {
 	}
 
 	public function getPincodesList($pincode, $proId){
-		$sql = "Select p.*, c.display_name as name, c.holidays from oc_shipping_pincodes p inner join oc_shipping_cities c ON p.shipping_cities_id = c.id where p.pincode LIKE '".$pincode."%' AND p.status=1";
+		if(strlen($pincode) == 6){
+			$sql = "SELECT p.*, c.display_name AS name, c.holidays FROM oc_shipping_pincodes p INNER JOIN oc_shipping_cities c ON p.shipping_cities_id = c.id WHERE p.pincode = '".$pincode."' AND p.status = 1 AND EXISTS (SELECT 1 FROM oc_shipping_type st JOIN oc_shipping_to_product stp ON stp.shipping_id = st.id JOIN oc_shipping_citygrp_to_city ctc ON st.city_group_id = ctc.city_grp_id WHERE ctc.city_id = c.id AND st.active = 1 AND stp.product_id = '".$proId."');";
+		} else {
+			$sql = "Select p.*, c.display_name as name, c.holidays from oc_shipping_pincodes p inner join oc_shipping_cities c ON p.shipping_cities_id = c.id where p.pincode LIKE '".$pincode."%' AND p.status=1";	
+		}
+		
 		$query = $this->db->query($sql);
 		$dd = array();
 		$allData = array();
