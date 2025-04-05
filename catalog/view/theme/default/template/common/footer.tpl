@@ -281,10 +281,10 @@ Greater Noida | Chandigarh | Lucknow | Varanasi | Hyderabad | Mohali | Panchkula
                 <form>
                   <div class="form-group">
                     <div class="code-vrfy-field d-flex justify-content-center">
-                      <input autocomplete="off" oninput= "userEnterOtp(this,1)" name="enter_otp1" id="enter_otp1" type="number" maxlength="1">
-                      <input autocomplete="off" oninput= "userEnterOtp(this,2)" name="enter_otp2" id="enter_otp2" type="number" maxlength="1">
-                      <input autocomplete="off" oninput= "userEnterOtp(this,3)" name="enter_otp3" id="enter_otp3" type="number" maxlength="1">
-                      <input autocomplete="off" oninput= "userEnterOtp(this,4)" name="enter_otp4" id="enter_otp4" type="number" maxlength="1">
+                      <input class="otp-limit-val" autocomplete="off" oninput= "userEnterOtp(this,1)" name="enter_otp1" id="enter_otp1" type="number" maxlength="1">
+                      <input class="otp-limit-val" autocomplete="off" oninput= "userEnterOtp(this,2)" name="enter_otp2" id="enter_otp2" type="number" maxlength="1">
+                      <input class="otp-limit-val" autocomplete="off" oninput= "userEnterOtp(this,3)" name="enter_otp3" id="enter_otp3" type="number" maxlength="1">
+                      <input class="otp-limit-val" autocomplete="off" oninput= "userEnterOtp(this,4)" name="enter_otp4" id="enter_otp4" type="number" maxlength="1">
                       <span id="incorrect_text" class="error"></span>
                     </div>
                   </div>
@@ -422,6 +422,10 @@ function showloginpop(){
   registerProcess = 0;
   $('.otp-verify-col').hide();
   $('.ac_registor_col').show();
+  $("#enter_otp1").val('');
+  $("#enter_otp2").val('');
+  $("#enter_otp3").val('');
+  $("#enter_otp4").val('');
  })
 
  var registerIputFields = ['gst_name', 'gst_phone_code', 'gst_phone', 'gst_email'];
@@ -570,6 +574,10 @@ function showloginpop(){
             alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
+    $("#enter_otp1").val('');
+    $("#enter_otp2").val('');
+    $("#enter_otp3").val('');
+    $("#enter_otp4").val('');
  });
  $('.email-edit').on('click', function(){
   $('.ac_registor_col').hide();
@@ -672,6 +680,15 @@ function userEnterOtp(number,val){
     //$('.verify-otp-btn').prop('disabled', false);
   }
 }
+$('.otp-limit-val').on('input', function() {
+    var value = $(this).val();
+    if (value.length > 1 || isNaN(value)) {
+        $(this).val(value.slice(0, 1));
+    }
+    if (value.length === 1) {
+        $(this).next('input').focus();
+    }
+});
 
 $('.checkout_btn').click(function(){
   showloginpop();

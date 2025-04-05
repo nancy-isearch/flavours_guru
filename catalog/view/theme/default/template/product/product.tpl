@@ -317,7 +317,7 @@
   input[type=number] {
     -moz-appearance: textfield;
   }
-  .soorypincode, .selectpincodeerr{
+  .selectpincodeerr{
     text-transform: capitalize;
   }
   .item-add-input {
@@ -621,6 +621,38 @@
                   <!--<li><?= $text_stock; ?> <?= $stock; ?></li>-->
                 </ul>
                </div>
+
+               <?php if ($options) { ?>
+                  <!--    <hr> -->
+                  <?php /* ?>
+                  <h3><?= $text_option; ?></h3>
+                  <?php */ ?>
+                  <div class="row">
+                  <?php 
+                     foreach ($options as $option) { ?>
+               <?php if ($option['type'] == 'radio') { ?>
+                  <div class="xs-pr-0 xs-pl-0 xs-mb-0 col-md-12 col-sm-12 col-xs-12 form-group<?= ($option['required'] ? ' required' : ''); ?>">
+                     <!-- <label class="control-label"><?= $option['name']; ?></label> -->
+                     <!-- <p style="font-size: 14px;font-weight: 600;margin-bottom: 0">Choose Weight</p> -->
+                     <div class="display-flex flex-nowrap cake_weight_row" id="input-option<?= $option['product_option_id']; ?>">
+                        <?php foreach ($option['product_option_value'] as $option_value) { ?>
+                        <div class="radio weight_radio">
+                           <label for="cake_<?= $option_value['product_option_value_id']; ?>" class="weight_cake_btn home-secondary-btn" price="<?= $option_value['simpleprice']; ?>" opttext="<?= $option_value['name']; ?>">
+                           <input style="display: none;" id="cake_<?= $option_value['product_option_value_id']; ?>" type="radio" name="option[<?= $option['product_option_id']; ?>]" class="weightradio" value="<?= $option_value['product_option_value_id']; ?>" />
+                           <?php if ($option_value['image']) { ?>
+                           <img src="<?= $option_value['image']; ?>" alt="<?= $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" class="img-thumbnail" /> 
+                           <?php } ?>                    
+                           <?= $option_value['name']; ?>
+                           
+                           </label>
+                        </div>
+                        <?php } ?>
+                     </div>
+                  </div>
+                  <?php } ?>
+              <?php } ?>
+              </div>
+          <?php } ?>
                
                <div class="mobile-pick-an-upgrade"></div>
                <span id="errorMsg" style="color: red;"></span>
@@ -1201,7 +1233,7 @@
                   <div class="col-sm-6">
                      <!-- <div class="col-sm-12 label">Delivery To <span class="astrik">*</span></div> -->
                      <div class="col-sm-12 select_city_col">
-                      <input pattern='[0–9]*' inputmode='decimal' placeholder="Enter pin code to check delivery " type="number" name="" maxlength="6" class="pincodenew animation-border for-animation">
+                      <input pattern='[0–9]*' inputmode='decimal' placeholder="Enter Delivery Pin Code" type="number" name="" maxlength="6" class="pincodenew animation-border for-animation">
                       <span class="citynametoshow"></span>
                       <!-- <div class="send-pincode-api">
                       <ul><li><a target="_blank" href="https://www.indiapost.gov.in/VAS/Pages/findpincode.aspx">Don't know Pincode ?</a></li></ul>
@@ -1209,7 +1241,7 @@
                       <div class="close-pincode-list">
                         <svg class="" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"></path></svg>
                       </div>
-                      <div style="color: red; display: none;" class="soorypincode">This product can not be delivered at the desired location.</div>
+                      <div style="color: red; display: none;" class="soorypincode">This product can not be delivered here.</div>
                       <div style="color: green; display: none;" class="availablepincode">Delivery is available for this pincode.</div>
                       <div class="pincodelist custom-scroll">
                       </div>
@@ -1234,7 +1266,7 @@
                   <div class="col-sm-6 show-date-time-toselected">
                      <!-- <div class="col-sm-12 label">Deliver On <span class="astrik">*</span></div> -->
                       <div class="col-sm-12 calender">
-                      <input type="text" class="for-animation select_date_time date"  readonly='true' autocomplete="off" id="newdelDate" placeholder="Select Date and Time">
+                      <input type="text" class="for-animation select_date_time date"  readonly='true' autocomplete="off" id="newdelDate" placeholder="Select Delivery Date and Time">
                         <div class="location-icon">
                           <img src="catalog/view/theme/default/image/calender.svg" alt="">
                         </div>
@@ -1269,7 +1301,7 @@
                
                <?php /*  if(count($linkedProducts)){ ?>
                <div class='linked-products'>
-                  <h2>Choose Weight</h2>
+                  <!-- <h2>Choose Weight</h2> -->
                   <ul>
                      <?php foreach($linkedProducts as $lp){ ?>
                      <li class="<?= $lp['product_id']==$product_id?'current':'' ?>">
@@ -1284,7 +1316,7 @@
                </div>
                <?php } */ ?>
                <p style="color: red; display: block;" id="personallised-pro"></p>
-               <div id="product" class="pinDiv <?= $class;?>">
+               <div id="product" class="pinDiv <?= $class;?> msg-info-input-field">
                   <?php if ($options) { ?>
                   <!--    <hr> -->
                   <?php /* ?>
@@ -1296,7 +1328,7 @@
                   <?php if ($option['type'] == 'select') { ?>
                   <div class="xs-pr-0 xs-pl-0 col-md-6 col-sm-12 col-xs-12 form-group<?= ($option['required'] ? ' required' : ''); ?>">
                      <!-- <label class="control-label" for="input-option<?= $option['product_option_id']; ?>"><?= $option['name']; ?></label> -->
-                     <div class="position-relative">
+                     <div class="position-relative down-arrow-select select-flavour-option">
                        <select name="option[<?= $option['product_option_id']; ?>]" id="input-option<?= $option['product_option_id']; ?>" class="form-control product_input">
                           <option value=""><?php // echo $text_select; ?>Select Flavour </option>
                           <?php foreach ($option['product_option_value'] as $option_value) { ?>
@@ -1311,29 +1343,10 @@
                           <img src="catalog/view/theme/default/image/flavour.svg" alt="">
                         </div>
                   </div>
-                     <span style="font-size: 12px;color: #22303D;">Will not affect Cake design</span>
+                     <span style="font-size: 12px;color: #22303D;"><i>Flavour will not affect outer look of cake*</i></span>
                   </div>
                   <?php } ?>
-                  <?php if ($option['type'] == 'radio') { ?>
-                  <div class="xs-pr-0 xs-pl-0 col-md-12 col-sm-12 col-xs-12 form-group<?= ($option['required'] ? ' required' : ''); ?>">
-                     <!-- <label class="control-label"><?= $option['name']; ?></label> -->
-                     <p style="font-size: 14px;font-weight: 600;margin-bottom: 0">Choose Weight</p>
-                     <div class="display-flex flex-nowrap cake_weight_row" id="input-option<?= $option['product_option_id']; ?>">
-                        <?php foreach ($option['product_option_value'] as $option_value) { ?>
-                        <div class="radio weight_radio">
-                           <label for="cake_<?= $option_value['product_option_value_id']; ?>" class="weight_cake_btn home-secondary-btn" price="<?= $option_value['simpleprice']; ?>" opttext="<?= $option_value['name']; ?>">
-                           <input style="display: none;" id="cake_<?= $option_value['product_option_value_id']; ?>" type="radio" name="option[<?= $option['product_option_id']; ?>]" class="weightradio" value="<?= $option_value['product_option_value_id']; ?>" />
-                           <?php if ($option_value['image']) { ?>
-                           <img src="<?= $option_value['image']; ?>" alt="<?= $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" class="img-thumbnail" /> 
-                           <?php } ?>                    
-                           <?= $option_value['name']; ?>
-                           
-                           </label>
-                        </div>
-                        <?php } ?>
-                     </div>
-                  </div>
-                  <?php } ?>
+                  
                   <?php if ($option['type'] == 'checkbox') { ?>
                   <div class="xs-pr-0 xs-pl-0 col-md-6 col-sm-12 col-xs-12 form-group<?= ($option['required'] ? ' required' : ''); ?>">
                      <label class="control-label"><?= $option['name']; ?></label>
@@ -1381,11 +1394,12 @@
                       <div class="msg_count_total_col">
                         <span><span class="show_lnh_text">0</span>/30</span>
                       </div>
-                       <input type="text" maxlength="30" name="option[<?= $option['product_option_id']; ?>]" placeholder="Message On Cake" id="input-option<?= $option['product_option_id']; ?>" value="<?= $option['value']; ?>" class="form-control text-form cake_msg_valid">
+                       <input type="text" maxlength="30" name="option[<?= $option['product_option_id']; ?>]" placeholder="Text/Name for Cake" id="input-option<?= $option['product_option_id']; ?>" value="<?= $option['value']; ?>" class="form-control text-form cake_msg_valid">
                        <!-- <span style="font-size: 12px;color: #22303D">*Text mentioned here will be written on cake at the suitable spot.</span> -->
                        <div class="location-icon" style="top: 15px;">
                         <img src="catalog/view/theme/default/image/message.svg" alt="">
                        </div>
+                       <span style="font-size: 12px;color: #22303D;"><i>Will be written at a suitable spot*</i></span>
                    </div>
                   </div>
                   <?php } ?>
@@ -1447,7 +1461,7 @@
                      <div class="help-block" id="recurring-description"></div>
                   </div>
                   <?php } ?>
-                  <div class="form-group pro-detail-text">
+                  <div class="form-group pro-detail-text mb-0">
                      <!-- <label class="control-label" for="input-quantity"><?php//echo $entry_qty; ?></label> -->
                      <input type="hidden" name="quantity" value="<?= $minimum; ?>" size="2" id="input-quantity" class="form-control" />
                      <input type="hidden" name="product_id" value="<?= $product_id; ?>" />
@@ -1465,7 +1479,7 @@
                      <!-- <div class="btn-group col-sm-6 pull-right">
                      </div> -->
                   </div>
-                  <p style="color: red; display: block;" id="personallised-pro1"></p>
+                  <p style="color: red; display: block;" id="personallised-pro1" class="mb-0"></p>
                   <div class="shortDescription" style="display: none;">
                      <?= $description; ?>
                      <!-- <form id="check-pincode-form" name="check-pincode" class="check-pincode-form" method="post">
@@ -1891,7 +1905,7 @@
          $.ajax({
            url: 'index.php?route=checkout/cart/add',
            type: 'post',
-           data: $('#product input[type=\'text\'], #product input[type=\'number\'], #cityDateShipping input[type=\'text\'], #cityDateShipping input[type=\'hidden\'], #cityDateShippingCourier input[type=\'text\'], #cityDateShipping select, #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
+           data: $('#product input[type=\'text\'], #product input[type=\'number\'], #cityDateShipping input[type=\'text\'], #cityDateShipping input[type=\'hidden\'], #cityDateShippingCourier input[type=\'text\'], #cityDateShipping select, #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, .product-shop input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
            dataType: 'json',
            beforeSend: function() {
              //$(btncart).button('loading');
@@ -2110,7 +2124,7 @@
     this.value = this.value.slice(0, 6) + "";
     var pincodeno = /^\d{6}$/;
     var inputpin = $(".pincodenew").val().trim();
-    if(inputpin.length>1)
+    if(inputpin.length==6)
     if(!inputpin.match(pincodeno))
     {
       $('.soorypincode').show();
@@ -2143,6 +2157,7 @@
             if(data.length > 0){
               $('.soorypincode').hide();
               $('.pincodelist').html(ht);
+              $('.availablepincode').hide();
               clickPincodeFromList();
               if(pins.length == 6){
                 $('.pincodelist').hide();
@@ -2152,6 +2167,7 @@
             } else {
               $('.soorypincode').show();
               $('.pincodelist').empty();
+              $('.availablepincode').hide();
               cityIdFromPincode = 0;
             }
           }

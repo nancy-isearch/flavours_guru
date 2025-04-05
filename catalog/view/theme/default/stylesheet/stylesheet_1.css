@@ -603,7 +603,7 @@ body.addon-overflow{overflow:hidden;}
     -webkit-appearance: initial;
 }
 select.product_input{
-	-webkit-appearance: auto;
+	/*-webkit-appearance: auto;*/
 }
 select.product_input option{
 	color: #22303D;
@@ -5236,6 +5236,15 @@ button#button-cart-2 {
     border-radius: 36px;
     padding: 25px;  
 }
+.resend_otp:hover{
+	color: #F65F73 !important;
+}
+ul.list-unstyled.codeproduct {
+    margin-bottom: 20px;
+}
+.down-arrow-select.select-flavour-option:after{
+	top: 20px;
+}
 @media screen and (min-width: 767px){
 	.shipping_progress_col{
 		width: 991px;
@@ -6671,6 +6680,17 @@ button#button-cart-2 {
 	.custom-popup{
 		width: 90%;
 	}
+	.msg-info-input-field {
+        background: #f5f5f5;
+        padding: 15px !important;
+        border-radius: 6px;
+    }
+    .msg-info-input-field .row .form-group:last-child{
+    	margin-bottom: 0 !important;
+    }
+    .xs-mb-0{
+    	margin-bottom: 0 !important;
+    }
 }
 .boucher-col .panel{
 	box-shadow: initial;
