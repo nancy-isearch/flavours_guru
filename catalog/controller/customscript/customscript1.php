@@ -23,8 +23,8 @@ class ControllerCustomscriptCustomscript1 extends Controller {
 		$tmp2 = 0;
 		$tmp3 = 0;
 		$tmp4 = 0;
-		$updated = 1;
-		$inserted = 1;
+		$updated = 0;
+		$inserted = 0;
 		foreach ($orders as $key => $value) {
 			// if($updated > 20000){
 			// 	break;
