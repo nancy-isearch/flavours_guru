@@ -210,6 +210,10 @@ class ModelAccountCustomer extends Model {
 	}
 
 	public function saveOtp($mobile, $otp) {
+		if(!isset($this->session->data['otp'])){
+			$this->session->data['otp'] = array();
+		}
+		$this->session->data['otp'][] = $otp;
 		$this->db->query("UPDATE `" . DB_PREFIX . "otp` SET status = '0' WHERE mobile = '" . $this->db->escape($mobile) . "'");
 		$this->db->query("INSERT INTO " . DB_PREFIX . "otp SET otp = '" . $this->db->escape($otp) . "', mobile = '" . $this->db->escape($mobile) . "', status = 1, created_on = '" . time() . "', expired_on = '" . (time() + 600) . "'");
 	}
@@ -230,11 +234,16 @@ class ModelAccountCustomer extends Model {
 	}
 
 	public function verifyOTP($mobile, $otp) {
-		$query = $this->db->query("SELECT id, otp FROM `" . DB_PREFIX . "otp` WHERE mobile = '" . $this->db->escape($mobile) . "' AND otp = '". $this->db->escape($otp) ."' AND status = 1 ");
-		if($query->row)
+		if($this->session->data['otp'] && in_array($otp, $this->session->data['otp'])){
 			return 1;
-		else
+		} else{
 			return 0;
+		}
+		// $query = $this->db->query("SELECT id, otp FROM `" . DB_PREFIX . "otp` WHERE mobile = '" . $this->db->escape($mobile) . "' AND otp = '". $this->db->escape($otp) ."' AND status = 1 ");
+		// if($query->row)
+		// 	return 1;
+		// else
+		// 	return 0;
 	}
 
 	public function sendSMSOTP($mobile, $otp) {
