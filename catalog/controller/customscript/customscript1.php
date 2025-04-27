@@ -70,16 +70,16 @@ class ControllerCustomscriptCustomscript1 extends Controller {
 				$customer_id = $this->model_account_customer->addCustomer($registerData, 1);	
 				$sql = "UPDATE oc_order SET customer_id = '".$customer_id."' WHERE order_id = ".$value['order_id'];
 				$this->db->query($sql);
-				echo "New Customer OrderID: ".$value['order_id'].", CustomerId: ".$customer_id."<br>";
+				//echo "New Customer OrderID: ".$value['order_id'].", CustomerId: ".$customer_id."<br>";
 				$inserted++;
 			} else {
-				echo "Old Customer OrderID: ".$value['order_id'].' | CustomerId: '.$customer['customer_id'].'<br>';
+				//echo "Old Customer OrderID: ".$value['order_id'].' | CustomerId: '.$customer['customer_id'].'<br>';
 				$sql = "UPDATE oc_order SET customer_id = '".$customer['customer_id']."' WHERE order_id = ".$value['order_id'];
 				$this->db->query($sql);
 				$updated++;
 			}
 		}
-		echo $updated."----".$inserted;
+		echo "Updated: ".$updated."<br> Inserted: ".$inserted;
 		// echo "Total Guest Orders: ".count($orders)."<br>";
 		// echo "Customer Found from telephone: ".$tmp."<br>";
 		// echo "Customer Found from payment_mobile: ".$tmp1."<br>";
