@@ -36,6 +36,8 @@ Disallow: /search
 Disallow: /*?*
 Disallow: /*?
 
+# llms.txt reference
+Allow: /llms.txt
 
 #Sitemaps
 Sitemap: https://www.flavoursguru.com/sitemap.xml

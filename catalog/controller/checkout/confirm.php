@@ -1,33 +1,37 @@
 <?php
 class ControllerCheckoutConfirm extends Controller {
 	public function index() {
-		$this->db->query("UPDATE ".DB_PREFIX."followup set stage = 1 WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
 		$redirect = '';
+		$saveLogs = array();
+		$saveLogs['stage'] = 1;
+		$saveLogs['data'] = array();
+		$this->db->query("UPDATE ".DB_PREFIX."followup set confirmation_logs = '".json_encode($saveLogs)."' WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
 		$this->load->language('checkout/checkout');
 			$data['column_name'] = $this->language->get('column_name');
 			$data['column_model'] = $this->language->get('column_model');
 			$data['column_quantity'] = $this->language->get('column_quantity');
 			$data['column_price'] = $this->language->get('column_price');
 			$data['column_total'] = $this->language->get('column_total');
-			$this->db->query("UPDATE ".DB_PREFIX."followup set stage = 2 WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
 		if ($this->cart->hasShipping()) {
 			// Validate if shipping address has been set.
 			if (!isset($this->session->data['shipping_address'])) {
-				$this->db->query("UPDATE ".DB_PREFIX."followup set stage1 = 19 WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
-				$redirect = $this->url->link('checkout/checkout', '', true);
+				$redirect = '.';
+				$saveLogs['stage'] = 2;
+				$saveLogs['data'] = $this->session->data;
 			}
 
 			// Validate if shipping method has been set.
 			if (!isset($this->session->data['shipping_method'])) {
-				$this->db->query("UPDATE ".DB_PREFIX."followup set stage1 = 20 WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
-				$redirect = $this->url->link('checkout/checkout', '', true);
+				$redirect = '..';
+				$saveLogs['stage'] = 3;
+				$saveLogs['data'] = $this->session->data;
 			}
 		} else {
 			unset($this->session->data['shipping_address']);
 			unset($this->session->data['shipping_method']);
 			unset($this->session->data['shipping_methods']);
 		}
-		$this->db->query("UPDATE ".DB_PREFIX."followup set stage = 3 WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
+
 		// Validate if payment address has been set.
 		/*if (!isset($this->session->data['payment_address'])) {
 			$redirect = $this->url->link('checkout/checkout', '', true);
@@ -40,15 +44,13 @@ class ControllerCheckoutConfirm extends Controller {
 
 		// Validate cart has products and has stock.
 		if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
-			$this->db->query("UPDATE ".DB_PREFIX."followup set stage1 = 21 WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
-			$redirect = $this->url->link('checkout/cart');
+			$redirect = '...';
+			$saveLogs['stage'] = 4;
+			$saveLogs['data'] = array("condition1" => $this->cart->hasProducts(), "condition2" => $this->session->data['vouchers'], "condition3" => $this->cart->hasStock(), "condition4" => $this->config->get('config_stock_checkout'), "data" => $this->session->data);
 		}
-
-		$this->db->query("UPDATE ".DB_PREFIX."followup set stage = 4 WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
 
 		// Validate minimum quantity requirements.
 		$products = $this->cart->getProducts();
-		$this->db->query("UPDATE ".DB_PREFIX."followup set stage = 5 WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
 		foreach ($products as $product) {
 			$product_total = 0;
 
@@ -59,15 +61,14 @@ class ControllerCheckoutConfirm extends Controller {
 			}
 
 			if ($product['minimum'] > $product_total) {
-				$this->db->query("UPDATE ".DB_PREFIX."followup set stage1 = 22 WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
-				$redirect = $this->url->link('checkout/cart'); 
+				$redirect = '....'; 
+				$saveLogs['stage'] = 5;
+				$saveLogs['data'] = array("condition1" => $products, "condition2" => $product_total, "data" => $this->session->data);
 				break;
 			}
 		}
-		$this->db->query("UPDATE ".DB_PREFIX."followup set stage = 6 WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
 		
-		if (!$redirect) {
-		$this->db->query("UPDATE ".DB_PREFIX."followup set stage = 7 WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
+		if (empty($redirect)) {
 			$order_data = array();
 
 			$totals = array();
@@ -111,8 +112,6 @@ class ControllerCheckoutConfirm extends Controller {
 			array_multisort($sort_order, SORT_ASC, $totals);
 			 
 			$order_data['totals'] = $totals;
-
-			$this->db->query("UPDATE ".DB_PREFIX."followup set stage = 8 WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
 
 			$order_data['invoice_prefix'] = $this->config->get('config_invoice_prefix');
 			$order_data['store_id'] = $this->config->get('config_store_id');
@@ -165,7 +164,6 @@ class ControllerCheckoutConfirm extends Controller {
 				$order_data['phone_code'] = $this->session->data['guest']['phone_code'];
 				$order_data['custom_field'] = $this->session->data['guest']['custom_field'];
 			}
-			$this->db->query("UPDATE ".DB_PREFIX."followup set stage = 9 WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
 				$order_data['payment_email'] = $this->session->data['payment_email']['email'];
 				$order_data['payment_mobile'] = $this->session->data['payment_mobile']['telephone'];
 				$order_data['payment_phone_code'] = $this->session->data['payment_phonecode']['phone_code'];
@@ -206,7 +204,6 @@ class ControllerCheckoutConfirm extends Controller {
 				$order_data['payment_mobile'] = $order_data['payment_mobile'];
 			}
 			
-			$this->db->query("UPDATE ".DB_PREFIX."followup set stage = 10 WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
 			$order_data['payment_address_1'] = $this->session->data['payment_address']['address_1'];
 			
 			$order_data['payment_city'] = $this->session->data['payment_address']['city'];
@@ -232,7 +229,6 @@ class ControllerCheckoutConfirm extends Controller {
 			}
 			$order_data['payment_method'] = 'razorpay';
 			$order_data['payment_code'] = 'razorpay';
-			$this->db->query("UPDATE ".DB_PREFIX."followup set stage = 11 WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
 			if ($this->cart->hasShipping()) {
 				$order_data['shipping_mr_mrs'] = $this->session->data['shipping_address']['mr_mrs'];
 				$order_data['shipping_firstname'] = $this->session->data['shipping_address']['firstname'];
@@ -284,7 +280,6 @@ class ControllerCheckoutConfirm extends Controller {
 			}
 
 			$order_data['products'] = array();
-$this->db->query("UPDATE ".DB_PREFIX."followup set stage = 12 WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
 			$allLogsPre = array();
 			foreach ($this->cart->getProducts() as $product) {
 				$allLogsPre[] = $product;
@@ -319,8 +314,7 @@ $this->db->query("UPDATE ".DB_PREFIX."followup set stage = 12 WHERE session_id =
 					'reward'     => $product['reward']
 				);
 			}
-			$this->db->query("UPDATE ".DB_PREFIX."followup set stage2 = '".json_encode($allLogsPre)."', stage3 = '".json_encode($order_data['products'])."' WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
-$this->db->query("UPDATE ".DB_PREFIX."followup set stage = 13 WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
+			
 			// Gift Voucher
 			$order_data['vouchers'] = array();
 
@@ -380,7 +374,7 @@ $this->db->query("UPDATE ".DB_PREFIX."followup set stage = 13 WHERE session_id =
 				$order_data['marketing_id'] = 0;
 				$order_data['tracking'] = '';
 			}
-$this->db->query("UPDATE ".DB_PREFIX."followup set stage = 14 WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
+
 			$order_data['language_id'] = $this->config->get('config_language_id');
 			$order_data['currency_id'] = $this->currency->getId($this->session->data['currency']);
 			$order_data['currency_code'] = $this->session->data['currency'];
@@ -412,10 +406,7 @@ $this->db->query("UPDATE ".DB_PREFIX."followup set stage = 14 WHERE session_id =
 			$this->model_checkout_order->editMobile($order_data['customer_id'],$order_data['payment_mobile']);
 
 			//print_r($this->session->data); print_r($order_data); die();
-			 $this->db->query("UPDATE ".DB_PREFIX."followup set stage = 15 WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
 			$this->session->data['order_id'] = $this->model_checkout_order->addOrder($order_data);
-$this->db->query("UPDATE ".DB_PREFIX."followup set stage = 16 WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
-
 
 			$data['text_recurring_item'] = $this->language->get('text_recurring_item');
 			$data['text_payment_recurring'] = $this->language->get('text_payment_recurring');
@@ -522,7 +513,7 @@ $this->db->query("UPDATE ".DB_PREFIX."followup set stage = 16 WHERE session_id =
 				);
 			  }
 			}
-$this->db->query("UPDATE ".DB_PREFIX."followup set stage = 17 WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
+
 			//$data['payment'] = $this->load->controller('extension/payment/' . $this->session->data['payment_method']['code']);
 			
 
@@ -565,7 +556,7 @@ $this->db->query("UPDATE ".DB_PREFIX."followup set stage = 17 WHERE session_id =
 			curl_close($ch);
 
 
-			$this->db->query("UPDATE ".DB_PREFIX."followup set stage3 = '".json_encode($response).'-----'.json_encode($data123)."', order_id = '".$this->session->data['order_id']."' WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
+			$this->db->query("UPDATE ".DB_PREFIX."followup set order_id = '".$this->session->data['order_id']."' WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
 
 
 			$data = array();
@@ -580,10 +571,12 @@ $this->db->query("UPDATE ".DB_PREFIX."followup set stage = 17 WHERE session_id =
 	        $data['lang'] = $this->session->data['language'];
 	        $data['r_order_id'] = $response->id;
 	        $data['return_url'] = $this->url->link('payment/razorpay/callback', '', 'SSL');
-	        $this->db->query("UPDATE ".DB_PREFIX."followup set stage = 18 WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
+	        $saveLogs['data'] = $data;
+	        $this->db->query("UPDATE ".DB_PREFIX."followup set confirmation_logs = '".json_encode($saveLogs)."' WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
 			$this->response->setOutput($this->load->view('checkout/razorpay', $data));
 			//echo "<pre />"; print_r($this->session->data);
 		} else {
+			$this->db->query("UPDATE ".DB_PREFIX."followup set confirmation_logs = '".json_encode($saveLogs)."' WHERE session_id = '" . $this->db->escape($this->session->getId())."'");
 			$data = array();
 			$data['redirect'] = $redirect;
 			echo json_encode($data);

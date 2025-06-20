@@ -1042,8 +1042,9 @@ $('.continue_and_pay').click(function(){
         dataType: 'html',
         success: function(html) {
           if(isValidJSON(html) && hasKey(html, "redirect")){
-            elPay.html("Try again.."); 
-            alert("Your session has been timeout. Please login and try again"); 
+            const obj = JSON.parse(html);
+            elPay.html("Try again"+obj.redirect); 
+            alert("Your session has been timeout. Please login and try again"+obj.redirect); 
             window.location = "https://www.flavoursguru.com/cart";
           } else {
             //elPay.html("Order Placed...");

@@ -132,7 +132,19 @@
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/womens-day.png" alt="a customised three-layered orange cake">
             </a>
             <p>Women’s Day</p>
+          </li>
+          <li>
+            <a href="/mothers-day/mothers-day-cakes" class="hover-zoom-col">
+              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/mothers-day-cakes.webp" alt="Online chake mothers day">
+            </a>
+            <p>Mother’s Day</p>
           </li>*/ ?>
+          <li>
+            <a href="/fathers-day" class="hover-zoom-col">
+              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/fathers-day-icons.webp" alt="Father day cake online">
+            </a>
+            <p>Fathers Day</p>
+          </li>
           <li>
             <a href="/customize" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/custom-cakes.png" alt="a customised three-layered orange cake">
@@ -175,12 +187,12 @@
             </a>
             <p>Premium</p>
           </li>
-          <li>
+          <!-- <li>
             <a href="/photo-cakes" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/photo-cake.png" alt="A photo frame featuring a cake and cupcakes">  
             </a>
             <p>Photo Cakes</p>
-          </li>
+          </li> -->
            <?php /*<li>
             <a href="/custom-theme-cakes" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/theme-cake.png" alt="Theme Cakes">  
@@ -219,6 +231,18 @@
             <h2 class="mb-10 banner-title text-white"><span class="text-white">Always in Love</span><br> Valentine’s Day Cake</h2>
             <p class="text-white banner-sm-title mb-30">Explore 2025 New Arrivals!</p>
             <div class="home-primary-btn" style="background: #291019;border:1px solid #ffffff;color: #ffffff;">Order Now</div>  
+          </div>
+        </div>
+      </a>
+      <a href="/mothers-day/mothers-day-cakes">
+        <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/new-images/mother-day-desktop.webp" alt="Cake your imagination">
+        <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/new-images/mother-day-mobile.webp" alt="Cake your imagination">
+        <div class="banner-overlay-content">
+          <div class="banner-title-row">
+            <p class="banner-first-title text-white" style="background: #993BD5;">A Mother's Love</p>
+            <h2 class="mb-10 banner-title text-black"><span class="">Deserves a really, really</br> <b>Good Taste</b>.</h2>
+            <p class="text-white banner-sm-title mb-30"></p>
+            <div class="home-primary-btn white-bg-btn" style="box-shadow: 0px 4px 0px 0px #9C89AE;">Order Now</div>  
           </div>
         </div>
       </a> */ ?>

@@ -5245,6 +5245,19 @@ ul.list-unstyled.codeproduct {
 .down-arrow-select.select-flavour-option:after{
 	top: 20px;
 }
+.earl-devl-text{
+  background: #4BB543;
+  color: #fff;
+  border-radius: 6px;
+  width: fit-content;
+  padding: 5px 10px;
+}
+.earl-devl-text p{
+  line-height: 20px !important;
+}
+.out-of-stock-cta{
+	z-index: 1;
+}
 @media screen and (min-width: 767px){
 	.shipping_progress_col{
 		width: 991px;

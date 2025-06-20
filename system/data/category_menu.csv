@@ -1,8 +1,5 @@
 Categories in Header,Sub-Categories Under Non-Clickable Name,Sub-Categories,Sub-Categories URL's
-All Cakes,Mothers Day,Cakes,mothers-day/mothers-day-cakes
-,,Flowers,mothers-day/mothers-day-flowers
-,,Combos,mothers-day/mothers-day-combos
-,By Type,Regular Cakes,regular-cakes
+All Cakes,By Type,Regular Cakes,regular-cakes
 ,,Designer Cream Cakes,designer-cream-cake
 ,,Photo Cakes,photo-cakes
 ,,Floral Cakes,floral-birthday-cakes
@@ -35,12 +32,12 @@ All Cakes,Mothers Day,Cakes,mothers-day/mothers-day-cakes
 ,,Cheese Cakes,regular-cakes/cheese-cakes
 ,,Rasmalai Cakes,rasmalai-cake
 ,,Fusion Cakes,fusion-cakes
-Designer Cakes,,Tiramisu,regular-cakes/tiramisu-cakes
+,,Tiramisu,regular-cakes/tiramisu-cakes
 ,,Ice Cream Cakes,regular-cakes/ice-cream-cakes
 ,,Chocolate Overload,chocolate-overload-cakes
 ,,Kit Kat Cake,kit-kat-cakes
 ,,Rainbow Cakes,rainbow-cakes
-,Cartoon Cakes,Peppa Pig Cakes,cartoon-cakes/peppa-pig
+Designer Cakes,Cartoon Cakes,Peppa Pig Cakes,cartoon-cakes/peppa-pig
 ,,Frozen Theme Cakes,cartoon-cakes/frozen
 ,,Avengers Cake,cartoon-cakes/avengers
 ,,Masha & Bear,cartoon-cakes/masha-and-the-bear-cake
@@ -85,12 +82,12 @@ Designer Cakes,,Tiramisu,regular-cakes/tiramisu-cakes
 ,,For Fashion Designer,cakes-by-profession/fashion-designer
 ,,Quirky Cakes,naughty-cakes
 ,,Makeup Theme Cakes,custom-theme-cakes/makeup-cakes
-Birthday Cakes,,Unicorn Cakes,custom-theme-cakes/unicorn-cakes
+,,Unicorn Cakes,custom-theme-cakes/unicorn-cakes
 ,,Bottle Shape Cakes,custom-theme-cakes/bottle-shape-cakes
 ,,Shopping Theme Cakes,custom-theme-cakes/shopping-cakes
 ,,Cake For Pubg Lovers,custom-theme-cakes/pubg-theme-cakes
 ,,All Theme Cakes,custom-theme-cakes
-,By Type,All Birthday Cakes,birthday
+Birthday Cakes,By Type,All Birthday Cakes,birthday
 ,,1st Birthday,birthday/1st-birthday
 ,,Half Birthday,birthday/half-birthday
 ,,Cake for Twins,birthday/twins-cake
@@ -109,21 +106,21 @@ Birthday Cakes,,Unicorn Cakes,custom-theme-cakes/unicorn-cakes
 ,,Mother,birthday/mother
 ,,Daughter,birthday/daughter
 ,,Female Friend,birthday/female-friend
-Anniversary Cakes,,Fiancee,birthday/fiancee
+,,Fiancee,birthday/fiancee
 ,Kids,Kids,kids
 ,,Boys,kids/boys
 ,,Girl,kids/girls
 ,,New Born,new-born
-,Anniversary ,All Anniversary Cakes,anniversary
+Anniversary Cakes,Anniversary ,All Anniversary Cakes,anniversary
 ,,Husband,anniversary/husband
 ,,Wife,anniversary/wife
 ,,Parents,anniversary/parents
-Cakes By Occasions,,Friend,anniversary/friend
+,,Friend,anniversary/friend
 ,,1st Anniversary,anniversary/1st-anniversary
 ,,25th Anniversary,anniversary/25th-anniversary
 ,,50th Anniversary,anniversary/50th-anniversary
 ,,Love Anniversary,anniversary/love-anniversary
-,Public Occasions,Mother's Day,mothers-day/mothers-day-cakes
+Cakes By Occasions,Public Occasions,Mother's Day,mothers-day
 ,,Father's Day,fathers-day
 ,,Friendship Day,friendship-day
 ,,Rakhi,rakhi
@@ -148,12 +145,12 @@ Cakes By Occasions,,Friend,anniversary/friend
 ,,Bride To Be,bride-to-be
 ,,Baby Shower,baby-shower-cakes
 ,,Mom To Be,mom-to-be-cakes
-Trending Cakes,,Party Cakes,party
+,,Party Cakes,party
 ,,Just Like That,just-like-that
 ,,Romance Cakes,i-love-you
 ,,Congratulations,congratulations
 ,,Thank You,thank-you
-,Best Sellers,Pinata Cakes,pinata-cakes
+Trending Cakes,Best Sellers,Pinata Cakes,pinata-cakes
 ,,Comic Theme Cakes,comic-cakes
 ,,Balloon Cakes,balloon-cakes
 ,,Fault Line Cakes,fault-line-cake
@@ -166,12 +163,12 @@ Trending Cakes,,Party Cakes,party
 ,,Photo Pulling Cakes,photo-pulling-cakes
 ,Other Gifts,Balloon Decoration ,balloon-decorations
 ,,Jar Cake,cake-in-a-jar
-Cakes By Cities,,Patries,pastries
+,,Patries,pastries
 ,,Plants,gifts/plants
 ,,Gourmet Hampers,gifts/gourmet-hampers
 ,,Chocolate Bouquet,gifts/chocolate-bouquet
 ,,Flowers,gifts/flowers
-,Delhi NCR,Cakes in Delhi,cakes/delhi
+Cakes By Cities,Delhi NCR,Cakes in Delhi,cakes/delhi
 ,,Cakes in Faridabad,cakes/faridabad
 ,,Cakes in Ghaziabad,cakes/ghaziabad
 ,,Cakes in Noida,cakes/noida

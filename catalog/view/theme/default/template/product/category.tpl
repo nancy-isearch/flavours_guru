@@ -337,6 +337,9 @@ body.product-category-65.offermsg .container.top_positionn{
 .responseFilter h2{
 	font-size: 18px;
 }
+.amt-rev-col{
+  min-height: 60px;
+}
 @media screen and (min-width:991px){
   .product-layout.product-list{
     width:25% !important;
@@ -556,13 +559,22 @@ body.product-category-65.offermsg .container.top_positionn{
   .xs-filterItself{
 
   }
+  .earl-devl-text{
+    padding: 5px 6px;
+  }
+  .earl-devl-text p.font-size-12{
+    font-size: 8px !important;
+  }
+  .product_sort_detail{
+    padding-bottom: 10px;
+  }
 }
 @media screen and (min-width: 767px){
   .xs-category-filter{
     display: none;
   }
   .category_main_row_col .product-thumb{
-    height: 385px;
+    height: 430px;
   }
 }
 </style>
@@ -1114,7 +1126,7 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
                 <p class="cat_product_title" style="margin: 8px 0 10px 0;height:auto;"><span class="cat-mob-prd-title"><?php echo $product['name']; ?></span>
                   <span class="product-info-detail" proId="<?php echo $product['product_id']; ?>" title="<?php echo $product['name']; ?>" hrftag="<?php echo $product['href']; ?>"><i class="fa fa-info-circle"></i></span>
                 </p>
-                <div class="display-flex align-items-center space-between">
+                <div class="display-flex align-items-center space-between amt-rev-col">
                   <div>
                     <?php if ($product['price']) { ?>
                     <p class="price">
@@ -1149,6 +1161,24 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
                     <p class="review_text_cat"><?php echo $product['reviewcnt']; ?> Reviews</p>
                   <?php } ?>
                   </div>
+                </div>
+                <div class="earl-devl-text">
+                  <?php
+                    date_default_timezone_set('Asia/Kolkata'); // Set your timezone
+
+                    $now = new DateTime();
+                    $hour = (int)$now->format('H');
+                  ?>
+                  <p class="font-size-12 mb-0 display-flex align-items-center">
+                    <span style="margin-right: 3px;display: inline-flex">
+                      <svg fill="#ffffff" width="16px" height="16px" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"><path d="M24,12a1,1,0,0,1-2,0A10.011,10.011,0,0,0,12,2a1,1,0,0,1,0-2A12.013,12.013,0,0,1,24,12Zm-8,1a1,1,0,0,0,0-2H13.723A2,2,0,0,0,13,10.277V7a1,1,0,0,0-2,0v3.277A1.994,1.994,0,1,0,13.723,13ZM1.827,6.784a1,1,0,1,0,1,1A1,1,0,0,0,1.827,6.784ZM2,12a1,1,0,1,0-1,1A1,1,0,0,0,2,12ZM12,22a1,1,0,1,0,1,1A1,1,0,0,0,12,22ZM4.221,3.207a1,1,0,1,0,1,1A1,1,0,0,0,4.221,3.207ZM7.779.841a1,1,0,1,0,1,1A1,1,0,0,0,7.779.841ZM1.827,15.216a1,1,0,1,0,1,1A1,1,0,0,0,1.827,15.216Zm2.394,3.577a1,1,0,1,0,1,1A1,1,0,0,0,4.221,18.793Zm3.558,2.366a1,1,0,1,0,1,1A1,1,0,0,0,7.779,21.159Zm14.394-5.943a1,1,0,1,0,1,1A1,1,0,0,0,22.173,15.216Zm-2.394,3.577a1,1,0,1,0,1,1A1,1,0,0,0,19.779,18.793Zm-3.558,2.366a1,1,0,1,0,1,1A1,1,0,0,0,16.221,21.159Z"/></svg>
+                    </span> 
+                    <span>Earliest Delivery: <?php if ($hour >= 0 && $hour < 22) {
+                                                echo "Today";
+                                            } else {
+                                                echo "Tomorrow";
+                                            } ?></span>
+                  </p>
                 </div>
               </div> <?php /*
               <div class="button-group">

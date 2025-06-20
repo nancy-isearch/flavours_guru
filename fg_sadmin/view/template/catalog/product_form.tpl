@@ -943,7 +943,7 @@
                         ?>
                         <?php foreach($types as $type){
                           ?>
-                         <input type="checkbox" name="citygp[]" value="<?php echo $type['id']; ?>" <?php if(isset($groupchecked1) && !empty($groupchecked1)){ if(in_array($type['id'],$groupchecked1)){ echo 'checked="checked"' ;}}?> >    <?php echo $type['name'];?> <br/>
+                         <input type="checkbox" name="citygp[]" value="<?php echo $type['id']; ?>" <?php if(isset($groupchecked1) && !empty($groupchecked1)){ if(in_array($type['id'],$groupchecked1)){ echo 'checked="checked"' ;}}?> >    <?php echo $type['name']." (".$type['description'].")";?> <br/>
                         <?php }?>
                       </td>
                     </tr>
