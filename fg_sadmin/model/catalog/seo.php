@@ -459,7 +459,7 @@ class ModelCatalogSeo extends Model {
 					
 
 				    if($value->num_rows) {			
-						if($value->row['meta_title'] == '') {
+						if($value->row['meta_title']) {
 				    	
 						    $stripped = substr(trim(strip_tags(html_entity_decode($product['description']))), 0, 60);
 						    if(str_replace(".","",VERSION) < 2200) {
@@ -565,7 +565,7 @@ class ModelCatalogSeo extends Model {
 				foreach ($products as $product) {
 					$value = $this->db->query("SELECT meta_description FROM " . DB_PREFIX . "product_description WHERE product_id = '".$product['product_id']."' AND language_id = '".$product['language_id']."' ");
 					if ($value->num_rows) {
-						if($value->row['meta_description'] == '') {
+						if($value->row['meta_description']) {
 							$stripped = substr(trim(strip_tags(html_entity_decode($product['description']))), 0, 162);
 							if(str_replace(".","",VERSION) < 2200) {
 								$price = $this->currency->format($product['price'],'','', false);

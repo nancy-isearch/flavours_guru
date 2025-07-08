@@ -476,7 +476,7 @@ footer .col-sm-3.flinks14{width:14.5%;}
 .breadcrumb li:first-child a:after{content:'Home'}
 .breadcrumb > li:first-child{padding-left:0;}
 .subscribe-me h1, h2, h3{}
-.categoryTitle{color:#3dbbed;font-weight:bold;margin:0 0 20px 0;}
+.categoryTitle{font-weight:bold;margin:0 0 20px 0;}
 .col-sm-10.catDescription{width:100%;background:#fff;padding:0px 0 20px;font-size:14px;}
 .row.toolbar{background:#F65F73;margin:0 0 20px 0;clear:both;}
 .listGridView{display:none;}
@@ -4385,7 +4385,7 @@ ul.slick-dots {
 	z-index: 1;
 }
 .banner-title-row{
-	width: 600px;
+	width: 610px;
 }
 .banner-slide ul.slick-dots{
 	position: absolute;

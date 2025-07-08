@@ -383,7 +383,7 @@ class ControllerSaleOdb extends Controller {
 	}
 
 	public function getStatus(){
-		$statues = array('1' => 'New Lead', '3' => 'Number Busy/No Answer', '4' => 'Call Back', '5' => 'Order Placed', '6' => 'In Process', '8' => 'Duplicate entry/Test Order', '9' => 'Connected on Wati', '10' => 'Wrong Number', '11' => 'COD', '12' => 'Time Slot Not Possible', '13' => 'Non Serviceable', '14' => 'Low-Budget', '15' => 'Just Enquiring', '16' => 'No Response', '17' => 'No Response On Calls', '18' => 'Number Not Reachable', '19' => 'Call Back', '20' => 'Test Order');
+		$statues = array('1' => 'No response / not reachable', '3' => 'Wrong number', '4' => 'Call Back', '5' => 'In process', '6' => 'Bad experience in past', '8' => 'Non serviceable', '9' => 'Time slot not possible');
 		if($this->user->getGroupId() < 16 ){
 			$statues['2'] = 'Not Interested';
 			$statues['7'] = 'No Response-Multiple Calls';

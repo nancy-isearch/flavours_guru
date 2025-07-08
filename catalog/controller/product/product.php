@@ -1046,7 +1046,7 @@ class ControllerProductProduct extends Controller {
 		foreach ($rslt as $rslt1) {
 			$curDate = date('Y-m-d');
 			if(strtotime($delDate)>strtotime($curDate)){
-				$data[] = array('id' => $rslt1['id'], 'name' => $rslt1['name'], 'usePrice' =>$rslt1['price'], 'price' => $this->currency->format($this->tax->calculate($rslt1['price'], 0, $this->config->get('config_tax')), $this->session->data['currency']));
+				$data[] = array('id' => $rslt1['id'], 'name' => $rslt1['name'], 'show_description' => $rslt1['show_description'], 'usePrice' =>$rslt1['price'], 'price' => $this->currency->format($this->tax->calculate($rslt1['price'], 0, $this->config->get('config_tax')), $this->session->data['currency']));
 			}else{
 				$shippingId = $rslt1['id'];
 				$totalDelayHour = ($rslt1['leadtime'] + $rslt1['buffertime'])*60;
@@ -1059,7 +1059,7 @@ class ControllerProductProduct extends Controller {
 				if(strtotime($checkDate)==strtotime($curDate)){
 					$rsltTime1 = $this->model_catalog_product->getShippingTypeTime($shippingId, $actualTime);
 					if($rsltTime1[0]['total']>0){
-						$data[] = array('id' => $rslt1['id'], 'name' => $rslt1['name'], 'usePrice' =>$rslt1['price'], 'price' => $this->currency->format($this->tax->calculate($rslt1['price'], 0, $this->config->get('config_tax')), $this->session->data['currency']));
+						$data[] = array('id' => $rslt1['id'], 'name' => $rslt1['name'], 'show_description' => $rslt1['show_description'], 'usePrice' =>$rslt1['price'], 'price' => $this->currency->format($this->tax->calculate($rslt1['price'], 0, $this->config->get('config_tax')), $this->session->data['currency']));
 					}
 				}						
 				

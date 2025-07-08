@@ -138,13 +138,13 @@
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/mothers-day-cakes.webp" alt="Online chake mothers day">
             </a>
             <p>Mother’s Day</p>
-          </li>*/ ?>
+          </li>
           <li>
             <a href="/fathers-day" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/fathers-day-icons.webp" alt="Father day cake online">
             </a>
             <p>Fathers Day</p>
-          </li>
+          </li>*/ ?>
           <li>
             <a href="/customize" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/custom-cakes.png" alt="a customised three-layered orange cake">
@@ -187,12 +187,12 @@
             </a>
             <p>Premium</p>
           </li>
-          <!-- <li>
+          <li>
             <a href="/photo-cakes" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/photo-cake.png" alt="A photo frame featuring a cake and cupcakes">  
             </a>
             <p>Photo Cakes</p>
-          </li> -->
+          </li>
            <?php /*<li>
             <a href="/custom-theme-cakes" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/theme-cake.png" alt="Theme Cakes">  
@@ -245,7 +245,7 @@
             <div class="home-primary-btn white-bg-btn" style="box-shadow: 0px 4px 0px 0px #9C89AE;">Order Now</div>  
           </div>
         </div>
-      </a> */ ?>
+      </a>
       <a href="/luxury-flowers">
         <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/flower-desktop.webp" alt="Cake your imagination">
         <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/flower-mobile.webp" alt="Cake your imagination">
@@ -269,7 +269,7 @@
             <div class="home-primary-btn white-bg-btn">Order Now</div>  
           </div>
         </div>
-      </a>
+      </a> */ ?>
 
       <?php /* <a href="/1-hour-delivery">
         <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/new-images/1-Hour-Delivery.webp" alt="Last minute celebration cakes">
@@ -282,7 +282,7 @@
             <div class="home-primary-btn">Order Now</div>  
           </div>
         </div>
-      </a> */ ?>
+      </a>
       
       <a href="/premium-cakes">
         <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/new-images/desktop-luxury-cakes.webp" alt="Make a Statement with Your Cake - Flavours Guru">
@@ -295,16 +295,49 @@
             <div class="home-primary-btn white-bg-btn">Order Now</div>  
           </div>
         </div>
-      </a>
-      <a href="/anniversary">
-        <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/new-images/desktop-anniversary-cake.webp" alt="anniversary cake">
-        <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/new-images/mobile-anniversary-cake.webp" alt="anniversary cake">
+      </a> */ ?>
+      <a href="/birthday">
+        <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/new-images/birthday-cake-desk.webp" alt="birthday cake">
+        <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/new-images/birthday-cake-mob.webp" alt="birthday cake">
         <div class="banner-overlay-content">
           <div class="banner-title-row">
-            <p class="banner-first-title" style="background: #FBC77E;color: #121212">Make your Loved Ones Special</p>
-            <h2 class="mb-30 banner-title text-white"><span class="text-white">Count the Memories <br>Not the Calories</h2>
+            <p class="banner-first-title" style="background: #97FFFC;color: #0044A3;">Birthday Bliss</p>
+            <h2 class="mb-30 banner-title">
+              <span class="" style="background: linear-gradient(90deg, #339E9B 0%, #000D9D 100%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">Let’s Get This Party </span><br>
+              <span class="" style="background: linear-gradient(90deg, #339E9B 0%, #000D9D 100%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">Started</span>
+            </h2>
             <p class="text-white banner-sm-title mb-30"></p>
-            <div class="home-primary-btn white-bg-btn">Order Now</div>  
+            <div class="home-primary-btn white-bg-btn" style="box-shadow: 0px 4px 0px 0px #00CAC4;">Shop birthday cakes</div>  
+          </div>
+        </div>
+      </a>
+      <a href="/anniversary">
+        <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/new-images/anniversary-cake-desk.webp" alt="anniversary cake">
+        <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/new-images/anniversary-cake-mob.webp" alt="anniversary cake">
+        <div class="banner-overlay-content">
+          <div class="banner-title-row">
+            <p class="banner-first-title" style="background: #9670FF;color: #ffffff">Happy Anniversary!</p>
+            <h2 class="mb-30 banner-title">
+              <span class="" style="background: linear-gradient(90deg, #A33EFB 0%, #023F8B 100%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">Mark Your Anniversary </span><br>
+              <span class="" style="background: linear-gradient(90deg, #A33EFB 0%, #023F8B 100%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">with Handcrafted Elegance</span>
+            </h2>
+            <p class="text-white banner-sm-title mb-30"></p>
+            <div class="home-primary-btn white-bg-btn" style="box-shadow: 0px 4px 0px 0px #9670FF;">Explore anniversary cakes</div>  
+          </div>
+        </div>
+      </a>
+      <a href="/customize">
+        <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/new-images/designer-cake-desk.webp" alt="birthday cake">
+        <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/new-images/designer-cake-mob.webp" alt="birthday cake">
+        <div class="banner-overlay-content">
+          <div class="banner-title-row">
+            <p class="banner-first-title" style="background: #FF7C78;color: #ffffff;">Design It Delicious</p>
+            <h2 class="mb-30 banner-title">
+              <span class="" style="background: linear-gradient(90deg, #FF7C77 0%, #FF2E9D 100%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">Craft Your Dream </span><br>
+              <span class="" style="background: linear-gradient(90deg, #FF7C77 0%, #FF2E9D 100%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">Custom Cake</span>
+            </h2>
+            <p class="text-white banner-sm-title mb-30"></p>
+            <div class="home-primary-btn white-bg-btn" style="box-shadow: 0px 4px 0px 0px #FF7C78;">Customize now</div>  
           </div>
         </div>
       </a>
@@ -385,11 +418,20 @@
               </a>
             </div>
             <div class="slide">
-              <a href="/bomb-cake">
+              <a href="/floral-birthday-cakes">
+                <div class="tranding-vector-img">
+                  <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/treanding-vector-bg-min.png" alt="Pull Me up - Flavours Guru">
+                  <img class="img-responsive trending-circl-img" src="catalog/view/theme/default/image/Home/new-images/floral-cakes.png" alt="floral cakes - Flavours Guru">
+                  <div class="home-primary-btn trending-btn">Floral Cakes</div>
+                </div>
+              </a>
+            </div>
+            <div class="slide">
+              <a href="/designer-cream-cake">
                 <div class="tranding-vector-img">
                   <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/treanding-vector-bg-min.png" alt="A black cake adorned with a boom sign, resembling a bomb cake.">
-                  <img class="img-responsive trending-circl-img" src="catalog/view/theme/default/image/Home/new-images/bomb-cake-min.png" alt="A black cake adorned with a boom sign, resembling a bomb cake.">
-                  <div class="home-primary-btn trending-btn">Bomb Cakes</div>
+                  <img class="img-responsive trending-circl-img" src="catalog/view/theme/default/image/Home/new-images/designer-cakes.png" alt="designer cakes ">
+                  <div class="home-primary-btn trending-btn">Designer Cakes</div>
                 </div>
               </a>
             </div>
@@ -417,15 +459,6 @@
                   <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/treanding-vector-bg-min.png" alt="Isomalt Cakes - Flavours Guru">
                   <img class="img-responsive trending-circl-img" src="catalog/view/theme/default/image/Home/new-images/isomalt-min.png" alt="Isomalt Cakes - Flavours Guru">
                   <div class="home-primary-btn trending-btn">Isomalt Cakes</div>
-                </div>
-              </a>
-            </div>
-            <div class="slide">
-              <a href="/pull-me-up-cake">
-                <div class="tranding-vector-img">
-                  <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/treanding-vector-bg-min.png" alt="Pull Me up - Flavours Guru">
-                  <img class="img-responsive trending-circl-img" src="catalog/view/theme/default/image/Home/new-images/pull-me-up.png" alt="Pull Me up - Flavours Guru">
-                  <div class="home-primary-btn trending-btn">Pull Me up</div>
                 </div>
               </a>
             </div>
@@ -485,7 +518,7 @@
   </div>
 <?php } ?>
 
-  <div class="col-md-12 col-sm-12 col-xs-12 section-m-b home-header-tab m-t-0 bg-gray">
+<div class="col-md-12 col-sm-12 col-xs-12 section-m-b home-header-tab m-t-0 bg-gray">
     <div class="container">
       <div class="row mb-40 display-flex align-items-center">
         <p class="section-title col-md-6 col-sm-6 col-xs-8 p-l-0 mb-0">Cakes by Profession</p>
@@ -551,10 +584,24 @@
   </div>
 </div>
 
-<div class="contact-less-section col-md-12 col-sm-12 col-xs-12 section-m-b p-r-0 p-l-0">
-  <?php /*<img style="border-radius: 15px;" class="img-responsive" src="catalog/view/theme/default/image/Home/Covid-Safe-Delivery-Banner.jpg" alt="Eggless cakes - Flavours Guru">  */ ?>
+<div class="contact-less-section col-md-12 col-sm-12 col-xs-12 section-m-b p-r-0 p-l-0 mt-40">
+  <?php /*<img style="border-radius: 15px;" class="img-responsive" src="catalog/view/theme/default/image/Home/Covid-Safe-Delivery-Banner.jpg" alt="Eggless cakes - Flavours Guru">  
   <a href="/experience-gift-ideas"><img class="img-responsive mb-20 hidden-xs" src="catalog/view/theme/default/image/Home/new-images/desktop-experience-banner.webp" alt="experience cakes - Flavours Guru"></a>
-  <a href="/experience-gift-ideas"><img class="img-responsive mb-20 visible-xs" src="catalog/view/theme/default/image/Home/new-images/mobile-experience-banner.webp" alt="experience cakes 2 - Flavours Guru"></a>
+  <a href="/experience-gift-ideas"><img class="img-responsive mb-20 visible-xs" src="catalog/view/theme/default/image/Home/new-images/mobile-experience-banner.webp" alt="experience cakes 2 - Flavours Guru"></a>*/ ?>
+  <div class="container">
+  	<div class="row">
+  		<div class="col-md-6 col-sm-6 col-xs-12 xs-mb-15 xs-p-r-0 p-l-0">
+  			<a href="/her" class="hover-zoom-col">
+  				<img class="img-responsive " src="catalog/view/theme/default/image/Home/new-images/cake-for-her.webp" alt="cake for her">
+  			</a>
+  		</div>
+  		<div class="col-md-6 col-sm-6 col-xs-12 xs-p-r-0 xs-p-l-0 p-r-0">
+  			<a href="/cakes-for-him" class="hover-zoom-col">
+  				<img class="img-responsive " src="catalog/view/theme/default/image/Home/new-images/cake-for-him.webp" alt="cake for him">
+  			</a>
+  		</div>
+  	</div>
+  </div>
 </div>
 
 <div class="col-md-12 col-sm-12 col-xs-12 section-m-b home-header-tab m-t-0">

@@ -895,7 +895,13 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-        <h1 class="categoryTitle col-md-12"><?php echo $heading_title; ?></h1>
+      <div class="display-flex col-md-12 align-items-center m-b-15">
+        <h1 class="categoryTitle m-r-15 font-weight-600 mt-0"><?php echo $heading_title; ?></h1>
+        <div class="m-r-15" style="color: #c2c2c2;font-size: 24px;font-weight: 200">|</div>
+        <div class="review-card m-r-0">
+          <span><?php echo $allreviews['average'] ?> </span><span>&nbsp; <i class="fa fa-star"></i></span>
+        </div>
+      </div>
       <?php if ($thumb || $category_content) { ?>
       <div class="row">
         <?php if ($thumb) { ?>

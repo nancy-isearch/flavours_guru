@@ -691,7 +691,7 @@ class ModelCatalogProduct extends Model {
 			$condition = ' ';
 		}
 		//$sql = "SELECT st.id, st.name, st.shipping_charge as price FROM oc_shipping_type st, oc_shipping_to_product stp WHERE stp.shipping_id = st.id AND stp.product_id = '".$proId."'";
-		$sql = "SELECT st.id, st.name, st.shipping_charge as price, st.buffertime, st.leadtime FROM oc_shipping_type st, oc_shipping_to_product stp, oc_shipping_citygrp_to_city ctc WHERE stp.shipping_id = st.id AND st.city_group_id = ctc.city_grp_id and st.active=1 AND ctc.city_id = '".$cid."' AND stp.product_id = '".$proId."' AND st.shipping_holyday not like '%".$delDate."%' ".$condition;
+		$sql = "SELECT st.id, st.name, st.shipping_charge as price, st.buffertime, st.leadtime, st.show_description FROM oc_shipping_type st, oc_shipping_to_product stp, oc_shipping_citygrp_to_city ctc WHERE stp.shipping_id = st.id AND st.city_group_id = ctc.city_grp_id and st.active=1 AND ctc.city_id = '".$cid."' AND stp.product_id = '".$proId."' AND st.shipping_holyday not like '%".$delDate."%' ".$condition;
 		$query = $this->db->query($sql);
 		return $query->rows;
 	}

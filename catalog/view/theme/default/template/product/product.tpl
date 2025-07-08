@@ -176,7 +176,7 @@
     top: 55px;
     left: 0;
     width: 100%;
-    z-index: 11;
+    z-index: 2;
   }
   .pincodelist ul{
     padding-left: 0;
@@ -397,6 +397,31 @@
   .msg_count_total_col{
   	top: 0;
   	right: 5px;
+  }
+  .shipping-section .section-title{
+    padding: 15px 40px;
+  }
+  .text-gray{
+    color: #474747;
+  }
+  .loader-col{
+  	position: absolute;
+  	top: 0;
+  	left: 0;
+  	width: 100%;
+  	height: 100%;
+  	background:rgba(255,255,255,0.7);
+  	z-index: 11;
+  	display: none;
+  }
+  .loader-col img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
   @media screen and (min-width: 767px){
     .category_main_row_col .product-thumb {
@@ -621,17 +646,16 @@
                   <!--<li><?= $text_stock; ?> <?= $stock; ?></li>-->
                 </ul>
                 <div class="earl-devl-text">
-                  <p class="font-size-12 mb-0 display-flex align-items-center">
-                    <span style="margin-right: 3px;display: inline-flex">
-                      <svg fill="#ffffff" width="16px" height="16px" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"><path d="M24,12a1,1,0,0,1-2,0A10.011,10.011,0,0,0,12,2a1,1,0,0,1,0-2A12.013,12.013,0,0,1,24,12Zm-8,1a1,1,0,0,0,0-2H13.723A2,2,0,0,0,13,10.277V7a1,1,0,0,0-2,0v3.277A1.994,1.994,0,1,0,13.723,13ZM1.827,6.784a1,1,0,1,0,1,1A1,1,0,0,0,1.827,6.784ZM2,12a1,1,0,1,0-1,1A1,1,0,0,0,2,12ZM12,22a1,1,0,1,0,1,1A1,1,0,0,0,12,22ZM4.221,3.207a1,1,0,1,0,1,1A1,1,0,0,0,4.221,3.207ZM7.779.841a1,1,0,1,0,1,1A1,1,0,0,0,7.779.841ZM1.827,15.216a1,1,0,1,0,1,1A1,1,0,0,0,1.827,15.216Zm2.394,3.577a1,1,0,1,0,1,1A1,1,0,0,0,4.221,18.793Zm3.558,2.366a1,1,0,1,0,1,1A1,1,0,0,0,7.779,21.159Zm14.394-5.943a1,1,0,1,0,1,1A1,1,0,0,0,22.173,15.216Zm-2.394,3.577a1,1,0,1,0,1,1A1,1,0,0,0,19.779,18.793Zm-3.558,2.366a1,1,0,1,0,1,1A1,1,0,0,0,16.221,21.159Z"/></svg>
-                      </svg>
-                    </span> 
-                    <?php
+                  <?php
                     date_default_timezone_set('Asia/Kolkata'); // Set your timezone
 
                     $now = new DateTime();
                     $hour = (int)$now->format('H');
                   ?>
+                  <p class="font-size-12 mb-0 display-flex align-items-center">
+                    <span style="margin-right: 3px;display: inline-flex">
+                      <svg fill="#ffffff" width="16px" height="16px" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"><path d="M24,12a1,1,0,0,1-2,0A10.011,10.011,0,0,0,12,2a1,1,0,0,1,0-2A12.013,12.013,0,0,1,24,12Zm-8,1a1,1,0,0,0,0-2H13.723A2,2,0,0,0,13,10.277V7a1,1,0,0,0-2,0v3.277A1.994,1.994,0,1,0,13.723,13ZM1.827,6.784a1,1,0,1,0,1,1A1,1,0,0,0,1.827,6.784ZM2,12a1,1,0,1,0-1,1A1,1,0,0,0,2,12ZM12,22a1,1,0,1,0,1,1A1,1,0,0,0,12,22ZM4.221,3.207a1,1,0,1,0,1,1A1,1,0,0,0,4.221,3.207ZM7.779.841a1,1,0,1,0,1,1A1,1,0,0,0,7.779.841ZM1.827,15.216a1,1,0,1,0,1,1A1,1,0,0,0,1.827,15.216Zm2.394,3.577a1,1,0,1,0,1,1A1,1,0,0,0,4.221,18.793Zm3.558,2.366a1,1,0,1,0,1,1A1,1,0,0,0,7.779,21.159Zm14.394-5.943a1,1,0,1,0,1,1A1,1,0,0,0,22.173,15.216Zm-2.394,3.577a1,1,0,1,0,1,1A1,1,0,0,0,19.779,18.793Zm-3.558,2.366a1,1,0,1,0,1,1A1,1,0,0,0,16.221,21.159Z"></path></svg>
+                    </span> 
                     <span>Earliest Delivery: <?php if ($hour >= 0 && $hour < 22) {
                                                 echo "Today";
                                             } else {
@@ -745,7 +769,7 @@
                      color: #aaa;
                      cursor: pointer;
                      position: absolute;
-                     right: 20px;
+                     right: 10px;
                      top: 15px;
                      text-decoration: none;
                      outline: inherit;
@@ -757,12 +781,13 @@
                   }
 
                   .shipping-section ul li {
-                      display: table;
+                      display: inline-table;
                       height: 50px;
                       width: 100%;
                       margin-bottom: 20px;
                       border-radius: 5px;
                       padding: 0 15px;
+                      border: 1px solid #CCC;
                   }
 
                   #modaldatetimepicker .scroll-pane>ul {
@@ -800,19 +825,25 @@
 
                   .shipping-section ul li a {
                       text-align: left !important;
-                      display: table-cell;
-                      vertical-align: middle;
+                      display: flex;
                       padding: 0 !important;
                       width: 100%;
                   }
 
                   .shipping-section ul li .timeslotdetails>label {
                       width: 82.9%;
-                      border-radius: 4px 0 0 4px;
                       margin-right: 0;
-                      height: 50px;
-                      border: 1px solid #CCC;
-                      border-right: 0 solid #fff;
+                      height: auto;
+                      margin-bottom: 0;
+                      line-height: 24px;
+                      display: flex;
+                      align-items: start; 
+                  }
+                  .shipping-type-text{
+
+                  }
+                  .newshippingoptionhtml {
+                      padding: 0 15px !important;
                   }
 
                   .shipping-section input[type="radio"]+label span.rdo-span {
@@ -826,25 +857,27 @@
                       cursor: pointer;
                       -moz-border-radius: 50%;
                       border-radius: 50%;
+                      margin-top: 7px;
                   }
 
                   .shipping-section .timesloter {
-                      text-align: center;
+                      text-align: left;
                       color: #474747;
                       font-size: 14px;
                       padding-top: 2px;
                   }
+                  .shipping-section .timesloter p{
+                  	line-height: 18px !important;
+                  	margin-bottom: 0;
+                  }
 
                   .shipping-section .input-group-button.button{
                       float: right;
-                      margin: 0 5px 0 0;
-                      border-radius: 0 3px 3px 0;
+                      margin: 0;
                       height: 50px;
                       width: 15%;
-                      color: #fff;
-                      background-color: #F65F73;
                       display: inline-block;
-                      text-align: center;
+                      text-align: end;
                       line-height: 50px;
                   }
 
@@ -865,6 +898,11 @@
                   .timeslotdetails label {
                       padding: 12px 0 13px 13px;
                       cursor: pointer;
+                      padding-left: 0;
+                  }
+                  .time-slot-col {
+                      padding-left: 15px;
+                      display: none;
                   }
 
                   .delcost {
@@ -882,17 +920,17 @@
 
                .timeslotdetails:focus{
                   outline: inherit;
+                  text-decoration: none;
                }
 
                .timeslotdetails:hover{
                   outline: inherit;
-                  display: inline-block;
                   text-decoration: none;
                }
 
                .backtocalendar {
                    text-align: left;
-                   margin-left: 35px;
+                   margin-left: 10px;
                    position: absolute;
                    top: 13px;
                    font-size: 2em;
@@ -1025,10 +1063,11 @@
               }
 
               .timeslottable {
-                  margin: 15px auto;
-                  border: 1px solid #CCC;
+                  margin: 0 !important;
+                  border: 0 !important;
                   border-radius: 5px;
-                  width: 50% !important;
+                  width: 100% !important;
+                  padding: 0 !important;
               }
 
               .time-slot-lable{
@@ -1160,6 +1199,7 @@
           .shippingmethod{
             color: #e53333;
             font-weight: 600;
+            font-size: 12px;
           }
           .deliverymonth_date{
             font-size: 36px;
@@ -1213,9 +1253,9 @@
                     <div class="order-calendar-date" autocomplete="off" id="datetimeshipping"></div>
                   </div>
                   
-                  <div class="shipping-section hideppnew" id="shippingmethoddiv">
+                  <div class="shipping-section hideppnew position-relative" id="shippingmethoddiv">
                     <a class="product-reveal-close">×</a>
-                    <div class="section-title">Select Shipping Option</div>
+                    <div class="section-title">Select Shipping Type and Delivery Time</div>
                      <div class="scroll-pane custom-scroll">
                         <ul class="newshippingoptionhtml">
                            
@@ -1241,6 +1281,9 @@
                      <a class="backtocalendar backtocalendar-2">
                        <img style="width: 25px;" src="/image/back_icon1.jpg" class="material-icons back-arrow" alt="" />
                     </a>
+                  </div>
+                  <div class="loader-col">
+                    <img style="width: 40px;" src="catalog/view/theme/default/image/loader.gif" class="material-icons back-arrow" alt="" />
                   </div>
                </div>
 
@@ -1493,7 +1536,7 @@
                        <!-- <button type="button" data-toggle="tooltip" title="<?= $button_wishlist; ?>" onclick="wishlist.add('<?= $product_id; ?>');"><i class="fa fa-heart"></i></button> -->
                      </div>
                      <?php } else { ?>
-                     <button type="button" id="button-cart-2" data-loading-text="<?= $text_loading; ?>" class="btn btn-primary  btn-lg btn-block btn-orange out-of-stock-cta">Out of Stock</button>
+                     <button type="button" id="button-cart-2" data-loading-text="<?= $text_loading; ?>" class="btn btn-primary  btn-lg btn-block btn-orange">Out of Stock</button>
                      <?php } ?>
                      <!-- <div class="btn-group col-sm-6 pull-right">
                      </div> -->
@@ -2277,8 +2320,8 @@
           $("#datetimeshipping").datepicker("option", "beforeShowDay", disableDates)
           jQuery('#shippingmethoddiv').animate({"left":"100%"});
           jQuery('.calendar-section').animate({"right":"0"});
-          jQuery('#timimg-section').animate({"left":"100%"});
-          jQuery('#time_slot_msg').animate({"left":"100%"});
+          //jQuery('#timimg-section').animate({"left":"100%"});
+          //jQuery('#time_slot_msg').animate({"left":"100%"});
           jQuery('.pincodenew').removeClass('animation-border');
         }
       });
@@ -2338,7 +2381,7 @@
                var types = '';
                var free_type='';
                $.each(obj, function(key,value) {
-                types += '<li><a data-shippingmethod="'+value.name.replace(/\s+/g, "")+'" class="timeslotdetails" data-ga-title="'+value.name+'" tabindex="0"><input type="radio" class="input-group-field applycoupon shippingtime" name="shippingmethodtype" id="'+value.name.replace(/\s+/g, "")+'" tabindex="0" value="'+value.name + ' - ' + value.price+'" typeId = "'+value.id+'" price = "'+value.usePrice+'"><label class="select_delivery" for="'+value.name.replace(/\s+/g, "")+'"><span class="rdo-span"></span><span class="timesloter">'+value.name+'</span></label><div class="input-group-button button del-method-btn"><span class="delcost">'+value.price+'</span></div></a></li>';
+                types += '<li><a data-shippingmethod="'+value.name.replace(/\s+/g, "")+'" class="timeslotdetails" data-ga-title="'+value.name+'" tabindex="0"><input type="radio" class="input-group-field applycoupon shippingtime" name="shippingmethodtype" id="'+value.name.replace(/\s+/g, "")+'" tabindex="0" value="'+value.name + ' - ' + value.price+'" typeId = "'+value.id+'" price = "'+value.usePrice+'"><label class="select_delivery" for="'+value.name.replace(/\s+/g, "")+'"><span class="rdo-span"></span><div class="timesloter"><p>'+value.name+'</p><p class="text-gray font-size-12">'+value.show_description+'</p></div></label><div class="input-group-button button del-method-btn"><span class="delcost">'+value.price+'</span></div></a><div class="time-slot-col"><div class="text-gray">Select Time Slot</div><ul class="newshippingslothtml"><li class="timeslottable"><a  class="timeslotdetails"><input type="radio" value="" class="input-group-field applycoupon shippingtime" name="shippingtimeslotnew" id="select-time-slot-1" tabindex="0"><label class="time-slot-lable" for="select-time-slot-1"><span class="rdo-span"></span><span class="timesloter">09:00 - 13:00</span></label></a></li></ul></div></li>';
                  
                }); 
                
@@ -2346,6 +2389,13 @@
                jQuery('.calendar-section').animate({"right":"100%"});
                 jQuery('#shippingmethoddiv').animate({"left":"0"});
                $('.loadingbox').hide();
+               setTimeout (function(){
+                jQuery('.select_delivery').click(function(){
+                  jQuery('.time-slot-col').hide();
+                  jQuery(this).parent().next().show();
+                  jQuery('.loader-col').show();
+                });
+              },100);
                shippingMethodfunction();
              }
            });
@@ -2374,6 +2424,7 @@
                 }
                 setTimeout(function() {
                   $('.loadingbox').hide();
+                  jQuery('.loader-col').hide();
                 },500); 
                }             
             });
@@ -2549,8 +2600,8 @@
     }); 
      $(".newshippingslothtml").html(types);
      jQuery('#shippingmethoddiv').animate({"right":"100%"});
-     jQuery('#timimg-section').animate({"left":"0"});
-     jQuery('#time_slot_msg').animate({"left":"0"});
+     //jQuery('#timimg-section').animate({"left":"0"});
+     //jQuery('#time_slot_msg').animate({"left":"0"});
      setDataToHiddenInputs();
    }
 
@@ -2627,8 +2678,8 @@
              });
              $(".newshippingslothtml").html(types);
              jQuery('#shippingmethoddiv').animate({"right":"100%"});
-             jQuery('#timimg-section').animate({"left":"0"});
-             jQuery('#time_slot_msg').animate({"left":"0"});
+             //jQuery('#timimg-section').animate({"left":"0"});
+             //jQuery('#time_slot_msg').animate({"left":"0"});
              setDataToHiddenInputs();
            } else {
              //alert("We r in else");
@@ -2714,8 +2765,8 @@
                }); 
                $(".newshippingslothtml").html(types);
                jQuery('#shippingmethoddiv').animate({"right":"100%"});
-                jQuery('#timimg-section').animate({"left":"0"});
-                jQuery('#time_slot_msg').animate({"left":"0"});
+                //jQuery('#timimg-section').animate({"left":"0"});
+                //jQuery('#time_slot_msg').animate({"left":"0"});
                 setDataToHiddenInputs();
            }
            //console.log('array=>'+oldArr.length);

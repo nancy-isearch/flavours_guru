@@ -1,5 +1,9 @@
 <?php
 class ControllerCustomscriptCustomscript1 extends Controller {
+	public function index(){
+		echo "index";
+	} 
+
 	public function guestOrders(){
 		$sql = "select order_id, telephone, payment_mobile, shipping_phone,  email, payment_email, firstname, lastname from oc_order where (customer_id = 0 OR customer_id is NULL OR customer_id = '') order by order_id desc LIMIT 20000";
 		$orders=$this->db->query($sql)->rows;
@@ -58,7 +62,7 @@ class ControllerCustomscriptCustomscript1 extends Controller {
 			
 			//$cusSql = "SELECT customer_id, telephone, email from oc_customer WHERE (telephone = '".$value['telephone']."')";
 
-			$cusSql = "SELECT customer_id, telephone, email from oc_customer WHERE (telephone = '".$value['telephone']."' OR telephone = '".$value['payment_mobile']."' OR email = '".$value['email']."' OR email = '".$value['payment_email']."')";
+			$cusSql = "SELECT customer_id, telephone, email from oc_customer WHERE (email = '".$value['email']."' OR email = '".$value['payment_email']."' OR telephone = '".$value['telephone']."' OR telephone = '".$value['payment_mobile']."')";
 			$customer=$this->db->query($cusSql)->row;
 
 			if(!$customer){

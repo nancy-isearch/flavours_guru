@@ -647,7 +647,7 @@ class ModelReportSale extends Model {
 
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}
-		echo $sql;
+		//echo $sql;
 		$query = $this->db->query($sql);
 
 		$allOrder = array();
