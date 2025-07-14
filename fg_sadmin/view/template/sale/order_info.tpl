@@ -97,7 +97,7 @@
             </tr>
             <tr>
               <td><button data-toggle="tooltip" title="<?php echo $text_telephone; ?>" class="btn btn-info btn-xs"><i class="fa fa-phone fa-fw"></i></button></td>
-              <td><?php echo $telephone; ?></td>
+              <td><?php echo $telephone_with_code; ?></td>
             </tr>
           </table>
         </div>

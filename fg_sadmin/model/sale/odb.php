@@ -44,7 +44,7 @@ class ModelSaleOdb extends Model {
 			if (!empty($data['status'])) {
 				$sql .= " AND od.status = '" . $this->db->escape($data['status']) . "'";
 			} else {
-				$sql .= " AND (od.id is null)";
+				//$sql .= " AND (od.id is null OR od.status >= 0 )";
 			}
 		}
 
@@ -111,7 +111,7 @@ class ModelSaleOdb extends Model {
 			if (!empty($data['status'])) {
 				$sql .= " AND od.status = '" . $this->db->escape($data['status']) . "'";
 			} else {
-				$sql .= " AND (od.id is null)";
+				//$sql .= " AND (od.id is null)";
 			}
 		}
 

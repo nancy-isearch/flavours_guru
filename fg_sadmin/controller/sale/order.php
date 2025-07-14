@@ -1195,6 +1195,7 @@ $dataaa = (array)$shipInfo;
 
 			$data['email'] = $order_info['email'];
 			$data['telephone'] = $order_info['telephone'];
+			$data['telephone_with_code'] = $order_info['telephone_with_code'];
 
 			$data['shipping_method'] = $order_info['shipping_method'];
 			$data['payment_method'] = $order_info['payment_method'];

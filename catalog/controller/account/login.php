@@ -336,6 +336,7 @@ class ControllerAccountLogin extends Controller {
 				$registerData['firstname'] = $this->request->post['gst_name'];
 				$registerData['email'] = $this->request->post['gst_email'];
 				$registerData['telephone'] = $this->request->post['gst_phone'];
+				$registerData['telephone_code'] = $this->request->post['gst_code'];
 				$registerData['password'] = $otp;
 				$customer_id = $this->model_account_customer->addCustomer($registerData);
 				$this->customer->login($registerData['email'], $registerData['password']);
