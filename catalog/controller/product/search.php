@@ -551,7 +551,9 @@ class ControllerProductSearch extends Controller {
 		};
 
 		foreach ($queries['keyword'] as $query) {
+			echo $query;
 			$query = $normalize($query);
+			echo $query; die;
 			$added = false;
 			foreach ($groups as $groupKey => &$group) {
 				$rep = $normalize($groupKey);
