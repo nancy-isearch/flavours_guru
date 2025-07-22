@@ -539,7 +539,7 @@ class ControllerProductSearch extends Controller {
 		$this->response->setOutput($this->load->view('product/search', $data));
 	}
 
-	public function getSynmonyms(){
+	public function searchSynonyms(){
 		$aa = "select keyword from oc_customer_search group by keyword limit 25000";
 		$queries = $this->db->query($aa)->rows;
 
@@ -572,7 +572,19 @@ class ControllerProductSearch extends Controller {
 				$groups[$query] = [$query];
 			}
 		}
-		echo "<pre />"; print_r($groups);
+		$filepath = DIR_SYSTEM.'data/search_synonyms.csv';
+		$handle = fopen($filepath, 'w');
+		if ($handle === false) {
+			throw new Exception("Unable to open file for writing: $filepath");
+		}
+		// Write header
+		fputcsv($handle, ['Word', 'Synonyms']);
+		foreach ($groups as $key => $values) {
+			fputcsv($handle, [$key, implode(',', $values)]);
+		}
+		fclose($handle);
+
+		echo "Synonyms saved to $filepath";
 	}
 
 	public function loadSynonymMap($file = "synonyms.csv") {
