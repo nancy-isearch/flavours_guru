@@ -539,8 +539,8 @@ class ControllerProductSearch extends Controller {
 		$this->response->setOutput($this->load->view('product/search', $data));
 	}
 
-	public function get(){
-		$aa = "select keyword from oc_customer_search group by keyword limit 50000";
+	public function getSynmonyms(){
+		$aa = "select keyword from oc_customer_search group by keyword limit 25000";
 		$queries = $this->db->query($aa)->rows;
 
 		$groups = [];
