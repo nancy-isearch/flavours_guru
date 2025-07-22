@@ -555,6 +555,11 @@ class ControllerProductSearch extends Controller {
 		foreach ($queries as $query) {
 			$query = $this->removeStopWords($query['keyword']);
 			$query = $normalize($query);
+
+			if (!preg_match('/^[a-z0-9\s\-\.\,\(\)]+$/i', $query)) {
+				continue;
+			}
+
 			$added = false;
 			foreach ($groups as $groupKey => &$group) {
 				$rep = $normalize($groupKey);
@@ -574,7 +579,7 @@ class ControllerProductSearch extends Controller {
 				$groups[$query] = [$query];
 			}
 		}
-		$filepath = DIR_SYSTEM.'data/search_synonyms_all.csv';
+		$filepath = DIR_SYSTEM.'data/search_synonyms_all1.csv';
 		$handle = fopen($filepath, 'w');
 		if ($handle === false) {
 			throw new Exception("Unable to open file for writing: $filepath");
