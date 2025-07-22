@@ -549,11 +549,10 @@ class ControllerProductSearch extends Controller {
 		$normalize = function ($str) {
 			return strtolower(trim(preg_replace('/\s+/', ' ', $str)));
 		};
-		echo "<pre />"; print_r($queries); die;
-		foreach ($queries['keyword'] as $query) {
-			echo $query;
+
+		foreach ($queries as $query) {
+			$query = $query['keyword'];
 			$query = $normalize($query);
-			echo $query; die;
 			$added = false;
 			foreach ($groups as $groupKey => &$group) {
 				$rep = $normalize($groupKey);
