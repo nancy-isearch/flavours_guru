@@ -540,7 +540,7 @@ class ControllerProductSearch extends Controller {
 	}
 
 	public function searchSynonyms(){
-		$aa = "select keyword from oc_customer_search group by keyword limit 25000";
+		$aa = "select keyword from oc_customer_search group by keyword";
 		$queries = $this->db->query($aa)->rows;
 
 		$groups = [];
