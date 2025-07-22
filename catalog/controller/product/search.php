@@ -538,4 +538,70 @@ class ControllerProductSearch extends Controller {
 
 		$this->response->setOutput($this->load->view('product/search', $data));
 	}
+
+	public function get(){
+		$aa = "select keyword from oc_customer_search group by keyword";
+		$queries = $this->db->query($aa)->rows;
+
+		$groups = [];
+
+		// Normalize queries: lowercase, remove extra spaces
+		$normalize = function ($str) {
+			return strtolower(trim(preg_replace('/\s+/', ' ', $str)));
+		};
+
+		foreach ($queries as $query) {
+			$query = $normalize($query);
+			$added = false;
+			foreach ($groups as $groupKey => &$group) {
+				$rep = $normalize($groupKey);
+
+				$lev = levenshtein($query, $rep);
+				$sound1 = metaphone($query);
+				$sound2 = metaphone($rep);
+
+				if ($lev <= 5 || $sound1 === $sound2) {
+					$group[] = $query;
+					$added = true;
+					break;
+				}
+			}
+
+			if (!$added) {
+				$groups[$query] = [$query];
+			}
+		}
+		echo "<pre />"; print($groups);
+	}
+
+	public function loadSynonymMap($file = "synonyms.csv") {
+		$map = [];
+		if (($handle = fopen($file, "r")) !== false) {
+			$header = fgetcsv($handle);
+			while (($row = fgetcsv($handle)) !== false) {
+			$map[strtolower(trim($row[0]))] = strtolower(trim($row[1]));
+			}
+			fclose($handle);
+		}
+		return $map;
+	}
+
+	public function removeStopWords($query, $stopwords) {
+		$words = explode(" ", strtolower($query));
+		$filtered = array_filter($words, function($word) use ($stopwords) {
+			return !in_array($word, $stopwords);
+		});
+		return implode(" ", $filtered);
+	}
+
+	public function normalizeQuery($query, $synonymMap, $stopwords) {
+		$clean = $this->removeStopWords($query, $stopwords);
+		foreach ($synonymMap as $variant => $canonical) {
+			if (stripos($clean, $variant) !== false) {
+				$clean = preg_replace("/\b" . preg_quote($variant, '/') . "\b/i", $canonical, $clean);
+			}
+		}
+		return trim($clean);
+	}
+
 }
