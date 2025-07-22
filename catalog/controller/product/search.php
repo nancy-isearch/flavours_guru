@@ -540,7 +540,9 @@ class ControllerProductSearch extends Controller {
 	}
 
 	public function searchSynonyms(){
-		$aa = "select keyword from oc_customer_search group by keyword";
+		set_time_limit(0);
+		ini_set('memory_limit', '-1');
+		$aa = "select keyword from oc_customer_search group by keyword limit 25000";
 		$queries = $this->db->query($aa)->rows;
 
 		$groups = [];
@@ -572,7 +574,7 @@ class ControllerProductSearch extends Controller {
 				$groups[$query] = [$query];
 			}
 		}
-		$filepath = DIR_SYSTEM.'data/search_synonyms.csv';
+		$filepath = DIR_SYSTEM.'data/search_synonyms25000.csv';
 		$handle = fopen($filepath, 'w');
 		if ($handle === false) {
 			throw new Exception("Unable to open file for writing: $filepath");
