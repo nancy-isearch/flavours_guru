@@ -571,7 +571,7 @@ class ControllerProductSearch extends Controller {
 				$groups[$query] = [$query];
 			}
 		}
-		echo "<pre />"; print($groups);
+		echo "<pre />"; print_r($groups);
 	}
 
 	public function loadSynonymMap($file = "synonyms.csv") {
