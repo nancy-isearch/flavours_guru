@@ -540,7 +540,7 @@ class ControllerProductSearch extends Controller {
 	}
 
 	public function get(){
-		$aa = "select keyword from oc_customer_search group by keyword limit 1000";
+		$aa = "select keyword from oc_customer_search group by keyword";
 		$queries = $this->db->query($aa)->rows;
 
 		$groups = [];
@@ -551,7 +551,7 @@ class ControllerProductSearch extends Controller {
 		};
 
 		foreach ($queries as $query) {
-			$query = $query['keyword'];
+			$query = $this->removeStopWords($query['keyword']);
 			$query = $normalize($query);
 			$added = false;
 			foreach ($groups as $groupKey => &$group) {
@@ -587,7 +587,8 @@ class ControllerProductSearch extends Controller {
 		return $map;
 	}
 
-	public function removeStopWords($query, $stopwords) {
+	public function removeStopWords($query) {
+		$stopwords = ['cake', 'cakes', 'online', 'buy', 'order', 'send', 'gift', 'delivery', 'near me', 'a', 'an', 'the', 'for', 'to', 'in', 'of', 'on', 'with', 'at', 'from', 'by', 'and', 'is', 'are', 'this', 'that', 'me', 'my', 'you', 'your', 'online'];
 		$words = explode(" ", strtolower($query));
 		$filtered = array_filter($words, function($word) use ($stopwords) {
 			return !in_array($word, $stopwords);
