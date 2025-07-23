@@ -63,7 +63,7 @@ class ControllerCommonSearch extends Controller {
 		$results = $searchEngine->search($input);
 
 		// Display results
-		echo "🔍 Search results for: \"$input\" - Count (".count($result).")<br><br>";
+		echo "🔍 Search results for: \"$input\" - Count (".count($results).")<br><br>";
 		foreach ($results as $result) {
 			echo "- " . $result['product']['title'] . " (score: " . $result['score'] . ")<br>";
 		}
