@@ -34,6 +34,11 @@ class ControllerCommonSearch extends Controller {
 	}
 
 	public function searchCake(){
+		$input = $this->request->get['search'];
+		if (empty($input)) {
+			echo "Please enter a search term.";
+			return;
+		}
 		require '/home/master/applications/npffwsymrc/public_html/catalog/controller/product/CakeSearchEngine.php';
 		$aa = "SELECT product_id id, name title FROM `oc_product_description`";
 		$products = $this->db->query($aa)->rows;
@@ -46,22 +51,19 @@ class ControllerCommonSearch extends Controller {
 		// ];
 
 		// Optional synonym map (can be loaded from CSV or generated offline)
-		$synonyms = [
-			'spicermen' => 'spiderman',
-			'spicer' => 'spiderman',
-			'bday' => 'birthday',
-			'choco' => 'chocolate',
-		];
+		// $synonyms = [
+		// 	'spicermen' => 'spiderman',
+		// 	'spicer' => 'spiderman',
+		// 	'bday' => 'birthday',
+		// 	'choco' => 'chocolate',
+		// ];
 
+		$synonyms = [];
 		$searchEngine = new CakeSearchEngine($products, $synonyms);
-
-		// Simulated user input
-		$input = "Spicer cake";
 		$results = $searchEngine->search($input);
 
 		// Display results
-		echo "🔍 Search results for: \"$input\"<br><br>";
-		echo "<pre>"; print_r($results); echo "</pre>";
+		echo "🔍 Search results for: \"$input\" - Count (".count($result).")<br><br>";
 		foreach ($results as $result) {
 			echo "- " . $result['product']['title'] . " (score: " . $result['score'] . ")<br>";
 		}
