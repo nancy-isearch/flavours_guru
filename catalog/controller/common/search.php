@@ -34,7 +34,7 @@ class ControllerCommonSearch extends Controller {
 	}
 
 	public function searchCake(){
-		require 'CakeSearchEngine.php';
+		require '/home/master/applications/npffwsymrc/public_html/catalog/controller/product/CakeSearchEngine.php';
 
 		$products = [
 			['id' => 1, 'title' => 'Spiderman Cake'],
