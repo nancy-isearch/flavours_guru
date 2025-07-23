@@ -45,7 +45,7 @@ class CakeSearchEngine {
                         $levDist = levenshtein($token, $word);
                         if ($levDist == 0) $score += 10; // exact match bonus
                         elseif ($levDist <= 2) $score += 5;
-                        if (soundex($token) === soundex($word)) $score += 3;
+                        if (metaphone($token) === metaphone($word)) $score += 3;
                     }
                 }
 
@@ -55,7 +55,7 @@ class CakeSearchEngine {
                         $levDist = levenshtein($token, $word);
                         if ($levDist == 0) $score += 6;
                         elseif ($levDist <= 2) $score += 3;
-                        if (soundex($token) === soundex($word)) $score += 2;
+                        if (metaphone($token) === metaphone($word)) $score += 2;
                     }
                 }
                 
@@ -65,7 +65,7 @@ class CakeSearchEngine {
                         $levDist = levenshtein($token, $word);
                         if ($levDist == 0) $score += 4;
                         elseif ($levDist <= 2) $score += 2;
-                        if (soundex($token) === soundex($word)) $score += 1;
+                        if (metaphone($token) === metaphone($word)) $score += 1;
                     }
                 }
             }
@@ -108,7 +108,7 @@ class CakeSearchEngine {
                     $levDist = levenshtein($token, $word);
                     if ($levDist == 0) $score += 10; // exact match bonus
                     elseif ($levDist <= 2) $score += 5;
-                    if (soundex($token) === soundex($word)) $score += 3;
+                    if (metaphone($token) === metaphone($word)) $score += 3;
                 }
             }
 
@@ -118,7 +118,7 @@ class CakeSearchEngine {
                     $levDist = levenshtein($token, $word);
                     if ($levDist == 0) $score += 6;
                     elseif ($levDist <= 2) $score += 3;
-                    if (soundex($token) === soundex($word)) $score += 2;
+                    if (metaphone($token) === metaphone($word)) $score += 2;
                 }
             }
             
@@ -128,7 +128,7 @@ class CakeSearchEngine {
                     $levDist = levenshtein($token, $word);
                     if ($levDist == 0) $score += 4;
                     elseif ($levDist <= 2) $score += 2;
-                    if (soundex($token) === soundex($word)) $score += 1;
+                    if (metaphone($token) === metaphone($word)) $score += 1;
                 }
             }
 
