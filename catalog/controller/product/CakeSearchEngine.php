@@ -28,20 +28,33 @@ class CakeSearchEngine {
 
         $results = [];
         foreach ($this->products as $product) {
-            $title = strtolower($product['title']);
+            $title = isset($product['title']) ? strtolower($product['title']) : '';
+            $description = isset($product['description']) ? strtolower($product['description']) : '';
+            $tags = '';
+            if (isset($product['tags'])) {
+                $tags = is_array($product['tags']) ? implode(' ', $product['tags']) : strtolower($product['tags']);
+            }
+
             $score = 0;
 
             foreach ($filteredTokens as $token) {
-                $titleWords = explode(" ", $title);
-                foreach ($titleWords as $word) {
+                // Title
+                foreach (explode(' ', $title) as $word) {
                     $levDist = levenshtein($token, $word);
-                    if ($levDist <= 2) {
-                        $score += 5;
-                    }
-
-                    if (soundex($token) === soundex($word)) {
-                        $score += 3;
-                    }
+                    if ($levDist <= 2) $score += 5;
+                    if (soundex($token) === soundex($word)) $score += 3;
+                }
+                // Description (lower weight)
+                foreach (explode(' ', $description) as $word) {
+                    $levDist = levenshtein($token, $word);
+                    if ($levDist <= 2) $score += 2;
+                    if (soundex($token) === soundex($word)) $score += 1;
+                }
+                // Tags (medium weight)
+                foreach (explode(' ', $tags) as $word) {
+                    $levDist = levenshtein($token, $word);
+                    if ($levDist <= 2) $score += 3;
+                    if (soundex($token) === soundex($word)) $score += 2;
                 }
             }
 

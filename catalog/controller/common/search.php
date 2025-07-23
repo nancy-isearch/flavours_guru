@@ -40,7 +40,7 @@ class ControllerCommonSearch extends Controller {
 			return;
 		}
 		require '/home/master/applications/npffwsymrc/public_html/catalog/controller/product/CakeSearchEngine.php';
-		$aa = "SELECT product_id id, name title FROM `oc_product_description`";
+		$aa = "SELECT product_id id, name title, description, tag tags FROM `oc_product_description`";
 		$products = $this->db->query($aa)->rows;
 		// $products = [
 		// 	['id' => 1, 'title' => 'Spiderman Cake'],
