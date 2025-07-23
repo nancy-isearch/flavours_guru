@@ -62,10 +62,21 @@ class ControllerCommonSearch extends Controller {
 		$description = $this->request->get['useDescription'];
 		$tags = $this->request->get['useTags'];
 
+		$withSpace = false;
+		if (isset($this->request->get['withSpace']) && $this->request->get['withSpace'] == 1) {
+			$withSpace = true;
+		}
+
 
 		$synonyms = [];
 		$searchEngine = new CakeSearchEngine($products, $synonyms);
-		$results = $searchEngine->search($input, $name, $description, $tags);
+
+		if($withSpace){
+			$results = $searchEngine->searchWithSpace($input, $name, $description, $tags);
+		} else {
+			$results = $searchEngine->search($input, $name, $description, $tags);
+		}
+		
 		
 
 		// Display results
