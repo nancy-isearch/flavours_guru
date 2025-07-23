@@ -38,23 +38,28 @@ class CakeSearchEngine {
             $score = 0;
 
             foreach ($filteredTokens as $token) {
-                // Title
+                // Title (highest weight)
                 foreach (explode(' ', $title) as $word) {
                     $levDist = levenshtein($token, $word);
-                    if ($levDist <= 2) $score += 5;
+                    if ($levDist == 0) $score += 10; // exact match bonus
+                    elseif ($levDist <= 2) $score += 5;
                     if (soundex($token) === soundex($word)) $score += 3;
                 }
+
+                // Tags (medium-high weight)
+                foreach (explode(' ', $tags) as $word) {
+                    $levDist = levenshtein($token, $word);
+                    if ($levDist == 0) $score += 6;
+                    elseif ($levDist <= 2) $score += 3;
+                    if (soundex($token) === soundex($word)) $score += 2;
+                }
+                
                 // Description (lower weight)
                 foreach (explode(' ', $description) as $word) {
                     $levDist = levenshtein($token, $word);
-                    if ($levDist <= 2) $score += 2;
+                    if ($levDist == 0) $score += 4;
+                    elseif ($levDist <= 2) $score += 2;
                     if (soundex($token) === soundex($word)) $score += 1;
-                }
-                // Tags (medium weight)
-                foreach (explode(' ', $tags) as $word) {
-                    $levDist = levenshtein($token, $word);
-                    if ($levDist <= 2) $score += 3;
-                    if (soundex($token) === soundex($word)) $score += 2;
                 }
             }
 
