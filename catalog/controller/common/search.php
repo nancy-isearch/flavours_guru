@@ -35,14 +35,15 @@ class ControllerCommonSearch extends Controller {
 
 	public function searchCake(){
 		require '/home/master/applications/npffwsymrc/public_html/catalog/controller/product/CakeSearchEngine.php';
-
-		$products = [
-			['id' => 1, 'title' => 'Spiderman Cake'],
-			['id' => 2, 'title' => 'Batman Cake'],
-			['id' => 3, 'title' => 'Chocolate Truffle Cake'],
-			['id' => 4, 'title' => 'Superman Cake'],
-			['id' => 5, 'title' => 'Strawberry Designer Cake'],
-		];
+		$aa = "SELECT product_id id, name title FROM `oc_product_description`";
+		$products = $this->db->query($aa)->rows;
+		// $products = [
+		// 	['id' => 1, 'title' => 'Spiderman Cake'],
+		// 	['id' => 2, 'title' => 'Batman Cake'],
+		// 	['id' => 3, 'title' => 'Chocolate Truffle Cake'],
+		// 	['id' => 4, 'title' => 'Superman Cake'],
+		// 	['id' => 5, 'title' => 'Strawberry Designer Cake'],
+		// ];
 
 		// Optional synonym map (can be loaded from CSV or generated offline)
 		$synonyms = [
@@ -59,9 +60,10 @@ class ControllerCommonSearch extends Controller {
 		$results = $searchEngine->search($input);
 
 		// Display results
-		echo "🔍 Search results for: \"$input\"\n\n";
+		echo "🔍 Search results for: \"$input\"<br><br>";
+		echo "<pre>"; print_r($results); echo "</pre>";
 		foreach ($results as $result) {
-			echo "- " . $result['product']['title'] . " (score: " . $result['score'] . ")\n";
+			echo "- " . $result['product']['title'] . " (score: " . $result['score'] . ")<br>";
 		}
 	}
 }
