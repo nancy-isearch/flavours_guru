@@ -58,9 +58,15 @@ class ControllerCommonSearch extends Controller {
 		// 	'choco' => 'chocolate',
 		// ];
 
+		$name = $this->request->get['useName'];
+		$description = $this->request->get['useDescription'];
+		$tags = $this->request->get['useTags'];
+
+
 		$synonyms = [];
 		$searchEngine = new CakeSearchEngine($products, $synonyms);
-		$results = $searchEngine->search($input);
+		$results = $searchEngine->search($input, $name, $description, $tags);
+		
 
 		// Display results
 		echo "🔍 Search results for: \"$input\" - Count (".count($results).")<br><br>";
