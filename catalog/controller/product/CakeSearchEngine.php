@@ -51,7 +51,7 @@ class CakeSearchEngine {
 
                 if($useTags == 1){
                     // Tags (medium-high weight)
-                    foreach (explode(' ', $tags) as $word) {
+                    foreach (explode(',', $tags) as $word) {
                         $levDist = levenshtein($token, $word);
                         if ($levDist == 0) $score += 6;
                         elseif ($levDist <= 2) $score += 3;
