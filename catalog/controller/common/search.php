@@ -32,4 +32,36 @@ class ControllerCommonSearch extends Controller {
 		}  
 		 
 	}
+
+	public function searchCake(){
+		require 'CakeSearchEngine.php';
+
+		$products = [
+			['id' => 1, 'title' => 'Spiderman Cake'],
+			['id' => 2, 'title' => 'Batman Cake'],
+			['id' => 3, 'title' => 'Chocolate Truffle Cake'],
+			['id' => 4, 'title' => 'Superman Cake'],
+			['id' => 5, 'title' => 'Strawberry Designer Cake'],
+		];
+
+		// Optional synonym map (can be loaded from CSV or generated offline)
+		$synonyms = [
+			'spicermen' => 'spiderman',
+			'spicer' => 'spiderman',
+			'bday' => 'birthday',
+			'choco' => 'chocolate',
+		];
+
+		$searchEngine = new CakeSearchEngine($products, $synonyms);
+
+		// Simulated user input
+		$input = "Spicer cake";
+		$results = $searchEngine->search($input);
+
+		// Display results
+		echo "🔍 Search results for: \"$input\"\n\n";
+		foreach ($results as $result) {
+			echo "- " . $result['product']['title'] . " (score: " . $result['score'] . ")\n";
+		}
+	}
 }
