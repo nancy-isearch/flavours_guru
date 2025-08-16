@@ -144,7 +144,25 @@
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/fathers-day-icons.webp" alt="Father day cake online">
             </a>
             <p>Fathers Day</p>
+          </li>
+          <li>
+            <a href="/friendship-day" class="hover-zoom-col">
+              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/friend-ship.png" alt="friend ship day cake online">
+            </a>
+            <p>Friendship Day</p>
+          </li>
+          <li>
+            <a href="/rakhi" class="hover-zoom-col">
+              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/raksha-bandhan-icon.webp" alt="rakhi cake online">
+            </a>
+            <p>Raksha Bandhan</p>
           </li>*/ ?>
+          <li>
+            <a href="/janmashtami-cakes" class="hover-zoom-col">
+              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/janmashtami-cakes-icon.webp" alt="janmashtami cakes online">
+            </a>
+            <p>Janmashtami</p>
+          </li>
           <li>
             <a href="/customize" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/custom-cakes.png" alt="a customised three-layered orange cake">
@@ -187,12 +205,12 @@
             </a>
             <p>Premium</p>
           </li>
-          <li>
+          <!-- <li>
             <a href="/photo-cakes" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/photo-cake.png" alt="A photo frame featuring a cake and cupcakes">  
             </a>
             <p>Photo Cakes</p>
-          </li>
+          </li> -->
            <?php /*<li>
             <a href="/custom-theme-cakes" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/theme-cake.png" alt="Theme Cakes">  
@@ -295,7 +313,37 @@
             <div class="home-primary-btn white-bg-btn">Order Now</div>  
           </div>
         </div>
+      </a>
+      <a href="/rakhi">
+        <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/new-images/rakshabandhan-desk.webp" alt="rakshabandhan cake">
+        <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/new-images/rakshabandhan.webp" alt="rakshabandhan cake 1">
+        <div class="banner-overlay-content">
+          <div class="banner-title-row">
+            <p class="banner-first-title" style="background: #C74D2E;color: #ffffff;">HAPPY RAKSHABANDHAN</p>
+            <h2 class="mb-30 banner-title">
+              <span class="" style="color: #ffffff">On This Auspicious </span><br>
+              <span class="" style="color: #ffffff">Occasion Celebrate</span>
+            </h2>
+            <p class="text-white banner-sm-title mb-30"></p>
+            <div class="home-primary-btn white-bg-btn" style="color: #4A4A4A;box-shadow: 0px 4px 0px 0px #AF6BFF;background: #ffffff;">Order Now Delicious Cake </div>  
+          </div>
+        </div>
       </a> */ ?>
+      <a href="/janmashtami-cakes">
+        <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/janmashtami-cakes-desktop.webp" alt="janmashtami cake">
+        <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/mobile-janmasthmi.webp" alt="janmashtami cake 1">
+        <div class="banner-overlay-content">
+          <div class="banner-title-row">
+            <p class="banner-first-title" style="background:rgba(4, 69, 149, 0.6);color: #ffffff;">HAPPY KRISHNA JANMASTHMI</p>
+            <h2 class="mb-30 banner-title">
+              <span class="" style="color: #044595;">A Treat for you as </span><br>
+              <span class="" style="color: #044595;">well as your Nandlal!</span>
+            </h2>
+            <p class="text-white banner-sm-title mb-30"></p>
+            <div class="home-primary-btn white-bg-btn" style="color: #4A4A4A;box-shadow: 0px 4px 0px 0px rgba(109, 174, 224, 1);background: #ffffff;">Order Now </div>  
+          </div>
+        </div>
+      </a>
       <a href="/birthday">
         <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/new-images/birthday-cake-desk.webp" alt="birthday cake">
         <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/new-images/birthday-cake-mob.webp" alt="birthday cake">

@@ -1,4 +1,10 @@
 <!DOCTYPE HTML>
+<script>
+  fbq('track', 'Purchase', {
+    value: 1.0,
+    currency: 'INR',
+  });
+</script>
 <?php echo $header; ?>
 <style type="text/css">
   .sumrytabl thead td{
@@ -380,8 +386,8 @@
   </div>  
   </div>
  </div>
-<script src="https://apis.google.com/js/platform.js?onload=renderOptIn" async defer></script> 
- 
+
+<?php /*<script src="https://apis.google.com/js/platform.js?onload=renderOptIn" async defer></script> 
 <script> 
   window.renderOptIn = function() { 
     window.gapi.load('surveyoptin', function() { 
@@ -396,7 +402,7 @@
         }); 
     }); 
   } 
-</script>
+</script> */ ?>
 
 <?php $allg4 = array(); foreach ($orders as $product) {
     $arr = array();

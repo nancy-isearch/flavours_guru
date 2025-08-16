@@ -1465,7 +1465,7 @@ class ControllerProductProduct extends Controller {
 	}
 
 	private function setWhatsAppMessage($url, $data){
-		$token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJhMDU2YzU2NS0xNzBkLTQxYzUtYjY4Mi0zZTg4ZjQzNDQxNjEiLCJ1bmlxdWVfbmFtZSI6InNoYXJpcXVlQGZsYXZvdXJzZ3VydS5jb20iLCJuYW1laWQiOiJzaGFyaXF1ZUBmbGF2b3Vyc2d1cnUuY29tIiwiZW1haWwiOiJzaGFyaXF1ZUBmbGF2b3Vyc2d1cnUuY29tIiwiYXV0aF90aW1lIjoiMDcvMTUvMjAyMyAxMzoyMzoxNyIsImRiX25hbWUiOiJ3YXRpTGl2ZTk1NyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFETUlOSVNUUkFUT1IiLCJleHAiOjI1MzQwMjMwMDgwMCwiaXNzIjoiQ2xhcmVfQUkiLCJhdWQiOiJDbGFyZV9BSSJ9.HjUzHtnuqchuxQvL6THBxLQUHYG2x-bza6oTctz2BKE";
+		$token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIxZDMyNzg3My02MmIyLTQyNTQtYWVjZi0yNWVjYmQxMjM3YTYiLCJ1bmlxdWVfbmFtZSI6InNoYXJpcXVlQGZsYXZvdXJzZ3VydS5jb20iLCJuYW1laWQiOiJzaGFyaXF1ZUBmbGF2b3Vyc2d1cnUuY29tIiwiZW1haWwiOiJzaGFyaXF1ZUBmbGF2b3Vyc2d1cnUuY29tIiwiYXV0aF90aW1lIjoiMDcvMDgvMjAyNSAwODo1NTo0OCIsInRlbmFudF9pZCI6Ijk1NyIsImRiX25hbWUiOiJtdC1wcm9kLVRlbmFudHMiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBRE1JTklTVFJBVE9SIiwiZXhwIjoyNTM0MDIzMDA4MDAsImlzcyI6IkNsYXJlX0FJIiwiYXVkIjoiQ2xhcmVfQUkifQ.qJJmVG2la68CvFH1k7xMeDIT4lDtC_xJk5dR9hfUO-c";
 		$ch = curl_init($url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
@@ -1474,7 +1474,14 @@ class ControllerProductProduct extends Controller {
 		   ));
 		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
 		$data = curl_exec($ch);
+		$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 		curl_close($ch);
+		if ($httpcode >= 200 && $httpcode < 300) {
+			echo 'sent';
+		} else {
+			echo 'error';
+		}
+		echo "<br>";
 	}
 
 	public function addNovatr(){
