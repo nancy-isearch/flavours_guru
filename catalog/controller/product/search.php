@@ -217,7 +217,7 @@ class ControllerProductSearch extends Controller {
 					'category_id'   => $category_id,
 					'sub_category'  => $sub_category,
 					'description'   => $description,
-					'products'      => $product_total,
+					'products'      => count($data['products']),
 					'customer_id'   => $customer_id,
 					'ip'            => $ip
 				);
