@@ -88,8 +88,8 @@ class ControllerProductSearch extends Controller {
 			$allSearchProducts = $searchEngine->search($search, 1, 0, 1);
 			$i = 0;
 			foreach($allSearchProducts as $searchedProduct){
-				$product = $this->model_catalog_product->getProduct($searchedProduct['id']);
-				if ($product) {
+				$result = $this->model_catalog_product->getProduct($searchedProduct['product']['id']);
+				if ($result) {
 					if ($result['image']) {
 						$image = $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
 					} else {
@@ -138,7 +138,7 @@ class ControllerProductSearch extends Controller {
 					} 
 				}
 			}
-
+			//echo "<pre />"; print_r($data['products']); die;
 
 			$filter_data123 = array('filter_category_id' => 1, 'filter_filter' => '', 'sort' => 'p2c.sort_order', 'order' => 'ASC', 'start' => 0, 'limit' => $limit);
 			$results = $this->model_catalog_product->getProducts($filter_data123);
