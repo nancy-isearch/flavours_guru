@@ -340,6 +340,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <?php } ?>
         </div>
       </div>
+      <div class="col-sm-3 col-xs-4 newPincodeBlock">
+        <div>
+          <div class="pincode-box">
+            <div class="pincode-inner">
+              <span class="pincode-icon"><img src="catalog/view/theme/default/image/Home/new-images/location-icon.svg" alt="location icon"></span>
+              <span class="pincode-text">Select Location</span>
+            </div>
+        </div>
+      </div>
       <div class="col-sm-4 search">
         <i class="fa fa-close search-drop-close"></i>
       	<?php echo $search; ?>
