@@ -371,8 +371,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="pincode-inner">
               <?php 
                   $selectedPincode = '';
-                  if (!empty($this->session->data['selectedCityId'])) {
-                    $selectedPincode = $this->session->data['selectedCityId'];
+                  if (!empty($_SESSION['data']['selectedCityId'])) {
+                    $selectedPincode = $_SESSION['data']['selectedCityId'];
                   }
               ?>
               <input type="text" id="pincodeInput" placeholder="Enter Pincode" value="<?php echo $selectedPincode; ?>">
