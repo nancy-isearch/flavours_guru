@@ -387,7 +387,7 @@
   </div>
  </div>
 
-<?php /*<script src="https://apis.google.com/js/platform.js?onload=renderOptIn" async defer></script> 
+<script src="https://apis.google.com/js/platform.js?onload=renderOptIn" async defer></script> 
 <script> 
   window.renderOptIn = function() { 
     window.gapi.load('surveyoptin', function() { 
@@ -402,7 +402,7 @@
         }); 
     }); 
   } 
-</script> */ ?>
+</script>
 
 <?php $allg4 = array(); foreach ($orders as $product) {
     $arr = array();

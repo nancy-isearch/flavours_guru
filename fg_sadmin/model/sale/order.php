@@ -1351,8 +1351,8 @@ class ModelSaleOrder extends Model {
       		$aa3 = $productPriceTotal - $aa2;
       		$productTax = 0;
 	      	if($productDetails['tax_class_id'] == 9){
-	        	$ttax = $ttax + ((18 * $aa3) / 100);
-	        	$productTax = ((18 * $aa3) / 100);
+	        	$ttax = $ttax + ((5 * $aa3) / 100);
+	        	$productTax = ((5 * $aa3) / 100);
 	      	}
 
 			$shippingInfo = array();
@@ -1416,8 +1416,8 @@ class ModelSaleOrder extends Model {
 		      		$aa3 = $productPriceTotal - $aa2;
 		      		$productTax = 0;
 			      	if($productDetails['tax_class_id'] == 9){
-			        	$ttax = $ttax + ((18 * $aa3) / 100);
-			        	$productTax = ((18 * $aa3) / 100);
+			        	$ttax = $ttax + ((5 * $aa3) / 100);
+			        	$productTax = ((5 * $aa3) / 100);
 			      	}
 
 					$shippingInfo = array();
@@ -1437,7 +1437,7 @@ class ModelSaleOrder extends Model {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "order_total SET order_id = '" . (int)$order_id . "', code = 'coupon', title = 'Coupon (Backend Order)', `value` = '-" . (float)$discount . "', sort_order = '4'");
 		}
 		$subtotalmain = $subtotal - $discount;
-		$this->db->query("INSERT INTO " . DB_PREFIX . "order_total SET order_id = '" . (int)$order_id . "', code = 'tax', title = 'GST (18%)', `value` = '" . (float)$ttax . "', sort_order = '4'");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "order_total SET order_id = '" . (int)$order_id . "', code = 'tax', title = 'GST (5%)', `value` = '" . (float)$ttax . "', sort_order = '4'");
 		$ttotal = $subtotalmain + $ttax;
 		$this->db->query("INSERT INTO " . DB_PREFIX . "order_total SET order_id = '" . (int)$order_id . "', code = 'total', title = 'Total', `value` = '" . (float)$ttotal . "', sort_order = '9'");
 		$this->db->query("UPDATE `" . DB_PREFIX . "order` SET shipping_city = '".$shipCity."' , total = '".$ttotal."', slot_forshipping = '".$slot_forshipping."', date_forshipping = '".$date_forshipping."' WHERE order_id = '".$order_id."'");
@@ -1515,7 +1515,7 @@ class ModelSaleOrder extends Model {
 		$productDetails = $this->db->query("SELECT * FROM oc_product WHERE product_id = '".$olddd['product_id']."'")->row;
 		
 		if(!empty($productDetails) && $productDetails['tax_class_id'] == 9){
-			$tax = ($newPrice*(18/100));
+			$tax = ($newPrice*(5/100));
 		} else {
 			$tax = 0;
 		}
@@ -1542,7 +1542,7 @@ class ModelSaleOrder extends Model {
 		$productDetails = $this->db->query("SELECT * FROM oc_product WHERE product_id = '".$olddd['product_id']."'")->row;
 		
 		if(!empty($productDetails) && $productDetails['tax_class_id'] == 9){
-			$tax = ($newPrice*(18/100));
+			$tax = ($newPrice*(5/100));
 		} else {
 			$tax = 0;
 		}
@@ -1676,7 +1676,7 @@ class ModelSaleOrder extends Model {
 					$newPrice1 = $newPrice;
 					$newPrice = $newPrice * $orderWeight['quantity'];
 					if(!empty($orderWeight) && $orderWeight['tax_class_id'] == 9){
-						$tax = ($newPrice*(18/100));
+						$tax = ($newPrice*(5/100));
 					} else {
 						$tax = 0;
 					}
@@ -1701,7 +1701,7 @@ class ModelSaleOrder extends Model {
 					$newPrice1 = $newPrice;
 					$newPrice = $newPrice * $orderWeight['quantity'];
 					if(!empty($orderWeight) && $orderWeight['tax_class_id'] == 9){
-						$tax = ($newPrice*(18/100));
+						$tax = ($newPrice*(5/100));
 					} else {
 						$tax = 0;
 					}

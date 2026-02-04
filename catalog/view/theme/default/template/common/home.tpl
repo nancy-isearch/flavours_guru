@@ -8,7 +8,7 @@
   <title></title>
   
 </head> -->
-<?php /* <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> */ ?>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 <style type="text/css">
   /*@media screen and (min-width: 1367px){
     .container {
@@ -110,15 +110,6 @@
             <p>New Year</p>
           </li>  
           <li>
-            <a href="/valentines.php" class="hover-zoom-col">
-              <div class="position-relative">
-                <img style="border-radius: 50%" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/icon-bg.jpg" alt="">
-                <lottie-player class="gif-icon" src="catalog/view/theme/default/image/Home/valenrine-heart.json" background="transparent" speed="1" loop="" autoplay=""></lottie-player>
-              </div>
-            </a>
-            <p>Valentine's<br> Day</p>
-          </li>
-          <li>
             <a href="/womens-day" class="hover-zoom-col">
               <div class="position-relative">
                <img style="border-radius: 50%" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/icon-bg.jpg" alt=""> 
@@ -156,12 +147,45 @@
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/raksha-bandhan-icon.webp" alt="rakhi cake online">
             </a>
             <p>Raksha Bandhan</p>
-          </li>*/ ?>
+          </li>
           <li>
             <a href="/janmashtami-cakes" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/janmashtami-cakes-icon.webp" alt="janmashtami cakes online">
             </a>
             <p>Janmashtami</p>
+          </li>
+          <li>
+            <a href="/teachers-day-cakes" class="hover-zoom-col">
+              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/teacher-day-icons.png" alt="a customised three-layered orange cake">
+            </a>
+            <p>Teacher's Day</p>
+          </li>
+          <li>
+            <a href="/christmas" class="hover-zoom-col">
+              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/christmas.jpg" alt="christmas cake online">
+            </a>
+            <p>Christmas</p>
+          </li>
+          <li>
+            <a href="/new-year-1st-jan" class="hover-zoom-col">
+              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-year-cake.jpg" alt="New year cake">
+            </a>
+            <p>New Year</p>
+          </li>
+          <li>
+            <a href="/republic-day-cake" class="hover-zoom-col">
+              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/rep-day-icon.gif" alt="Republic Day">
+            </a>
+            <p>Republic Day</p>
+          </li>*/ ?>
+          <li>
+            <a href="/valentines.php" class="hover-zoom-col">
+              <div class="position-relative">
+                <img style="border-radius: 50%" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/icon-bg.jpg" alt="">
+                <lottie-player class="gif-icon" src="catalog/view/theme/default/image/Home/valenrine-heart.json" background="transparent" speed="1" loop="" autoplay=""></lottie-player>
+              </div>
+            </a>
+            <p>Valentine's<br> Day</p>
           </li>
           <li>
             <a href="/customize" class="hover-zoom-col">
@@ -174,6 +198,18 @@
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/flower-combos.png" alt="Flower and cake combos ">
             </a>
             <p>Combos</p>
+          </li>
+          <li>
+            <a href="/birthday" class="hover-zoom-col">
+              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/birthday.jpg" alt="Birthday Cakes">  
+            </a>
+            <p>Birthday</p>
+          </li>
+          <li>
+            <a href="/anniversary" class="hover-zoom-col">
+              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/anniversary-cake.png" alt="Anniversary Cakes">  
+            </a>
+            <p>Anniversary</p>
           </li>
           <li>
             <a href="/new-arrival-cakes" class="hover-zoom-col">
@@ -193,7 +229,7 @@
             </a>
             <p>Gifts</p>
           </li>
-          <li>
+          <!-- <li>
             <a href="/cakes-below-600" class="hover-zoom-col">
               <img  class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/cakes-under-500.png" alt="Delicious cake under 600 calories, adorned with fresh berries">
             </a>
@@ -204,7 +240,7 @@
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/premium-flavours.png" alt="A cherry-topped premium cake in the picture">  
             </a>
             <p>Premium</p>
-          </li>
+          </li> -->
           <!-- <li>
             <a href="/photo-cakes" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/photo-cake.png" alt="A photo frame featuring a cake and cupcakes">  
@@ -240,18 +276,7 @@
         <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/new-images/valentine-day-desk.webp" alt="valentines day - Flavours Guru">
         <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/new-images/valentine-day-mob.webp" alt="valentines day - Flavours Guru">
       </a>
-      <a href="/valentines.php">
-        <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/valentines-desktop.webp" alt="Cake your Valentine">
-        <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/valentines-mobile.webp" alt="Valentine day cake">
-        <div class="banner-overlay-content">
-          <div class="banner-title-row"> 
-            <p class="banner-first-title text-white" style="background: #A51E40;">Happy Valentine’s Day</p>
-            <h2 class="mb-10 banner-title text-white"><span class="text-white">Always in Love</span><br> Valentine’s Day Cake</h2>
-            <p class="text-white banner-sm-title mb-30">Explore 2025 New Arrivals!</p>
-            <div class="home-primary-btn" style="background: #291019;border:1px solid #ffffff;color: #ffffff;">Order Now</div>  
-          </div>
-        </div>
-      </a>
+      
       <a href="/mothers-day/mothers-day-cakes">
         <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/new-images/mother-day-desktop.webp" alt="Cake your imagination">
         <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/new-images/mother-day-mobile.webp" alt="Cake your imagination">
@@ -328,7 +353,7 @@
             <div class="home-primary-btn white-bg-btn" style="color: #4A4A4A;box-shadow: 0px 4px 0px 0px #AF6BFF;background: #ffffff;">Order Now Delicious Cake </div>  
           </div>
         </div>
-      </a> */ ?>
+      </a>
       <a href="/janmashtami-cakes">
         <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/janmashtami-cakes-desktop.webp" alt="janmashtami cake">
         <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/mobile-janmasthmi.webp" alt="janmashtami cake 1">
@@ -341,6 +366,48 @@
             </h2>
             <p class="text-white banner-sm-title mb-30"></p>
             <div class="home-primary-btn white-bg-btn" style="color: #4A4A4A;box-shadow: 0px 4px 0px 0px rgba(109, 174, 224, 1);background: #ffffff;">Order Now </div>  
+          </div>
+        </div>
+      </a>
+      <a href="/christmas">
+        <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/christmas-banner-web.webp" alt="christmas cake">
+        <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/christmas-banner-mobile.webp" alt="christmas cake 1">
+        <div class="banner-overlay-content">
+          <div class="banner-title-row">
+            <p class="banner-first-title" style="background:#6AA245;color: #ffffff;">Celebrate the season with</p>
+            <h2 class="mb-30 banner-title">
+              <span class="" style="color: #ffffff;">Our Delicious </span><br>
+              <span class="" style="color: #ffffff;">Christmas Cakes!</span>
+            </h2>
+            <p class="text-white banner-sm-title mb-30"></p>
+            <div class="home-primary-btn white-bg-btn" style="color: #272727;box-shadow: 0px 4px 0px 0px #6AA245;background: #ffffff;">Order Now </div>  
+          </div>
+        </div>
+      </a>
+      <a href="/new-year-1st-jan">
+        <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/new-year-web-2026.webp" alt="new year cake">
+        <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/new-year-mobile-2026.webp" alt="new year cake 1">
+        <div class="banner-overlay-content">
+          <div class="banner-title-row">
+            <p class="banner-first-title" style="background:#FBB637;color: #ffffff;">Celebrate the season with</p>
+            <h2 class="mb-30 banner-title">
+              <span class="" style="color: #ffffff;">Our Delicious </span><br>
+              <span class="" style="color: #ffffff;">New Year Cakes!!</span>
+            </h2>
+            <p class="text-white banner-sm-title mb-30"></p>
+            <div class="home-primary-btn white-bg-btn" style="color: #ffffff;box-shadow: 0px 4px 0px 0px #FFFFFF;background: #5C175E;">Order Now </div>  
+          </div>
+        </div>
+      </a> */ ?>
+      <a href="/valentines.php">
+        <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/valentines-desktop.webp" alt="Cake your Valentine">
+        <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/valentines-mobile.webp" alt="Valentine day cake">
+        <div class="banner-overlay-content">
+          <div class="banner-title-row"> 
+            <p class="banner-first-title text-white" style="background: #A51E40;">Happy Valentine’s Day</p>
+            <h2 class="mb-10 banner-title text-white"><span class="text-white">Always in Love</span><br> Valentine’s Day Cake</h2>
+            <p class="text-white banner-sm-title mb-30">Explore 2026 New Arrivals!</p>
+            <div class="home-primary-btn" style="background: #291019;border:1px solid #ffffff;color: #ffffff;">Order Now</div>  
           </div>
         </div>
       </a>
@@ -557,7 +624,7 @@
              <?php   } ?>
           </div>
           <div class="col-md-6 col-sm-6 col-xs-12 text-center p-r-0 visible-xs" style="margin-top: 15px;">
-            <a href="https://www.flavoursguru.com/valentines.php" class="home-primary-btn position-relative">View All</a>
+            <a href="https://www.flavoursguru.com/best-seller" class="home-primary-btn position-relative">View All</a>
           </div>
         </div>
 
