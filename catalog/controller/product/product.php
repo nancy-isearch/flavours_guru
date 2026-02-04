@@ -1108,7 +1108,7 @@ class ControllerProductProduct extends Controller {
 	}
 
 	public function checkCustomPincode(){
-		$pincode = $this->request->post['pins'];
+		$pincode = $this->request->post['pincode'];
 		
 		$this->load->model('catalog/product');
 		$data = $this->model_catalog_product->checkCustomPincode($pincode);

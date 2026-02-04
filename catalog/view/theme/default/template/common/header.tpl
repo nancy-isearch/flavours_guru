@@ -328,6 +328,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     display: none;
   }
 </style>
+<script>
+  $("#pincodeSubmit").click(function() {
+    var pin_code = $("#pincodeInput").val();
+      $.ajax({
+       url: 'index.php?route=product/product/checkCustomPincode',
+       method: 'POST',
+       data: {pincode:pin_code},
+       success: function(data) {
+         if(data["pincodeServiceable"] == 1){
+          alert("Great news! We deliver to your area. Please proceed with your order.");
+         } else {
+          alert("We apologize, but it seems that we do not currently deliver to your area. Please check back later as we are constantly expanding our delivery zones.");
+         }
+       }
+     });
+  })
+  
+</script>
 <header>
   <div class="container border-btm-white top_hd_col">
     <div class="row">
@@ -344,8 +362,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div>
           <div class="pincode-box">
             <div class="pincode-inner">
-              <span class="pincode-icon"><img src="catalog/view/theme/default/image/Home/new-images/location-icon.svg" alt="location icon"></span>
-              <span class="pincode-text">Select Location</span>
+              <input type="text" id="pincodeInput" placeholder="Enter Pincode" value="">
+              <button id="pincodeSubmit"><i class="fa fa-location-arrow"></i></button>
             </div>
         </div>
       </div>
