@@ -1106,6 +1106,21 @@ class ControllerProductProduct extends Controller {
 		$data = $this->model_catalog_product->getPincodesList($pincode, $proId);
 		print_r(json_encode($data));
 	}
+
+	public function checkCustomPincode(){
+		$pincode = $this->request->post['pins'];
+		
+		$this->load->model('catalog/product');
+		$data = $this->model_catalog_product->checkCustomPincode($pincode);
+		if (count($data) > 0) {
+			$data['pincodeServiceable'] = '1';
+			$this->session->data['selectedCityId'] = $data["shipping_cities_id"];
+			$this->session->data['selectedPincode'] = $pincode;
+		} else {
+			$data['pincodeServiceable'] = '0';
+		}
+		print_r(json_encode($data));
+	}
 	
 	public function getTimeslots(){
 		$shippingType = $this->request->post['shippingType'];
