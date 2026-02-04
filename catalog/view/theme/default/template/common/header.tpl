@@ -340,7 +340,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <?php } ?>
         </div>
       </div>
-      <div class="col-sm-3 col-xs-4 newPincodeBlock">
+      <div class="col-sm-2 col-xs-4 newPincodeBlock">
         <div>
           <div class="pincode-box">
             <div class="pincode-inner">
@@ -349,7 +349,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
         </div>
       </div>
-      <div class="col-sm-4 search">
+      <div class="col-sm-2 search">
         <i class="fa fa-close search-drop-close"></i>
       	<?php echo $search; ?>
       	<div class="custom-search-link">
