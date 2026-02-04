@@ -64,8 +64,8 @@ class ControllerCommonHeader extends Controller {
 			$data['text_wishlist'] = sprintf($this->language->get('text_wishlist'), (isset($this->session->data['wishlist']) ? count($this->session->data['wishlist']) : 0));
 		}
 
-		if(isset($this->session->data['selectedCityId']) && !empty($this->session->data['selectedCityId'])){
-			$data['selected_pincode'] = $this->session->data['selectedCityId'];
+		if(isset($this->session->data['selectedPincode']) && !empty($this->session->data['selectedPincode'])){
+			$data['selected_pincode'] = $this->session->data['selectedPincode'];
 		} else {
 			$data['selected_pincode'] = "";
 		}
