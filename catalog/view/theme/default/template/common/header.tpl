@@ -329,13 +329,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 </style>
 <script>
-  $("#pincodeSubmit").click(function() {
+  $(document).ready(function() {
+    $("#pincodeSubmit").click(function() {
     var pin_code = $("#pincodeInput").val();
       $.ajax({
        url: 'index.php?route=product/product/checkCustomPincode',
        method: 'POST',
        data: {pincode:pin_code},
+       dataType: 'json',
        success: function(data) {
+        console.log(data);
          if(data["pincodeServiceable"] == 1){
           alert("Great news! We deliver to your area. Please proceed with your order.");
          } else {
@@ -344,6 +347,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
        }
      });
   })
+  })
+  
   
 </script>
 <header>
