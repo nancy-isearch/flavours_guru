@@ -341,8 +341,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         console.log(data);
          if(data["pincodeServiceable"] == 1){
           alert("Great news! We deliver to your area. Please proceed with your order.");
+          location.reload();
          } else {
           alert("We apologize, but it seems that we do not currently deliver to your area. Please check back later as we are constantly expanding our delivery zones.");
+          location.reload();
          }
        }
      });
