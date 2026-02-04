@@ -369,7 +369,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div>
           <div class="pincode-box">
             <div class="pincode-inner">
-              <input type="text" id="pincodeInput" placeholder="Enter Pincode" value="">
+              <?php 
+                  $selectedPincode = '';
+                  if (!empty($this->session->data['selectedCityId'])) {
+                    $selectedPincode = $this->session->data['selectedCityId'];
+                  }
+              ?>
+              <input type="text" id="pincodeInput" placeholder="Enter Pincode" value="<?php echo $selectedPincode; ?>">
               <button id="pincodeSubmit"><i class="fa fa-location-arrow"></i></button>
             </div>
         </div>
