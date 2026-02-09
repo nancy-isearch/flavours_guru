@@ -502,7 +502,7 @@ class ControllerToolUploadData extends Controller {
 		}
 		$data['action'] = $this->url->link('tool/upload_data/uploadPincodeVendorUp', 'token=' . $this->session->data['token'] , true);
 		$data['download'] = $this->url->link('tool/upload_data/uploadPincodeVendorDown', 'token=' . $this->session->data['token'] , true);
-		$this->response->setOutput($this->load->view('tool/upload_data/upload_pincode_vendor', $data));
+		$this->response->setOutput($this->load->view('tool/upload_pincode_vendor', $data));
 	}
 
 	public function uploadPincodeVendorUp(){
