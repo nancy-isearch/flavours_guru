@@ -69,6 +69,12 @@ class ControllerCommonHeader extends Controller {
 		} else {
 			$data['selected_pincode'] = "";
 		}
+
+		if(isset($this->session->data['selectedCity']) && !empty($this->session->data['selectedCity'])){
+			$data['selected_city'] = $this->session->data['selectedCity'];
+		} else {
+			$data['selected_city'] = "";
+		}
 		$data['text_shopping_cart'] = $this->language->get('text_shopping_cart');
 		$data['text_logged'] = sprintf($this->language->get('text_logged'), $this->url->link('account/account', '', true), $this->customer->getFirstName(), $this->url->link('account/logout', '', true));
 

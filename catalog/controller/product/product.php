@@ -1116,10 +1116,12 @@ class ControllerProductProduct extends Controller {
 			$data['pincodeServiceable'] = '1';
 			$this->session->data['selectedCityId'] = $data["shipping_cities_id"];
 			$this->session->data['selectedPincode'] = $pincode;
+			$this->session->data['selectedCity'] = $data["name"];
 		} else {
 			$data['pincodeServiceable'] = '0';
 			$this->session->data['selectedCityId'] = '';
 			$this->session->data['selectedPincode'] = '';
+			$this->session->data['selectedCity'] = '';
 		}
 		print_r(json_encode($data));
 	}
