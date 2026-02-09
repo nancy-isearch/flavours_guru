@@ -486,7 +486,71 @@ class ControllerToolUploadData extends Controller {
 		
 	}
 
+	public function uploadPincodeVendor(){
+		$data = array();
+		$data['heading_title'] = "Update Pincode Vendor";
+		$data['header'] = $this->load->controller('common/header');
+		$data['column_left'] = $this->load->controller('common/column_left');
+		$data['footer'] = $this->load->controller('common/footer');
+		$data['error_warning'] = false;
+		$data['success'] = false;
+		if(isset($_GET['error']) && $_GET['error'] == 1){
+			$data['error_warning'] = true;
+		}
+		if(isset($_GET['success']) && $_GET['success'] == 1){
+			$data['success'] = true;
+		}
+		$data['action'] = $this->url->link('tool/upload_data/uploadPincodeVendorUp', 'token=' . $this->session->data['token'] , true);
+		$data['download'] = $this->url->link('tool/upload_data/uploadPincodeVendorDown', 'token=' . $this->session->data['token'] , true);
+		$this->response->setOutput($this->load->view('tool/upload_data/upload_pincode_vendor', $data));
+	}
 
+	public function uploadPincodeVendorUp(){
+		$error = 0;
+		$success = 0;
+
+		if(isset($_FILES["file"])) {
+			if ($_FILES["file"]["error"] > 0) {
+				$error = 1;
+			}
+			else {
+				$storagename = "pin-vendor.csv";
+				$target = DIR_SYSTEM.'data/'. $storagename;
+				// create a timestamped backup if the target exists
+				if (file_exists($target)) {
+					$bak = DIR_SYSTEM.'data/'. $storagename . '.' . date('Ymd_His') . '.bak';
+					@copy($target, $bak);
+				}
+				if(move_uploaded_file($_FILES["file"]["tmp_name"], $target)){
+					$success = 1;
+				} else {
+					$error = 1;
+				}
+			}
+		} else {
+			$error = 1;
+		}
+		$url = "tool/upload_data/uploadPincodeVendor&success=".$success."&error=".$error;
+		$this->response->redirect($this->url->link($url, 'token=' . $this->session->data['token']));
+	}
+
+	public function uploadPincodeVendorDown(){
+		$storagename = "pin-vendor.csv";
+		if (!file_exists(DIR_SYSTEM.'data/'.$storagename)){
+			$url = "tool/upload_data/uploadPincodeVendor&error=1";
+			$this->response->redirect($this->url->link($url, 'token=' . $this->session->data['token']));
+		}
+		else{
+			header('HTTP/1.1 200 OK');
+			header('Cache-Control: no-cache, must-revalidate');
+			header("Pragma: no-cache");
+			header("Expires: 0");
+			header("Content-type: text/csv");
+			header("Content-Disposition: attachment; filename=$storagename");
+			readfile(DIR_SYSTEM.'data/'.$storagename);
+			exit;
+		}
+	}
 
 
 	

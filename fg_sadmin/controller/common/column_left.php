@@ -698,6 +698,14 @@ class ControllerCommonColumnLeft extends Controller {
 
 			if ($this->user->hasPermission('access', 'tool/export_import')) {
 				$tool[] = array(
+					'name'	   => "Pincode Vendor Upload",
+					'href'     => $this->url->link('tool/upload_data/uploadPincodeVendor', 'token=' . $this->session->data['token'], true),
+					'children' => array()		
+				);
+			}
+
+			if ($this->user->hasPermission('access', 'tool/export_import')) {
+				$tool[] = array(
 					'name'	   => "Home Categories",
 					'href'     => $this->url->link('tool/upload_data/uploadHomeCat', 'token=' . $this->session->data['token'], true),
 					'children' => array()		
