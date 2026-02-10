@@ -81,7 +81,7 @@ class ControllerProductSearch extends Controller {
 
 		if (isset($this->request->get['search'])) {
 			require '/home/master/applications/npffwsymrc/public_html/catalog/controller/product/CakeSearchEngine.php';
-			$aa = "SELECT o.product_id id, o.name title, o.description description, o.tag tags FROM oc_product_description o INNER JOIN oc_product p ON p.product_id = oc_product_description.product_id WHERE p.status = 1 AND p.product_addon_status != '1'";
+			$aa = "SELECT o.product_id id, o.name title, o.description description, o.tag tags FROM oc_product_description o INNER JOIN oc_product p ON p.product_id = o.product_id WHERE p.status = 1 AND p.product_addon_status != '1'";
 			$allProducts = $this->db->query($aa)->rows;
 			$synonyms = [];
 			$searchEngine = new CakeSearchEngine($allProducts, $synonyms);
