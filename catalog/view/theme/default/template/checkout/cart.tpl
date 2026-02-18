@@ -267,9 +267,17 @@
                 <?= $module; ?>
                 <?php break; } ?>
               </div>
-              <?php } ?>
               <p class="error coupon-error" style="display: none;"> Warning: Coupon is either invalid, expired or reached its usage limit!</p>
               <p class="success coupon-success" style="display: none;"> Success: Your coupon discount has been applied!</p>
+              <?php } ?>
+              <div>
+                <?php foreach($availableCoupons as $coupon) { ?>
+                <div class="coupon-item">
+                  <span class="coupon-name"><?= $coupon['name']; ?></span>
+                  <span class="coupon-code"><?= $coupon['code']; ?></span>
+                </div>
+                <?php } ?>
+              </div>
           </div>  
         </div>
         <div class="col-md-6 col-sm-6 col-xs-12 xs-pl-0 xs-pr-0">
