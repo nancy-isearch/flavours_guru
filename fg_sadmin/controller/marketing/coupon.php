@@ -524,6 +524,14 @@ class ControllerMarketingCoupon extends Controller {
 			$data['uses_customer'] = 1;
 		}
 
+		if (isset($this->request->post['show_on_frontend'])) {
+			$data['show_on_frontend'] = $this->request->post['show_on_frontend'];
+		} elseif (!empty($coupon_info)) {
+			$data['show_on_frontend'] = $coupon_info['show_on_frontend'];
+		} else {
+			$data['show_on_frontend'] = 0;
+		}
+
 		if (isset($this->request->post['status'])) {
 			$data['status'] = $this->request->post['status'];
 		} elseif (!empty($coupon_info)) {
