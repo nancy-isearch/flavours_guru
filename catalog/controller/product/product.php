@@ -307,6 +307,18 @@ class ControllerProductProduct extends Controller {
 
 			$this->load->model('tool/image');
 
+			if(isset($this->session->data['selectedPincode']) && !empty($this->session->data['selectedPincode'])){
+				$data['selected_pincode'] = $this->session->data['selectedPincode'];
+			} else {
+				$data['selected_pincode'] = "";
+			}
+
+			if(isset($this->session->data['selectedCity']) && !empty($this->session->data['selectedCity'])){
+				$data['selected_city'] = $this->session->data['selectedCity'];
+			} else {
+				$data['selected_city'] = "";
+			}
+
 
 			/*egg/eggless products*/
 			$eggProductsSku=explode(",",$product_info['mpn']);

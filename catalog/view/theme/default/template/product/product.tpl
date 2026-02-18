@@ -1928,6 +1928,14 @@
    /*$("#entre_city").blur(function(){    
        setTimeout(function(){ $('#ajaxtargetdiv').hide(); },500);
    });*/
+
+   <?php if(!empty($selected_pincode)){ ?>
+    $('.pincodenew').val(<?php echo $selected_pincode; ?>);
+    $('.pincodenew').addClass('caret-color'); 
+    $(".pincodenew").removeClass("animation-border");
+    $(".pincodenew").trigger('on');
+   <?php } ?>
+
    $("#enter_pincode_courier").blur(function(){    
        setTimeout(function(){ $('#ajaxtargetdiv1').hide(); },500);
    });
