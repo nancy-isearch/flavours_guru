@@ -343,7 +343,7 @@
     }
   });
 
-  applyCouponFromList(code){
+  function applyCouponFromList(code){
     $('#input-coupon').val(code);
     $('#button-coupon').trigger('click');
   }
