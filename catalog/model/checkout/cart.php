@@ -1,7 +1,7 @@
 <?php
 class ModelCheckoutCart extends Model {
     public function getCoupons($data = array()) {
-		$sql = "SELECT coupon_id, name, code, discount, date_start, date_end, status, show_on_frontend FROM " . DB_PREFIX . "coupon WHERE show_on_frontend = 1 ";
+		$sql = "SELECT coupon_id, name, code, discount, date_start, date_end, status, show_on_frontend, frontend_description FROM " . DB_PREFIX . "coupon WHERE show_on_frontend = 1 ";
 
 		$sort_data = array(
 			'name',
