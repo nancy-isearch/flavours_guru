@@ -270,9 +270,9 @@
               <p class="error coupon-error" style="display: none;"> Warning: Coupon is either invalid, expired or reached its usage limit!</p>
               <p class="success coupon-success" style="display: none;"> Success: Your coupon discount has been applied!</p>
               <?php } ?>
-              <div>
+              <div style="clear: both;">
                 <?php foreach($availableCoupons as $coupon) { ?>
-                <div class="coupon-item">
+                <div class="coupon-item" style="margin-bottom: 60px;">
                   <span class="coupon-code col-md-4"><?= $coupon['code']; ?></span>
                   <span class="coupon-description col-md-4"><?= $coupon['frontend_description']; ?></span>
                   <span class="coupon-description col-md-4"><button type="button" class="btn btn-danger btn-sm">Apply Now</button></span>
