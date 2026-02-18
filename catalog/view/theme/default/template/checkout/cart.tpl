@@ -275,7 +275,7 @@
                 <div class="coupon-item" style="margin-bottom: 60px; clear: both;">
                   <span class="coupon-code col-md-4"><?= $coupon['code']; ?></span>
                   <span class="coupon-description col-md-4"><?= $coupon['frontend_description']; ?></span>
-                  <span class="coupon-description col-md-4"><button type="button" class="btn btn-danger btn-sm">Apply Now</button></span>
+                  <span class="coupon-description col-md-4"><button type="button" onclick="applyCouponFromList('<?= $coupon['code']; ?>')" class="btn btn-danger btn-sm">Apply Now</button></span>
                 </div>
                 <?php } ?>
               </div>
@@ -342,4 +342,9 @@
       $('.submitcart').trigger('click');
     }
   });
+
+  applyCouponFromList(code){
+    $('#input-coupon').val(code);
+    $('#button-coupon').trigger('click');
+  }
 </script>
