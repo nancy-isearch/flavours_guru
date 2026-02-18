@@ -177,6 +177,7 @@ class ControllerMarketingCoupon extends Controller {
 				'name'       => $result['name'],
 				'code'       => $result['code'],
 				'discount'   => $result['discount'],
+				'show_on_frontend' => ($result['show_on_frontend'] ? $this->language->get('text_yes') : $this->language->get('text_no')),
 				'date_start' => date($this->language->get('date_format_short'), strtotime($result['date_start'])),
 				'date_end'   => date($this->language->get('date_format_short'), strtotime($result['date_end'])),
 				'status'     => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),

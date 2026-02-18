@@ -65,6 +65,7 @@
                     <?php } else { ?>
                     <a href="<?php echo $sort_status; ?>"><?php echo $column_status; ?></a>
                     <?php } ?></td>
+                  <td class="text-left">Show on Frontend</td>
                   <td class="text-right"><?php echo $column_action; ?></td>
                 </tr>
               </thead>
@@ -83,6 +84,7 @@
                   <td class="text-left"><?php echo $coupon['date_start']; ?></td>
                   <td class="text-left"><?php echo $coupon['date_end']; ?></td>
                   <td class="text-left"><?php echo $coupon['status']; ?></td>
+                  <td class="text-left"><?php echo $coupon['show_on_frontend']; ?></td>
                   <td class="text-right"><a href="<?php echo $coupon['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
                 </tr>
                 <?php } ?>
