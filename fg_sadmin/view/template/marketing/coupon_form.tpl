@@ -150,6 +150,12 @@
                 </div>
               </div>
               <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-frontend-description">Frontend Description</label>
+                <div class="col-sm-10">
+                  <input type="text" name="frontend_description" value="<?php echo $frontend_description; ?>" placeholder="<?php echo $entry_frontend_description; ?>" id="input-frontend-description" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-product"><span data-toggle="tooltip" title="<?php echo $help_product; ?>"><?php echo $entry_product; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="product" value="" placeholder="<?php echo $entry_product; ?>" id="input-product" class="form-control" />

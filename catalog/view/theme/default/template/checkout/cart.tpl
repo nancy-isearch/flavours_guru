@@ -273,8 +273,9 @@
               <div>
                 <?php foreach($availableCoupons as $coupon) { ?>
                 <div class="coupon-item">
-                  <span class="coupon-name"><?= $coupon['name']; ?></span>
-                  <span class="coupon-code"><?= $coupon['code']; ?></span>
+                  <span class="coupon-code col-md-4"><?= $coupon['code']; ?></span>
+                  <span class="coupon-description col-md-4"><?= $coupon['frontend_description']; ?></span>
+                  <span class="coupon-description col-md-4"><button type="button" class="btn btn-danger btn-sm">Apply Now</button></span>
                 </div>
                 <?php } ?>
               </div>
