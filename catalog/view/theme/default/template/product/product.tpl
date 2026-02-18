@@ -1930,10 +1930,10 @@
    });*/
 
    <?php if(!empty($selected_pincode)){ ?>
-    $('.pincodenew').val(<?php echo $selected_pincode; ?>);
-    $('.pincodenew').addClass('caret-color'); 
-    $(".pincodenew").removeClass("animation-border");
-    $(".pincodenew").trigger('on');
+    setTimeout(function() {
+        $('.pincodenew').val(<?php echo $selected_pincode; ?>);
+        $('.pincodenew').trigger('input');
+      }, 30);
    <?php } ?>
 
    $("#enter_pincode_courier").blur(function(){    
