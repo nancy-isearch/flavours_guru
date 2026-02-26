@@ -886,6 +886,16 @@ div#payment-method {
                             
                               <input type="button" value="Apply Coupon" id="button-coupon" data-loading-text="<?php echo $text_loading; ?>"  class="btn btn-primary" <?php if(!$coupon){ ?> style="display: block;" <?php  } ?> />
                               <input type="button" id="remove-coupon" value="Remove Coupon" data-loading-text="<?php echo $text_loading; ?>" <?php if($coupon){ ?> style="display: block;" <?php  } ?> class="btn btn-primary">
+
+                              <div style="clear: both;">
+                              <?php foreach($availableCoupons as $coupon) { ?>
+                              <div class="coupon-item" style="margin-bottom: 60px; clear: both;">
+                                <span class="coupon-code col-md-4"><?= $coupon['code']; ?></span>
+                                <span class="coupon-description col-md-4"><?= $coupon['frontend_description']; ?></span>
+                                <span class="coupon-description col-md-4"><button type="button" onclick="applyCouponFromList('<?= $coupon['code']; ?>')" class="btn btn-danger btn-sm">Apply Now</button></span>
+                              </div>
+                              <?php } ?>
+                            </div>
                             </span>
                           </div>
                         </div>
@@ -922,7 +932,10 @@ div#payment-method {
     <?php echo $column_right; ?></div>
 </div>
 <script type="text/javascript"><!--
-
+function applyCouponFromList(code){
+    $('#input-coupon').val(code);
+    $('#button-coupon').trigger('click');
+  }
 $('#remove-coupon').on('click', function() {
 $('.coupon-error').hide();
 $('.coupon-success').hide();
