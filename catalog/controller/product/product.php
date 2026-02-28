@@ -3,6 +3,11 @@ class ControllerProductProduct extends Controller {
 	private $error = array();
 
 	public function index() {
+		$this->load->library('fgcommon');
+
+$slug = $this->fgcommon->slugify('Red Velvet Cake 1KG');
+// $slug => red-velvet-cake-1kg
+die;
 
 		$this->load->language('product/product');
 	
