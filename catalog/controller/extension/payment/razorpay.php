@@ -103,6 +103,8 @@ class ControllerExtensionPaymentRazorpay extends Controller
                 } else {
                     $this->model_checkout_order->addOrderHistory($merchant_order_id, $this->config->get('razorpay_order_status_id'), 'Payment Successful. Razorpay Payment Id:'.$razorpay_payment_id);
                 }
+                $this->load->library('fgcommon');
+                $this->fgcommon->assignVendor($merchant_order_id);
 
                 echo '<html>'."\n";
                 echo '<head>'."\n";

@@ -110,7 +110,6 @@ class ControllerPaymentRazorpay extends Controller
             if(empty($error)){
                 $error = "All done.. Payment captured";
             }
-
             $this->db->query("UPDATE ".DB_PREFIX."followup set payment_redirect = '".$error."' WHERE order_id = '" . $merchant_order_id."'");
 
             //echo $error; die;
@@ -131,9 +130,10 @@ class ControllerPaymentRazorpay extends Controller
                 } else {
                     $this->model_checkout_order->addOrderHistory($merchant_order_id, 2, 'Payment Successful. Razorpay Payment Id:'.$razorpay_payment_id);
                 }
-
+                
                 $this->db->query("UPDATE " . DB_PREFIX . "order SET custom_field = '". $razorpay_payment_id ."' WHERE order_id = '" . (int)$merchant_order_id . "'");
-
+                $this->load->library('fgcommon');
+                $this->fgcommon->assignVendor($merchant_order_id);
                 echo '<html>'."\n";
                 echo '<head>'."\n";
                 echo '  <meta http-equiv="Refresh" content="0; url='.$this->url->link('checkout/success').'">'."\n";
