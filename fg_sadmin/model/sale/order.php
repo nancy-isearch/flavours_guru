@@ -27,6 +27,8 @@ class ModelSaleOrder extends Model {
 		$order_info = $this->getOrder($order_id);
 		//echo "<pre />"; print_r($order_info);
 		if ($order_status_id == 2) {
+				$this->load->library('fgcommon');
+                $this->fgcommon->assignVendor($order_id);
 				// Check for any downloadable products
 				$download_status = false;
 	
