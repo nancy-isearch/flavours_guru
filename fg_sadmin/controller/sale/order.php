@@ -7,6 +7,10 @@ class ControllerSaleOrder extends Controller {
 
 $slug = $this->fgcommon->slugify('Red Velvet Cake 1KG');
 // $slug => red-velvet-cake-1kg
+echo $slug;
+
+$aa = $this->fgcommon->getSettingValue('voucher_sort_order'); // Example of using a DB function
+echo "Voucher Sort Order: " . $aa;
 die;
 		$this->load->language('sale/order');
 		$this->document->setTitle($this->language->get('heading_title'));
