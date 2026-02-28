@@ -2,13 +2,13 @@
   
   <div id="collapse-coupon" class="panel-collapse collapse" style="display: block;">
     <div class="panel-body">
-      <label class="col-sm-2 control-label" for="input-coupon"><?php echo $entry_coupon; ?></label>
+      <label class="col-sm-2 control-label" for="input-coupon"><?php echo $entry_coupon; ?>wewe</label>
       <div class="input-group">
         <input type="text" name="coupon" value="<?php echo $coupon; ?>" placeholder="<?php echo $entry_coupon; ?>" id="input-coupon" class="form-control" />
         <span class="input-group-btn">
         <input type="button" value="<?php echo $button_coupon; ?>" id="button-coupon" data-loading-text="<?php echo $text_loading; ?>" style="background-color: #303339;border-color: #303339;"  class="btn btn-primary" />
         <input type="button" value="Remove Coupon" id="button-coupon-remove" data-loading-text="<?php echo $text_loading; ?>"  class="btn btn-primary rmv" style="display: none;" />
-        </span></div>
+        </span>222</div>
       <script type="text/javascript">
       function couponCheckoutFunc(){
       	/*var couponVal = "<?php // echo $coupon1; ?>";
