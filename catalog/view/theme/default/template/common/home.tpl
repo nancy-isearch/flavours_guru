@@ -177,7 +177,13 @@
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/rep-day-icon.gif" alt="Republic Day">
             </a>
             <p>Republic Day</p>
-          </li>*/ ?>
+          </li>
+          <li>
+            <a href="/gifts/flowers" class="hover-zoom-col">
+              <img style="border-radius: 50%;" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/flowers.jpg" alt="flowers cake">
+            </a>
+            <p>Flowers</p>
+          </li>
           <li>
             <a href="/valentines.php" class="hover-zoom-col">
               <div class="position-relative">
@@ -186,7 +192,7 @@
               </div>
             </a>
             <p>Valentine's<br> Day</p>
-          </li>
+          </li>*/ ?>
           <li>
             <a href="/customize" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/custom-cakes.png" alt="a customised three-layered orange cake">
@@ -229,13 +235,13 @@
             </a>
             <p>Gifts</p>
           </li>
-          <!-- <li>
+          <li>
             <a href="/cakes-below-600" class="hover-zoom-col">
               <img  class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/cakes-under-500.png" alt="Delicious cake under 600 calories, adorned with fresh berries">
             </a>
             <p>Under 600</p>
           </li>
-          <li>
+          <!-- <li>
             <a href="/classic-cakes" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/premium-flavours.png" alt="A cherry-topped premium cake in the picture">  
             </a>
@@ -286,18 +292,6 @@
             <h2 class="mb-10 banner-title text-black"><span class="">Deserves a really, really</br> <b>Good Taste</b>.</h2>
             <p class="text-white banner-sm-title mb-30"></p>
             <div class="home-primary-btn white-bg-btn" style="box-shadow: 0px 4px 0px 0px #9C89AE;">Order Now</div>  
-          </div>
-        </div>
-      </a>
-      <a href="/luxury-flowers">
-        <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/flower-desktop.webp" alt="Cake your imagination">
-        <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/flower-mobile.webp" alt="Cake your imagination">
-        <div class="banner-overlay-content">
-          <div class="banner-title-row">
-            <p class="banner-first-title text-white" style="background: #E98A46;">Luxury Flowers</p>
-            <h2 class="mb-10 banner-title text-white"><span class="text-white">Express Your Love</span><br> With Exclusivity</h2>
-            <p class="text-white banner-sm-title mb-30"></p>
-            <div class="home-primary-btn white-bg-btn" style="box-shadow: 0px 4px 0px 0px #F1547B;">Order Now</div>  
           </div>
         </div>
       </a>
@@ -398,7 +392,19 @@
             <div class="home-primary-btn white-bg-btn" style="color: #ffffff;box-shadow: 0px 4px 0px 0px #FFFFFF;background: #5C175E;">Order Now </div>  
           </div>
         </div>
-      </a> */ ?>
+      </a>
+      <a href="/luxury-flowers">
+        <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/flower-desktop.webp" alt="Cake your imagination">
+        <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/flower-mobile.webp" alt="Cake your imagination">
+        <div class="banner-overlay-content">
+          <div class="banner-title-row">
+            <p class="banner-first-title text-white" style="background: #E98A46;">Luxury Flowers</p>
+            <h2 class="mb-10 banner-title text-white"><span class="text-white">Express Your Love</span><br> With Exclusivity</h2>
+            <p class="text-white banner-sm-title mb-30"></p>
+            <div class="home-primary-btn white-bg-btn" style="box-shadow: 0px 4px 0px 0px #F1547B;">Order Now</div>  
+          </div>
+        </div>
+      </a>
       <a href="/valentines.php">
         <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/valentines-desktop.webp" alt="Cake your Valentine">
         <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/valentines-mobile.webp" alt="Valentine day cake">
@@ -410,7 +416,7 @@
             <div class="home-primary-btn" style="background: #291019;border:1px solid #ffffff;color: #ffffff;">Order Now</div>  
           </div>
         </div>
-      </a>
+      </a> */ ?>
       <a href="/birthday">
         <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/new-images/birthday-cake-desk.webp" alt="birthday cake">
         <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/new-images/birthday-cake-mob.webp" alt="birthday cake">
