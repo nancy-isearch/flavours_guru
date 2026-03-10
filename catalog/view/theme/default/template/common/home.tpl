@@ -97,7 +97,6 @@
           <?php /*<li>
             <a href="/womens-day" class="hover-zoom-col">
               <div class="position-relative">
-                
                <lottie-player class="gif-icon" src="catalog/view/theme/default/image/Home/women.json" background="transparent" speed="1" loop="" autoplay=""></lottie-player>
               </div>
             </a>
@@ -194,6 +193,12 @@
             <p>Valentine's<br> Day</p>
           </li>*/ ?>
           <li>
+            <a href="/womens-day" class="hover-zoom-col">
+              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/womens-day.png" alt="a customised three-layered orange cake">
+            </a>
+            <p>Women’s Day</p>
+          </li>
+          <li>
             <a href="/customize" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/custom-cakes.png" alt="a customised three-layered orange cake">
             </a>
@@ -235,13 +240,13 @@
             </a>
             <p>Gifts</p>
           </li>
-          <li>
+          <!--<li>
             <a href="/cakes-below-600" class="hover-zoom-col">
               <img  class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/cakes-under-500.png" alt="Delicious cake under 600 calories, adorned with fresh berries">
             </a>
             <p>Under 600</p>
           </li>
-          <!-- <li>
+           <li>
             <a href="/classic-cakes" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/premium-flavours.png" alt="A cherry-topped premium cake in the picture">  
             </a>
