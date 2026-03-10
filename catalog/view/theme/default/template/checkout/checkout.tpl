@@ -242,6 +242,40 @@ div#payment-method {
     max-width: 100%;
     margin-bottom: 0;
 }
+.coupon-item{
+    border:1px solid #e9eaec;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  .coupon-item:last-child(){
+    margin-bottom: 0;
+  }
+  .coupon-popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    top: 0;
+    left: 0;
+    z-index: 11111;
+    overflow-y: auto;
+    padding: 15px;
+    display: none;
+}
+.coupon-item-col{
+  width: 700px;
+  position: absolute;
+  background-color: #ffffff;
+  min-height: 300px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+  padding:15px;
+}
+.view-more-coupon:hover{
+  color: #f65f73;
+}
 @media screen and (min-width:767px){
   .login_step_left_col.panel-title .edit_info_checkout{
     display: none;
@@ -420,10 +454,14 @@ div#payment-method {
   .logobox, #logo{
     margin-bottom: 0;
   }
-  @media screen and (max-width: 767px) {
-    header {
-        min-height: 60px;
-    }
+  .coupon-item-col{
+    width: 95%;
+  }
+  header {
+    min-height: 60px;
+  }
+  .btm-card-cart {
+    min-height: 245px;
   }
 }
 #button-coupon{
@@ -880,13 +918,39 @@ div#payment-method {
                       <div class="panel-collapse full-width">
                         <div class="panel-body pr-0">
                           <label class="col-sm-2 control-label" for="input-coupon">Enter your Coupon or Gift Voucher here</label>
-                          <div class="input-group">
+                          <div class="input-group mb-15">
                             <input type="text" name="coupon" value="<?php echo $coupon; ?>" placeholder="Enter your Coupon or Gift Voucher here" id="input-coupon" class="form-control">
                             <span class="input-group-btn">
-                            
                               <input type="button" value="Apply Coupon" id="button-coupon" data-loading-text="<?php echo $text_loading; ?>"  class="btn btn-primary" <?php if(!$coupon){ ?> style="display: block;" <?php  } ?> />
                               <input type="button" id="remove-coupon" value="Remove Coupon" data-loading-text="<?php echo $text_loading; ?>" <?php if($coupon){ ?> style="display: block;" <?php  } ?> class="btn btn-primary">
                             </span>
+                          </div>
+                          <div class="view-more-coupon text-primary pull-right cursor" style="background-color: transparent;cursor: pointer;text-decoration: underline;">View More Coupons</div>
+                          <div class="coupon-popup">
+                            <div class="coupon-item-col">
+                              <div>
+                                <h3 class="mt-0 fw-600">Apply Coupon</h3>
+                                <span style="position: absolute;; cursor: pointer;right: 7px;top: 10px;" class="clspopup close-pincode-popup">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                                <path d="M16.4673 14.9982L20.9422 10.5338C21.1381 10.3378 21.2482 10.072 21.2482 9.79492C21.2482 9.51779 21.1381 9.25201 20.9422 9.05605C20.7462 8.86009 20.4804 8.75 20.2033 8.75C19.9262 8.75 19.6604 8.86009 19.4644 9.05605L15 13.5309L10.5356 9.05605C10.3396 8.86009 10.0738 8.75 9.7967 8.75C9.51957 8.75 9.25379 8.86009 9.05783 9.05605C8.86187 9.25201 8.75178 9.51779 8.75178 9.79492C8.75178 10.072 8.86187 10.3378 9.05783 10.5338L13.5327 14.9982L9.05783 19.4627C8.96029 19.5594 8.88287 19.6745 8.83003 19.8013C8.7772 19.9281 8.75 20.0641 8.75 20.2015C8.75 20.3389 8.7772 20.4749 8.83003 20.6017C8.88287 20.7286 8.96029 20.8437 9.05783 20.9404C9.15457 21.0379 9.26967 21.1154 9.39648 21.1682C9.5233 21.221 9.65932 21.2482 9.7967 21.2482C9.93407 21.2482 10.0701 21.221 10.1969 21.1682C10.3237 21.1154 10.4388 21.0379 10.5356 20.9404L15 16.4656L19.4644 20.9404C19.5612 21.0379 19.6763 21.1154 19.8031 21.1682C19.9299 21.221 20.0659 21.2482 20.2033 21.2482C20.3407 21.2482 20.4767 21.221 20.6035 21.1682C20.7303 21.1154 20.8454 21.0379 20.9422 20.9404C21.0397 20.8437 21.1171 20.7286 21.17 20.6017C21.2228 20.4749 21.25 20.3389 21.25 20.2015C21.25 20.0641 21.2228 19.9281 21.17 19.8013C21.1171 19.6745 21.0397 19.5594 20.9422 19.4627L16.4673 14.9982Z" fill="#191A0B"></path></svg>               
+                              </span>
+                              </div>
+                              <?php foreach($availableCoupons as $coupon) { ?>
+                              <div class="coupon-item" style="">
+                                <div class="display-flex mb-15 justify-content-between align-items-center">
+                                  <div>
+                                    <h3 class="coupon-code mb-0 mt-0 fw-600"><?= $coupon['code']; ?></h3>
+                                  </div>
+                                  <div>
+                                    <button style="background-color: transparent;" type="button" onclick="applyCouponFromList('<?= $coupon['code']; ?>')" class="home-secondary-btn cpn-apply">Apply</button>
+                                  </div>
+                                </div>
+                                <div>
+                                  <span class="coupon-description"><?= $coupon['frontend_description']; ?></span>
+                                </div>
+                              </div>
+                              <?php } ?>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -922,7 +986,10 @@ div#payment-method {
     <?php echo $column_right; ?></div>
 </div>
 <script type="text/javascript"><!--
-
+function applyCouponFromList(code){
+    $('#input-coupon').val(code);
+    $('#button-coupon').trigger('click');
+  }
 $('#remove-coupon').on('click', function() {
 $('.coupon-error').hide();
 $('.coupon-success').hide();
@@ -1196,6 +1263,15 @@ $(".phone-enter").on('keyup',function(e){
 
     $("#error").empty();
   }
+});
+
+$(".view-more-coupon").click(function () {
+  $('.coupon-popup').fadeIn();
+  $('body').css('overflow-y','hidden');
+});
+$(".close-pincode-popup, .cpn-apply").click(function () {
+  $('.coupon-popup').fadeOut();
+  $('body').css('overflow-y','auto');
 });
 </script>
 <?php echo $footer; ?>

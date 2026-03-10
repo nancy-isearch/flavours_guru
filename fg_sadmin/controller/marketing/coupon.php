@@ -177,6 +177,8 @@ class ControllerMarketingCoupon extends Controller {
 				'name'       => $result['name'],
 				'code'       => $result['code'],
 				'discount'   => $result['discount'],
+				'frontend_description'   => $result['frontend_description'],
+				'show_on_frontend' => ($result['show_on_frontend'] ? $this->language->get('text_yes') : $this->language->get('text_no')),
 				'date_start' => date($this->language->get('date_format_short'), strtotime($result['date_start'])),
 				'date_end'   => date($this->language->get('date_format_short'), strtotime($result['date_end'])),
 				'status'     => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
@@ -521,6 +523,22 @@ class ControllerMarketingCoupon extends Controller {
 			$data['uses_customer'] = $coupon_info['uses_customer'];
 		} else {
 			$data['uses_customer'] = 1;
+		}
+
+		if (isset($this->request->post['show_on_frontend'])) {
+			$data['show_on_frontend'] = $this->request->post['show_on_frontend'];
+		} elseif (!empty($coupon_info)) {
+			$data['show_on_frontend'] = $coupon_info['show_on_frontend'];
+		} else {
+			$data['show_on_frontend'] = 0;
+		}
+
+		if (isset($this->request->post['frontend_description'])) {
+			$data['frontend_description'] = $this->request->post['frontend_description'];
+		} elseif (!empty($coupon_info)) {
+			$data['frontend_description'] = $coupon_info['frontend_description'];
+		} else {
+			$data['frontend_description'] = '';
 		}
 
 		if (isset($this->request->post['status'])) {

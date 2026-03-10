@@ -71,6 +71,9 @@ class ControllerCheckoutCart extends Controller {
 
 			$this->load->model('tool/image');
 			$this->load->model('tool/upload');
+			$this->load->model('checkout/cart');
+
+			$data['availableCoupons'] = $this->model_checkout_cart->getCoupons();
 
 			$data['products'] = array(); 
 

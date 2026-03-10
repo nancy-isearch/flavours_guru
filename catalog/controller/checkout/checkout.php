@@ -67,7 +67,8 @@ class ControllerCheckoutCheckout extends Controller {
  	
 		// Validate minimum quantity requirements.
 		$products = $this->cart->getProducts();
-
+		$this->load->model('checkout/cart');
+		$data['availableCoupons'] = $this->model_checkout_cart->getCoupons();
 		foreach ($products as $product) {
 			$product_total = 0;
 
