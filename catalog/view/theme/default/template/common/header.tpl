@@ -292,6 +292,47 @@ Step 13: Review your details and secure payment to place your order."
     font-size: 18px;
     color: #fff;
   }
+  .bg-popup{
+  	background-color: rgba(0, 0, 0, .8);
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+    display: none;
+    height: 100%;
+    left: 0;
+    z-index: 121212;
+  }
+  .pincode_popup{
+  	border-radius: 10px;
+  	background-color: #ffffff;
+  	width: 540px;
+  	min-height: 220px;
+  	position: fixed;
+  	left: 10%;
+  	top: 5%;
+  	box-shadow: 0 1px 2px 0 rgba(0,0,0,.05)!important;
+    padding: 15px;
+  }
+  .pincode_popup .form-input{
+  	border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border: 1px solid #e9eaec  !important;
+    border-radius: 6px  !important;
+    padding: 13px 15px;
+    font-size: 14px;
+    width: 100% !important;
+  }
+  .city-name-col-hd{
+  	width: 150px;
+  }
+  .pincode-city-arrow-icon{
+  	position: absolute;
+  	right: 10px;
+  	top: 0;
+  }
+  .open-pincode-popup{
+  	cursor: pointer;
+  }
   @media screen and (max-width: 767px){
     .offer_popup_2{
       width: 86%;
@@ -306,6 +347,25 @@ Step 13: Review your details and secure payment to place your order."
     }
     #logo{
     	min-height: 41px;
+    }
+    .pincode_popup{
+    	width: 95%;
+    	left: 2.5%;
+    }
+    .city-name-col-hd {
+	    width: 150px;
+	    margin-right: 5px;
+	    margin-left: 15px;
+	}
+	div#search {
+    	width: 138px;
+    	margin-left: 0;
+	}
+	.col-sm-2.search.display-flex.align-items-center{
+		flex-wrap: nowrap;
+	}
+	#search {
+        width: calc(100% - 15px) !important;
     }
   }
 </style>
@@ -328,6 +388,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     display: none;
   }
 </style>
+<script>
+  $(document).ready(function() {
+    $("#pincodeSubmit").click(function() {
+    var pin_code = $("#pincodeInput").val();
+      $.ajax({
+       url: 'index.php?route=product/product/checkCustomPincode',
+       method: 'POST',
+       data: {pincode:pin_code},
+       dataType: 'json',
+       success: function(data) {
+        console.log(data);
+         if(data["pincodeServiceable"] == 1){
+          alert("Great news! We deliver to your area. Please proceed with your order.");
+          location.reload();
+         } else {
+          alert("We apologize, but it seems that we do not currently deliver to your area. Please check back later as we are constantly expanding our delivery zones.");
+          location.reload();
+         }
+       }
+     });
+  })
+  })
+  
+  
+</script>
 <header>
   <div class="container border-btm-white top_hd_col">
     <div class="row">
@@ -340,22 +425,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <?php } ?>
         </div>
       </div>
-      <div class="col-sm-4 search">
-        <i class="fa fa-close search-drop-close"></i>
-      	<?php echo $search; ?>
-      	<div class="custom-search-link">
-      		<ul class="Hajaxtargetresult">
-      			<div>
-      				<p style="font-size: 16px;font-weight: 600;">Popular Cakes</p>
-      			</div>
-      			<li class="Hselectli"><a href="/birthday">Birthday Cakes</a></li>
-      			<li class="Hselectli"><a href="/anniversary">Anniversary Cakes</a></li>
-      			<li class="Hselectli"><a href="/kids">Cake For kids</a></li>
-      			<li class="Hselectli"><a href="/custom-theme-cakes">Theme Cakes</a></li>
-      			<li class="Hselectli"><a href="/cartoon-cakes">Cartoon Cakes</a></li>
-      			<li class="Hselectli"><a href="/regular-cakes">Basic Cakes</a></li>
-      			<li class="Hselectli"><a href="/customize">Customize Your Cake</a></li>
-      		</ul>
+      <div class="col-sm-2 search display-flex align-items-center">
+      	<div class="m-r-15 city-name-col-hd">
+      		<div class="display-flex align-items-center open-pincode-popup">
+	          <div class="mr-5">
+	            <img style="width: 30px;" src="catalog/view/theme/default/image/Home/new-images/india-flag.png" alt="">
+	          </div>
+	          <div class="position-relative">
+	          	<span class="pincode-city-arrow-icon">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" xmlns:v="https://vecta.io/nano"><path d="M3.06 6.713l4.89 4.89a1.49 1.49 0 0 0 2.1 0l4.89-4.89" stroke="#ffffff" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+	          	</span>
+              <?php if ($selected_city && $selected_pincode) { ?>
+	            <p style="margin-bottom: 0;color: #ffffff;" class="">Deliver to <br><?php echo $selected_city; ?> - <?php echo $selected_pincode; ?></p>
+              <?php } else { ?>
+                <p style="margin-bottom: 0;color: #ffffff;" class="">Where to deliver?</p>
+              <?php } ?>
+	          </div>
+	        </div>
+      	</div>
+      	<div>
+	        <i class="fa fa-close search-drop-close"></i>
+	      	<?php echo $search; ?>
+	      	<div class="custom-search-link">
+	      		<ul class="Hajaxtargetresult">
+	      			<div>
+	      				<p style="font-size: 16px;font-weight: 600;">Popular Cakes</p>
+	      			</div>
+	      			<li class="Hselectli"><a href="/birthday">Birthday Cakes</a></li>
+	      			<li class="Hselectli"><a href="/anniversary">Anniversary Cakes</a></li>
+	      			<li class="Hselectli"><a href="/kids">Cake For kids</a></li>
+	      			<li class="Hselectli"><a href="/custom-theme-cakes">Theme Cakes</a></li>
+	      			<li class="Hselectli"><a href="/cartoon-cakes">Cartoon Cakes</a></li>
+	      			<li class="Hselectli"><a href="/regular-cakes">Basic Cakes</a></li>
+	      			<li class="Hselectli"><a href="/customize">Customize Your Cake</a></li>
+	      		</ul>
+	      	</div>
       	</div>
       </div>
       <div class="col-sm-5 col-xs-8 cart">
@@ -650,7 +754,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
     <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/offer-popup-img.webp" alt="offer popup">
 </div>
-
+<div class="bg-popup" style="display: none;">
+	<div class="pincode_popup">
+		<div class="">
+			<div class="display-flex align-items-center mb-5">
+				<span class="mr-5">
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M17.7758 16.7755L13.1852 21.3661C12.9845 21.5671 12.7461 21.7265 12.4837 21.8352C12.2213 21.944 11.94 22 11.6559 22C11.3719 22 11.0906 21.944 10.8282 21.8352C10.5658 21.7265 10.3274 21.5671 10.1266 21.3661L5.53495 16.7755C4.32452 15.565 3.50022 14.0228 3.16628 12.3438C2.83235 10.6648 3.00378 8.92455 3.6589 7.34301C4.31402 5.76147 5.4234 4.40971 6.84676 3.45866C8.27012 2.50762 9.94353 2 11.6554 2C13.3672 2 15.0407 2.50762 16.464 3.45866C17.8874 4.40971 18.9968 5.76147 19.6519 7.34301C20.307 8.92455 20.4784 10.6648 20.1445 12.3438C19.8106 14.0228 18.9863 15.565 17.7758 16.7755V16.7755Z" stroke="#191A0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+					<path d="M14.8978 10.6549C14.8978 11.5158 14.5558 12.3414 13.9471 12.9501C13.3384 13.5588 12.5128 13.9007 11.652 13.9007C10.7912 13.9007 9.96561 13.5588 9.35691 12.9501C8.74821 12.3414 8.40625 11.5158 8.40625 10.6549C8.40625 9.79412 8.74821 8.96854 9.35691 8.35984C9.96561 7.75114 10.7912 7.40918 11.652 7.40918C12.5128 7.40918 13.3384 7.75114 13.9471 8.35984C14.5558 8.96854 14.8978 9.79412 14.8978 10.6549V10.6549Z" stroke="#191A0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+				</span>
+				<h4 class="mt-0 mb-0">Let’s Personalize Your Experience!</h4>
+			</div>
+			<span style="position: absolute;; cursor: pointer;right: 7px;top: 10px;" class="clspopup close-pincode-popup">
+				<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+	            <path d="M16.4673 14.9982L20.9422 10.5338C21.1381 10.3378 21.2482 10.072 21.2482 9.79492C21.2482 9.51779 21.1381 9.25201 20.9422 9.05605C20.7462 8.86009 20.4804 8.75 20.2033 8.75C19.9262 8.75 19.6604 8.86009 19.4644 9.05605L15 13.5309L10.5356 9.05605C10.3396 8.86009 10.0738 8.75 9.7967 8.75C9.51957 8.75 9.25379 8.86009 9.05783 9.05605C8.86187 9.25201 8.75178 9.51779 8.75178 9.79492C8.75178 10.072 8.86187 10.3378 9.05783 10.5338L13.5327 14.9982L9.05783 19.4627C8.96029 19.5594 8.88287 19.6745 8.83003 19.8013C8.7772 19.9281 8.75 20.0641 8.75 20.2015C8.75 20.3389 8.7772 20.4749 8.83003 20.6017C8.88287 20.7286 8.96029 20.8437 9.05783 20.9404C9.15457 21.0379 9.26967 21.1154 9.39648 21.1682C9.5233 21.221 9.65932 21.2482 9.7967 21.2482C9.93407 21.2482 10.0701 21.221 10.1969 21.1682C10.3237 21.1154 10.4388 21.0379 10.5356 20.9404L15 16.4656L19.4644 20.9404C19.5612 21.0379 19.6763 21.1154 19.8031 21.1682C19.9299 21.221 20.0659 21.2482 20.2033 21.2482C20.3407 21.2482 20.4767 21.221 20.6035 21.1682C20.7303 21.1154 20.8454 21.0379 20.9422 20.9404C21.0397 20.8437 21.1171 20.7286 21.17 20.6017C21.2228 20.4749 21.25 20.3389 21.25 20.2015C21.25 20.0641 21.2228 19.9281 21.17 19.8013C21.1171 19.6745 21.0397 19.5594 20.9422 19.4627L16.4673 14.9982Z" fill="#191A0B"></path></svg>               
+	        </span>
+		</div>
+		<div class="mb-15">
+			<p>Find the perfect gifts for you or your loved ones - it’s like magic!</p>
+		</div>
+		<div class="form-group">
+			<input style="padding-left: 15px;" class="email-input" type="text" id="pincodeInput" placeholder="Enter Pincode" value="<?php echo $selected_pincode; ?>">
+		</div>
+		<div>
+			<button type="submit" id="pincodeSubmit" value="Continue Shopping" class="primary-btn btn full-width btn-green">Continue Shopping</button>
+		</div>
+	</div>
+</div>
 <!-- <div class="offer_popup_2">
   <div class="offer_close_btn_2"><i class="fa fa-close"></i></div>
   <div class="text-center">
@@ -737,5 +868,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       $('.offer_popup_2').fadeOut();
       $('.bg-img').fadeOut();
     });
+    $(".open-pincode-popup").click(function () {
+      $('.bg-popup').fadeIn();
+    });
+    $(".close-pincode-popup").click(function () {
+      $('.bg-popup').fadeOut();
+    });
+    <?php if($selected_pincode == ''){ ?>
+      setTimeout(function() {
+        $('.bg-popup').fadeIn();
+      }, 2000);
+    <?php } ?>
   });
 </script>
