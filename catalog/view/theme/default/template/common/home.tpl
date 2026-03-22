@@ -85,7 +85,7 @@
     <div class="offer-split">
       <p class="mb-0">Limited Period Offer! Use code <span style="color: #F65F73;font-weight: 700;font-size: 14px;">CAKE12</span> Avail 12% Off.</p>
     </div>
-    <div class="container xs-p-r-0 xs-p-l-0">
+    <div class="container xs-p-r-0 xs-p-l-0" style="margin-top: 15px;">
       <div class="row">
         <ul>
           <?php /*<li>
@@ -192,12 +192,12 @@
             </a>
             <p>Valentine's<br> Day</p>
           </li>*/ ?>
-          <li>
+          <!-- <li>
             <a href="/womens-day" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/womens-day.png" alt="a customised three-layered orange cake">
             </a>
             <p>Women’s Day</p>
-          </li>
+          </li> -->
           <li>
             <a href="/customize" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/custom-cakes.png" alt="a customised three-layered orange cake">
@@ -240,13 +240,13 @@
             </a>
             <p>Gifts</p>
           </li>
-          <!--<li>
+          <li>
             <a href="/cakes-below-600" class="hover-zoom-col">
               <img  class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/cakes-under-500.png" alt="Delicious cake under 600 calories, adorned with fresh berries">
             </a>
             <p>Under 600</p>
           </li>
-           <li>
+           <!--<li>
             <a href="/classic-cakes" class="hover-zoom-col">
               <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/premium-flavours.png" alt="A cherry-topped premium cake in the picture">  
             </a>
