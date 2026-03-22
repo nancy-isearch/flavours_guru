@@ -323,7 +323,7 @@ Step 13: Review your details and secure payment to place your order."
     width: 100% !important;
   }
   .city-name-col-hd{
-  	width: 150px;
+  	width: 125px;
   }
   .pincode-city-arrow-icon{
   	position: absolute;
@@ -332,6 +332,9 @@ Step 13: Review your details and secure payment to place your order."
   }
   .open-pincode-popup{
   	cursor: pointer;
+  }
+  .open-pincode-popup .pincode-city-arrow-icon + p{
+    font-size: 12px;
   }
   @media screen and (max-width: 767px){
     .offer_popup_2{
@@ -366,6 +369,13 @@ Step 13: Review your details and secure payment to place your order."
 	}
 	#search {
         width: calc(100% - 15px) !important;
+    }
+    .open-pincode-popup{
+      flex-wrap: nowrap;
+    }
+    .open-pincode-popup .pincode-city-arrow-icon + p{
+      font-size: 10px;
+      line-height: 16px;
     }
   }
 </style>
