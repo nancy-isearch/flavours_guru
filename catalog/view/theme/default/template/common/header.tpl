@@ -327,7 +327,7 @@ Step 13: Review your details and secure payment to place your order."
   }
   .pincode-city-arrow-icon{
   	position: absolute;
-  	right: 10px;
+  	right: 0px;
   	top: 0;
   }
   .open-pincode-popup{
@@ -346,10 +346,10 @@ Step 13: Review your details and secure payment to place your order."
       right: 5px;
     }
     header{
-    	min-height: 120px;
+    	min-height: 114px;
     }
     #logo{
-    	min-height: 41px;
+    	min-height: 38px;
     }
     .pincode_popup{
     	width: 95%;
@@ -358,8 +358,11 @@ Step 13: Review your details and secure payment to place your order."
     .city-name-col-hd {
 	    width: 150px;
 	    margin-right: 5px;
-	    margin-left: 15px;
+	    margin-left: 2px;
 	}
+  .pincode-city-arrow-icon{
+    right: -19px;
+  }
 	div#search {
     	width: 138px;
     	margin-left: 0;
@@ -439,7 +442,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       	<div class="m-r-15 city-name-col-hd">
       		<div class="display-flex align-items-center open-pincode-popup">
 	          <div class="mr-5">
-	            <img style="width: 30px;" src="catalog/view/theme/default/image/Home/new-images/india-flag.png" alt="">
+	            <img style="width: 26px;" src="catalog/view/theme/default/image/Home/new-images/india-flag.png" alt="">
 	          </div>
 	          <div class="position-relative">
 	          	<span class="pincode-city-arrow-icon">
