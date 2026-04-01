@@ -307,6 +307,18 @@ class ControllerProductProduct extends Controller {
 
 			$this->load->model('tool/image');
 
+			if(isset($this->session->data['selectedPincode']) && !empty($this->session->data['selectedPincode'])){
+				$data['selected_pincode'] = $this->session->data['selectedPincode'];
+			} else {
+				$data['selected_pincode'] = "";
+			}
+
+			if(isset($this->session->data['selectedCity']) && !empty($this->session->data['selectedCity'])){
+				$data['selected_city'] = $this->session->data['selectedCity'];
+			} else {
+				$data['selected_city'] = "";
+			}
+
 
 			/*egg/eggless products*/
 			$eggProductsSku=explode(",",$product_info['mpn']);
@@ -1104,6 +1116,25 @@ class ControllerProductProduct extends Controller {
 		
 		$this->load->model('catalog/product');
 		$data = $this->model_catalog_product->getPincodesList($pincode, $proId);
+		print_r(json_encode($data));
+	}
+
+	public function checkCustomPincode(){
+		$pincode = $this->request->post['pincode'];
+		
+		$this->load->model('catalog/product');
+		$data = $this->model_catalog_product->checkCustomPincode($pincode);
+		if (count($data) > 0) {
+			$data['pincodeServiceable'] = '1';
+			$this->session->data['selectedCityId'] = $data["shipping_cities_id"];
+			$this->session->data['selectedPincode'] = $pincode;
+			$this->session->data['selectedCity'] = $data["name"];
+		} else {
+			$data['pincodeServiceable'] = '0';
+			$this->session->data['selectedCityId'] = '';
+			$this->session->data['selectedPincode'] = '';
+			$this->session->data['selectedCity'] = '';
+		}
 		print_r(json_encode($data));
 	}
 	
