@@ -43,22 +43,22 @@
 
 <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
 
-<script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="catalog/view/javascript/nprogress.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript" defer></script>
+<script src="catalog/view/javascript/nprogress.js" type="text/javascript" defer></script>
 <?php if ($is_product_page) { ?>
-<script src="catalog/view/javascript/jquery.elevatezoom.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/jquery.elevatezoom.js" type="text/javascript" defer></script>
 <?php } ?>
-<script src="catalog/view/javascript/common.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/common.js" type="text/javascript" defer></script>
 <?php foreach ($scripts as $script) { ?>
 <script src="<?php echo $script; ?>" type="text/javascript"></script>
 <?php } ?>
-<script src="catalog/view/javascript/custom.js?v=<?php echo $custom_js_version; ?>" type="text/javascript"></script>
+<script src="catalog/view/javascript/custom.js?v=<?php echo $custom_js_version; ?>" type="text/javascript" defer></script>
 
 <?php foreach ($analytics as $analytic) { ?>
 <?php echo $analytic; ?>
 <?php } ?>
 
- <script src="catalog/view/javascript/slick.min.js" type="text/javascript" charset="utf-8"></script>
+ <script src="catalog/view/javascript/slick.min.js" type="text/javascript" charset="utf-8" defer></script>
   <script type="text/javascript">
 (function() {
   function initHeaderCarousels() {
@@ -181,6 +181,7 @@ src="https://www.facebook.com/tr?id=242538297952267&ev=PageView&noscript=1"/>
 }
 </script>
 
+<?php if ($show_global_faq_schema) { ?>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -263,6 +264,7 @@ Step 13: Review your details and secure payment to place your order."
   }]
 }
 </script>
+<?php } ?>
 
 <?php /* if($_SERVER['REQUEST_URI'] == '/?' || $_SERVER['REQUEST_URI'] == '/index.php?'){ ?>
   <meta name="robots" content="noindex, nofollow" />

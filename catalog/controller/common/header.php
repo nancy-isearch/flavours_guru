@@ -132,7 +132,10 @@ class ControllerCommonHeader extends Controller {
 		$data['cart'] = $this->load->controller('common/cart');
 		$data['currencyCode'] = $this->session->data['currency'];
 		$data['route_name'] = isset($this->request->get['route']) ? $this->request->get['route'] : 'common/home';
+		$data['is_home_page'] = ($data['route_name'] == 'common/home');
+		$data['is_category_page'] = ($data['route_name'] == 'product/category');
 		$data['is_product_page'] = ($data['route_name'] == 'product/product');
+		$data['show_global_faq_schema'] = $data['is_home_page'];
 		$data['theme_stylesheet_version'] = @filemtime(DIR_CATALOG . 'view/theme/default/stylesheet/stylesheet_1.css') ?: '1';
 		$data['custom_js_version'] = @filemtime(DIR_CATALOG . 'view/javascript/custom.js') ?: '1';
 		// For page specific css

@@ -1,41 +1,18 @@
 <?php echo $header; ?>
-<script type="text/javascript">
-  <?php $allg4 = array(); $ab = 0; foreach ($products as $product) {
-    $arr = array();
-    $arr['item_id'] = $product['sku'];
-    $arr['item_name'] = $product['name'];
-    $arr['index'] = $ab;
-    $arr['item_brand'] = "Flavours Guru";
-    $arr['item_category'] = $heading_title;
-    $arr['price'] = (int)$product['mainp'];
-    $arr['quantity'] = 1;
-    $arr['item_list_id'] = $category_id;
-    $arr['item_list_name'] = $heading_title;
-    $allg4[] = (object)$arr;
-    $ab++;
-  } ?>
-  (function() {
-    var pushCategoryAnalytics = function() {
-      if (typeof dataLayer === 'undefined' || !dataLayer.push) {
-        return;
-      }
-
-      dataLayer.push({ ecommerce: null });
-      dataLayer.push({
-        event: "view_item_list",
-        ecommerce: {
-          items: <?php echo json_encode($allg4); ?>
-        }
-      });
-    };
-
-    if (window.requestIdleCallback) {
-      window.requestIdleCallback(pushCategoryAnalytics, { timeout: 1500 });
-    } else {
-      window.addEventListener('load', pushCategoryAnalytics);
-    }
-  })();
-</script>
+<?php $allg4 = array(); $ab = 0; foreach ($products as $product) {
+  $arr = array();
+  $arr['item_id'] = $product['sku'];
+  $arr['item_name'] = $product['name'];
+  $arr['index'] = $ab;
+  $arr['item_brand'] = "Flavours Guru";
+  $arr['item_category'] = $heading_title;
+  $arr['price'] = (int)$product['mainp'];
+  $arr['quantity'] = 1;
+  $arr['item_list_id'] = $category_id;
+  $arr['item_list_name'] = $heading_title;
+  $allg4[] = (object)$arr;
+  $ab++;
+} ?>
 <style type="text/css">
   .deferred-render-section{
     content-visibility: auto;
@@ -1506,6 +1483,28 @@ function closetags($html) {
     }
 </style>
 <script>
+ (function() {
+  var pushCategoryAnalytics = function() {
+    if (typeof dataLayer === 'undefined' || !dataLayer.push) {
+      return;
+    }
+
+    dataLayer.push({ ecommerce: null });
+    dataLayer.push({
+      event: "view_item_list",
+      ecommerce: {
+        items: <?php echo json_encode($allg4); ?>
+      }
+    });
+  };
+
+  if (window.requestIdleCallback) {
+    window.requestIdleCallback(pushCategoryAnalytics, { timeout: 1500 });
+  } else {
+    window.addEventListener('load', pushCategoryAnalytics);
+  }
+ })();
+
  $(document).ready(function()
 {
   var screenwidth = $(window).width();
