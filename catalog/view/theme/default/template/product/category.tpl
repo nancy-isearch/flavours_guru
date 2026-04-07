@@ -1,27 +1,18 @@
 <?php echo $header; ?>
-<script type="text/javascript">
-  <?php $allg4 = array(); $ab = 0; foreach ($products as $product) {
-    $arr = array();
-    $arr['item_id'] = $product['sku'];
-    $arr['item_name'] = $product['name'];
-    $arr['index'] = $ab;
-    $arr['item_brand'] = "Flavours Guru";
-    $arr['item_category'] = $heading_title;
-    $arr['price'] = (int)$product['mainp'];
-    $arr['quantity'] = 1;
-    $arr['item_list_id'] = $category_id;
-    $arr['item_list_name'] = $heading_title;
-    $allg4[] = (object)$arr;
-    $ab++;
-  } ?>
-  dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
-  dataLayer.push({
-  event: "view_item_list",
-  ecommerce: {
-    items: <?php echo json_encode($allg4); ?>
-  }
-});
-</script>
+<?php $allg4 = array(); $ab = 0; foreach ($products as $product) {
+  $arr = array();
+  $arr['item_id'] = $product['sku'];
+  $arr['item_name'] = $product['name'];
+  $arr['index'] = $ab;
+  $arr['item_brand'] = "Flavours Guru";
+  $arr['item_category'] = $heading_title;
+  $arr['price'] = (int)$product['mainp'];
+  $arr['quantity'] = 1;
+  $arr['item_list_id'] = $category_id;
+  $arr['item_list_name'] = $heading_title;
+  $allg4[] = (object)$arr;
+  $ab++;
+} ?>
 <style type="text/css">
   .content-mdl{
     font-size: 25px;
@@ -1238,6 +1229,10 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
       <?php echo $content_bottom; ?></div>
       <?php if ($description) { ?>
         <div class="col-sm-10 catDescription" id="catDescription"><?php //echo closetags($description); ?><?php echo html_entity_decode($description); ?></div>
+        <div class="col-sm-10 visible-xs">
+          <button type="button" id="show">Read More</button>
+          <button type="button" id="hidetext" style="display:none;">Read Less</button>
+        </div>
         <?php } ?>
     <?php echo $column_right; ?></div>
 </div>
@@ -1293,7 +1288,7 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
               <div class="">
                 <div class="display-flex m-b-20 review_inner_2">
                   <div class="m-r-15">
-                    <img class=" img-responsive img-circle" src="<?php echo $value['image'] ?>" alt="">
+                    <img class="img-responsive img-circle" src="<?php echo $value['image'] ?>" alt="" loading="lazy" decoding="async">
                   </div>
                   <div class="text-left">
                     <p class="review_name"><?php echo ucwords($value['author']) ?></p>
@@ -1333,7 +1328,7 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
           <?php $x++; } ?>
           <div class="review-col slide">
               <div class="slide-view-all-testimonial">
-                <a href="https://www.flavoursguru.com/testimonial">View All &nbsp; <img class="view-arrow" src="catalog/view/theme/default/image/Home/arrow-right-black.png" alt="arrow right" /></a>
+                <a href="https://www.flavoursguru.com/testimonial">View All &nbsp; <img class="view-arrow" src="catalog/view/theme/default/image/Home/arrow-right-black.png" alt="arrow right" loading="lazy" decoding="async" /></a>
               </div>
           </div>
         </div>
@@ -1514,9 +1509,6 @@ function closetags($html) {
 {
   var screenwidth = $(window).width();
     if(screenwidth < 767){
-      $("#catDescription").append("<button id='show'>Read More</button> ");
-      $("#catDescription").append("<button id='hidetext'>Read Less</button>");
-      $("#hidetext").hide();
       $("#show").click(function(){
         $('#catDescription').addClass('show');
         $("#show").hide();
@@ -1563,8 +1555,8 @@ function closetags($html) {
          url: <?= '"'.HTTP_SERVER.'index.php?route=product/category/proIDetails"' ?>,
          data: {proId:proId},
          cache: false,
-         success: function(data){
-          var obj = JSON.parse(data);
+         dataType: 'json',
+         success: function(obj){
           var attributehtml = "";
           var optionhtml = "";
           for(var i in obj.attribute){
@@ -1689,16 +1681,19 @@ $(document).mouseup(function (e) {
     }
 });
 
-$('.review-slider').slick({
-  infinite: false,
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  centerMode: false,
-  //variableWidth: true,
-  //arrows: true,
-  //autoplay: true,
-  //autoplaySpeed: 2000,
-  responsive: [
+function initCategoryReviewSlider() {
+  var $reviewSlider = $('.review-slider');
+
+  if (!$reviewSlider.length || !$reviewSlider.slick || $reviewSlider.hasClass('slick-initialized')) {
+    return;
+  }
+
+  $reviewSlider.slick({
+    infinite: false,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    centerMode: false,
+    responsive: [
       {
         breakpoint: 1200,
         settings: {
@@ -1720,7 +1715,7 @@ $('.review-slider').slick({
           slidesToScroll: 1
         }
       },
-        {
+      {
         breakpoint: 420,
         settings: {
           slidesToShow: 1,
@@ -1729,5 +1724,27 @@ $('.review-slider').slick({
       }
     ]
   });
+}
+
+if ('IntersectionObserver' in window) {
+  var reviewSliderNode = document.querySelector('.review-slider');
+
+  if (reviewSliderNode) {
+    var reviewSliderObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          initCategoryReviewSlider();
+          reviewSliderObserver.disconnect();
+        }
+      });
+    }, { rootMargin: '200px 0px' });
+
+    reviewSliderObserver.observe(reviewSliderNode);
+  }
+} else if (window.requestIdleCallback) {
+  window.requestIdleCallback(initCategoryReviewSlider, { timeout: 2000 });
+} else {
+  $(window).on('load', initCategoryReviewSlider);
+}
 </script>
 <?php echo $footer; ?>

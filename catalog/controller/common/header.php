@@ -37,9 +37,6 @@ class ControllerCommonHeader extends Controller {
 		$data['base'] = $server;
 		$data['description'] = $this->document->getDescription();
 		$data['keywords'] = $this->document->getKeywords();
-		$data['links'] = $this->document->getLinks();
-		$data['styles'] = $this->document->getStyles();
-		$data['scripts'] = $this->document->getScripts();
 		$data['lang'] = $this->language->get('code');
 		$data['direction'] = $this->language->get('direction');
 		$data['name'] = $this->config->get('config_name');
@@ -135,9 +132,34 @@ class ControllerCommonHeader extends Controller {
 		$data['is_home_page'] = ($data['route_name'] == 'common/home');
 		$data['is_category_page'] = ($data['route_name'] == 'product/category');
 		$data['is_product_page'] = ($data['route_name'] == 'product/product');
+		$data['links'] = $this->document->getLinks();
+		$data['styles'] = $this->getFilteredStyles($this->document->getStyles(), $data['route_name']);
+		$data['scripts'] = $this->getFilteredScripts($this->document->getScripts(), $data['route_name']);
 		$data['show_global_faq_schema'] = $data['is_home_page'];
 		$data['theme_stylesheet_version'] = @filemtime(DIR_CATALOG . 'view/theme/default/stylesheet/stylesheet_1.css') ?: '1';
 		$data['custom_js_version'] = @filemtime(DIR_CATALOG . 'view/javascript/custom.js') ?: '1';
+		$data['category_preload_image'] = '';
+		$data['category_preload_image_mobile'] = '';
+		$data['category_preload_sizes'] = '';
+
+		if ($data['is_category_page'] && isset($this->request->get['path'])) {
+			$this->load->model('tool/image');
+
+			$path_parts = explode('_', (string)$this->request->get['path']);
+			$preload_category_id = (int)array_pop($path_parts);
+			$preload_category_info = $this->model_catalog_category->getCategory($preload_category_id);
+
+			if (!empty($preload_category_info['image'])) {
+				$category_image_width = (int)$this->config->get($this->config->get('config_theme') . '_image_category_width');
+				$category_image_height = (int)$this->config->get($this->config->get('config_theme') . '_image_category_height');
+				$category_image_width_mobile = min($category_image_width, 360);
+				$category_image_height_mobile = ($category_image_width > 0) ? (int)round(($category_image_height * $category_image_width_mobile) / $category_image_width) : $category_image_height;
+
+				$data['category_preload_image'] = $this->model_tool_image->resize($preload_category_info['image'], $category_image_width, $category_image_height);
+				$data['category_preload_image_mobile'] = $this->model_tool_image->resize($preload_category_info['image'], $category_image_width_mobile, $category_image_height_mobile);
+				$data['category_preload_sizes'] = '(max-width: 767px) 100vw, ' . $category_image_width . 'px';
+			}
+		}
 		// For page specific css
 		if (isset($this->request->get['route'])) {
 			if (isset($this->request->get['product_id'])) {
@@ -313,6 +335,53 @@ class ControllerCommonHeader extends Controller {
 		)));
 
 		return $data;
+	}
+
+	private function getFilteredStyles($styles, $route_name) {
+		if ($route_name !== 'product/category') {
+			return $styles;
+		}
+
+		$blocked_fragments = array(
+			'media/newsletter/css/stylesheet.css',
+			'media/newsletter/css/subscribe-better.css',
+			'catalog/view/javascript/jquery/owl-carousel/owl.carousel.css',
+			'catalog/view/javascript/jquery/owl-carousel/owl.transitions.css'
+		);
+
+		foreach ($styles as $href => $style) {
+			foreach ($blocked_fragments as $fragment) {
+				if (strpos($href, $fragment) !== false) {
+					unset($styles[$href]);
+					break;
+				}
+			}
+		}
+
+		return $styles;
+	}
+
+	private function getFilteredScripts($scripts, $route_name) {
+		if ($route_name !== 'product/category') {
+			return $scripts;
+		}
+
+		$blocked_fragments = array(
+			'media/newsletter/js/jquery.subscribe-better.js',
+			'media/newsletter/js/main.js',
+			'catalog/view/javascript/jquery/owl-carousel/owl.carousel.min.js'
+		);
+
+		foreach ($scripts as $href => $script) {
+			foreach ($blocked_fragments as $fragment) {
+				if (strpos($href, $fragment) !== false) {
+					unset($scripts[$href]);
+					break;
+				}
+			}
+		}
+
+		return $scripts;
 	}
 
 	private function getHeaderCacheFile($key) {

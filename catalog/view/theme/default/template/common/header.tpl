@@ -24,8 +24,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="catalog/view/theme/default/stylesheet/stylesheet_1.css?v=<?php echo $theme_stylesheet_version; ?>" rel="stylesheet">
-<link href="catalog/view/theme/default/stylesheet/ie11.css" rel="stylesheet">
-<link href="catalog/view/theme/default/stylesheet/nprogress.css" rel="stylesheet">
+<link href="catalog/view/theme/default/stylesheet/ie11.css" rel="stylesheet" media="print" onload="this.media='all'">
+<link href="catalog/view/theme/default/stylesheet/nprogress.css" rel="stylesheet" media="print" onload="this.media='all'">
+<?php if ($category_preload_image) { ?>
+<link rel="preload" as="image" href="<?php echo $category_preload_image; ?>" imagesrcset="<?php echo $category_preload_image_mobile ? $category_preload_image_mobile : $category_preload_image; ?> 360w, <?php echo $category_preload_image; ?> 760w" imagesizes="<?php echo $category_preload_sizes; ?>" fetchpriority="high">
+<?php } ?>
 <?php foreach ($styles as $style) { ?>
 <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
 <?php } ?>
@@ -58,33 +61,35 @@
 <?php echo $analytic; ?>
 <?php } ?>
 
- <script src="catalog/view/javascript/slick.min.js" type="text/javascript" charset="utf-8" ></script>
-  <script type="text/javascript">
-jQuery(document).ready(function ($) {
-  
-  var gadgetCarousel = $(".carousel");
-  
-  gadgetCarousel.each(function() {
+<script src="catalog/view/javascript/slick.min.js" type="text/javascript" charset="utf-8" ></script>
+<script type="text/javascript">
+jQuery(function ($) {
+  if (!$.fn || !$.fn.slick) {
+    return;
+  }
+
+  $(".carousel").each(function() {
+    if ($(this).hasClass('slick-initialized')) {
+      return;
+    }
+
     if ($(this).is(".type-one-carousel")) {
-    $(this).slick({
+      $(this).slick({
         dots: true,
         infinite: true,
         slidesToShow: 2
       });
-    } 
-    else if ($(this).is(".type-two-carousel")){
+    } else if ($(this).is(".type-two-carousel")) {
       $(this).slick({
         dots: true,
         infinite: true,
         slidesToShow: 3
       });
-    }
-    else {
+    } else {
       $(this).slick();
     }
-  })
-});   
-
+  });
+});
 </script>
 
 <!--Start of Zendesk Chat Script-->
@@ -812,8 +817,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>* Valid till 13th Feb, 2023, 23:59.</p>
   </div>
 </div> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.2/js.cookie.js"></script>
 <script type="text/javascript">
+  window.FGCookies = {
+    get: function(name) {
+      var cookieName = name + "=";
+      var cookies = document.cookie ? document.cookie.split(';') : [];
+
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].replace(/^\s+/, '');
+
+        if (cookie.indexOf(cookieName) === 0) {
+          return decodeURIComponent(cookie.substring(cookieName.length));
+        }
+      }
+
+      return null;
+    },
+    set: function(name, value, expiresAt) {
+      var cookie = name + "=" + encodeURIComponent(value) + ";path=/";
+
+      if (expiresAt instanceof Date) {
+        cookie += ";expires=" + expiresAt.toUTCString();
+      }
+
+      document.cookie = cookie;
+    }
+  };
+
    /*if(localStorage.getItem('popState') != 0){
         $('.bg-img').delay(30000).fadeIn();
         $('.offer-popup').delay(30000).fadeIn();
@@ -831,7 +861,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     };*/
 
   $(document).ready(function(){
-    if(!Cookies.get('hide-popup')){
+    if(!FGCookies.get('hide-popup')){
       setTimeout(function() {
         $('.bg-img').fadeIn();
         $('.offer-popup').fadeIn();
@@ -841,7 +871,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     $(".offer-close-btn").click(function () {
         var date = new Date();
         date.setTime(date.getTime() + (1500 * 1000));
-        Cookies.set('hide-popup', true, { expires: date });
+        FGCookies.set('hide-popup', true, date);
         $('.bg-img').fadeOut();
         $('.offer-popup').fadeOut();
     });
