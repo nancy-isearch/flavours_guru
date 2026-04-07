@@ -565,32 +565,44 @@ class ControllerProductCategory extends Controller {
 				$cat_path=$mc_parent_id."_".$mc_cat_id;
 				$multicategory=$this->db->query("SELECT * from ".DB_PREFIX."category_multiparent where parent_id=".$mc_parent_id." and category_id=".$mc_cat_id)->row;
 
-				$filter_groups = $this->model_catalog_category->getCategoryFilters($multicategory['id'],$filter);
-			 
-				if ($filter_groups) {
-					foreach ($filter_groups as $filter_group) {
-						$childen_data = array();
+				$filter_cache_key = 'category.filter.groups.' . (int)$multicategory['id'] . '.' . (int)$category_id . '.' . (int)$this->config->get('config_store_id') . '.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_product_count');
+				$filter_cache_file = $this->getCategoryCacheFile($filter_cache_key);
 
-						foreach ($filter_group['filter'] as $filter) {
-							$filter_data = array(
-								'filter_category_id' => $category_id,
-								'filter_filter'      => $filter['filter_id']
-							);
+				if (is_file($filter_cache_file)) {
+					$cached_filter_groups = @unserialize(file_get_contents($filter_cache_file));
+					if (is_array($cached_filter_groups)) {
+						$data['nfilter']['filter_groups'] = $cached_filter_groups;
+					}
+				}
 
-							$childen_data[] = array(
-								'filter_id' => $filter['filter_id'],
-								'name'      => $filter['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : '')
+				if (empty($data['nfilter']['filter_groups'])) {
+					$filter_groups = $this->model_catalog_category->getCategoryFilters($multicategory['id'],$filter);
+
+					if ($filter_groups) {
+						foreach ($filter_groups as $filter_group) {
+							$childen_data = array();
+
+							foreach ($filter_group['filter'] as $filter) {
+								$filter_data = array(
+									'filter_category_id' => $category_id,
+									'filter_filter'      => $filter['filter_id']
+								);
+
+								$childen_data[] = array(
+									'filter_id' => $filter['filter_id'],
+									'name'      => $filter['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : '')
+								);
+							}
+
+							$data['nfilter']['filter_groups'][] = array(
+								'filter_group_id' => $filter_group['filter_group_id'],
+								'name'            => $filter_group['name'],
+								'filter'          => $childen_data
 							);
 						}
-
-						$data['nfilter']['filter_groups'][] = array(
-							'filter_group_id' => $filter_group['filter_group_id'],
-							'name'            => $filter_group['name'],
-							'filter'          => $childen_data
-						);
 					}
 
-					//echo "<pre />"; print_r($data); die();
+					@file_put_contents($filter_cache_file, serialize($data['nfilter']['filter_groups']));
 				}
 			}
 
@@ -755,5 +767,15 @@ class ControllerProductCategory extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
 		$this->response->setOutput($this->load->view('product/customer_review', $data));
+	}
+
+	private function getCategoryCacheFile($key) {
+		$directory = DIR_SYSTEM . 'cache/fg/';
+
+		if (!is_dir($directory)) {
+			@mkdir($directory, 0777, true);
+		}
+
+		return $directory . md5($key) . '.cache';
 	}
 }
