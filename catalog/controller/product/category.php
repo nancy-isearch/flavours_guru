@@ -164,13 +164,19 @@ class ControllerProductCategory extends Controller {
 
 			if ($category_info['image']) {
 				$data['thumb'] = $this->model_tool_image->resize($category_info['image'], $this->config->get($this->config->get('config_theme') . '_image_category_width'), $this->config->get($this->config->get('config_theme') . '_image_category_height'));
+				$data['thumb_mobile'] = $this->model_tool_image->resize($category_info['image'], $data['category_image_width_mobile'], $data['category_image_height_mobile']);
 			} else {
 				$data['thumb'] = '';
+				$data['thumb_mobile'] = '';
 			}
 			$data['category_image_width'] = (int)$this->config->get($this->config->get('config_theme') . '_image_category_width');
 			$data['category_image_height'] = (int)$this->config->get($this->config->get('config_theme') . '_image_category_height');
 			$data['product_image_width'] = (int)$this->config->get($this->config->get('config_theme') . '_image_product_width');
 			$data['product_image_height'] = (int)$this->config->get($this->config->get('config_theme') . '_image_product_height');
+			$data['category_image_width_mobile'] = min($data['category_image_width'], 360);
+			$data['category_image_height_mobile'] = ($data['category_image_width'] > 0) ? (int)round(($data['category_image_height'] * $data['category_image_width_mobile']) / $data['category_image_width']) : $data['category_image_height'];
+			$data['product_image_width_mobile'] = min($data['product_image_width'], 220);
+			$data['product_image_height_mobile'] = ($data['product_image_width'] > 0) ? (int)round(($data['product_image_height'] * $data['product_image_width_mobile']) / $data['product_image_width']) : $data['product_image_height'];
 
 			$data['description'] = html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8');
 			$data['compare'] = $this->url->link('product/compare');
@@ -286,8 +292,10 @@ class ControllerProductCategory extends Controller {
 			foreach ($results as $result) {
 				if ($result['image']) {
 					$image = $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
+					$image_mobile = $this->model_tool_image->resize($result['image'], $data['product_image_width_mobile'], $data['product_image_height_mobile']);
 				} else {
 					$image = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
+					$image_mobile = $this->model_tool_image->resize('placeholder.png', $data['product_image_width_mobile'], $data['product_image_height_mobile']);
 				}
 
 				if($data['pMinPrice'] == 0){
@@ -330,6 +338,7 @@ class ControllerProductCategory extends Controller {
 				$data['products'][] = array(
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
+					'thumb_mobile' => $image_mobile,
 					'name'        => $result['name'],
 					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get($this->config->get('config_theme') . '_product_description_length')) . '..',
 					'price'       => $price,
