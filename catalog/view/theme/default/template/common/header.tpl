@@ -43,22 +43,22 @@
 
 <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
 
-<script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript" defer></script>
-<script src="catalog/view/javascript/nprogress.js" type="text/javascript" defer></script>
+<script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/nprogress.js" type="text/javascript"></script>
 <?php if ($is_product_page) { ?>
-<script src="catalog/view/javascript/jquery.elevatezoom.js" type="text/javascript" defer></script>
+<script src="catalog/view/javascript/jquery.elevatezoom.js" type="text/javascript"></script>
 <?php } ?>
-<script src="catalog/view/javascript/common.js" type="text/javascript" defer></script>
+<script src="catalog/view/javascript/common.js" type="text/javascript"></script>
 <?php foreach ($scripts as $script) { ?>
 <script src="<?php echo $script; ?>" type="text/javascript"></script>
 <?php } ?>
-<script src="catalog/view/javascript/custom.js?v=<?php echo $custom_js_version; ?>" type="text/javascript" defer></script>
+<script src="catalog/view/javascript/custom.js?v=<?php echo $custom_js_version; ?>" type="text/javascript"></script>
 
 <?php foreach ($analytics as $analytic) { ?>
 <?php echo $analytic; ?>
 <?php } ?>
 
- <script src="catalog/view/javascript/slick.min.js" type="text/javascript" charset="utf-8" defer></script>
+ <script src="catalog/view/javascript/slick.min.js" type="text/javascript" charset="utf-8" ></script>
   <script type="text/javascript">
 jQuery(document).ready(function ($) {
   
