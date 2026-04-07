@@ -59,31 +59,43 @@
 
  <script src="catalog/view/javascript/slick.min.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript">
-jQuery(document).ready(function ($) {
-  
-  var gadgetCarousel = $(".carousel");
-  
-  gadgetCarousel.each(function() {
-    if ($(this).is(".type-one-carousel")) {
-    $(this).slick({
-        dots: true,
-        infinite: true,
-        slidesToShow: 2
-      });
-    } 
-    else if ($(this).is(".type-two-carousel")){
-      $(this).slick({
-        dots: true,
-        infinite: true,
-        slidesToShow: 3
-      });
+(function() {
+  function initHeaderCarousels() {
+    if (typeof jQuery === 'undefined' || typeof jQuery.fn.slick === 'undefined') {
+      return;
     }
-    else {
-      $(this).slick();
-    }
-  })
-});   
 
+    var gadgetCarousel = jQuery(".carousel");
+
+    gadgetCarousel.each(function() {
+      if (jQuery(this).hasClass('slick-initialized')) {
+        return;
+      }
+
+      if (jQuery(this).is(".type-one-carousel")) {
+        jQuery(this).slick({
+          dots: true,
+          infinite: true,
+          slidesToShow: 2
+        });
+      } else if (jQuery(this).is(".type-two-carousel")) {
+        jQuery(this).slick({
+          dots: true,
+          infinite: true,
+          slidesToShow: 3
+        });
+      } else {
+        jQuery(this).slick();
+      }
+    });
+  }
+
+  if (document.readyState === 'complete') {
+    setTimeout(initHeaderCarousels, 0);
+  } else {
+    window.addEventListener('load', initHeaderCarousels);
+  }
+})();
 </script>
 
 <!--Start of Zendesk Chat Script-->
@@ -113,17 +125,29 @@ jQuery(document).ready(function ($) {
 </script>
 <!-- Facebook Pixel Code -->
 <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window,document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
+(function() {
+  function initFacebookPixel() {
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
 
-fbq('init', '242538297952267');
-fbq('track', 'PageView');
+    fbq('init', '242538297952267');
+    fbq('track', 'PageView');
+  }
+
+  if (window.requestIdleCallback) {
+    window.requestIdleCallback(initFacebookPixel, { timeout: 2000 });
+  } else {
+    window.addEventListener('load', function() {
+      setTimeout(initFacebookPixel, 0);
+    });
+  }
+})();
 </script>
 <noscript>
 <img height="1" width="1"

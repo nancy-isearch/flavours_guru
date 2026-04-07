@@ -14,15 +14,33 @@
     $allg4[] = (object)$arr;
     $ab++;
   } ?>
-  dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
-  dataLayer.push({
-  event: "view_item_list",
-  ecommerce: {
-    items: <?php echo json_encode($allg4); ?>
-  }
-});
+  (function() {
+    var pushCategoryAnalytics = function() {
+      if (typeof dataLayer === 'undefined' || !dataLayer.push) {
+        return;
+      }
+
+      dataLayer.push({ ecommerce: null });
+      dataLayer.push({
+        event: "view_item_list",
+        ecommerce: {
+          items: <?php echo json_encode($allg4); ?>
+        }
+      });
+    };
+
+    if (window.requestIdleCallback) {
+      window.requestIdleCallback(pushCategoryAnalytics, { timeout: 1500 });
+    } else {
+      window.addEventListener('load', pushCategoryAnalytics);
+    }
+  })();
 </script>
 <style type="text/css">
+  .deferred-render-section{
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 900px;
+  }
   .content-mdl{
     font-size: 25px;
     padding-top: 85px;
@@ -1215,11 +1233,11 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
       <?php } ?>
       <?php echo $content_bottom; ?></div>
       <?php if ($description) { ?>
-        <div class="col-sm-10 catDescription" id="catDescription"><?php //echo closetags($description); ?><?php echo html_entity_decode($description); ?></div>
+        <div class="col-sm-10 catDescription deferred-render-section" id="catDescription"><?php //echo closetags($description); ?><?php echo html_entity_decode($description); ?></div>
         <?php } ?>
     <?php echo $column_right; ?></div>
 </div>
-<div class="col-md-12 col-sm-12 col-xs-12 position-relative">
+<div class="col-md-12 col-sm-12 col-xs-12 position-relative deferred-render-section">
   <div class="container">
     <?php if (in_array($currentUri[2], $allCitiesCat) && $categories1) { ?>
           <div class="position-relative">
@@ -1245,7 +1263,7 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
 </div>
 
 <?php if($allreviews['cnt'] > 0){ ?>
-<div class="col-md-12 col-sm-12 col-xs-12 social-review-section">
+<div class="col-md-12 col-sm-12 col-xs-12 social-review-section deferred-render-section">
     <div class="container xs-p-r-0">
       <div class="row mb-40">
         <p class="section-title col-md-6 col-sm-6 col-xs-12 p-l-0 mb-0 xs-mb-15">What our customers say about us!</p>
@@ -1271,7 +1289,7 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
               <div class="">
                 <div class="display-flex m-b-20 review_inner_2">
                   <div class="m-r-15">
-                    <img class=" img-responsive img-circle" src="<?php echo $value['image'] ?>" alt="">
+                    <img class=" img-responsive img-circle" src="<?php echo $value['image'] ?>" alt="" loading="lazy" decoding="async" fetchpriority="low" width="60" height="60">
                   </div>
                   <div class="text-left">
                     <p class="review_name"><?php echo ucwords($value['author']) ?></p>
@@ -1645,45 +1663,64 @@ $(document).mouseup(function (e) {
     }
 });
 
-$('.review-slider').slick({
-  infinite: false,
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  centerMode: false,
-  //variableWidth: true,
-  //arrows: true,
-  //autoplay: true,
-  //autoplaySpeed: 2000,
-  responsive: [
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 991,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 767,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1
-        }
-      },
+function initCategoryReviewSlider() {
+  if (!$('.review-slider').length || typeof $.fn.slick === 'undefined' || $('.review-slider').hasClass('slick-initialized')) {
+    return;
+  }
+
+  $('.review-slider').slick({
+    infinite: false,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    centerMode: false,
+    responsive: [
         {
-        breakpoint: 420,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
+          breakpoint: 1200,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 991,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 767,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 420,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
         }
-      }
-    ]
+      ]
   });
+}
+
+if ('IntersectionObserver' in window && document.querySelector('.review-slider')) {
+  var reviewSliderObserver = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        initCategoryReviewSlider();
+        observer.disconnect();
+      }
+    });
+  }, { rootMargin: '300px 0px' });
+
+  reviewSliderObserver.observe(document.querySelector('.review-slider'));
+} else {
+  $(window).on('load', function() {
+    setTimeout(initCategoryReviewSlider, 0);
+  });
+}
 </script>
 <?php echo $footer; ?>
