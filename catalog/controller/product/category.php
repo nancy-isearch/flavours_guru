@@ -770,7 +770,7 @@ class ControllerProductCategory extends Controller {
 	}
 
 	private function getCategoryCacheFile($key) {
-		$directory = DIR_SYSTEM . 'cache/fg/';
+		$directory = DIR_CACHE . 'category/';
 
 		if (!is_dir($directory)) {
 			@mkdir($directory, 0777, true);

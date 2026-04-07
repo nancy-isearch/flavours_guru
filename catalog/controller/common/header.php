@@ -313,7 +313,7 @@ class ControllerCommonHeader extends Controller {
 	}
 
 	private function getHeaderCacheFile($key) {
-		$directory = DIR_SYSTEM . 'cache/fg/';
+		$directory = DIR_CACHE . 'header/';
 
 		if (!is_dir($directory)) {
 			@mkdir($directory, 0777, true);
