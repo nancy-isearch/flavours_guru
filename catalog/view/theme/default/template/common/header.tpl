@@ -21,7 +21,9 @@
 <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
 <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-<link href="catalog/view/theme/default/stylesheet/stylesheet_1.css?<?php echo random_int(999,999999); ?>" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="catalog/view/theme/default/stylesheet/stylesheet_1.css?v=<?php echo $theme_stylesheet_version; ?>" rel="stylesheet">
 <link href="catalog/view/theme/default/stylesheet/ie11.css" rel="stylesheet">
 <link href="catalog/view/theme/default/stylesheet/nprogress.css" rel="stylesheet">
 <?php foreach ($styles as $style) { ?>
@@ -42,12 +44,14 @@
 
 <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="catalog/view/javascript/nprogress.js" type="text/javascript"></script>
+<?php if ($is_product_page) { ?>
 <script src="catalog/view/javascript/jquery.elevatezoom.js" type="text/javascript"></script>
+<?php } ?>
 <script src="catalog/view/javascript/common.js" type="text/javascript"></script>
 <?php foreach ($scripts as $script) { ?>
 <script src="<?php echo $script; ?>" type="text/javascript"></script>
 <?php } ?>
-<script src="catalog/view/javascript/custom.js?<?php echo random_int(999,999999); ?>" type="text/javascript"></script>
+<script src="catalog/view/javascript/custom.js?v=<?php echo $custom_js_version; ?>" type="text/javascript"></script>
 
 <?php foreach ($analytics as $analytic) { ?>
 <?php echo $analytic; ?>
