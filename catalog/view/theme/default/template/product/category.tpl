@@ -645,6 +645,14 @@ body.product-category-65.offermsg .container.top_positionn{
   <?php 
         $i=1; 
         $Totlbrdcum = count($breadcrumbs);
+        $show_wedding_banner = ((int)$category_id === 52);
+        $show_bachelorette_banner = ((int)$category_id === 187);
+        $show_kids_tabs = ((int)$category_id === 29);
+        $show_birthday_tabs = ((int)$category_id === 50);
+        $show_anniversary_tabs = ((int)$category_id === 51);
+        $show_christmas_tabs = ((int)$category_id === 90);
+        $show_newyear_tabs = ((int)$category_id === 65);
+        $show_regular_cakes_banner = ((int)$category_id === 4);
         if($Totlbrdcum == "3") { ?>
           <li><a href="<?php echo $breadcrumbs['0']['href']; ?>"><?php echo $breadcrumbs['0']['text']; ?></a></li>
           <li><a href="<?php echo $breadcrumbs['2']['href']; ?>"><?php echo $breadcrumbs['2']['text']; ?></a></li>
@@ -658,12 +666,17 @@ body.product-category-65.offermsg .container.top_positionn{
           <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li> 
       <?php } $i++; } }  ?>
   </ul>
+  <?php if ($show_wedding_banner) { ?>
   <div class="categories_banner wedding_cakes">
     <a href="bachelorette-cake"><img class="img-responsive" src="catalog/view/theme/default/image/Naughty-Cakes-for-bachelorette-Online.webp" alt="" /></a>
   </div>
+  <?php } ?>
+  <?php if ($show_bachelorette_banner) { ?>
   <div class="categories_banner bachelorette_cakes">
     <a href="naughty-cakes"><img class="img-responsive" src="catalog/view/theme/default/image/Naughty-Cakes.webp" alt="" /></a>
   </div>
+  <?php } ?>
+  <?php if ($show_kids_tabs) { ?>
   <div class="kids_cake_category home-header-tab">
   	<div class="container xs-p-r-0 xs-p-l-0">
 		<div class="row">
@@ -708,6 +721,8 @@ body.product-category-65.offermsg .container.top_positionn{
 		</div>
 	</div>
   </div>
+  <?php } ?>
+  <?php if ($show_birthday_tabs) { ?>
   <div class="birthday_category home-header-tab ">
   	<div class="container xs-p-r-0 xs-p-l-0">
 		<div class="row">
@@ -752,6 +767,8 @@ body.product-category-65.offermsg .container.top_positionn{
 		</div>
 	</div>
   </div>
+  <?php } ?>
+  <?php if ($show_anniversary_tabs) { ?>
   <div class="anniversary_category home-header-tab ">
   	<div class="container xs-p-r-0 xs-p-l-0">
   		<div class="row">
@@ -796,7 +813,8 @@ body.product-category-65.offermsg .container.top_positionn{
   		</div>
   	</div>
   </div>
-
+  <?php } ?>
+  <?php if ($show_christmas_tabs) { ?>
   <div class="christmas_category home-header-tab ">
     <div class="container xs-p-r-0 xs-p-l-0">
       <div class="row">
@@ -841,6 +859,8 @@ body.product-category-65.offermsg .container.top_positionn{
       </div>
     </div>
   </div>
+  <?php } ?>
+  <?php if ($show_newyear_tabs) { ?>
   <div class="newyear_category home-header-tab ">
     <div class="container xs-p-r-0 xs-p-l-0">
       <div class="row">
@@ -885,6 +905,7 @@ body.product-category-65.offermsg .container.top_positionn{
       </div>
     </div>
   </div>
+  <?php } ?>
 <?php
 $actual_link = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; 
 if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
@@ -892,8 +913,8 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
     <p>Ho Ho Ho! The merriest season of cakes is here all again. After crossing the entire year, the joyous time of Christmas celebration has approached all again. Adding more into the merriment of one of the biggest holiday seasons of the year, here we have come up with an exclusive line of online Christmas Cakes at <a href="https://www.flavoursguru.com/" target="_blank">Flavoursguru.com</a>. Boasting the most wonderful, delightful, unique, and attractive Christmas Cakes, the trendy Christmas Cakes collection is sure to sort out your festive cake shopping desires in a matter of just a few clicks and without going high on the budget. With us, customers can get an excellent selection of Christmas cakes online in India with fast, reliable, and timely delivery services. Apart from the best Christmas cakes ideas 2024, you can also trust us for the same day delivery and even free delivery to send cakes to India on Christmas online. So, let's explore the range below.</p>
   </div>
 <?php } ?>
-  
 
+  <?php if ($show_regular_cakes_banner) { ?>
   <div class="regular_cakes_category">
   	<div class="row">
   		<div class="col-md-6 col-sm-6 col-xs-6 xs-mb-15">
@@ -904,6 +925,7 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
   		</div>
   	</div>
   </div>
+  <?php } ?>
   <div class="row">
     <?php if ($column_left && $column_right) { ?>
     <?php $class = 'col-sm-6'; ?>
