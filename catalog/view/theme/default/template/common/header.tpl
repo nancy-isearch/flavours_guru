@@ -925,9 +925,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       $('.bg-popup').fadeOut();
     });
     <?php if($selected_pincode == ''){ ?>
-      setTimeout(function() {
-        $('.bg-popup').fadeIn();
-      }, 2000);
+      // setTimeout(function() {
+      //   $('.bg-popup').fadeIn();
+      // }, 2000);
     <?php } ?>
   });
 </script>
