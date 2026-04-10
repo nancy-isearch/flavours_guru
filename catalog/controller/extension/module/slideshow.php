@@ -15,10 +15,18 @@ class ControllerExtensionModuleSlideshow extends Controller {
 
 		foreach ($results as $result) {
 			if (is_file(DIR_IMAGE . $result['image'])) {
+				$desktop_width = isset($setting['width']) ? (int)$setting['width'] : 1140;
+				$desktop_height = isset($setting['height']) ? (int)$setting['height'] : 380;
+				$mobile_width = min($desktop_width, 767);
+				$mobile_height = (int)round($desktop_height * ($mobile_width / max($desktop_width, 1)));
+
 				$data['banners'][] = array(
 					'title' => $result['title'],
 					'link'  => $result['link'],
-					'image' => $this->model_tool_image->resize($result['image'], $setting['width'], $setting['height'])
+					'image' => $this->model_tool_image->resize($result['image'], $desktop_width, $desktop_height),
+					'image_mobile' => $this->model_tool_image->resize($result['image'], $mobile_width, $mobile_height),
+					'width' => $desktop_width,
+					'height' => $desktop_height
 				);
 			}
 		}

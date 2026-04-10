@@ -423,8 +423,10 @@
         </div>
       </a> */ ?>
       <a href="/birthday">
-        <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/new-images/birthday-cake-desk.webp" alt="birthday cake">
-        <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/new-images/birthday-cake-mob.webp" alt="birthday cake">
+        <picture>
+          <source media="(max-width: 767px)" srcset="catalog/view/theme/default/image/Home/new-images/birthday-cake-mob.webp">
+          <img class="img-responsive main-banner-border" src="catalog/view/theme/default/image/Home/new-images/birthday-cake-desk.webp" alt="birthday cake" fetchpriority="high" loading="eager" decoding="async">
+        </picture>
         <div class="banner-overlay-content">
           <div class="banner-title-row">
             <p class="banner-first-title" style="background: #97FFFC;color: #0044A3;">Birthday Bliss</p>
@@ -438,8 +440,10 @@
         </div>
       </a>
       <a href="/anniversary">
-        <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/new-images/anniversary-cake-desk.webp" alt="anniversary cake">
-        <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/new-images/anniversary-cake-mob.webp" alt="anniversary cake">
+        <picture>
+          <source media="(max-width: 767px)" srcset="catalog/view/theme/default/image/Home/new-images/anniversary-cake-mob.webp">
+          <img class="img-responsive main-banner-border" src="catalog/view/theme/default/image/Home/new-images/anniversary-cake-desk.webp" alt="anniversary cake" loading="lazy" decoding="async">
+        </picture>
         <div class="banner-overlay-content">
           <div class="banner-title-row">
             <p class="banner-first-title" style="background: #9670FF;color: #ffffff">Happy Anniversary!</p>
@@ -453,8 +457,10 @@
         </div>
       </a>
       <a href="/customize">
-        <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/new-images/designer-cake-desk.webp" alt="birthday cake">
-        <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/new-images/designer-cake-mob.webp" alt="birthday cake">
+        <picture>
+          <source media="(max-width: 767px)" srcset="catalog/view/theme/default/image/Home/new-images/designer-cake-mob.webp">
+          <img class="img-responsive main-banner-border" src="catalog/view/theme/default/image/Home/new-images/designer-cake-desk.webp" alt="birthday cake" loading="lazy" decoding="async">
+        </picture>
         <div class="banner-overlay-content">
           <div class="banner-title-row">
             <p class="banner-first-title" style="background: #FF7C78;color: #ffffff;">Design It Delicious</p>

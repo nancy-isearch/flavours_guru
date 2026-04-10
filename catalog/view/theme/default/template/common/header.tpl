@@ -451,7 +451,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="col-sm-2 search display-flex align-items-center">
-      	<div class="m-r-15 city-name-col-hd">
+      	<div class="m-r-15 city-name-col-hd" style="display: none;">
       		<div class="display-flex align-items-center open-pincode-popup">
 	          <div class="mr-5">
 	            <img style="width: 26px;" src="catalog/view/theme/default/image/Home/new-images/india-flag.png" alt="">
