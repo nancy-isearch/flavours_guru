@@ -392,6 +392,7 @@ Step 13: Review your details and secure payment to place your order."
       font-size: 10px;
       line-height: 16px;
     }
+    .search .xs-hd-width{width:100%;}
   }
 </style>
 </head>
@@ -468,7 +469,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	          </div>
 	        </div>
       	</div>
-      	<div>
+      	<div class="xs-hd-width">
 	        <i class="fa fa-close search-drop-close"></i>
 	      	<?php echo $search; ?>
 	      	<div class="custom-search-link">
