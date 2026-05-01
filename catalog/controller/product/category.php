@@ -10,6 +10,9 @@ class ControllerProductCategory extends Controller {
 
 		$this->load->model('tool/image');
 
+		// Mobile detection
+		$is_mobile = $this->isMobileDevice();
+
 		if (isset($this->request->get['filter'])) {
 			$filter = $this->request->get['filter'];
 		} else {
@@ -163,7 +166,11 @@ class ControllerProductCategory extends Controller {
 			);*/
 
 			if ($category_info['image']) {
-				$data['thumb'] = $this->model_tool_image->resize($category_info['image'], $this->config->get($this->config->get('config_theme') . '_image_category_width'), $this->config->get($this->config->get('config_theme') . '_image_category_height'));
+				if ($is_mobile) {
+					$data['thumb'] = $this->model_tool_image->resize($category_info['image'], $data['category_image_width_mobile'], $data['category_image_height_mobile']);
+				} else {
+					$data['thumb'] = $this->model_tool_image->resize($category_info['image'], $this->config->get($this->config->get('config_theme') . '_image_category_width'), $this->config->get($this->config->get('config_theme') . '_image_category_height'));
+				}
 				$data['thumb_mobile'] = $this->model_tool_image->resize($category_info['image'], $data['category_image_width_mobile'], $data['category_image_height_mobile']);
 			} else {
 				$data['thumb'] = '';
@@ -177,6 +184,7 @@ class ControllerProductCategory extends Controller {
 			$data['category_image_height_mobile'] = ($data['category_image_width'] > 0) ? (int)round(($data['category_image_height'] * $data['category_image_width_mobile']) / $data['category_image_width']) : $data['category_image_height'];
 			$data['product_image_width_mobile'] = min($data['product_image_width'], 220);
 			$data['product_image_height_mobile'] = ($data['product_image_width'] > 0) ? (int)round(($data['product_image_height'] * $data['product_image_width_mobile']) / $data['product_image_width']) : $data['product_image_height'];
+			$data['is_mobile'] = $is_mobile;
 
 			$data['description'] = html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8');
 			$data['compare'] = $this->url->link('product/compare');
@@ -291,10 +299,18 @@ class ControllerProductCategory extends Controller {
 			$data['pMaxPrice'] = 0;
 			foreach ($results as $result) {
 				if ($result['image']) {
-					$image = $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
+					if ($is_mobile) {
+						$image = $this->model_tool_image->resize($result['image'], $data['product_image_width_mobile'], $data['product_image_height_mobile']);
+					} else {
+						$image = $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
+					}
 					$image_mobile = $this->model_tool_image->resize($result['image'], $data['product_image_width_mobile'], $data['product_image_height_mobile']);
 				} else {
-					$image = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
+					if ($is_mobile) {
+						$image = $this->model_tool_image->resize('placeholder.png', $data['product_image_width_mobile'], $data['product_image_height_mobile']);
+					} else {
+						$image = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
+					}
 					$image_mobile = $this->model_tool_image->resize('placeholder.png', $data['product_image_width_mobile'], $data['product_image_height_mobile']);
 				}
 
@@ -786,5 +802,16 @@ class ControllerProductCategory extends Controller {
 		}
 
 		return $directory . md5($key) . '.cache';
+	}
+
+	private function isMobileDevice() {
+		$user_agent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+		$mobile_keywords = ['Mobile', 'Android', 'iPhone', 'iPad', 'Windows Phone', 'BlackBerry', 'webOS'];
+		foreach ($mobile_keywords as $keyword) {
+			if (stripos($user_agent, $keyword) !== false) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

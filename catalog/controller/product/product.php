@@ -307,6 +307,9 @@ class ControllerProductProduct extends Controller {
 
 			$this->load->model('tool/image');
 
+			// Mobile detection
+			$is_mobile = $this->isMobileDevice();
+
 			if(isset($this->session->data['selectedPincode']) && !empty($this->session->data['selectedPincode'])){
 				$data['selected_pincode'] = $this->session->data['selectedPincode'];
 			} else {
@@ -462,7 +465,11 @@ class ControllerProductProduct extends Controller {
 			}
 
 			if ($product_info['image']) {
-				$data['thumb'] = $this->model_tool_image->resize($product_info['image'], $this->config->get($this->config->get('config_theme') . '_image_thumb_width'), $this->config->get($this->config->get('config_theme') . '_image_thumb_height'));
+				if ($is_mobile) {
+					$data['thumb'] = $this->model_tool_image->resize($product_info['image'], min($this->config->get($this->config->get('config_theme') . '_image_thumb_width'), 400), min($this->config->get($this->config->get('config_theme') . '_image_thumb_height'), 400));
+				} else {
+					$data['thumb'] = $this->model_tool_image->resize($product_info['image'], $this->config->get($this->config->get('config_theme') . '_image_thumb_width'), $this->config->get($this->config->get('config_theme') . '_image_thumb_height'));
+				}
 			} else {
 				$data['thumb'] = '';
 			}
@@ -472,10 +479,15 @@ class ControllerProductProduct extends Controller {
 			$results = $this->model_catalog_product->getProductImages($this->request->get['product_id']);
 
 			foreach ($results as $result) {
+				if ($is_mobile) {
+					$thumb_additional = $this->model_tool_image->resize($result['image'], min($this->config->get($this->config->get('config_theme') . '_image_additional_width'), 200), min($this->config->get($this->config->get('config_theme') . '_image_additional_height'), 200));
+				} else {
+					$thumb_additional = $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_additional_width'), $this->config->get($this->config->get('config_theme') . '_image_additional_height'));
+				}
 				$data['images'][] = array(
 					//'popup' => $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_popup_width'), $this->config->get($this->config->get('config_theme') . '_image_popup_height')),
 					'popup' => $this->model_tool_image->resize($result['image'], 1000,1000),
-					'thumb' => $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_additional_width'), $this->config->get($this->config->get('config_theme') . '_image_additional_height'))
+					'thumb' => $thumb_additional
 				);
 			}
 			
@@ -591,9 +603,17 @@ class ControllerProductProduct extends Controller {
 
 			foreach ($results as $result) {
 				if ($result['image']) {
-					$image = $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_related_width'), $this->config->get($this->config->get('config_theme') . '_image_related_height'));
+					if ($is_mobile) {
+						$image = $this->model_tool_image->resize($result['image'], min($this->config->get($this->config->get('config_theme') . '_image_related_width'), 200), min($this->config->get($this->config->get('config_theme') . '_image_related_height'), 200));
+					} else {
+						$image = $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_related_width'), $this->config->get($this->config->get('config_theme') . '_image_related_height'));
+					}
 				} else {
-					$image = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_related_width'), $this->config->get($this->config->get('config_theme') . '_image_related_height'));
+					if ($is_mobile) {
+						$image = $this->model_tool_image->resize('placeholder.png', min($this->config->get($this->config->get('config_theme') . '_image_related_width'), 200), min($this->config->get($this->config->get('config_theme') . '_image_related_height'), 200));
+					} else {
+						$image = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_related_width'), $this->config->get($this->config->get('config_theme') . '_image_related_height'));
+					}
 				}
 
 				if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
@@ -637,9 +657,17 @@ class ControllerProductProduct extends Controller {
 			$data['recentlyViewed'] = array();
 			foreach ($recentlyViewed as $result) {
 				if ($result['image']) {
-					$image = $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_related_width'), $this->config->get($this->config->get('config_theme') . '_image_related_height'));
+					if ($is_mobile) {
+						$image = $this->model_tool_image->resize($result['image'], min($this->config->get($this->config->get('config_theme') . '_image_related_width'), 200), min($this->config->get($this->config->get('config_theme') . '_image_related_height'), 200));
+					} else {
+						$image = $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_related_width'), $this->config->get($this->config->get('config_theme') . '_image_related_height'));
+					}
 				} else {
-					$image = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_related_width'), $this->config->get($this->config->get('config_theme') . '_image_related_height'));
+					if ($is_mobile) {
+						$image = $this->model_tool_image->resize('placeholder.png', min($this->config->get($this->config->get('config_theme') . '_image_related_width'), 200), min($this->config->get($this->config->get('config_theme') . '_image_related_height'), 200));
+					} else {
+						$image = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_related_width'), $this->config->get($this->config->get('config_theme') . '_image_related_height'));
+					}
 				}
 
 				if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
@@ -686,9 +714,17 @@ class ControllerProductProduct extends Controller {
 			$data['similarProducts'] = array();
 			foreach ($similarProducts as $result) {
 				if ($result['image']) {
-					$image = $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_related_width'), $this->config->get($this->config->get('config_theme') . '_image_related_height'));
+					if ($is_mobile) {
+						$image = $this->model_tool_image->resize($result['image'], min($this->config->get($this->config->get('config_theme') . '_image_related_width'), 200), min($this->config->get($this->config->get('config_theme') . '_image_related_height'), 200));
+					} else {
+						$image = $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_related_width'), $this->config->get($this->config->get('config_theme') . '_image_related_height'));
+					}
 				} else {
-					$image = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_related_width'), $this->config->get($this->config->get('config_theme') . '_image_related_height'));
+					if ($is_mobile) {
+						$image = $this->model_tool_image->resize('placeholder.png', min($this->config->get($this->config->get('config_theme') . '_image_related_width'), 200), min($this->config->get($this->config->get('config_theme') . '_image_related_height'), 200));
+					} else {
+						$image = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_related_width'), $this->config->get($this->config->get('config_theme') . '_image_related_height'));
+					}
 				}
 
 				if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
@@ -1424,6 +1460,17 @@ class ControllerProductProduct extends Controller {
 			$i++;
 		}
 		echo $i;
+	}
+
+	private function isMobileDevice() {
+		$user_agent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+		$mobile_keywords = ['Mobile', 'Android', 'iPhone', 'iPad', 'Windows Phone', 'BlackBerry', 'webOS'];
+		foreach ($mobile_keywords as $keyword) {
+			if (stripos($user_agent, $keyword) !== false) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public function triggerCron1(){
