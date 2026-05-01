@@ -21,9 +21,14 @@
 <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
 <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-<link href="catalog/view/theme/default/stylesheet/stylesheet_1.css?<?php echo random_int(999,999999); ?>" rel="stylesheet">
-<link href="catalog/view/theme/default/stylesheet/ie11.css" rel="stylesheet">
-<link href="catalog/view/theme/default/stylesheet/nprogress.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="catalog/view/theme/default/stylesheet/stylesheet_1.css?v=<?php echo $theme_stylesheet_version; ?>" rel="stylesheet">
+<link href="catalog/view/theme/default/stylesheet/ie11.css" rel="stylesheet" media="print" onload="this.media='all'">
+<link href="catalog/view/theme/default/stylesheet/nprogress.css" rel="stylesheet" media="print" onload="this.media='all'">
+<?php if ($category_preload_image) { ?>
+<link rel="preload" as="image" href="<?php echo $category_preload_image; ?>" imagesrcset="<?php echo $category_preload_image_mobile ? $category_preload_image_mobile : $category_preload_image; ?> 360w, <?php echo $category_preload_image; ?> 760w" imagesizes="<?php echo $category_preload_sizes; ?>" fetchpriority="high">
+<?php } ?>
 <?php foreach ($styles as $style) { ?>
 <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
 <?php } ?>
@@ -35,51 +40,56 @@
 <?php if(!isset($_GET['_route_']) && !isset($_GET['route'])){ ?>
 <link href="https://www.flavoursguru.com" rel="canonical" />
 <?php } ?>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"></noscript>
 
 
 <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
 
 <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="catalog/view/javascript/nprogress.js" type="text/javascript"></script>
+<?php if ($is_product_page) { ?>
 <script src="catalog/view/javascript/jquery.elevatezoom.js" type="text/javascript"></script>
+<?php } ?>
 <script src="catalog/view/javascript/common.js" type="text/javascript"></script>
 <?php foreach ($scripts as $script) { ?>
 <script src="<?php echo $script; ?>" type="text/javascript"></script>
 <?php } ?>
-<script src="catalog/view/javascript/custom.js?<?php echo random_int(999,999999); ?>" type="text/javascript"></script>
+<script src="catalog/view/javascript/custom.js?v=<?php echo $custom_js_version; ?>" type="text/javascript"></script>
 
 <?php foreach ($analytics as $analytic) { ?>
 <?php echo $analytic; ?>
 <?php } ?>
 
- <script src="catalog/view/javascript/slick.min.js" type="text/javascript" charset="utf-8"></script>
-  <script type="text/javascript">
-jQuery(document).ready(function ($) {
-  
-  var gadgetCarousel = $(".carousel");
-  
-  gadgetCarousel.each(function() {
+<script src="catalog/view/javascript/slick.min.js" type="text/javascript" charset="utf-8" ></script>
+<script type="text/javascript">
+jQuery(function ($) {
+  if (!$.fn || !$.fn.slick) {
+    return;
+  }
+
+  $(".carousel").each(function() {
+    if ($(this).hasClass('slick-initialized')) {
+      return;
+    }
+
     if ($(this).is(".type-one-carousel")) {
-    $(this).slick({
+      $(this).slick({
         dots: true,
         infinite: true,
         slidesToShow: 2
       });
-    } 
-    else if ($(this).is(".type-two-carousel")){
+    } else if ($(this).is(".type-two-carousel")) {
       $(this).slick({
         dots: true,
         infinite: true,
         slidesToShow: 3
       });
-    }
-    else {
+    } else {
       $(this).slick();
     }
-  })
-});   
-
+  });
+});
 </script>
 
 <!--Start of Zendesk Chat Script-->
@@ -152,6 +162,7 @@ src="https://www.facebook.com/tr?id=242538297952267&ev=PageView&noscript=1"/>
 }
 </script>
 
+<?php if ($show_global_faq_schema) { ?>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -234,6 +245,7 @@ Step 13: Review your details and secure payment to place your order."
   }]
 }
 </script>
+<?php } ?>
 
 <?php /* if($_SERVER['REQUEST_URI'] == '/?' || $_SERVER['REQUEST_URI'] == '/index.php?'){ ?>
   <meta name="robots" content="noindex, nofollow" />
@@ -380,6 +392,7 @@ Step 13: Review your details and secure payment to place your order."
       font-size: 10px;
       line-height: 16px;
     }
+    .search .xs-hd-width{width:100%;}
   }
 </style>
 </head>
@@ -439,7 +452,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="col-sm-2 search display-flex align-items-center">
-      	<div class="m-r-15 city-name-col-hd">
+      	<div class="m-r-15 city-name-col-hd" style="display: none;">
       		<div class="display-flex align-items-center open-pincode-popup">
 	          <div class="mr-5">
 	            <img style="width: 26px;" src="catalog/view/theme/default/image/Home/new-images/india-flag.png" alt="">
@@ -456,7 +469,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	          </div>
 	        </div>
       	</div>
-      	<div>
+      	<div class="xs-hd-width">
 	        <i class="fa fa-close search-drop-close"></i>
 	      	<?php echo $search; ?>
 	      	<div class="custom-search-link">
@@ -805,8 +818,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>* Valid till 13th Feb, 2023, 23:59.</p>
   </div>
 </div> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.2/js.cookie.js"></script>
 <script type="text/javascript">
+  window.FGCookies = {
+    get: function(name) {
+      var cookieName = name + "=";
+      var cookies = document.cookie ? document.cookie.split(';') : [];
+
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].replace(/^\s+/, '');
+
+        if (cookie.indexOf(cookieName) === 0) {
+          return decodeURIComponent(cookie.substring(cookieName.length));
+        }
+      }
+
+      return null;
+    },
+    set: function(name, value, expiresAt) {
+      var cookie = name + "=" + encodeURIComponent(value) + ";path=/";
+
+      if (expiresAt instanceof Date) {
+        cookie += ";expires=" + expiresAt.toUTCString();
+      }
+
+      document.cookie = cookie;
+    }
+  };
+
    /*if(localStorage.getItem('popState') != 0){
         $('.bg-img').delay(30000).fadeIn();
         $('.offer-popup').delay(30000).fadeIn();
@@ -824,7 +862,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     };*/
 
   $(document).ready(function(){
-    if(!Cookies.get('hide-popup')){
+    if(!FGCookies.get('hide-popup')){
       setTimeout(function() {
         $('.bg-img').fadeIn();
         $('.offer-popup').fadeIn();
@@ -834,7 +872,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     $(".offer-close-btn").click(function () {
         var date = new Date();
         date.setTime(date.getTime() + (1500 * 1000));
-        Cookies.set('hide-popup', true, { expires: date });
+        FGCookies.set('hide-popup', true, date);
         $('.bg-img').fadeOut();
         $('.offer-popup').fadeOut();
     });
@@ -888,9 +926,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       $('.bg-popup').fadeOut();
     });
     <?php if($selected_pincode == ''){ ?>
-      setTimeout(function() {
-        $('.bg-popup').fadeIn();
-      }, 2000);
+      // setTimeout(function() {
+      //   $('.bg-popup').fadeIn();
+      // }, 2000);
     <?php } ?>
   });
 </script>

@@ -37,9 +37,6 @@ class ControllerCommonHeader extends Controller {
 		$data['base'] = $server;
 		$data['description'] = $this->document->getDescription();
 		$data['keywords'] = $this->document->getKeywords();
-		$data['links'] = $this->document->getLinks();
-		$data['styles'] = $this->document->getStyles();
-		$data['scripts'] = $this->document->getScripts();
 		$data['lang'] = $this->language->get('code');
 		$data['direction'] = $this->language->get('direction');
 		$data['name'] = $this->config->get('config_name');
@@ -114,132 +111,55 @@ class ControllerCommonHeader extends Controller {
 
 		$this->load->model('catalog/product');
 
-		// custom menu
-		$file=fopen(DIR_SYSTEM.'data/category_menu.csv', 'r');
-		$menu_structure=array();
-		$current_parent="";
-		$current_subparent="";
-		$counter=0;
-
-		$skiphead=true;
-		 
 		if(empty($this->cart->getProducts())){
 		 		unset($_SESSION['proData']);
 		 		unset($_SESSION['checkoutCity']);
 		 		unset($_SESSION['checkoutPincode']);
 		}
-
-		//echo "<pre>";
-
-		while (($line = fgetcsv($file)) !== FALSE) {
-		  	if($skiphead){$skiphead=false; continue;}
-		  	//print_r($line);
-
-		  	$cats=explode("/",$line[3]);
-		  	//array_shift($cats);
-		  	$path="";
-		  	if(count($cats)==2){
-			  	$parent_query=$this->db->query("SELECT query from ".DB_PREFIX."url_alias where keyword='".$cats[0]."'")->row;
-			  	if(!isset($parent_query['query'])) continue;
-			  	$parent_id=explode("=",$parent_query['query'])[1];
-			  	$child_query=$this->db->query("SELECT query from ".DB_PREFIX."url_alias where keyword='".$cats[1]."'")->row;
-			  	if(!isset($child_query['query'])) continue;
-			  	$child_id=explode("=",$child_query['query'])[1];
-
-			  	$path=$parent_id."_".$child_id;
-		  	} else {
-			  	$parent_id=0;
-			  	$child_query=$this->db->query("SELECT query from ".DB_PREFIX."url_alias where keyword='".$cats[0]."'")->row;
-			  	if(!isset($child_query['query'])) continue;
-			  	$child_id=explode("=",$child_query['query'])[1];
-
-			  	$path=$child_id;
-		  	}
-
-		  	if($line[0]!=""){
-		  		$current_parent=$line[0];
-		  		$current_subparent=$line[1];
-		  		if($line[0] == "Customized Cakes"){
-		  			$path = 'information/customize';
-		  			$menu_structure[$current_parent][$current_subparent][]=array($line[2],$line[3],$this->url->link($path));
-		  		} else {
-		  			$menu_structure[$current_parent][$current_subparent][]=array($line[2],$line[3],$this->url->link('product/category', 'path='.$path));
-		  		}
-		  		
-		  	} else {
-		  		if($line[1]!="")
-		  			$current_subparent=$line[1];
-		  		$menu_structure[$current_parent][$current_subparent][]=array($line[2],$line[3],$this->url->link('product/category', 'path='.$path));
-		  	}
+		$header_menu_data = $this->getHeaderMenuData();
+		$data['menu_structure'] = $header_menu_data['menu_structure'];
+		if (!empty($header_menu_data['first_menu'])) {
+			$data['first_menu'] = $header_menu_data['first_menu'];
 		}
-
-		$tmp_menu_structure=$menu_structure;
-
-		$menu_structure2=array_splice($tmp_menu_structure, 1);
-		$first_menu=$tmp_menu_structure;
-		//echo "<pre />"; print_r($tmp_menu_structure);
-
-		if(key(reset($first_menu))=='0'){
-			$menu_structure=$menu_structure2;
-			$data['first_menu']=$first_menu;
-		} 
-		//print_r($menu_structure); die;
-		$data['menu_structure']=$menu_structure;
-
-		$data['categories'] = array();
-
-		$categories = $this->model_catalog_category->getCategories(0);
-
-		foreach ($categories as $category) {
-			if ($category['top']) { 
-				// Level 2
-				$children_data = array();
-
-				//$children = $this->model_catalog_category->getCategories($category['category_id']);
-				$children = $this->model_catalog_category->getMultiParentCategories($category['category_id']);
-
-				foreach ($children as $child) {
-
-					// Level 3
-					$children_data2 = array();
-
-					$children2 = $this->model_catalog_category->getCategories($child['category_id']);
-
-					foreach ($children2 as $child2) {
-								 
-						$children_data2[] = array(
-							'name'  => $child2['name'],
-							'href'  => $this->url->link('product/categorys', 'path=' . $category['category_id'] . '_' . $child['category_id'].'_'.$child2['category_id'])
-						);
-					}
-
-					$filter_data = array(
-						'filter_category_id'  => $child['category_id'],
-						'filter_sub_category' => true
-					);
-							 
-					$children_data[] = array(
-						'name'  => $child['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
-						'href'  => $this->url->link('product/categorys', 'path=' . $category['category_id'] . '_' . $child['category_id']),
-						'children' => $children_data2
-					);
-				}
-					  
-				// Level 1
-				$data['categories'][] = array(
-					'name'     => $category['name'],
-					'children' => $children_data,
-					'column'   => $category['column'] ? $category['column'] : 1,
-					'href'     => $this->url->link('product/category', 'path=' . $category['category_id'])
-				);
-			}
-		}
+		$data['categories'] = $header_menu_data['categories'];
 
 		$data['language'] = $this->load->controller('common/language');
 		$data['currency'] = $this->load->controller('common/currency');
 		$data['search'] = $this->load->controller('common/search');
 		$data['cart'] = $this->load->controller('common/cart');
 		$data['currencyCode'] = $this->session->data['currency'];
+		$data['route_name'] = isset($this->request->get['route']) ? $this->request->get['route'] : 'common/home';
+		$data['is_home_page'] = ($data['route_name'] == 'common/home');
+		$data['is_category_page'] = ($data['route_name'] == 'product/category');
+		$data['is_product_page'] = ($data['route_name'] == 'product/product');
+		$data['links'] = $this->document->getLinks();
+		$data['styles'] = $this->getFilteredStyles($this->document->getStyles(), $data['route_name']);
+		$data['scripts'] = $this->getFilteredScripts($this->document->getScripts(), $data['route_name']);
+		$data['show_global_faq_schema'] = $data['is_home_page'];
+		$data['theme_stylesheet_version'] = @filemtime(DIR_CATALOG . 'view/theme/default/stylesheet/stylesheet_1.css') ?: '1';
+		$data['custom_js_version'] = @filemtime(DIR_CATALOG . 'view/javascript/custom.js') ?: '1';
+		$data['category_preload_image'] = '';
+		$data['category_preload_image_mobile'] = '';
+		$data['category_preload_sizes'] = '';
+
+		if ($data['is_category_page'] && isset($this->request->get['path'])) {
+			$this->load->model('tool/image');
+
+			$path_parts = explode('_', (string)$this->request->get['path']);
+			$preload_category_id = (int)array_pop($path_parts);
+			$preload_category_info = $this->model_catalog_category->getCategory($preload_category_id);
+
+			if (!empty($preload_category_info['image'])) {
+				$category_image_width = (int)$this->config->get($this->config->get('config_theme') . '_image_category_width');
+				$category_image_height = (int)$this->config->get($this->config->get('config_theme') . '_image_category_height');
+				$category_image_width_mobile = min($category_image_width, 360);
+				$category_image_height_mobile = ($category_image_width > 0) ? (int)round(($category_image_height * $category_image_width_mobile) / $category_image_width) : $category_image_height;
+
+				$data['category_preload_image'] = $this->model_tool_image->resize($preload_category_info['image'], $category_image_width, $category_image_height);
+				$data['category_preload_image_mobile'] = $this->model_tool_image->resize($preload_category_info['image'], $category_image_width_mobile, $category_image_height_mobile);
+				$data['category_preload_sizes'] = '(max-width: 767px) 100vw, ' . $category_image_width . 'px';
+			}
+		}
 		// For page specific css
 		if (isset($this->request->get['route'])) {
 			if (isset($this->request->get['product_id'])) {
@@ -260,5 +180,217 @@ class ControllerCommonHeader extends Controller {
 		}
 
 		return $this->load->view('common/header', $data);
+	}
+
+	private function getHeaderMenuData() {
+		$cache_key = 'header.menu.' . (int)$this->config->get('config_store_id') . '.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_product_count');
+		$cache_file = $this->getHeaderCacheFile($cache_key);
+		$menu_csv = DIR_SYSTEM . 'data/category_menu.csv';
+		$csv_mtime = is_file($menu_csv) ? (int)filemtime($menu_csv) : 0;
+
+		if (is_file($cache_file)) {
+			$payload = @unserialize(file_get_contents($cache_file));
+
+			if (is_array($payload) && isset($payload['csv_mtime']) && (int)$payload['csv_mtime'] === $csv_mtime) {
+				return $payload['data'];
+			}
+		}
+
+		$data = array(
+			'menu_structure' => array(),
+			'first_menu' => array(),
+			'categories' => array()
+		);
+
+		if (is_file($menu_csv) && ($handle = fopen($menu_csv, 'r')) !== false) {
+			$rows = array();
+			$keywords = array();
+			$skiphead = true;
+
+			while (($line = fgetcsv($handle)) !== false) {
+				if ($skiphead) {
+					$skiphead = false;
+					continue;
+				}
+
+				$rows[] = $line;
+
+				if (!empty($line[3])) {
+					foreach (explode('/', $line[3]) as $keyword) {
+						$keywords[] = $this->db->escape($keyword);
+					}
+				}
+			}
+
+			fclose($handle);
+
+			$alias_map = array();
+			$keywords = array_unique(array_filter($keywords));
+
+			if ($keywords) {
+				$alias_rows = $this->db->query("SELECT keyword, query FROM " . DB_PREFIX . "url_alias WHERE keyword IN ('" . implode("','", $keywords) . "')")->rows;
+
+				foreach ($alias_rows as $alias_row) {
+					$alias_map[$alias_row['keyword']] = $alias_row['query'];
+				}
+			}
+
+			$menu_structure = array();
+			$current_parent = '';
+			$current_subparent = '';
+
+			foreach ($rows as $line) {
+				$cats = !empty($line[3]) ? explode('/', $line[3]) : array();
+				$path = '';
+
+				if (count($cats) == 2) {
+					if (empty($alias_map[$cats[0]]) || empty($alias_map[$cats[1]])) {
+						continue;
+					}
+
+					$parent_id = explode('=', $alias_map[$cats[0]])[1];
+					$child_id = explode('=', $alias_map[$cats[1]])[1];
+					$path = $parent_id . '_' . $child_id;
+				} elseif (count($cats) == 1 && !empty($alias_map[$cats[0]])) {
+					$child_id = explode('=', $alias_map[$cats[0]])[1];
+					$path = $child_id;
+				} else {
+					continue;
+				}
+
+				if ($line[0] != '') {
+					$current_parent = $line[0];
+					$current_subparent = $line[1];
+				} elseif ($line[1] != '') {
+					$current_subparent = $line[1];
+				}
+
+				$link = ($current_parent == 'Customized Cakes')
+					? $this->url->link('information/customize')
+					: $this->url->link('product/category', 'path=' . $path);
+
+				$menu_structure[$current_parent][$current_subparent][] = array($line[2], $line[3], $link);
+			}
+
+			$tmp_menu_structure = $menu_structure;
+			$menu_structure2 = array_splice($tmp_menu_structure, 1);
+			$first_menu = $tmp_menu_structure;
+
+			if ($first_menu && key(reset($first_menu)) == '0') {
+				$data['menu_structure'] = $menu_structure2;
+				$data['first_menu'] = $first_menu;
+			} else {
+				$data['menu_structure'] = $menu_structure;
+			}
+		}
+
+		$categories = $this->model_catalog_category->getCategories(0);
+
+		foreach ($categories as $category) {
+			if ($category['top']) {
+				$children_data = array();
+				$children = $this->model_catalog_category->getMultiParentCategories($category['category_id']);
+
+				foreach ($children as $child) {
+					$children_data2 = array();
+					$children2 = $this->model_catalog_category->getCategories($child['category_id']);
+
+					foreach ($children2 as $child2) {
+						$children_data2[] = array(
+							'name'  => $child2['name'],
+							'href'  => $this->url->link('product/categorys', 'path=' . $category['category_id'] . '_' . $child['category_id'] . '_' . $child2['category_id'])
+						);
+					}
+
+					$child_name = $child['name'];
+
+					if ($this->config->get('config_product_count')) {
+						$filter_data = array(
+							'filter_category_id'  => $child['category_id'],
+							'filter_sub_category' => true
+						);
+
+						$child_name .= ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')';
+					}
+
+					$children_data[] = array(
+						'name'  => $child_name,
+						'href'  => $this->url->link('product/categorys', 'path=' . $category['category_id'] . '_' . $child['category_id']),
+						'children' => $children_data2
+					);
+				}
+
+				$data['categories'][] = array(
+					'name'     => $category['name'],
+					'children' => $children_data,
+					'column'   => $category['column'] ? $category['column'] : 1,
+					'href'     => $this->url->link('product/category', 'path=' . $category['category_id'])
+				);
+			}
+		}
+
+		@file_put_contents($cache_file, serialize(array(
+			'csv_mtime' => $csv_mtime,
+			'data' => $data
+		)));
+
+		return $data;
+	}
+
+	private function getFilteredStyles($styles, $route_name) {
+		if ($route_name !== 'product/category') {
+			return $styles;
+		}
+
+		$blocked_fragments = array(
+			'media/newsletter/css/stylesheet.css',
+			'media/newsletter/css/subscribe-better.css',
+			'catalog/view/javascript/jquery/owl-carousel/owl.carousel.css',
+			'catalog/view/javascript/jquery/owl-carousel/owl.transitions.css'
+		);
+
+		foreach ($styles as $href => $style) {
+			foreach ($blocked_fragments as $fragment) {
+				if (strpos($href, $fragment) !== false) {
+					unset($styles[$href]);
+					break;
+				}
+			}
+		}
+
+		return $styles;
+	}
+
+	private function getFilteredScripts($scripts, $route_name) {
+		if ($route_name !== 'product/category') {
+			return $scripts;
+		}
+
+		$blocked_fragments = array(
+			'media/newsletter/js/jquery.subscribe-better.js',
+			'media/newsletter/js/main.js',
+			'catalog/view/javascript/jquery/owl-carousel/owl.carousel.min.js'
+		);
+
+		foreach ($scripts as $href => $script) {
+			foreach ($blocked_fragments as $fragment) {
+				if (strpos($href, $fragment) !== false) {
+					unset($scripts[$href]);
+					break;
+				}
+			}
+		}
+
+		return $scripts;
+	}
+
+	private function getHeaderCacheFile($key) {
+		$directory = DIR_CACHE . 'header/';
+
+		if (!is_dir($directory)) {
+			@mkdir($directory, 0777, true);
+		}
+
+		return $directory . md5($key) . '.cache';
 	}
 }

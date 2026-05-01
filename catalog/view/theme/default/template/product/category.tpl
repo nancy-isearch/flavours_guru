@@ -1,27 +1,18 @@
 <?php echo $header; ?>
-<script type="text/javascript">
-  <?php $allg4 = array(); $ab = 0; foreach ($products as $product) {
-    $arr = array();
-    $arr['item_id'] = $product['sku'];
-    $arr['item_name'] = $product['name'];
-    $arr['index'] = $ab;
-    $arr['item_brand'] = "Flavours Guru";
-    $arr['item_category'] = $heading_title;
-    $arr['price'] = (int)$product['mainp'];
-    $arr['quantity'] = 1;
-    $arr['item_list_id'] = $category_id;
-    $arr['item_list_name'] = $heading_title;
-    $allg4[] = (object)$arr;
-    $ab++;
-  } ?>
-  dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
-  dataLayer.push({
-  event: "view_item_list",
-  ecommerce: {
-    items: <?php echo json_encode($allg4); ?>
-  }
-});
-</script>
+<?php $allg4 = array(); $ab = 0; foreach ($products as $product) {
+  $arr = array();
+  $arr['item_id'] = $product['sku'];
+  $arr['item_name'] = $product['name'];
+  $arr['index'] = $ab;
+  $arr['item_brand'] = "Flavours Guru";
+  $arr['item_category'] = $heading_title;
+  $arr['price'] = (int)$product['mainp'];
+  $arr['quantity'] = 1;
+  $arr['item_list_id'] = $category_id;
+  $arr['item_list_name'] = $heading_title;
+  $allg4[] = (object)$arr;
+  $ab++;
+} ?>
 <style type="text/css">
   .content-mdl{
     font-size: 25px;
@@ -627,6 +618,14 @@ body.product-category-65.offermsg .container.top_positionn{
   <?php 
         $i=1; 
         $Totlbrdcum = count($breadcrumbs);
+        $show_wedding_banner = ((int)$category_id === 52);
+        $show_bachelorette_banner = ((int)$category_id === 187);
+        $show_kids_tabs = ((int)$category_id === 29);
+        $show_birthday_tabs = ((int)$category_id === 50);
+        $show_anniversary_tabs = ((int)$category_id === 51);
+        $show_christmas_tabs = ((int)$category_id === 90);
+        $show_newyear_tabs = ((int)$category_id === 65);
+        $show_regular_cakes_banner = ((int)$category_id === 4);
         if($Totlbrdcum == "3") { ?>
           <li><a href="<?php echo $breadcrumbs['0']['href']; ?>"><?php echo $breadcrumbs['0']['text']; ?></a></li>
           <li><a href="<?php echo $breadcrumbs['2']['href']; ?>"><?php echo $breadcrumbs['2']['text']; ?></a></li>
@@ -640,12 +639,17 @@ body.product-category-65.offermsg .container.top_positionn{
           <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li> 
       <?php } $i++; } }  ?>
   </ul>
+  <?php if ($show_wedding_banner) { ?>
   <div class="categories_banner wedding_cakes">
     <a href="bachelorette-cake"><img class="img-responsive" src="catalog/view/theme/default/image/Naughty-Cakes-for-bachelorette-Online.webp" alt="" /></a>
   </div>
+  <?php } ?>
+  <?php if ($show_bachelorette_banner) { ?>
   <div class="categories_banner bachelorette_cakes">
     <a href="naughty-cakes"><img class="img-responsive" src="catalog/view/theme/default/image/Naughty-Cakes.webp" alt="" /></a>
   </div>
+  <?php } ?>
+  <?php if ($show_kids_tabs) { ?>
   <div class="kids_cake_category home-header-tab">
   	<div class="container xs-p-r-0 xs-p-l-0">
 		<div class="row">
@@ -690,6 +694,8 @@ body.product-category-65.offermsg .container.top_positionn{
 		</div>
 	</div>
   </div>
+  <?php } ?>
+  <?php if ($show_birthday_tabs) { ?>
   <div class="birthday_category home-header-tab ">
   	<div class="container xs-p-r-0 xs-p-l-0">
 		<div class="row">
@@ -734,6 +740,8 @@ body.product-category-65.offermsg .container.top_positionn{
 		</div>
 	</div>
   </div>
+  <?php } ?>
+  <?php if ($show_anniversary_tabs) { ?>
   <div class="anniversary_category home-header-tab ">
   	<div class="container xs-p-r-0 xs-p-l-0">
   		<div class="row">
@@ -778,7 +786,8 @@ body.product-category-65.offermsg .container.top_positionn{
   		</div>
   	</div>
   </div>
-
+  <?php } ?>
+  <?php if ($show_christmas_tabs) { ?>
   <div class="christmas_category home-header-tab ">
     <div class="container xs-p-r-0 xs-p-l-0">
       <div class="row">
@@ -823,6 +832,8 @@ body.product-category-65.offermsg .container.top_positionn{
       </div>
     </div>
   </div>
+  <?php } ?>
+  <?php if ($show_newyear_tabs) { ?>
   <div class="newyear_category home-header-tab ">
     <div class="container xs-p-r-0 xs-p-l-0">
       <div class="row">
@@ -867,6 +878,7 @@ body.product-category-65.offermsg .container.top_positionn{
       </div>
     </div>
   </div>
+  <?php } ?>
 <?php
 $actual_link = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; 
 if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
@@ -874,8 +886,8 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
     <p>Ho Ho Ho! The merriest season of cakes is here all again. After crossing the entire year, the joyous time of Christmas celebration has approached all again. Adding more into the merriment of one of the biggest holiday seasons of the year, here we have come up with an exclusive line of online Christmas Cakes at <a href="https://www.flavoursguru.com/" target="_blank">Flavoursguru.com</a>. Boasting the most wonderful, delightful, unique, and attractive Christmas Cakes, the trendy Christmas Cakes collection is sure to sort out your festive cake shopping desires in a matter of just a few clicks and without going high on the budget. With us, customers can get an excellent selection of Christmas cakes online in India with fast, reliable, and timely delivery services. Apart from the best Christmas cakes ideas 2024, you can also trust us for the same day delivery and even free delivery to send cakes to India on Christmas online. So, let's explore the range below.</p>
   </div>
 <?php } ?>
-  
 
+  <?php if ($show_regular_cakes_banner) { ?>
   <div class="regular_cakes_category">
   	<div class="row">
   		<div class="col-md-6 col-sm-6 col-xs-6 xs-mb-15">
@@ -886,6 +898,7 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
   		</div>
   	</div>
   </div>
+  <?php } ?>
   <div class="row">
     <?php if ($column_left && $column_right) { ?>
     <?php $class = 'col-sm-6'; ?>
@@ -905,7 +918,7 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
       <?php if ($thumb || $category_content) { ?>
       <div class="row">
         <?php if ($thumb) { ?>
-        <div class="col-sm-12"><img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" class="img-thumbnail" /></div>
+        <div class="col-sm-12"><img src="<?php echo $thumb_mobile ? $thumb_mobile : $thumb; ?>" srcset="<?php echo $thumb_mobile ? $thumb_mobile : $thumb; ?> <?php echo $category_image_width_mobile; ?>w, <?php echo $thumb; ?> <?php echo $category_image_width; ?>w" sizes="(max-width: 767px) 100vw, <?php echo $category_image_width; ?>px" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" class="img-thumbnail" width="<?php echo $category_image_width; ?>" height="<?php echo $category_image_height; ?>" loading="eager" fetchpriority="high" decoding="async" /></div>
         <?php } ?>
         <?php if ($category_content) { ?>
         <!--<div class="col-sm-10 catDescription"><?php //echo $category_content; ?></div>-->
@@ -1111,7 +1124,12 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
       </div>
 
       <div class="row category category_main_col">
-        <?php foreach ($products as $product) { ?>
+        <?php
+          date_default_timezone_set('Asia/Kolkata');
+          $now = new DateTime();
+          $hour = (int)$now->format('H');
+        ?>
+        <?php foreach ($products as $product_index => $product) { ?>
         <div class="product-layout product-list col-xs-6">
           <div class="add_wish_list">
             <button type="button" data-toggle="" title="<?php //echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');">
@@ -1126,7 +1144,7 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
             <?php if($product['purchased'] > 5){ ?>
               <div class="best-seller">Best Seller</div>
             <?php } ?>
-            <div class="image"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive img-zoom" /></div>
+            <div class="image"><img src="<?php echo $product['thumb_mobile']; ?>" srcset="<?php echo $product['thumb_mobile']; ?> <?php echo $product_image_width_mobile; ?>w, <?php echo $product['thumb']; ?> <?php echo $product_image_width; ?>w" sizes="(max-width: 767px) 50vw, (max-width: 991px) 33vw, 25vw" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive img-zoom" width="<?php echo $product_image_width; ?>" height="<?php echo $product_image_height; ?>" loading="<?php echo $product_index < 2 ? 'eager' : 'lazy'; ?>" fetchpriority="<?php echo $product_index === 0 ? 'high' : 'auto'; ?>" decoding="async" /></div>
             <div class="product_sort_detail">
               <div class="caption" style="margin-bottom: 0;">
                 <p class="cat_product_title" style="margin: 8px 0 10px 0;height:auto;"><span class="cat-mob-prd-title"><?php echo $product['name']; ?></span>
@@ -1169,12 +1187,6 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
                   </div>
                 </div>
                 <div class="earl-devl-text">
-                  <?php
-                    date_default_timezone_set('Asia/Kolkata'); // Set your timezone
-
-                    $now = new DateTime();
-                    $hour = (int)$now->format('H');
-                  ?>
                   <p class="font-size-12 mb-0 display-flex align-items-center">
                     <span style="margin-right: 3px;display: inline-flex">
                       <svg fill="#ffffff" width="16px" height="16px" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"><path d="M24,12a1,1,0,0,1-2,0A10.011,10.011,0,0,0,12,2a1,1,0,0,1,0-2A12.013,12.013,0,0,1,24,12Zm-8,1a1,1,0,0,0,0-2H13.723A2,2,0,0,0,13,10.277V7a1,1,0,0,0-2,0v3.277A1.994,1.994,0,1,0,13.723,13ZM1.827,6.784a1,1,0,1,0,1,1A1,1,0,0,0,1.827,6.784ZM2,12a1,1,0,1,0-1,1A1,1,0,0,0,2,12ZM12,22a1,1,0,1,0,1,1A1,1,0,0,0,12,22ZM4.221,3.207a1,1,0,1,0,1,1A1,1,0,0,0,4.221,3.207ZM7.779.841a1,1,0,1,0,1,1A1,1,0,0,0,7.779.841ZM1.827,15.216a1,1,0,1,0,1,1A1,1,0,0,0,1.827,15.216Zm2.394,3.577a1,1,0,1,0,1,1A1,1,0,0,0,4.221,18.793Zm3.558,2.366a1,1,0,1,0,1,1A1,1,0,0,0,7.779,21.159Zm14.394-5.943a1,1,0,1,0,1,1A1,1,0,0,0,22.173,15.216Zm-2.394,3.577a1,1,0,1,0,1,1A1,1,0,0,0,19.779,18.793Zm-3.558,2.366a1,1,0,1,0,1,1A1,1,0,0,0,16.221,21.159Z"/></svg>
@@ -1217,6 +1229,10 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
       <?php echo $content_bottom; ?></div>
       <?php if ($description) { ?>
         <div class="col-sm-10 catDescription" id="catDescription"><?php //echo closetags($description); ?><?php echo html_entity_decode($description); ?></div>
+        <div class="col-sm-10 visible-xs">
+          <button type="button" id="show">Read More</button>
+          <button type="button" id="hidetext" style="display:none;">Read Less</button>
+        </div>
         <?php } ?>
     <?php echo $column_right; ?></div>
 </div>
@@ -1272,7 +1288,7 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
               <div class="">
                 <div class="display-flex m-b-20 review_inner_2">
                   <div class="m-r-15">
-                    <img class=" img-responsive img-circle" src="<?php echo $value['image'] ?>" alt="">
+                    <img class="img-responsive img-circle" src="<?php echo $value['image'] ?>" alt="" loading="lazy" decoding="async">
                   </div>
                   <div class="text-left">
                     <p class="review_name"><?php echo ucwords($value['author']) ?></p>
@@ -1312,7 +1328,7 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
           <?php $x++; } ?>
           <div class="review-col slide">
               <div class="slide-view-all-testimonial">
-                <a href="https://www.flavoursguru.com/testimonial">View All &nbsp; <img class="view-arrow" src="catalog/view/theme/default/image/Home/arrow-right-black.png" alt="arrow right" /></a>
+                <a href="https://www.flavoursguru.com/testimonial">View All &nbsp; <img class="view-arrow" src="catalog/view/theme/default/image/Home/arrow-right-black.png" alt="arrow right" loading="lazy" decoding="async" /></a>
               </div>
           </div>
         </div>
@@ -1467,13 +1483,32 @@ function closetags($html) {
     }
 </style>
 <script>
+ (function() {
+  var pushCategoryAnalytics = function() {
+    if (typeof dataLayer === 'undefined' || !dataLayer.push) {
+      return;
+    }
+
+    dataLayer.push({ ecommerce: null });
+    dataLayer.push({
+      event: "view_item_list",
+      ecommerce: {
+        items: <?php echo json_encode($allg4); ?>
+      }
+    });
+  };
+
+  if (window.requestIdleCallback) {
+    window.requestIdleCallback(pushCategoryAnalytics, { timeout: 1500 });
+  } else {
+    window.addEventListener('load', pushCategoryAnalytics);
+  }
+ })();
+
  $(document).ready(function()
 {
   var screenwidth = $(window).width();
     if(screenwidth < 767){
-      $("#catDescription").append("<button id='show'>Read More</button> ");
-      $("#catDescription").append("<button id='hidetext'>Read Less</button>");
-      $("#hidetext").hide();
       $("#show").click(function(){
         $('#catDescription').addClass('show');
         $("#show").hide();
@@ -1520,8 +1555,8 @@ function closetags($html) {
          url: <?= '"'.HTTP_SERVER.'index.php?route=product/category/proIDetails"' ?>,
          data: {proId:proId},
          cache: false,
-         success: function(data){
-          var obj = JSON.parse(data);
+         dataType: 'json',
+         success: function(obj){
           var attributehtml = "";
           var optionhtml = "";
           for(var i in obj.attribute){
@@ -1646,16 +1681,19 @@ $(document).mouseup(function (e) {
     }
 });
 
-$('.review-slider').slick({
-  infinite: false,
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  centerMode: false,
-  //variableWidth: true,
-  //arrows: true,
-  //autoplay: true,
-  //autoplaySpeed: 2000,
-  responsive: [
+function initCategoryReviewSlider() {
+  var $reviewSlider = $('.review-slider');
+
+  if (!$reviewSlider.length || !$reviewSlider.slick || $reviewSlider.hasClass('slick-initialized')) {
+    return;
+  }
+
+  $reviewSlider.slick({
+    infinite: false,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    centerMode: false,
+    responsive: [
       {
         breakpoint: 1200,
         settings: {
@@ -1677,7 +1715,7 @@ $('.review-slider').slick({
           slidesToScroll: 1
         }
       },
-        {
+      {
         breakpoint: 420,
         settings: {
           slidesToShow: 1,
@@ -1686,5 +1724,27 @@ $('.review-slider').slick({
       }
     ]
   });
+}
+
+if ('IntersectionObserver' in window) {
+  var reviewSliderNode = document.querySelector('.review-slider');
+
+  if (reviewSliderNode) {
+    var reviewSliderObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          initCategoryReviewSlider();
+          reviewSliderObserver.disconnect();
+        }
+      });
+    }, { rootMargin: '200px 0px' });
+
+    reviewSliderObserver.observe(reviewSliderNode);
+  }
+} else if (window.requestIdleCallback) {
+  window.requestIdleCallback(initCategoryReviewSlider, { timeout: 2000 });
+} else {
+  $(window).on('load', initCategoryReviewSlider);
+}
 </script>
 <?php echo $footer; ?>

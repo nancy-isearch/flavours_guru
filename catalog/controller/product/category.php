@@ -164,9 +164,19 @@ class ControllerProductCategory extends Controller {
 
 			if ($category_info['image']) {
 				$data['thumb'] = $this->model_tool_image->resize($category_info['image'], $this->config->get($this->config->get('config_theme') . '_image_category_width'), $this->config->get($this->config->get('config_theme') . '_image_category_height'));
+				$data['thumb_mobile'] = $this->model_tool_image->resize($category_info['image'], $data['category_image_width_mobile'], $data['category_image_height_mobile']);
 			} else {
 				$data['thumb'] = '';
+				$data['thumb_mobile'] = '';
 			}
+			$data['category_image_width'] = (int)$this->config->get($this->config->get('config_theme') . '_image_category_width');
+			$data['category_image_height'] = (int)$this->config->get($this->config->get('config_theme') . '_image_category_height');
+			$data['product_image_width'] = (int)$this->config->get($this->config->get('config_theme') . '_image_product_width');
+			$data['product_image_height'] = (int)$this->config->get($this->config->get('config_theme') . '_image_product_height');
+			$data['category_image_width_mobile'] = min($data['category_image_width'], 360);
+			$data['category_image_height_mobile'] = ($data['category_image_width'] > 0) ? (int)round(($data['category_image_height'] * $data['category_image_width_mobile']) / $data['category_image_width']) : $data['category_image_height'];
+			$data['product_image_width_mobile'] = min($data['product_image_width'], 220);
+			$data['product_image_height_mobile'] = ($data['product_image_width'] > 0) ? (int)round(($data['product_image_height'] * $data['product_image_width_mobile']) / $data['product_image_width']) : $data['product_image_height'];
 
 			$data['description'] = html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8');
 			$data['compare'] = $this->url->link('product/compare');
@@ -268,35 +278,13 @@ class ControllerProductCategory extends Controller {
 
 			$product_total = $this->model_catalog_product->getTotalProducts($filter_data);
 
-			$results = $this->model_catalog_product->getProducts($filter_data);
+			$results = $this->model_catalog_product->getProductsForListing($filter_data);
 
 			/*revie code start*/
-
-			$filter_data_review = array(
-				'filter_category_id' => $multicategory['id'],
-				'filter_filter'      => $filter,
-				'sort'               => $sort,
-				'order'              => $order,
-				'start'              => 1,
-				'limit'              => 10000
-			);
-			$resultsReview = $this->model_catalog_product->getProducts($filter_data_review);
-			$proIdsForReviews = array();
-			foreach ($resultsReview as $result) {
-				$proIdsForReviews[] = $result['product_id'];
-			}
-			$allreviews = $this->model_catalog_product->getProductsReviews($proIdsForReviews);
-			$data['allreviews']['all'] = $allreviews;
-			$data['allreviews']['cnt'] = count($allreviews);
-			$ratingttl = 0;
-			foreach ($allreviews as $review) {
-				$ratingttl = $ratingttl + $review['rating'];
-			}
-			if(count($allreviews) > 0){
-				$data['allreviews']['average'] = round(($ratingttl / count($allreviews)),2);	
-			} else {
-				$data['allreviews']['average'] = 0;
-			}
+			$review_summary = $this->model_catalog_product->getCategoryReviewSummary($multicategory['id']);
+			$data['allreviews']['all'] = $this->model_catalog_product->getCategoryReviews($multicategory['id'], 5);
+			$data['allreviews']['cnt'] = $review_summary['cnt'];
+			$data['allreviews']['average'] = $review_summary['average'];
 			//echo "<pre />"; print_r($data['allreviews']); die();
 			/*revie code end*/
 			$data['pMinPrice'] = 0;
@@ -304,8 +292,10 @@ class ControllerProductCategory extends Controller {
 			foreach ($results as $result) {
 				if ($result['image']) {
 					$image = $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
+					$image_mobile = $this->model_tool_image->resize($result['image'], $data['product_image_width_mobile'], $data['product_image_height_mobile']);
 				} else {
 					$image = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
+					$image_mobile = $this->model_tool_image->resize('placeholder.png', $data['product_image_width_mobile'], $data['product_image_height_mobile']);
 				}
 
 				if($data['pMinPrice'] == 0){
@@ -348,6 +338,7 @@ class ControllerProductCategory extends Controller {
 				$data['products'][] = array(
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
+					'thumb_mobile' => $image_mobile,
 					'name'        => $result['name'],
 					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get($this->config->get('config_theme') . '_product_description_length')) . '..',
 					'price'       => $price,
@@ -583,32 +574,44 @@ class ControllerProductCategory extends Controller {
 				$cat_path=$mc_parent_id."_".$mc_cat_id;
 				$multicategory=$this->db->query("SELECT * from ".DB_PREFIX."category_multiparent where parent_id=".$mc_parent_id." and category_id=".$mc_cat_id)->row;
 
-				$filter_groups = $this->model_catalog_category->getCategoryFilters($multicategory['id'],$filter);
-			 
-				if ($filter_groups) {
-					foreach ($filter_groups as $filter_group) {
-						$childen_data = array();
+				$filter_cache_key = 'category.filter.groups.' . (int)$multicategory['id'] . '.' . (int)$category_id . '.' . (int)$this->config->get('config_store_id') . '.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_product_count');
+				$filter_cache_file = $this->getCategoryCacheFile($filter_cache_key);
 
-						foreach ($filter_group['filter'] as $filter) {
-							$filter_data = array(
-								'filter_category_id' => $category_id,
-								'filter_filter'      => $filter['filter_id']
-							);
+				if (is_file($filter_cache_file)) {
+					$cached_filter_groups = @unserialize(file_get_contents($filter_cache_file));
+					if (is_array($cached_filter_groups)) {
+						$data['nfilter']['filter_groups'] = $cached_filter_groups;
+					}
+				}
 
-							$childen_data[] = array(
-								'filter_id' => $filter['filter_id'],
-								'name'      => $filter['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : '')
+				if (empty($data['nfilter']['filter_groups'])) {
+					$filter_groups = $this->model_catalog_category->getCategoryFilters($multicategory['id'],$filter);
+
+					if ($filter_groups) {
+						foreach ($filter_groups as $filter_group) {
+							$childen_data = array();
+
+							foreach ($filter_group['filter'] as $filter) {
+								$filter_data = array(
+									'filter_category_id' => $category_id,
+									'filter_filter'      => $filter['filter_id']
+								);
+
+								$childen_data[] = array(
+									'filter_id' => $filter['filter_id'],
+									'name'      => $filter['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : '')
+								);
+							}
+
+							$data['nfilter']['filter_groups'][] = array(
+								'filter_group_id' => $filter_group['filter_group_id'],
+								'name'            => $filter_group['name'],
+								'filter'          => $childen_data
 							);
 						}
-
-						$data['nfilter']['filter_groups'][] = array(
-							'filter_group_id' => $filter_group['filter_group_id'],
-							'name'            => $filter_group['name'],
-							'filter'          => $childen_data
-						);
 					}
 
-					//echo "<pre />"; print_r($data); die();
+					@file_put_contents($filter_cache_file, serialize($data['nfilter']['filter_groups']));
 				}
 			}
 
@@ -773,5 +776,15 @@ class ControllerProductCategory extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
 		$this->response->setOutput($this->load->view('product/customer_review', $data));
+	}
+
+	private function getCategoryCacheFile($key) {
+		$directory = DIR_CACHE . 'category/';
+
+		if (!is_dir($directory)) {
+			@mkdir($directory, 0777, true);
+		}
+
+		return $directory . md5($key) . '.cache';
 	}
 }

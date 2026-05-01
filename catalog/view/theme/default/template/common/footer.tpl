@@ -1,5 +1,10 @@
-<link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/css/intlTelInput.css" rel="stylesheet" media="screen">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/css/intlTelInput.css" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/css/intlTelInput.css" rel="stylesheet"></noscript>
 <style type="text/css">
+  .footer-deferred-section{
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 900px;
+  }
   .intl-tel-input{
     width: 100%;
   }
@@ -37,7 +42,7 @@
     }
   }
 </style>
-<div class="col-md-12 col-sm-12 col-xs-12 p-l-0 p-r-0 bg-black news-letter-col">
+<div class="col-md-12 col-sm-12 col-xs-12 p-l-0 p-r-0 bg-black news-letter-col footer-deferred-section">
   <div class="container">
     <div class="newsletter-col row">
       <div class="col-md-6 col-sm-6 col-xs-12">
@@ -71,7 +76,7 @@
   </div>
 </div>
 
-<div class="border-btm-white bg-black col-md-12 col-sm-12 col-xs-12 p-l-0 p-r-0 payment-img-col">
+<div class="border-btm-white bg-black col-md-12 col-sm-12 col-xs-12 p-l-0 p-r-0 payment-img-col footer-deferred-section">
   <div class="container">
     <div class="row">
       <div class="text-center pt-40 pb-40">
@@ -85,7 +90,7 @@
   </div>
 </div>
 
-<footer class="col-md-12 col-sm-12 col-xs-12 p-l-0 p-r-0 cart-footer pt-40 border-btm-white">
+<footer class="col-md-12 col-sm-12 col-xs-12 p-l-0 p-r-0 cart-footer pt-40 border-btm-white footer-deferred-section">
   <div class="container">
     <div class="row">
       <div class="ft-menu">
@@ -175,7 +180,7 @@
     </div>
   </div>
 </footer>
-<div class="col-md-12 col-sm-12 col-xs-12 bg-black pt-40 pb-40 xs-p-r-0 xs-p-l-0 btm-contact-sec">
+<div class="col-md-12 col-sm-12 col-xs-12 bg-black pt-40 pb-40 xs-p-r-0 xs-p-l-0 btm-contact-sec footer-deferred-section">
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-sm-4 col-xs-12  p-l-0 p-r-0 ft-btm-addrs-info">
@@ -221,7 +226,7 @@ Greater Noida | Chandigarh | Lucknow | Varanasi | Hyderabad | Mohali | Panchkula
   </div>
 </div>
 
-<div class="col-md-12 col-sm-12 col-xs-12 bg-last-ft">
+<div class="col-md-12 col-sm-12 col-xs-12 bg-last-ft footer-deferred-section">
   <div class="container xs-p-l-0 xs-p-r-0">
     <div class="row display-flex align-items-center">
       <div class="col-md-6 col-sm-6 col-xs-12 p-l-0 p-r-0 btm-reserves-col">
@@ -250,7 +255,7 @@ Greater Noida | Chandigarh | Lucknow | Varanasi | Hyderabad | Mohali | Panchkula
     </div>
     <div class="display-flex">
       <div class="login-left-img-col">
-        <img src="catalog/view/theme/default/image/login-popup-img.webp" alt="" class="img-responsive">
+        <img src="catalog/view/theme/default/image/login-popup-img.webp" alt="" class="img-responsive" loading="lazy" decoding="async">
         <div class="img-overlay-col"></div> 
       </div>
       <div class="login-right-col">
@@ -440,9 +445,129 @@ Greater Noida | Chandigarh | Lucknow | Varanasi | Hyderabad | Mohali | Panchkula
     </div>
   </div>
 </div>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/intlTelInput.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.5/js/utils.js"></script>
 <script type="text/javascript">
+  var footerIntlTelPromise = null;
+  var footerIntlTelInitialized = false;
+
+  function loadFooterScript(src) {
+    return new Promise(function(resolve, reject) {
+      var existing = document.querySelector('script[src="' + src + '"]');
+
+      if (existing) {
+        if (existing.getAttribute('data-loaded') === 'true') {
+          resolve();
+          return;
+        }
+
+        existing.addEventListener('load', function() {
+          resolve();
+        }, { once: true });
+        existing.addEventListener('error', reject, { once: true });
+        return;
+      }
+
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = src;
+      script.onload = function() {
+        script.setAttribute('data-loaded', 'true');
+        resolve();
+      };
+      script.onerror = reject;
+      document.body.appendChild(script);
+    });
+  }
+
+  function ensureFooterIntlTelReady() {
+    if (footerIntlTelPromise) {
+      return footerIntlTelPromise;
+    }
+
+    footerIntlTelPromise = loadFooterScript('https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/intlTelInput.min.js')
+      .then(function() {
+        return loadFooterScript('https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.5/js/utils.js');
+      });
+
+    return footerIntlTelPromise;
+  }
+
+  function initializeFooterIntlTel() {
+    if (footerIntlTelInitialized || typeof jQuery === 'undefined' || typeof jQuery.fn.intlTelInput === 'undefined') {
+      return;
+    }
+
+    footerIntlTelInitialized = true;
+
+    var telInput = $(".phone-country-code");
+    var errorMsg = $(".mobile-errorvalid-msg");
+    var validMsg = $(".mobile-validation-msg");
+    var code = "";
+
+    telInput.val(code);
+    telInput.intlTelInput({
+        autoHideDialCode: true,
+        autoPlaceholder: "ON",
+        dropdownContainer: document.body,
+        formatOnDisplay: true,
+        hiddenInput: "full_number",
+        initialCountry: "IN",
+        nationalMode: true,
+        placeholderNumberType: "MOBILE",
+        preferredCountries: ['IN'],
+        separateDialCode: true,
+        geoIpLookup: function(callback) {
+          callback("IN");
+        }
+    });
+
+    function formatNumber() {
+      if (typeof intlTelInputUtils === 'undefined') {
+        return;
+      }
+
+      var number = telInput.val();
+      var classf = $(".selected-flag > div").attr("class");
+
+      if (!classf) {
+        return;
+      }
+
+      var flag = classf.slice(-2);
+      intlTelInputUtils.formatNumber(number, flag, intlTelInputUtils.numberFormat.INTERNATIONAL);
+    }
+
+    formatNumber();
+
+    telInput.on('keyup blur', function() {
+      formatNumber();
+
+      if ($.trim(telInput.val())) {
+        if (telInput.intlTelInput("isValidNumber")) {
+          validMsg.removeClass("hide");
+          $('.register_contine').removeClass('disable-btn');
+          $("#is_mobile_validation, #checkout_is_mobile_validation").val(1);
+        } else {
+          errorMsg.removeClass("hide");
+          validMsg.addClass("hide");
+          $("#is_mobile_validation, #checkout_is_mobile_validation").val(2);
+          $('.register_contine').addClass('disable-btn');
+        }
+      }
+    });
+
+    telInput.keydown(function () {
+      telInput.removeClass("error");
+      errorMsg.addClass("hide");
+      validMsg.addClass("hide");
+      $("#is_mobile_validation, #checkout_is_mobile_validation").val(2);
+    });
+
+    telInput.on("countrychange", function() {
+      formatNumber();
+    });
+  }
+
   jQuery('.version').text(NProgress.version);
   NProgress.start();
   jQuery(window).load(function() {
@@ -457,6 +582,9 @@ Greater Noida | Chandigarh | Lucknow | Varanasi | Hyderabad | Mohali | Panchkula
 
 function showloginpop(){
 	registerProcess = 0;
+  ensureFooterIntlTelReady().then(function() {
+    initializeFooterIntlTel();
+  });
   $('.login-popup').slideDown("slow");
   $('.login_col').show();
   $('.otp-verify-col').hide();
@@ -677,86 +805,6 @@ $('.ft-menu > ul > li').on('click', function(){
   $(this).next().show();
 });
 
-$(function () {
-    var telInput = $(".phone-country-code");
-    var errorMsg = $(".mobile-errorvalid-msg");
-    var validMsg = $(".mobile-validation-msg");
-    var code = "";
-    telInput.val(code);
-    telInput.intlTelInput({
-        autoHideDialCode: true,
-        autoPlaceholder: "ON",
-        dropdownContainer: document.body,
-        formatOnDisplay: true,
-        hiddenInput: "full_number",
-        initialCountry: "IN",
-        nationalMode: true,
-        placeholderNumberType: "MOBILE",
-        preferredCountries: ['IN'],
-        separateDialCode: true,
-        geoIpLookup: function(callback) {
-          $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
-            var countryCode = (resp && resp.country) ? resp.country : "";
-            callback(countryCode);
-          });
-        }, 
-    });
-
-    FormatNumber();
-    telInput.keyup(function () {
-        FormatNumber();
-        var phone_code = $(".login-form-popup, .show_sender_details").find('.selected-dial-code').text().replace('+','');
-        if ($.trim(telInput.val())) {
-            if (telInput.intlTelInput("isValidNumber")) {
-                validMsg.removeClass("hide");
-                $('.register_contine').removeClass('disable-btn');
-                $("#is_mobile_validation, #checkout_is_mobile_validation").val(1);
-            } else {
-                errorMsg.removeClass("hide");
-                validMsg.addClass("hide");
-                $("#is_mobile_validation, #checkout_is_mobile_validation").val(2);
-                $('.register_contine').addClass('disable-btn');
-            }
-        }
-
-    });
-
-    telInput.blur(function () {
-        var phone_code = $(".login-form-popup, .show_sender_details").find('.selected-dial-code').text().replace('+','');
-        if ($.trim(telInput.val())) {
-            if (telInput.intlTelInput("isValidNumber")) {
-                validMsg.removeClass("hide");
-                $('.register_contine').removeClass('disable-btn');
-                $("#is_mobile_validation, #checkout_is_mobile_validation").val(1);
-            } else {
-                errorMsg.removeClass("hide");
-                validMsg.addClass("hide");
-                $("#is_mobile_validation, #checkout_is_mobile_validation").val(2);
-                $('.register_contine').addClass('disable-btn');
-            }
-        }
-    });
-
-    telInput.keydown(function () {
-        telInput.removeClass("error");
-        errorMsg.addClass("hide");
-        validMsg.addClass("hide");
-        $("#is_mobile_validation, #checkout_is_mobile_validation").val(2);
-    });
-
-    telInput.on("countrychange", function() {
-      FormatNumber();
-      var phone_code = $(".login-form-popup, .show_sender_details").find('.selected-dial-code').text().replace('+','');
-    });
-
-    function FormatNumber() {
-        var number = telInput.val();
-        var classf = $(".selected-flag > div").attr("class");
-        var flag = classf.slice(-2);
-        var formattedNumber = intlTelInputUtils.formatNumber(number, flag, intlTelInputUtils.numberFormat.INTERNATIONAL);
-    }
-});
-
 //cart page js
 let digitValidate = function(ele){
   console.log(ele.value);
@@ -835,11 +883,6 @@ if(isset($_GET['utm_campaign']) && $_GET['utm_campaign']!="")
   <span><img class="visa_paypal" src="catalog/view/theme/default/image/loading.gif" alt="loader" /></span>
 </div>
 <script>
-    var url = 'https://wati-integration-service.clare.ai/ShopifyWidget/shopifyWidget.js?14318';
-    var s = document.createElement('script');
-    s.type = 'text/javascript';
-    s.async = true;
-    s.src = url;
     var options = {
   "enabled":true,
   "chatButtonSetting":{
@@ -864,10 +907,30 @@ if(isset($_GET['utm_campaign']) && $_GET['utm_campaign']!="")
       "phoneNumber":"918130961414"
   }
 };
-    s.onload = function() {
-        CreateWhatsappChatWidget(options);
-    };
-    var x = document.getElementsByTagName('script')[0];
-    x.parentNode.insertBefore(s, x);
+    function loadWhatsappWidget() {
+      var url = 'https://wati-integration-service.clare.ai/ShopifyWidget/shopifyWidget.js?14318';
+      var existing = document.querySelector('script[src="' + url + '"]');
+
+      if (existing) {
+        return;
+      }
+
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = url;
+      s.onload = function() {
+          CreateWhatsappChatWidget(options);
+      };
+      document.body.appendChild(s);
+    }
+
+    if (window.requestIdleCallback) {
+      window.requestIdleCallback(loadWhatsappWidget, { timeout: 5000 });
+    } else {
+      window.addEventListener('load', function() {
+        setTimeout(loadWhatsappWidget, 2500);
+      });
+    }
 </script>
 </body></html>

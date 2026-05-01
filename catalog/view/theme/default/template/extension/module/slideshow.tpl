@@ -1,14 +1,22 @@
 <div class="col-sm-12 homeBlocks">
 <div class="col-sm-12"><div id="slideshow<?php echo $module; ?>" class="owl-carousel" style="opacity: 1;">
-  <?php foreach ($banners as $banner) { ?>
+  <?php $banner_idx = 0; foreach ($banners as $banner) { $is_first = ($banner_idx === 0); ?>
   <div class="item">
     <?php if ($banner['link']) { ?>
-    <a href="<?php echo $banner['link']; ?>"><img src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" class="img-responsive" /></a>
+    <a href="<?php echo $banner['link']; ?>">
+      <picture>
+        <source media="(max-width: 767px)" srcset="<?php echo $banner['image_mobile']; ?>">
+        <img src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" class="img-responsive" width="<?php echo $banner['width']; ?>" height="<?php echo $banner['height']; ?>"<?php if ($is_first) { ?> fetchpriority="high" loading="eager"<?php } else { ?> loading="lazy"<?php } ?> decoding="async" />
+      </picture>
+    </a>
     <?php } else { ?>
-    <img src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" class="img-responsive" />
+    <picture>
+      <source media="(max-width: 767px)" srcset="<?php echo $banner['image_mobile']; ?>">
+      <img src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" class="img-responsive" width="<?php echo $banner['width']; ?>" height="<?php echo $banner['height']; ?>"<?php if ($is_first) { ?> fetchpriority="high" loading="eager"<?php } else { ?> loading="lazy"<?php } ?> decoding="async" />
+    </picture>
     <?php } ?>
   </div>
-  <?php } ?>
+  <?php $banner_idx++; } ?>
 </div></div>
 
 <?php /*?><div class="col-sm-3" id="homeSideBanner">
