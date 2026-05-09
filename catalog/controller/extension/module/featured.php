@@ -15,6 +15,9 @@ class ControllerExtensionModuleFeatured extends Controller {
 
 		$this->load->model('tool/image');
 
+		// Mobile detection
+		$is_mobile = $this->isMobileDevice();
+
 		$data['products'] = array();
 
 		if (!$setting['limit']) {
@@ -29,9 +32,17 @@ class ControllerExtensionModuleFeatured extends Controller {
 
 				if ($product_info) {
 					if ($product_info['image']) {
-						$image = $this->model_tool_image->resize($product_info['image'], $setting['width'], $setting['height']);
+						if ($is_mobile) {
+							$image = $this->model_tool_image->resize($product_info['image'], min($setting['width'], 200), min($setting['height'], 200));
+						} else {
+							$image = $this->model_tool_image->resize($product_info['image'], $setting['width'], $setting['height']);
+						}
 					} else {
-						$image = $this->model_tool_image->resize('placeholder.png', $setting['width'], $setting['height']);
+						if ($is_mobile) {
+							$image = $this->model_tool_image->resize('placeholder.png', min($setting['width'], 200), min($setting['height'], 200));
+						} else {
+							$image = $this->model_tool_image->resize('placeholder.png', $setting['width'], $setting['height']);
+						}
 					}
 
 					if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
@@ -76,5 +87,16 @@ class ControllerExtensionModuleFeatured extends Controller {
 		if ($data['products']) {
 			return $this->load->view('extension/module/featured', $data);
 		}
+	}
+
+	private function isMobileDevice() {
+		$user_agent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+		$mobile_keywords = ['Mobile', 'Android', 'iPhone', 'iPad', 'Windows Phone', 'BlackBerry', 'webOS'];
+		foreach ($mobile_keywords as $keyword) {
+			if (stripos($user_agent, $keyword) !== false) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

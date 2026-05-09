@@ -640,9 +640,9 @@ body.product-category-65.offermsg .container.top_positionn{
       <?php } $i++; } }  ?>
   </ul>
   <?php if ($show_wedding_banner) { ?>
-  <div class="categories_banner wedding_cakes">
+  <!-- <div class="categories_banner wedding_cakes">
     <a href="bachelorette-cake"><img class="img-responsive" src="catalog/view/theme/default/image/Naughty-Cakes-for-bachelorette-Online.webp" alt="" /></a>
-  </div>
+  </div> -->
   <?php } ?>
   <?php if ($show_bachelorette_banner) { ?>
   <div class="categories_banner bachelorette_cakes">
@@ -918,7 +918,7 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
       <?php if ($thumb || $category_content) { ?>
       <div class="row">
         <?php if ($thumb) { ?>
-        <div class="col-sm-12"><img src="<?php echo $thumb_mobile ? $thumb_mobile : $thumb; ?>" srcset="<?php echo $thumb_mobile ? $thumb_mobile : $thumb; ?> <?php echo $category_image_width_mobile; ?>w, <?php echo $thumb; ?> <?php echo $category_image_width; ?>w" sizes="(max-width: 767px) 100vw, <?php echo $category_image_width; ?>px" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" class="img-thumbnail" width="<?php echo $category_image_width; ?>" height="<?php echo $category_image_height; ?>" loading="eager" fetchpriority="high" decoding="async" /></div>
+        <div class="col-sm-12"><img src="<?php echo $thumb; ?>" <?php if (!$is_mobile) { ?>srcset="<?php echo $thumb_mobile; ?> <?php echo $category_image_width_mobile; ?>w, <?php echo $thumb; ?> <?php echo $category_image_width; ?>w" sizes="(max-width: 767px) 100vw, <?php echo $category_image_width; ?>px"<?php } ?> alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" class="img-thumbnail" width="<?php echo $category_image_width; ?>" height="<?php echo $category_image_height; ?>" loading="eager" fetchpriority="high" decoding="async" /></div>
         <?php } ?>
         <?php if ($category_content) { ?>
         <!--<div class="col-sm-10 catDescription"><?php //echo $category_content; ?></div>-->
@@ -1144,7 +1144,7 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
             <?php if($product['purchased'] > 5){ ?>
               <div class="best-seller">Best Seller</div>
             <?php } ?>
-            <div class="image"><img src="<?php echo $product['thumb_mobile']; ?>" srcset="<?php echo $product['thumb_mobile']; ?> <?php echo $product_image_width_mobile; ?>w, <?php echo $product['thumb']; ?> <?php echo $product_image_width; ?>w" sizes="(max-width: 767px) 50vw, (max-width: 991px) 33vw, 25vw" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive img-zoom" width="<?php echo $product_image_width; ?>" height="<?php echo $product_image_height; ?>" loading="<?php echo $product_index < 2 ? 'eager' : 'lazy'; ?>" fetchpriority="<?php echo $product_index === 0 ? 'high' : 'auto'; ?>" decoding="async" /></div>
+            <div class="image"><img src="<?php echo $product['thumb']; ?>" <?php if (!$is_mobile) { ?>srcset="<?php echo $product['thumb_mobile']; ?> <?php echo $product_image_width_mobile; ?>w, <?php echo $product['thumb']; ?> <?php echo $product_image_width; ?>w" sizes="(max-width: 767px) 50vw, (max-width: 991px) 33vw, 25vw"<?php } ?> alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive img-zoom" width="<?php echo $product_image_width; ?>" height="<?php echo $product_image_height; ?>" loading="<?php echo $product_index < 2 ? 'eager' : 'lazy'; ?>" fetchpriority="<?php echo $product_index === 0 ? 'high' : 'auto'; ?>" decoding="async" /></div>
             <div class="product_sort_detail">
               <div class="caption" style="margin-bottom: 0;">
                 <p class="cat_product_title" style="margin: 8px 0 10px 0;height:auto;"><span class="cat-mob-prd-title"><?php echo $product['name']; ?></span>

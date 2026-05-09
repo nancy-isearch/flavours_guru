@@ -253,7 +253,7 @@ class ModelReportSale extends Model {
 
 		
 		//echo "<pre />"; print_r($allProcessing['43174']['created_by']); die();
-		$sql = "SELECT op.*, o.total ototal, o.vendor_id, o.order_status_id status, o.order_id, o.date_added, o.firstname, o.lastname, o.telephone, o.payment_method, o.shipping_postcode, o.custom_field, o.added_by, o.is_admin_order, o.boy_id FROM oc_order o INNER JOIN oc_order_product op ON o.order_id = op.order_id WHERE order_status_id > '0'";
+		$sql = "SELECT op.*, p.price as original_price, o.total ototal, o.vendor_id, o.order_status_id status, o.order_id, o.date_added, o.firstname, o.lastname, o.telephone, o.payment_method, o.shipping_postcode, o.custom_field, o.added_by, o.is_admin_order, o.boy_id FROM oc_order o INNER JOIN oc_order_product op ON o.order_id = op.order_id INNER JOIN oc_product p ON op.product_id = p.product_id WHERE order_status_id > '0'";
 
 		if (!empty($data['filter_date_start'])) {
 			$sql .= " AND DATE(o.date_added) >= '" . $this->db->escape($data['filter_date_start']) . "'";
@@ -290,6 +290,13 @@ class ModelReportSale extends Model {
 		$allProcessing = array();
 		foreach ($query->rows as $key => $value) {
 			$allProcessing[$value['order_id']] = $value;
+		}
+
+		$sql = "SELECT * FROM oc_order_total WHERE order_id IN ('".implode("','", $allOrderIds)."')";
+		$query = $this->db->query($sql);
+		$allOrderTotals = array();
+		foreach ($query->rows as $total) {
+			$allOrderTotals[$total['order_id']][$total['code']] = $total['value'];
 		}
 
 		$sql = "SELECT * FROM `oc_order_option` WHERE name = 'Weight' AND order_id IN ('".implode("','", $allOrderIds)."') and value like '%kg%'";
@@ -349,7 +356,7 @@ class ModelReportSale extends Model {
 				$dateadded = date('d/m/Y', strtotime($value['date_added']));
 				$timeadded = date('H:s', strtotime($value['date_added']));
 
-				$all[] = array('order_id' => $value['order_id'], 'name' => $value['name'], 'ddate' => $ddate, 'dtime' => $dtime, 'dtype' => $dtype, 'shipping_postcode' => $value['shipping_postcode'], 'dcity' => $dcity, 'payment_method' => $value['payment_method'], 'sku' => $value['model'], 'quantity' => $value['quantity'], 'price' => $value['price'], 'tax' => $value['tax'], 'afterGst' => $value['price'] + $value['tax'], 'total' => $value['ototal'], 'pp' => $value['pp_price'], 'pp_total' => $allProductPrice[$value['order_id']], 'status' => $allStatus[$value['status']]['name'], 'vendor' => $allUsers[$value['vendor_id']]['firstname'].' '.$allUsers[$value['vendor_id']]['lastname'], 'date' => $del1, 'time' => $del2, 'firstname' => $value['firstname'], 'lastname' => $value['lastname'], 'telephone' => $value['telephone'], 'dateadded' => $dateadded, 'timeadded' => $timeadded, 'transaction_id' => $value['custom_field'], 'is_admin_order' => $value['is_admin_order'], 'added_by' => $allUsers[$value['added_by']]['firstname'].' '.$allUsers[$value['added_by']]['lastname'], 'boy' => $allUsers[$value['boy_id']]['firstname'].' '.$allUsers[$value['boy_id']]['lastname'], 'processing' => $allUsers[$allProcessing[$value['order_id']]['created_by']]['firstname'].' '.$allUsers[$allProcessing[$value['order_id']]['created_by']]['lastname'], 'weight' => $allWeight[$value['order_id']], 'delivered' => $delivered);
+				$all[] = array('order_id' => $value['order_id'], 'name' => $value['name'], 'ddate' => $ddate, 'dtime' => $dtime, 'dtype' => $dtype, 'shipping_postcode' => $value['shipping_postcode'], 'dcity' => $dcity, 'payment_method' => $value['payment_method'], 'sku' => $value['model'], 'quantity' => $value['quantity'], 'price' => $value['price'], 'tax' => $value['tax'], 'afterGst' => $value['price'] + $value['tax'], 'total' => $value['ototal'], 'pp' => isset($value['pp_price']) && !empty($value['pp_price']) ? $value['pp_price'] : '', 'pp_total' => isset($allProductPrice[$value['order_id']]) && !empty($allProductPrice[$value['order_id']]) ? $allProductPrice[$value['order_id']] : '', 'status' => $allStatus[$value['status']]['name'], 'vendor' => $allUsers[$value['vendor_id']]['firstname'].' '.$allUsers[$value['vendor_id']]['lastname'], 'date' => $del1, 'time' => $del2, 'firstname' => $value['firstname'], 'lastname' => $value['lastname'], 'telephone' => $value['telephone'], 'dateadded' => $dateadded, 'timeadded' => $timeadded, 'transaction_id' => $value['custom_field'], 'is_admin_order' => $value['is_admin_order'], 'added_by' => $allUsers[$value['added_by']]['firstname'].' '.$allUsers[$value['added_by']]['lastname'], 'boy' => $allUsers[$value['boy_id']]['firstname'].' '.$allUsers[$value['boy_id']]['lastname'], 'processing' => $allUsers[$allProcessing[$value['order_id']]['created_by']]['firstname'].' '.$allUsers[$allProcessing[$value['order_id']]['created_by']]['lastname'], 'weight' => $allWeight[$value['order_id']], 'delivered' => $delivered, 'unit_discount' => $value['original_price'] - $value['price'], 'overall_discount' => isset($allOrderTotals[$value['order_id']]['coupon']) ? $allOrderTotals[$value['order_id']]['coupon'] : 0);
 			}
 		}
 		//echo "<pre />"; print_r($all); die();
@@ -468,7 +475,7 @@ class ModelReportSale extends Model {
 				$dateadded = date('d/m/Y', strtotime($value['date_added']));
 				$timeadded = date('H:s', strtotime($value['date_added']));
 
-				$all[] = array('order_id' => $value['order_id'], 'name' => $value['name'], 'ddate' => $ddate, 'dtime' => $dtime, 'dtype' => $dtype, 'shipping_postcode' => $value['shipping_postcode'], 'dcity' => $dcity, 'payment_method' => $value['payment_method'], 'sku' => $value['model'], 'quantity' => $value['quantity'], 'price' => $value['price'], 'tax' => $value['tax'], 'afterGst' => $value['price'] + $value['tax'], 'total' => $value['ototal'], 'pp' => $value['pp_price'], 'pp_total' => $allProductPrice[$value['order_id']], 'status' => $allStatus[$value['status']]['name'], 'vendor' => $allUsers[$value['vendor_id']]['firstname'].' '.$allUsers[$value['vendor_id']]['lastname'], 'date' => $del1, 'time' => $del2, 'firstname' => $value['firstname'], 'lastname' => $value['lastname'], 'telephone' => $value['telephone'], 'dateadded' => $dateadded, 'timeadded' => $timeadded, 'transaction_id' => $value['custom_field'], 'is_admin_order' => $value['is_admin_order'], 'added_by' => $allUsers[$value['added_by']]['firstname'].' '.$allUsers[$value['added_by']]['lastname'], 'boy' => $allUsers[$value['boy_id']]['firstname'].' '.$allUsers[$value['boy_id']]['lastname'], 'processing' => $allUsers[$allProcessing[$value['order_id']]['created_by']]['firstname'].' '.$allUsers[$allProcessing[$value['order_id']]['created_by']]['lastname'], 'weight' => $allWeight[$value['order_id']]);
+				$all[] = array('order_id' => $value['order_id'], 'name' => $value['name'], 'ddate' => $ddate, 'dtime' => $dtime, 'dtype' => $dtype, 'shipping_postcode' => $value['shipping_postcode'], 'dcity' => $dcity, 'payment_method' => $value['payment_method'], 'sku' => $value['model'], 'quantity' => $value['quantity'], 'price' => $value['price'], 'tax' => $value['tax'], 'afterGst' => $value['price'] + $value['tax'], 'total' => $value['ototal'], 'pp' => isset($value['pp_price']) && !empty($value['pp_price']) ? $value['pp_price'] : '', 'pp_total' => isset($allProductPrice[$value['order_id']]) && !empty($allProductPrice[$value['order_id']]) ? $allProductPrice[$value['order_id']] : '', 'status' => $allStatus[$value['status']]['name'], 'vendor' => $allUsers[$value['vendor_id']]['firstname'].' '.$allUsers[$value['vendor_id']]['lastname'], 'date' => $del1, 'time' => $del2, 'firstname' => $value['firstname'], 'lastname' => $value['lastname'], 'telephone' => $value['telephone'], 'dateadded' => $dateadded, 'timeadded' => $timeadded, 'transaction_id' => $value['custom_field'], 'is_admin_order' => $value['is_admin_order'], 'added_by' => $allUsers[$value['added_by']]['firstname'].' '.$allUsers[$value['added_by']]['lastname'], 'boy' => $allUsers[$value['boy_id']]['firstname'].' '.$allUsers[$value['boy_id']]['lastname'], 'processing' => $allUsers[$allProcessing[$value['order_id']]['created_by']]['firstname'].' '.$allUsers[$allProcessing[$value['order_id']]['created_by']]['lastname'], 'weight' => $allWeight[$value['order_id']]);
 			}
 		}
 		//echo "<pre />"; print_r($all); die();
@@ -490,7 +497,12 @@ class ModelReportSale extends Model {
 			$allStatus[$value['order_status_id']] = $value;
 		}
 
-		
+		$sql = "select product_id from oc_product where product_addon_status = 1";
+		$query = $this->db->query($sql);
+		$allAddOnProduct = array();
+		foreach ($query->rows as $key => $value) {
+			$allAddOnProduct[$value['product_id']] = $value;
+		}
 		//echo "<pre />"; print_r($allProcessing['43174']['created_by']); die();
 
 		$sql = "SELECT oh.order_id FROM oc_order_history oh WHERE oh.order_status_id = '7' ";
@@ -511,7 +523,7 @@ class ModelReportSale extends Model {
 		}
 
 
-		$sql = "SELECT op.*, o.total ototal, o.vendor_id, o.order_status_id status, o.order_id, o.date_added, o.firstname, o.lastname, o.telephone, o.payment_method, o.shipping_postcode, o.custom_field, o.added_by, o.is_admin_order, o.boy_id FROM oc_order o INNER JOIN oc_order_product op ON o.order_id = op.order_id WHERE o.order_id IN ('".implode("','", $allHistoryOrderIds)."')";
+		$sql = "SELECT op.*, p.price as original_price, o.total ototal, o.vendor_id, o.order_status_id status, o.order_id, o.date_added, o.firstname, o.lastname, o.telephone, o.payment_method, o.shipping_postcode, o.custom_field, o.added_by, o.is_admin_order, o.boy_id FROM oc_order o INNER JOIN oc_order_product op ON o.order_id = op.order_id INNER JOIN oc_product p ON op.product_id = p.product_id WHERE o.order_id IN ('".implode("','", $allHistoryOrderIds)."')";
 
 		$query = $this->db->query($sql);
 
@@ -520,6 +532,13 @@ class ModelReportSale extends Model {
 		foreach ($query->rows as $order) {
 			$allOrderIds[] = $order['order_id'];
 			$allOrder[$order['order_id']][] = $order;
+		}
+
+		$sql = "SELECT * FROM oc_order_total WHERE order_id IN ('".implode("','", $allOrderIds)."')";
+		$query = $this->db->query($sql);
+		$allOrderTotals = array();
+		foreach ($query->rows as $total) {
+			$allOrderTotals[$total['order_id']][$total['code']] = $total['value'];
 		}
 
 		$sql = "SELECT * FROM `oc_order_history` WHERE `order_status_id` = '7' AND order_id IN ('".implode("','", $allOrderIds)."') AND `created_by` > '0'";
@@ -585,10 +604,15 @@ class ModelReportSale extends Model {
 					continue;
 				}
 
+				$weight = "";
+				if(!isset($allAddOnProduct[$value['product_id']])){
+					$weight = $allWeight[$value['order_id']];
+				}
+
 				$dateadded = date('d/m/Y', strtotime($value['date_added']));
 				$timeadded = date('H:i:s', strtotime($value['date_added']));
 
-				$all[] = array('order_id' => $value['order_id'], 'name' => $value['name'], 'ddate' => $ddate, 'dtime' => $dtime, 'dtype' => $dtype, 'shipping_postcode' => $value['shipping_postcode'], 'dcity' => $dcity, 'payment_method' => $value['payment_method'], 'sku' => $value['model'], 'quantity' => $value['quantity'], 'price' => $value['price'], 'tax' => $value['tax'], 'afterGst' => $value['price'] + $value['tax'], 'total' => $value['ototal'], 'pp' => $value['pp_price'], 'pp_total' => $allProductPrice[$value['order_id']], 'status' => $allStatus[$value['status']]['name'], 'vendor' => $allUsers[$value['vendor_id']]['firstname'].' '.$allUsers[$value['vendor_id']]['lastname'], 'date' => $del1, 'time' => $del2, 'firstname' => $value['firstname'], 'lastname' => $value['lastname'], 'telephone' => $value['telephone'], 'dateadded' => $dateadded, 'timeadded' => $timeadded, 'transaction_id' => $value['custom_field'], 'is_admin_order' => $value['is_admin_order'], 'added_by' => $allUsers[$value['added_by']]['firstname'].' '.$allUsers[$value['added_by']]['lastname'], 'boy' => $allUsers[$value['boy_id']]['firstname'].' '.$allUsers[$value['boy_id']]['lastname'], 'processing' => $allUsers[$allProcessing[$value['order_id']]['created_by']]['firstname'].' '.$allUsers[$allProcessing[$value['order_id']]['created_by']]['lastname'], 'delivered_at' => $value['delivered_at'], 'weight' => $allWeight[$value['order_id']]);
+				$all[] = array('order_id' => $value['order_id'], 'name' => $value['name'], 'ddate' => $ddate, 'dtime' => $dtime, 'dtype' => $dtype, 'shipping_postcode' => $value['shipping_postcode'], 'dcity' => $dcity, 'payment_method' => $value['payment_method'], 'sku' => $value['model'], 'quantity' => $value['quantity'], 'price' => $value['price'], 'tax' => $value['tax'], 'afterGst' => $value['price'] + $value['tax'], 'total' => $value['ototal'], 'pp' => isset($value['pp_price']) && !empty($value['pp_price']) ? $value['pp_price'] : '', 'pp_total' => isset($allProductPrice[$value['order_id']]) && !empty($allProductPrice[$value['order_id']]) ? $allProductPrice[$value['order_id']] : '', 'status' => $allStatus[$value['status']]['name'], 'vendor' => $allUsers[$value['vendor_id']]['firstname'].' '.$allUsers[$value['vendor_id']]['lastname'], 'date' => $del1, 'time' => $del2, 'firstname' => $value['firstname'], 'lastname' => $value['lastname'], 'telephone' => $value['telephone'], 'dateadded' => $dateadded, 'timeadded' => $timeadded, 'transaction_id' => $value['custom_field'], 'is_admin_order' => $value['is_admin_order'], 'added_by' => $allUsers[$value['added_by']]['firstname'].' '.$allUsers[$value['added_by']]['lastname'], 'boy' => $allUsers[$value['boy_id']]['firstname'].' '.$allUsers[$value['boy_id']]['lastname'], 'processing' => $allUsers[$allProcessing[$value['order_id']]['created_by']]['firstname'].' '.$allUsers[$allProcessing[$value['order_id']]['created_by']]['lastname'], 'delivered_at' => $value['delivered_at'], 'weight' => $weight, 'unit_discount' => $value['original_price'] - $value['price'], 'overall_discount' => isset($allOrderTotals[$value['order_id']]['coupon']) ? $allOrderTotals[$value['order_id']]['coupon'] : 0);
 			}
 		}
 		//echo "<pre />"; print_r($all); die();
@@ -690,7 +714,7 @@ class ModelReportSale extends Model {
 				$dateadded = date('d/m/Y', strtotime($value['date_added']));
 				$timeadded = date('H:i:s', strtotime($value['date_added']));
 
-				$all[] = array('order_id' => $value['order_id'], 'name' => $value['name'], 'ddate' => $ddate, 'dtime' => $dtime, 'dtype' => $dtype, 'shipping_postcode' => $value['shipping_postcode'], 'dcity' => $dcity, 'payment_method' => $value['payment_method'], 'sku' => $value['model'], 'quantity' => $value['quantity'], 'price' => $value['price'], 'tax' => $value['tax'], 'afterGst' => $value['price'] + $value['tax'], 'total' => $value['ototal'], 'pp' => $value['pp_price'], 'pp_total' => $ppsm['ppsm'], 'status' => $allStatus[$value['status']]['name'], 'vendor' => $allUsers[$value['vendor_id']]['firstname'].' '.$allUsers[$value['vendor_id']]['lastname'], 'date' => $del1, 'time' => $del2, 'firstname' => $value['firstname'], 'lastname' => $value['lastname'], 'telephone' => $value['telephone'], 'dateadded' => $dateadded, 'timeadded' => $timeadded, 'transaction_id' => $value['custom_field'], 'is_admin_order' => $value['is_admin_order'], 'added_by' => $allUsers[$value['added_by']]['firstname'].' '.$allUsers[$value['added_by']]['lastname'], 'boy' => $allUsers[$value['boy_id']]['firstname'].' '.$allUsers[$value['boy_id']]['lastname'], 'processing' => $allUsers[$allProcessing[$value['order_id']]['created_by']]['firstname'].' '.$allUsers[$allProcessing[$value['order_id']]['created_by']]['lastname'], 'delivered_at' => $value['delivered_at'], 'weight' => $allWeight[$value['order_id']]);
+				$all[] = array('order_id' => $value['order_id'], 'name' => $value['name'], 'ddate' => $ddate, 'dtime' => $dtime, 'dtype' => $dtype, 'shipping_postcode' => $value['shipping_postcode'], 'dcity' => $dcity, 'payment_method' => $value['payment_method'], 'sku' => $value['model'], 'quantity' => $value['quantity'], 'price' => $value['price'], 'tax' => $value['tax'], 'afterGst' => $value['price'] + $value['tax'], 'total' => $value['ototal'], 'pp' => isset($value['pp_price']) && !empty($value['pp_price']) ? $value['pp_price'] : '', 'pp_total' => isset($ppsm['ppsm']) && !empty($ppsm['ppsm']) ? $ppsm['ppsm'] : '', 'status' => $allStatus[$value['status']]['name'], 'vendor' => $allUsers[$value['vendor_id']]['firstname'].' '.$allUsers[$value['vendor_id']]['lastname'], 'date' => $del1, 'time' => $del2, 'firstname' => $value['firstname'], 'lastname' => $value['lastname'], 'telephone' => $value['telephone'], 'dateadded' => $dateadded, 'timeadded' => $timeadded, 'transaction_id' => $value['custom_field'], 'is_admin_order' => $value['is_admin_order'], 'added_by' => $allUsers[$value['added_by']]['firstname'].' '.$allUsers[$value['added_by']]['lastname'], 'boy' => $allUsers[$value['boy_id']]['firstname'].' '.$allUsers[$value['boy_id']]['lastname'], 'processing' => $allUsers[$allProcessing[$value['order_id']]['created_by']]['firstname'].' '.$allUsers[$allProcessing[$value['order_id']]['created_by']]['lastname'], 'delivered_at' => $value['delivered_at'], 'weight' => $allWeight[$value['order_id']]);
 			}
 		}
 		//echo "<pre />"; print_r($all); die();
@@ -788,7 +812,7 @@ class ModelReportSale extends Model {
 					$dcity = $shipinfo->{'City'};
 				}
 
-				$all[] = array('order_id' => $value['order_id'], 'name' => $value['shipping_firstname'].' '.$value['shipping_lastname'], 'ddate' => $ddate, 'dtime' => $dtime, 'dtype' => $dtype, 'shipping_postcode' => $value['shipping_postcode'], 'dcity' => $dcity, 'payment_method' => $value['payment_method'], 'pname' => $value['name'], 'sku' => $value['sku'], 'quantity' => $value['quantity'], 'pp' => $value['pp_price'], 'pp_total' => $ppsm['ppsm'], 'status' => $allStatus[$value['status']]['name'], 'vendor' => $allUsers[$value['vendor_id']]['firstname'].' '.$allUsers[$value['vendor_id']]['lastname'], 'date' => $del1, 'time' => $del2);
+				$all[] = array('order_id' => $value['order_id'], 'name' => $value['shipping_firstname'].' '.$value['shipping_lastname'], 'ddate' => $ddate, 'dtime' => $dtime, 'dtype' => $dtype, 'shipping_postcode' => $value['shipping_postcode'], 'dcity' => $dcity, 'payment_method' => $value['payment_method'], 'pname' => $value['name'], 'sku' => $value['sku'], 'quantity' => $value['quantity'], 'pp' => isset($value['pp_price']) && !empty($value['pp_price']) ? $value['pp_price'] : '', 'pp_total' => isset($ppsm['ppsm']) && !empty($ppsm['ppsm']) ? $ppsm['ppsm'] : '', 'status' => $allStatus[$value['status']]['name'], 'vendor' => $allUsers[$value['vendor_id']]['firstname'].' '.$allUsers[$value['vendor_id']]['lastname'], 'date' => $del1, 'time' => $del2);
 			}
 		}
 		//echo "<pre />"; print_r($all); die();

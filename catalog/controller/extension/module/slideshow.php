@@ -40,7 +40,8 @@ class ControllerExtensionModuleSlideshow extends Controller {
 				$data['sidebanners'][] = array(
 					'title' => $result['title'],
 					'link'  => $result['link'],
-					'image' => $this->model_tool_image->resize($result['image'], 285, 114)
+					'image' => $this->model_tool_image->resize($result['image'], 285, 114),
+					'image_mobile' => $this->model_tool_image->resize($result['image'], min(285, 200), min(114, 80))
 				);
 			}
 		}

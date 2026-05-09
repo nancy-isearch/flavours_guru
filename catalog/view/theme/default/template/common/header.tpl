@@ -19,7 +19,7 @@
 <meta name="keywords" content= "<?php echo $keywords; ?>" />
 <?php } ?>
 <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
-<link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="catalog/view/javascript/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -347,6 +347,9 @@ Step 13: Review your details and secure payment to place your order."
   }
   .open-pincode-popup .pincode-city-arrow-icon + p{
     font-size: 12px;
+  }
+  .footer-deferred-section{
+    content-visibility: initial !important;
   }
   @media screen and (max-width: 767px){
     .offer_popup_2{

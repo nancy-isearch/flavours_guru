@@ -54,7 +54,7 @@ jQuery(document).ready(function(){if($('#offerBanner').hasClass('showoffers')){$
 
  	var name_item = 0;
 	var name_item = $('.name-row').children().length;
-	if(name_item >= 5){
+	if(name_item > 6){
 	  jQuery('.view-all-cat-tab').show();
 	}else{
 	  $('.view-all-cat-tab').hide();
