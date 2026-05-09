@@ -236,7 +236,6 @@ class ControllerReportSaleOrderDetail extends Controller {
 				'overall_discount' => $result['overall_discount'],
 				'total' => round($result['total']),
 				'pp' => $result['pp'],
-				'pp_total' => !empty($result['pp_total']) ? $result['pp_total'] : '',
 				'status' => $result['status'],
 				'vendor' => $result['vendor'],
 				'date' => $result['date'],
@@ -252,7 +251,7 @@ class ControllerReportSaleOrderDetail extends Controller {
 		header('Content-Type: text/csv; charset=utf-8');
 		header('Content-Disposition: attachment; filename=order_details_'.date("d-m-Y").'.csv');
 		$output = fopen('php://output', 'w');
-		fputcsv($output, array('Date Added', 'Time Added', 'Order No.', 'Customer Name', 'Contact Number', 'Delivery Date', 'Timeslot', 'Shipping Type', 'Delivery Pin', 'Delivery City', 'Payment Mode', 'Transaction ID', 'Product Name', 'Weight', 'SKU', 'Quantity', 'Unit Price', 'GST', 'Overall Discount', 'Total Order Amount', 'PP', 'Order Total PP', 'Status', 'Vendor', 'Delivered Date', 'Delivered Time', 'Added by Backend?', 'Added By', 'Delivery Boy', 'Delivered By', 'Delivered At'));
+		fputcsv($output, array('Date Added', 'Time Added', 'Order No.', 'Customer Name', 'Contact Number', 'Delivery Date', 'Timeslot', 'Shipping Type', 'Delivery Pin', 'Delivery City', 'Payment Mode', 'Transaction ID', 'Product Name', 'Weight', 'SKU', 'Quantity', 'Unit Price', 'GST', 'Overall Discount', 'Total Order Amount', 'PP', 'Status', 'Vendor', 'Delivered Date', 'Delivered Time', 'Added by Backend?', 'Added By', 'Delivery Boy', 'Delivered By', 'Delivered At'));
 		if (count($orders) > 0) {
 		    foreach ($orders as $al) {
 		        fputcsv($output, $al);
