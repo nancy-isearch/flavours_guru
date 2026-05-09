@@ -640,9 +640,9 @@ body.product-category-65.offermsg .container.top_positionn{
       <?php } $i++; } }  ?>
   </ul>
   <?php if ($show_wedding_banner) { ?>
-  <div class="categories_banner wedding_cakes">
+  <!-- <div class="categories_banner wedding_cakes">
     <a href="bachelorette-cake"><img class="img-responsive" src="catalog/view/theme/default/image/Naughty-Cakes-for-bachelorette-Online.webp" alt="" /></a>
-  </div>
+  </div> -->
   <?php } ?>
   <?php if ($show_bachelorette_banner) { ?>
   <div class="categories_banner bachelorette_cakes">

@@ -3485,7 +3485,11 @@
       height: 55px;
     }
     .col-sm-5.product-img-box{
-    	top: 120px;
+    	top: 114px;
+      width: 100%;
+    }
+    .product-img-box a.thumbnail img{
+      width: 100%;
     }
     .col-sm-7.product-shop.product-shop-height{
     	margin-top: calc(100vw - -80px);
