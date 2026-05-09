@@ -587,7 +587,7 @@ class ModelReportSale extends Model {
 				$del2 = '';
 				if(!empty($dd)){
 					$del1 = date('d/m/Y', strtotime($dd));
-					$del2 = date('H:s', strtotime($dd));
+					$del2 = date('H:i', strtotime($dd));
 				}
 
 				$ddate = '';
