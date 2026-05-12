@@ -135,7 +135,7 @@ class ControllerCommonHeader extends Controller {
 		$data['links'] = $this->document->getLinks();
 		$data['styles'] = $this->getFilteredStyles($this->document->getStyles(), $data['route_name']);
 		$data['scripts'] = $this->getFilteredScripts($this->document->getScripts(), $data['route_name']);
-		$data['show_global_faq_schema'] = $data['is_home_page'];
+		$data['show_global_faq_schema'] = true;
 		$data['theme_stylesheet_version'] = @filemtime(DIR_CATALOG . 'view/theme/default/stylesheet/stylesheet_1.css') ?: '1';
 		$data['custom_js_version'] = @filemtime(DIR_CATALOG . 'view/javascript/custom.js') ?: '1';
 		$data['category_preload_image'] = '';
