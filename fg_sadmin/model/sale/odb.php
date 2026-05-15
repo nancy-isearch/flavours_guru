@@ -135,7 +135,7 @@ class ModelSaleOdb extends Model {
 			$sql .= " AND DATE(f.date_forshipping) <= '" . $this->db->escape($data['filter_date_end']) . "'";
 		}
 
-		$sql .= " ORDER BY f.id asc";
+		$sql .= " ORDER BY f.order_id asc";
 		$query = $this->db->query($sql);
 		$rows = $query->rows;
 		$data = array();
