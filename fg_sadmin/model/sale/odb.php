@@ -125,17 +125,17 @@ class ModelSaleOdb extends Model {
 
 	public function csvdata($data){
 		$date = date('Y-m-d',strtotime('-15 days'));
-		$sql = "SELECT *, fc.id fcid, f.order_id mainid, f.date_added fdate_added, fc.created_at fcdate_added, f.order_status_id fstatus, fc.status fcstatus, fc.created_by fcaddedby FROM oc_odb fc  LEFT JOIN oc_order f on f.order_id = fc.order_id where f.order_status_id >= 0 ";
+		$sql = "SELECT f.order_id mainid, payment_firstname, payment_mobile, payment_city, payment_email, shipping_firstname, shipping_phone, shipping_city, shipping_email, f.date_added fdate_added, f.order_status_id fstatus, date_forshipping, is_admin_order FROM oc_order f where f.order_status_id >= 0 ";
 
 		if (!empty($data['filter_date_start'])) {
-			$sql .= " AND DATE(fc.created_at) >= '" . $this->db->escape($data['filter_date_start']) . "'";
+			$sql .= " AND DATE(f.date_forshipping) >= '" . $this->db->escape($data['filter_date_start']) . "'";
 		}
 
 		if (!empty($data['filter_date_end'])) {
-			$sql .= " AND DATE(fc.created_at) <= '" . $this->db->escape($data['filter_date_end']) . "'";
+			$sql .= " AND DATE(f.date_forshipping) <= '" . $this->db->escape($data['filter_date_end']) . "'";
 		}
 
-		$sql .= " ORDER BY fc.id asc";
+		$sql .= " ORDER BY f.id asc";
 		$query = $this->db->query($sql);
 		$rows = $query->rows;
 		$data = array();
@@ -152,6 +152,17 @@ class ModelSaleOdb extends Model {
 		$data = array();
 		foreach ($rows as $row) {
 			$data[$row['user_id']] = $row['username'];
+		}
+		return $data;
+	}
+
+	public function orderStatuses(){
+		$sql = "SELECT * FROM oc_order_status";
+		$query = $this->db->query($sql);
+		$rows = $query->rows;
+		$data = array();
+		foreach ($rows as $row) {
+			$data[$row['order_status_id']] = $row['name'];
 		}
 		return $data;
 	}

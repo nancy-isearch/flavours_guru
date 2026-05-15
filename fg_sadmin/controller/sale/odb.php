@@ -750,25 +750,25 @@ class ControllerSaleOdb extends Controller {
 		$this->load->model('sale/odb');
 		$filter_data = $this->request->post;
 		$results = $this->model_sale_odb->csvdata($filter_data);
-		$adminusers = $this->model_sale_odb->adminusers();
 		header('Content-Type: text/csv; charset=utf-8');
 		header('Content-Disposition: attachment; filename=odb-'.date("d-m-Y").'.csv');
 		$output = fopen('php://output', 'w');
-		fputcsv($output, array('Order ID', 'ODB ID', 'Name', 'Number', 'Email', 'Current ODB Status', 'ODB Created At', 'ODB Created By', 'Order Date Date', 'Order Delivery Date'));
-		$status = $this->getStatus();
+		fputcsv($output, array('Order ID', 'Sender Name', 'Sender Number', 'Sender Email', 'Receiver Name', 'Receiver Number', 'Receiver Email', 'Order Status', 'Order Delivery Date', 'Order Place Date', 'Is Admin Order'));
+		$status = $this->model_sale_odb->orderStatuses();
 		$all = array();
 		foreach ($results as $rslt) {
 			$aa = array();
 			$aa[] = $rslt['mainid'];
-			$aa[] = $rslt['fcid'];
 			$aa[] = $rslt['payment_firstname'];
 			$aa[] = $rslt['payment_mobile'];
 			$aa[] = $rslt['payment_email'];
-			$aa[] = $status[$rslt['fcstatus']];
-			$aa[] = (empty($rslt['fcdate_added'])) ? '' : date("d-m-Y H:i A", strtotime($rslt['fcdate_added']));
-			$aa[] = (empty($rslt['fcaddedby'])) ? '' : $adminusers[$rslt['fcaddedby']];
-			$aa[] = (empty($rslt['fdate_added'])) ? '' : date("d-m-Y H:i A", strtotime($rslt['fdate_added']));
+			$aa[] = $rslt['shipping_firstname'];
+			$aa[] = $rslt['shipping_phone'];
+			$aa[] = $rslt['shipping_email'];
+			$aa[] = $status[$rslt['fstatus']];
 			$aa[] = (empty($rslt['date_forshipping'])) ? '' : date("d-m-Y", strtotime($rslt['date_forshipping']));
+			$aa[] = (empty($rslt['fdate_added'])) ? '' : date("d-m-Y", strtotime($rslt['fdate_added']));
+			$aa[] = ($rslt['is_admin_order'] == 1) ? 'Yes' : 'No';
 			$all[] = $aa;
 		}
 		if (count($all) > 0) {
