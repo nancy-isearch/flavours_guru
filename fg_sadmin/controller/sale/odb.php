@@ -753,7 +753,7 @@ class ControllerSaleOdb extends Controller {
 		header('Content-Type: text/csv; charset=utf-8');
 		header('Content-Disposition: attachment; filename=odb-'.date("d-m-Y").'.csv');
 		$output = fopen('php://output', 'w');
-		fputcsv($output, array('Order ID', 'Sender Name', 'Sender Number', 'Sender Email', 'Receiver Name', 'Receiver Number', 'Receiver Email', 'Order Status', 'Order Delivery Date', 'Order Place Date', 'Is Admin Order', 'Order Total'));
+		fputcsv($output, array('Order ID', 'Sender Name', 'Sender Number', 'Sender Email', 'Receiver Name', 'Receiver Number', 'Order Status', 'Order Delivery Date', 'Order Place Date', 'Is Admin Order', 'Order Total'));
 		$status = $this->model_sale_odb->orderStatuses();
 		$all = array();
 		foreach ($results as $rslt) {
@@ -764,7 +764,6 @@ class ControllerSaleOdb extends Controller {
 			$aa[] = $rslt['payment_email'];
 			$aa[] = $rslt['shipping_firstname'];
 			$aa[] = $rslt['shipping_phone'];
-			$aa[] = $rslt['shipping_email'];
 			$aa[] = $status[$rslt['fstatus']];
 			$aa[] = (empty($rslt['date_forshipping'])) ? '' : date("d-m-Y", strtotime($rslt['date_forshipping']));
 			$aa[] = (empty($rslt['fdate_added'])) ? '' : date("d-m-Y", strtotime($rslt['fdate_added']));
