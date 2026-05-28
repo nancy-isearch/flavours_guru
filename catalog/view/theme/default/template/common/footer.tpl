@@ -64,6 +64,7 @@
             <button class="btn btn-default enter-subscribe" type="button">SUBSCRIBE</button>
           </span>
         </div>
+        <script type="text/javascript" src="media/newsletter/js/main.js"></script>
         <script type="text/javascript">
           new AdvancedNewsletter({
             container_id: '#advanced-newsletter-box',
@@ -284,10 +285,10 @@ Greater Noida | Chandigarh | Lucknow | Varanasi | Hyderabad | Mohali | Panchkula
                 </div>
                 <div class="display-flex align-items-center justify-content-center">
                   <a href="#" class="m-r-15">
-                    <img src="catalog/view/theme/default/image/fb-login-img.svg" alt="">
+                    <img alt="">
                   </a>
                   <a href="#">
-                    <img src="catalog/view/theme/default/image/g-login-img.svg" alt="">
+                    <img alt="">
                   </a>
                 </div>
               </div>
