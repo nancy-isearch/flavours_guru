@@ -1057,7 +1057,7 @@ class ControllerProductProduct extends Controller {
 		$this->load->model('catalog/product');
 		$rslt = $this->model_catalog_product->getDatesTimeForPro($shippingType);
 		$lastHoru = $rslt['timeslot'][count($rslt['timeslot'])-1]['timeslot_to'];
-		$newTime = $rslt['timeslot'][count($rslt['timeslot'])-1]['leadtime'] - $rslt['timeslot'][count($rslt['timeslot'])-1]['buffertime'];
+		$newTime = (int)$rslt['timeslot'][count($rslt['timeslot'])-1]['leadtime'] - (int)$rslt['timeslot'][count($rslt['timeslot'])-1]['buffertime'];
 		$new_diff = strtotime($lastHoru)-$newTime*3600;
 		$diff_time = date("H:i", $new_diff);
 		$dateTime = new DateTime($diff_time);
@@ -1065,9 +1065,9 @@ class ControllerProductProduct extends Controller {
 		if ($dateTime->diff(new DateTime)->format('%R') == '+' && $rslt['duration'] == 0) {
 		  $inc = 1;
 		}
-		
+
 		$data['holiday'] = $rslt['holiday'];
-		$data['duration'] = $rslt['duration'] + $inc;
+		$data['duration'] = (int)$rslt['duration'] + $inc;
 		$data['timeslot'] = $rslt['timeslot'];
 		$data['date'] = date('Y-m-d', strtotime("+".$data['duration']." days"));
 		print_r(json_encode($data));
@@ -1097,7 +1097,7 @@ class ControllerProductProduct extends Controller {
 				$data[] = array('id' => $rslt1['id'], 'name' => $rslt1['name'], 'show_description' => $rslt1['show_description'], 'usePrice' =>$rslt1['price'], 'price' => $this->currency->format($this->tax->calculate($rslt1['price'], 0, $this->config->get('config_tax')), $this->session->data['currency']));
 			}else{
 				$shippingId = $rslt1['id'];
-				$totalDelayHour = ($rslt1['leadtime'] + $rslt1['buffertime'])*60;
+				$totalDelayHour = ((int)$rslt1['leadtime'] + (int)$rslt1['buffertime'])*60;
 				$actualTime = date('Y-m-d H:i', strtotime('now +'.$totalDelayHour.' minutes'));
 				$ipAddress = $_SERVER['REMOTE_ADDR'];
 				if($shippingId=='5'){
@@ -1127,7 +1127,7 @@ class ControllerProductProduct extends Controller {
 		$data = array();
 		foreach ($rslt as $rslt1) {
 			$shippingId = $rslt1['id'];
-			$totalDelayHour = ($rslt1['leadtime'] + $rslt1['buffertime'])*60;
+			$totalDelayHour = ((int)$rslt1['leadtime'] + (int)$rslt1['buffertime'])*60;
 			$actualTime = date('Y-m-d H:i', strtotime('now +'.$totalDelayHour.' minutes'));
 			$checkDate = date('Y-m-d', strtotime($actualTime));
 			if(strtotime($checkDate)==strtotime($delDate)){
