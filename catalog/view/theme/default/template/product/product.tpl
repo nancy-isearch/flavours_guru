@@ -8,18 +8,18 @@
     event: "view_item",
     ecommerce: {
     currency: "INR",
-    value: <?php echo $pprice; ?>,
+    value: <?php echo $mainprice; ?>,
     items: [
     {
       item_id: "<?php echo $sku; ?>",
-      item_name: "<?php echo $heading_title; ?>",
+      item_name: "<?php echo addslashes($heading_title); ?>",
       discount:0,
       index: 0,
       item_brand: "Flavours Guru",
-      item_category: "<?php echo $parent_cat['title'] ?>",
+      item_category: "<?php echo addslashes($parent_cat['title']) ?>",
       item_list_id: "related_products",
       item_list_name: "Related products",
-      price: <?php echo $pprice; ?>,
+      price: <?php echo $mainprice; ?>,
       quantity: 1
     }
     ]
@@ -2026,18 +2026,18 @@
                   event: "add_to_cart",
                   ecommerce: {
                   currency: "INR",
-                  value: <?php echo $pprice; ?>,
+                  value: <?php echo $mainprice; ?>,
                   items: [
                   {
                     item_id: "<?php echo $sku; ?>",
-                    item_name: "<?php echo $heading_title; ?>",
+                    item_name: "<?php echo addslashes($heading_title); ?>",
                     discount:0,
                     index: 0,
                     item_brand: "Flavours Guru",
-                    item_category: "<?php echo $parent_cat['title'] ?>",
+                    item_category: "<?php echo addslashes($parent_cat['title']) ?>",
                     item_list_id: "related_products",
                     item_list_name: "Related products",
-                    price: <?php echo $pprice; ?>,
+                    price: <?php echo $mainprice; ?>,
                     quantity: 1
                   }
                   ]
