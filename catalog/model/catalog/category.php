@@ -53,56 +53,41 @@ class ModelCatalogCategory extends Model {
 		return $query->rows;
 	}
 
-	public function getCategoryFilters($category_id,$filter="") {
+	public function getCategoryFilters($category_id, $filter = "") {
+		// Step 1: get all filter_ids for this category in one query
+		$filter_id_query = $this->db->query("SELECT DISTINCT pf.filter_id FROM " . DB_PREFIX . "product_filter pf, " . DB_PREFIX . "product_to_category p2c WHERE pf.product_id = p2c.product_id AND p2c.category_id = '" . (int)$category_id . "'");
+
 		$implode = array();
-
-		$filter_query="";
-		if($filter!=""){
-			$filter_implode=array();
-			$filters=explode(",",$filter);
-			foreach ($filters as $filter_id) {
-				$filter_implode[] = (int)$filter_id;
-			}
-
-			$filter_query=" AND pf.filter_id IN (" . implode(',', $filter_implode) . ")";
-		}
-
-		//$query = $this->db->query("SELECT filter_id FROM " . DB_PREFIX . "category_filter WHERE category_id = '" . (int)$category_id . "'");
-		//$query=$this->db->query("SELECT DISTINCT pf.filter_id from " . DB_PREFIX . "product_filter pf, " . DB_PREFIX . "product_to_category p2c where pf.product_id=p2c.product_id $filter_query and p2c.category_id='" . (int)$category_id . "'");
-		$query=$this->db->query("SELECT DISTINCT pf.filter_id from " . DB_PREFIX . "product_filter pf, " . DB_PREFIX . "product_to_category p2c where pf.product_id=p2c.product_id and p2c.category_id='" . (int)$category_id . "'");
-
-		foreach ($query->rows as $result) {
+		foreach ($filter_id_query->rows as $result) {
 			$implode[] = (int)$result['filter_id'];
 		}
 
-		$filter_group_data = array();
-
-		if ($implode) {
-			$filter_group_query = $this->db->query("SELECT DISTINCT f.filter_group_id, fgd.name, fg.sort_order FROM " . DB_PREFIX . "filter f LEFT JOIN " . DB_PREFIX . "filter_group fg ON (f.filter_group_id = fg.filter_group_id) LEFT JOIN " . DB_PREFIX . "filter_group_description fgd ON (fg.filter_group_id = fgd.filter_group_id) WHERE f.filter_id IN (" . implode(',', $implode) . ") AND fgd.language_id = '" . (int)$this->config->get('config_language_id') . "' GROUP BY f.filter_group_id ORDER BY fg.sort_order, LCASE(fgd.name)");
-
-			foreach ($filter_group_query->rows as $filter_group) {
-				$filter_data = array();
-
-				$filter_query = $this->db->query("SELECT DISTINCT f.filter_id, fd.name FROM " . DB_PREFIX . "filter f LEFT JOIN " . DB_PREFIX . "filter_description fd ON (f.filter_id = fd.filter_id) WHERE f.filter_id IN (" . implode(',', $implode) . ") AND f.filter_group_id = '" . (int)$filter_group['filter_group_id'] . "' AND fd.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY f.sort_order, LCASE(fd.name)");
-
-				foreach ($filter_query->rows as $filter) {
-					$filter_data[] = array(
-						'filter_id' => $filter['filter_id'],
-						'name'      => $filter['name']
-					);
-				}
-
-				if ($filter_data) {
-					$filter_group_data[] = array(
-						'filter_group_id' => $filter_group['filter_group_id'],
-						'name'            => $filter_group['name'],
-						'filter'          => $filter_data
-					);
-				}
-			}
+		if (empty($implode)) {
+			return array();
 		}
 
-		return $filter_group_data;
+		$ids_str = implode(',', $implode);
+
+		// Step 2: single query fetches all groups + their filters together (eliminates N+1)
+		$query = $this->db->query("SELECT f.filter_group_id, fgd.name AS group_name, fg.sort_order AS group_sort_order, f.filter_id, fd.name AS filter_name, f.sort_order AS filter_sort_order FROM " . DB_PREFIX . "filter f LEFT JOIN " . DB_PREFIX . "filter_group fg ON (f.filter_group_id = fg.filter_group_id) LEFT JOIN " . DB_PREFIX . "filter_group_description fgd ON (fg.filter_group_id = fgd.filter_group_id) LEFT JOIN " . DB_PREFIX . "filter_description fd ON (f.filter_id = fd.filter_id) WHERE f.filter_id IN (" . $ids_str . ") AND fgd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND fd.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY fg.sort_order, LCASE(fgd.name), f.sort_order, LCASE(fd.name)");
+
+		$groups = array();
+		foreach ($query->rows as $row) {
+			$gid = $row['filter_group_id'];
+			if (!isset($groups[$gid])) {
+				$groups[$gid] = array(
+					'filter_group_id' => $gid,
+					'name'            => $row['group_name'],
+					'filter'          => array()
+				);
+			}
+			$groups[$gid]['filter'][] = array(
+				'filter_id' => $row['filter_id'],
+				'name'      => $row['filter_name']
+			);
+		}
+
+		return array_values($groups);
 	}
 
 	public function getCategoryLayoutId($category_id) {
