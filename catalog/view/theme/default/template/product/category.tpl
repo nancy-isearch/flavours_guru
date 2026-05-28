@@ -1229,10 +1229,10 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
       <?php echo $content_bottom; ?></div>
       <?php if ($description) { ?>
         <div class="col-sm-10 catDescription" id="catDescription"><?php //echo closetags($description); ?><?php echo html_entity_decode($description); ?></div>
-        <div class="col-sm-10 visible-xs">
+        <!-- <div class="col-sm-10 visible-xs">
           <button type="button" id="show">Read More</button>
           <button type="button" id="hidetext" style="display:none;">Read Less</button>
-        </div>
+        </div> -->
         <?php } ?>
     <?php echo $column_right; ?></div>
 </div>
@@ -1507,7 +1507,7 @@ function closetags($html) {
 
  $(document).ready(function()
 {
-  var screenwidth = $(window).width();
+  /*var screenwidth = $(window).width();
     if(screenwidth < 767){
       $("#show").click(function(){
         $('#catDescription').addClass('show');
@@ -1519,7 +1519,7 @@ function closetags($html) {
         $("#hidetext").hide();
         $("#show").show();
       });
-    }
+    }*/
 
     $('.sidebar_filters > li').on('click', function(){
       $('.sidebar_filters > li').removeClass('active');
