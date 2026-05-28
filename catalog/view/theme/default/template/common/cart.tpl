@@ -22,7 +22,7 @@
         <?php foreach ($products as $product) { ?>
         <tr>
           <td class="text-center"><?php if ($product['thumb']) { ?>
-            <a <?php /* ?> href="<?php echo $product['href']; ?>" <?php */ ?>><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-thumbnail" /></a>
+            <a <?php /* ?> href="<?php echo $product['href']; ?>" <?php */ ?>><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-thumbnail" loading="lazy" /></a>
             <?php } ?></td>
           <td class="text-left"><a <?php /* ?> href="<?php echo $product['href']; ?>" <?php */ ?>><?php echo $product['name']; ?></a>
             <?php if ($product['option']) { ?>
