@@ -24,10 +24,7 @@ class ControllerCommonHeader extends Controller {
 			$this->document->addLink($server . 'image/' . $this->config->get('config_icon'), 'icon');
 		}
 
-		if(!isset($_GET['_route_'])){
-			$this->document->setDescription($this->config->get('config_meta_description'));
-			$this->document->setKeywords($this->config->get('config_meta_keyword'));
-		} else if(isset($_GET['_route_']) && $_GET['_route_']=='home'){
+		if (!isset($this->request->get['_route_']) || $this->request->get['_route_'] == 'home') {
 			$this->document->setDescription($this->config->get('config_meta_description'));
 			$this->document->setKeywords($this->config->get('config_meta_keyword'));
 		}
@@ -111,10 +108,10 @@ class ControllerCommonHeader extends Controller {
 
 		$this->load->model('catalog/product');
 
-		if(empty($this->cart->getProducts())){
-		 		unset($_SESSION['proData']);
-		 		unset($_SESSION['checkoutCity']);
-		 		unset($_SESSION['checkoutPincode']);
+		if (!$this->cart->hasProducts()) {
+			unset($this->session->data['proData']);
+			unset($this->session->data['checkoutCity']);
+			unset($this->session->data['checkoutPincode']);
 		}
 		$header_menu_data = $this->getHeaderMenuData();
 		$data['menu_structure'] = $header_menu_data['menu_structure'];
@@ -136,8 +133,10 @@ class ControllerCommonHeader extends Controller {
 		$data['styles'] = $this->getFilteredStyles($this->document->getStyles(), $data['route_name']);
 		$data['scripts'] = $this->getFilteredScripts($this->document->getScripts(), $data['route_name']);
 		$data['show_global_faq_schema'] = true;
-		$data['theme_stylesheet_version'] = @filemtime(DIR_CATALOG . 'view/theme/default/stylesheet/stylesheet_1.css') ?: '1';
-		$data['custom_js_version'] = @filemtime(DIR_CATALOG . 'view/javascript/custom.js') ?: '1';
+		$css_file = DIR_CATALOG . 'view/theme/default/stylesheet/stylesheet_1.css';
+		$data['theme_stylesheet_version'] = file_exists($css_file) ? filemtime($css_file) : '1';
+		$js_file = DIR_CATALOG . 'view/javascript/custom.js';
+		$data['custom_js_version'] = file_exists($js_file) ? filemtime($js_file) : '1';
 		$data['category_preload_image'] = '';
 		$data['category_preload_image_mobile'] = '';
 		$data['category_preload_sizes'] = '';
@@ -284,16 +283,17 @@ class ControllerCommonHeader extends Controller {
 			}
 		}
 
-		$categories = $this->model_catalog_category->getCategories(0);
+		$all_categories = $this->model_catalog_category->getAllCategoriesTree();
+		$categories = isset($all_categories[0]) ? $all_categories[0] : array();
 
 		foreach ($categories as $category) {
 			if ($category['top']) {
 				$children_data = array();
-				$children = $this->model_catalog_category->getMultiParentCategories($category['category_id']);
+				$children = isset($all_categories[$category['category_id']]) ? $all_categories[$category['category_id']] : array();
 
 				foreach ($children as $child) {
 					$children_data2 = array();
-					$children2 = $this->model_catalog_category->getCategories($child['category_id']);
+					$children2 = isset($all_categories[$child['category_id']]) ? $all_categories[$child['category_id']] : array();
 
 					foreach ($children2 as $child2) {
 						$children_data2[] = array(
