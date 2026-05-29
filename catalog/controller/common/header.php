@@ -286,6 +286,23 @@ class ControllerCommonHeader extends Controller {
 		$all_categories = $this->model_catalog_category->getAllCategoriesTree();
 		$categories = isset($all_categories[0]) ? $all_categories[0] : array();
 
+		// Fix #3: batch-fetch all child category product counts in one query
+		$category_counts = array();
+		if ($this->config->get('config_product_count')) {
+			$child_ids = array();
+			foreach ($categories as $category) {
+				if ($category['top']) {
+					$children = isset($all_categories[$category['category_id']]) ? $all_categories[$category['category_id']] : array();
+					foreach ($children as $child) {
+						$child_ids[] = (int)$child['category_id'];
+					}
+				}
+			}
+			if ($child_ids) {
+				$category_counts = $this->model_catalog_product->getTotalProductsByCategoryIds($child_ids);
+			}
+		}
+
 		foreach ($categories as $category) {
 			if ($category['top']) {
 				$children_data = array();
@@ -305,12 +322,7 @@ class ControllerCommonHeader extends Controller {
 					$child_name = $child['name'];
 
 					if ($this->config->get('config_product_count')) {
-						$filter_data = array(
-							'filter_category_id'  => $child['category_id'],
-							'filter_sub_category' => true
-						);
-
-						$child_name .= ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')';
+						$child_name .= ' (' . (isset($category_counts[(int)$child['category_id']]) ? $category_counts[(int)$child['category_id']] : 0) . ')';
 					}
 
 					$children_data[] = array(
