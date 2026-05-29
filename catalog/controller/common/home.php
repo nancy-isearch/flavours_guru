@@ -36,222 +36,100 @@ class ControllerCommonHome extends Controller {
 
 		//home page categories
 
-		$file=fopen(DIR_SYSTEM.'data/home_category.csv', 'r');
-		$home_category=array();
-		$counter=0;
+		// Fix #6: cache CSV rows + raw product data keyed by store+language
+		// Fix #2: batch-fetch all SKUs in one query instead of 6 per row
+		$home_csv = DIR_SYSTEM . 'data/home_category.csv';
+		$csv_mtime = is_file($home_csv) ? (int)filemtime($home_csv) : 0;
+		$cache_dir = DIR_CACHE . 'home/';
+		if (!is_dir($cache_dir)) {
+			@mkdir($cache_dir, 0777, true);
+		}
+		$cache_file = $cache_dir . md5('home.category.' . (int)$this->config->get('config_store_id') . '.' . (int)$this->config->get('config_language_id')) . '.cache';
 
-		$skiphead=true;
+		$csv_rows = array();
+		$products_by_sku = array();
+		$loaded_from_cache = false;
 
-		while (($line = fgetcsv($file)) !== FALSE) {
-		  	if($skiphead){$skiphead=false; continue;}
-		  	$category_line=array();
-		  	$category_line['title']=$line[0];
-		  	$category_line['url']=$line[1];
+		if (is_file($cache_file)) {
+			$payload = @unserialize(file_get_contents($cache_file));
+			if (is_array($payload) && isset($payload['csv_mtime']) && (int)$payload['csv_mtime'] === $csv_mtime) {
+				$csv_rows        = $payload['csv_rows'];
+				$products_by_sku = $payload['products_by_sku'];
+				$loaded_from_cache = true;
+			}
+		}
 
-		  	$category_line['products']=array();
-
-		  	//product 1
-		  	$catpro=$this->model_catalog_product->getProductBySku($line[2]);
-
-		  	if($catpro){
-
-			  	if ($catpro['image']) {
-					$image = $this->model_tool_image->resize($catpro['image'], $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
-				} else {
-					$image = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
+		if (!$loaded_from_cache) {
+			if (is_file($home_csv) && ($file = fopen($home_csv, 'r')) !== false) {
+				$skiphead = true;
+				while (($line = fgetcsv($file)) !== false) {
+					if ($skiphead) { $skiphead = false; continue; }
+					$csv_rows[] = $line;
 				}
-
-				$price = $this->currency->format($this->tax->calculate($catpro['price'], $catpro['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-
-			  	if ((float)$catpro['special']) {
-					$special = $this->currency->format($this->tax->calculate($catpro['special'], $catpro['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-				} else {
-					$special = false;
-				}
-
-			  	$category_line['products'][]=array(
-			  			'name'=>$catpro['name'],
-			  			'image'=>$image,
-			  			'price'=>$price,
-			  			'special'=> $special,
-			  			'href'=> $this->url->link('product/product','product_id=' . $catpro['product_id'])
-			  	);
-
+				fclose($file);
 			}
 
-			$catpro=false;
-
-		  	//product 1
-		  	$catpro=$this->model_catalog_product->getProductBySku($line[3]);
-
-		  	if($catpro){
-
-			  	if ($catpro['image']) {
-					$image = $this->model_tool_image->resize($catpro['image'], $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
-				} else {
-					$image = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
+			$skus = array();
+			foreach ($csv_rows as $line) {
+				for ($col = 2; $col <= 7; $col++) {
+					if (!empty($line[$col])) {
+						$skus[] = $line[$col];
+					}
 				}
+			}
+			$products_by_sku = $skus ? $this->model_catalog_product->getProductsBySkus($skus) : array();
 
-				$price = $this->currency->format($this->tax->calculate($catpro['price'], $catpro['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+			@file_put_contents($cache_file, serialize(array(
+				'csv_mtime'      => $csv_mtime,
+				'csv_rows'       => $csv_rows,
+				'products_by_sku' => $products_by_sku
+			)));
+		}
 
-			  	if ((float)$catpro['special']) {
-					$special = $this->currency->format($this->tax->calculate($catpro['special'], $catpro['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-				} else {
-					$special = false;
+		$this->load->model('tool/image');
+		$img_w = $this->config->get($this->config->get('config_theme') . '_image_product_width');
+		$img_h = $this->config->get($this->config->get('config_theme') . '_image_product_height');
+
+		$home_category = array();
+		foreach ($csv_rows as $line) {
+			$category_line = array('title' => $line[0], 'url' => $line[1], 'products' => array());
+
+			for ($col = 2; $col <= 7; $col++) {
+				if (empty($line[$col]) || !isset($products_by_sku[$line[$col]])) {
+					continue;
 				}
+				$catpro = $products_by_sku[$line[$col]];
+				$image  = $catpro['image']
+					? $this->model_tool_image->resize($catpro['image'], $img_w, $img_h)
+					: $this->model_tool_image->resize('placeholder.png', $img_w, $img_h);
 
-			  	$category_line['products'][]=array(
-			  			'name'=>$catpro['name'],
-			  			'image'=>$image,
-			  			'price'=>$price,
-			  			'special'=> $special,
-			  			'href'=> $this->url->link('product/product','product_id=' . $catpro['product_id'])
-			  	);
+				$price   = $this->currency->format($this->tax->calculate($catpro['price'], $catpro['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+				$special = (float)$catpro['special']
+					? $this->currency->format($this->tax->calculate($catpro['special'], $catpro['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency'])
+					: false;
 
+				$category_line['products'][] = array(
+					'name'    => $catpro['name'],
+					'image'   => $image,
+					'price'   => $price,
+					'special' => $special,
+					'href'    => $this->url->link('product/product', 'product_id=' . $catpro['product_id'])
+				);
 			}
 
-			$catpro=false;
-
-		  	//product 2
-		  	$catpro=$this->model_catalog_product->getProductBySku($line[4]);
-
-		  	if($catpro){
-
-			  	if ($catpro['image']) {
-					$image = $this->model_tool_image->resize($catpro['image'], $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
-				} else {
-					$image = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
-				}
-
-				$price = $this->currency->format($this->tax->calculate($catpro['price'], $catpro['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-
-			  	if ((float)$catpro['special']) {
-					$special = $this->currency->format($this->tax->calculate($catpro['special'], $catpro['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-				} else {
-					$special = false;
-				}
-
-			  	$category_line['products'][]=array(
-			  			'name'=>$catpro['name'],
-			  			'image'=>$image,
-			  			'price'=>$price,
-			  			'special'=> $special,
-			  			'href'=> $this->url->link('product/product','product_id=' . $catpro['product_id'])
-			  	);
-
-			}
-
-			$catpro=false;
-
-		  	//product 1
-		  	$catpro=$this->model_catalog_product->getProductBySku($line[5]);
-
-		  	if($catpro){
-
-			  	if ($catpro['image']) {
-					$image = $this->model_tool_image->resize($catpro['image'], $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
-				} else {
-					$image = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
-				}
-
-				$price = $this->currency->format($this->tax->calculate($catpro['price'], $catpro['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-
-			  	if ((float)$catpro['special']) {
-					$special = $this->currency->format($this->tax->calculate($catpro['special'], $catpro['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-				} else {
-					$special = false;
-				}
-
-			  	$category_line['products'][]=array(
-			  			'name'=>$catpro['name'],
-			  			'image'=>$image,
-			  			'price'=>$price,
-			  			'special'=> $special,
-			  			'href'=> $this->url->link('product/product','product_id=' . $catpro['product_id'])
-			  	);
-
-			}
-
-			$catpro=false;
-		  	//product 1
-
-		  	$catpro=$this->model_catalog_product->getProductBySku($line[6]);
-
-		  	if($catpro){
-
-			  	if ($catpro['image']) {
-					$image = $this->model_tool_image->resize($catpro['image'], $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
-				} else {
-					$image = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
-				}
-
-				$price = $this->currency->format($this->tax->calculate($catpro['price'], $catpro['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-
-			  	if ((float)$catpro['special']) {
-					$special = $this->currency->format($this->tax->calculate($catpro['special'], $catpro['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-				} else {
-					$special = false;
-				}
-
-			  	$category_line['products'][]=array(
-			  			'name'=>$catpro['name'],
-			  			'image'=>$image,
-			  			'price'=>$price,
-			  			'special'=> $special,
-			  			'href'=> $this->url->link('product/product','product_id=' . $catpro['product_id'])
-			  	);
-
-			}
-
-			$catpro=false;
-
-		  	//product 1
-		  	$catpro=$this->model_catalog_product->getProductBySku($line[7]);
-
-		  	if($catpro){
-
-			  	if ($catpro['image']) {
-					$image = $this->model_tool_image->resize($catpro['image'], $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
-				} else {
-					$image = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
-				}
-
-				$price = $this->currency->format($this->tax->calculate($catpro['price'], $catpro['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-
-			  	if ((float)$catpro['special']) {
-					$special = $this->currency->format($this->tax->calculate($catpro['special'], $catpro['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-				} else {
-					$special = false;
-				}
-
-			  	$category_line['products'][]=array(
-			  			'name'=>$catpro['name'],
-			  			'image'=>$image,
-			  			'price'=>$price,
-			  			'special'=> $special,
-			  			'href'=> $this->url->link('product/product','product_id=' . $catpro['product_id'])
-			  	);
-
-			}
-
-			$home_category[]=$category_line;
-
+			$home_category[] = $category_line;
 		}
 
 		$data['home_category'] = $home_category;
 
-		$allreviews = $this->model_catalog_product->getAllReviews($proIdsForReviews);
+		$allreviews = $this->model_catalog_product->getAllReviews();
 		$data['allreviews']['all'] = $allreviews;
 		$data['allreviews']['cnt'] = count($allreviews);
 		$ratingttl = 0;
 		foreach ($allreviews as $review) {
-			$ratingttl = $ratingttl + $review['rating'];
+			$ratingttl += $review['rating'];
 		}
-		if(count($allreviews) > 0){
-			$data['allreviews']['average'] = round(($ratingttl / count($allreviews)),2);	
-		} else {
-			$data['allreviews']['average'] = 0;
-		}
+		$data['allreviews']['average'] = count($allreviews) > 0 ? round($ratingttl / count($allreviews), 2) : 0;
 
 		//$data['home_cat'] = $this->load->view('common/home_cat', $data);
 
