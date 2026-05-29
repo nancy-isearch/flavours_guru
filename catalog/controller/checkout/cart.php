@@ -75,19 +75,18 @@ class ControllerCheckoutCart extends Controller {
 
 			$data['availableCoupons'] = $this->model_checkout_cart->getCoupons();
 
-			$data['products'] = array(); 
+			$data['products'] = array();
 
 			$products = $this->cart->getProducts();
-			//echo "<pre />"; print_r($products);
- 
-			foreach ($products as $product) {
-				$product_total = 0;
 
-				foreach ($products as $product_2) {
-					if ($product_2['product_id'] == $product['product_id']) {
-						$product_total += $product_2['quantity'];
-					}
-				}
+			// Fix #5: pre-aggregate quantities by product_id in one pass (was O(n²))
+			$product_totals = array();
+			foreach ($products as $p) {
+				$product_totals[$p['product_id']] = ($product_totals[$p['product_id']] ?? 0) + $p['quantity'];
+			}
+
+			foreach ($products as $product) {
+				$product_total = $product_totals[$product['product_id']];
 
 				if ($product['minimum'] > $product_total) {
 					$data['error_warning'] = sprintf($this->language->get('error_minimum'), $product['name'], $product['minimum']);
