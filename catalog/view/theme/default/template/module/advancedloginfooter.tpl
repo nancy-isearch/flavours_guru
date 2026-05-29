@@ -1,5 +1,5 @@
 <?php if ($hideadl == 0) { ?>
-<link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/fancybox/advancedloginfooter.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/fancybox/advancedloginfooter.min.css" media="screen" />
 
 
 

@@ -1,0 +1,1 @@
+@media screen and (-ms-high-contrast:active),(-ms-high-contrast:none){.calender input.date{background:0 0}}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.calender input.date{background:0 0}}input[type=text]::-ms-clear{display:none}select::-ms-value{background:0 0;color:#404040}

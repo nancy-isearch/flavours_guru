@@ -12,10 +12,10 @@
 </style>
 
 <script src="http://code.jquery.com/jquery-migrate-1.0.0.js"></script>
-<link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/fancybox/advancedloginpopup.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/fancybox/advancedloginpopup.min.css" media="screen" />
 <script type="text/javascript" src="catalog/view/javascript/jquery/fancybox/jquery.fancybox.pack.js"></script>
 
-<link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/fancybox/jquery.fancybox.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/fancybox/jquery.fancybox.min.css" media="screen" />
 
 
 <a id="tiploginpopup" href="#loginpopup_form"></a>

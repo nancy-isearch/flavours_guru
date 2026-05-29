@@ -64,7 +64,7 @@
             <button class="btn btn-default enter-subscribe" type="button">SUBSCRIBE</button>
           </span>
         </div>
-        <script type="text/javascript" src="media/newsletter/js/main.js"></script>
+        <script type="text/javascript" src="media/newsletter/js/main.min.js"></script>
         <script type="text/javascript">
           new AdvancedNewsletter({
             container_id: '#advanced-newsletter-box',

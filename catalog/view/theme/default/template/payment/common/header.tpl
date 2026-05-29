@@ -20,17 +20,17 @@
 <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
 <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
 <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="catalog/view/javascript/nprogress.js" type="text/javascript"></script>
-<script src="catalog/view/javascript/jquery.elevatezoom.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/nprogress.min.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/jquery.elevatezoom.min.js" type="text/javascript"></script>
 <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
-<link href="catalog/view/theme/default/stylesheet/stylesheet.css" rel="stylesheet">
-<link href="catalog/view/theme/default/stylesheet/ie11.css" rel="stylesheet">
-<link href="catalog/view/theme/default/stylesheet/nprogress.css" rel="stylesheet">
+<link href="catalog/view/theme/default/stylesheet/stylesheet.min.css" rel="stylesheet">
+<link href="catalog/view/theme/default/stylesheet/ie11.min.css" rel="stylesheet">
+<link href="catalog/view/theme/default/stylesheet/nprogress.min.css" rel="stylesheet">
 <?php foreach ($styles as $style) { ?>
 <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
 <?php } ?>
-<script src="catalog/view/javascript/common.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/common.min.js" type="text/javascript"></script>
 <?php foreach ($links as $link) { ?>
 <link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
 <?php } ?>
@@ -42,7 +42,7 @@
 <?php } ?>
 
 <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
-<script src="catalog/view/javascript/custom.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/custom.min.js" type="text/javascript"></script>
 </head>
 <body class="<?php echo $class; ?>">
 <nav id="top">

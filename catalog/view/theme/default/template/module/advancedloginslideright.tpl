@@ -1,6 +1,6 @@
 <?php if ($hideadl == 0) { ?>
 
-<link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/fancybox/advancedloginsideboxright.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/fancybox/advancedloginsideboxright.min.css" media="screen" />
 
 <div class="panelrightslidelogin">
 
