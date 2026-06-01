@@ -62,9 +62,9 @@ class ControllerToolUpload extends Controller {
 		if (!$json) {
 			$file = $filename . '.' . token(32);
 			$target1 = time()."_".$filename;
-			$target = DIR_IMAGE."personalizeUpload/" . $target1;
-			move_uploaded_file($this->request->files['file']['tmp_name'], $target);
-			copy($target, DIR_UPLOAD . $file);
+			// $target = DIR_IMAGE."personalizeUpload/" . $target1;
+			// move_uploaded_file($this->request->files['file']['tmp_name'], $target);
+			// copy($target, DIR_UPLOAD . $file);
 
 
 			// Hide the uploaded file name so people can not link to it directly.
