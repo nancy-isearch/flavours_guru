@@ -2648,7 +2648,7 @@ $dataaa = (array)$shipInfo;
 			$target1 = time()."_".$filename;
 			$target = DIR_IMAGE."personalizeUpload/" . $target1;
 			if(move_uploaded_file($this->request->files['cake_file']['tmp_name'][$i], $target)){
-				copy($target, DIR_UPLOAD . $file);
+				// copy($target, DIR_UPLOAD . $file);
 				$code = sha1(uniqid(mt_rand(), true));
 				$imagePro[$i]['name'] = $filename;
 				$imagePro[$i]['filename'] = $file;
