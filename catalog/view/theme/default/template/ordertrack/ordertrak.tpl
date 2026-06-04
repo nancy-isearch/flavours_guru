@@ -91,7 +91,7 @@
         type:'post',
         url : urls,
         data : 'datas=y&orderid='+orderid+'&email='+email,
-        beforeSend : function(){ $('.successmsg').html('<img class="" src="<?php echo $loder."image/loader.gif"; ?>" />'); },
+        beforeSend : function(){ $('.successmsg').html('<img loading="lazy" decoding="async" class="" src="<?php echo $loder."image/loader.gif"; ?>" />'); },
         success : function(rslt){         
           $('.error').text(''); 
          

@@ -132,18 +132,18 @@
             <div class="col-sm-12">
             <h2 class="text-white mt-0 mb-20">Our Clients</h2>
             <ul>
-            <li><img src="catalog/view/theme/default/image/fg-client1.jpg" alt="Clients" /></li>
-            <li><img src="catalog/view/theme/default/image/fg-client2.jpg" alt="Clients" /></li>
-            <li><img src="catalog/view/theme/default/image/fg-client3.jpg" alt="Clients" /></li>
-            <li><img src="catalog/view/theme/default/image/fg-client4.jpg" alt="Clients" /></li>
-            <li><img src="catalog/view/theme/default/image/fg-client5.jpg" alt="Clients" /></li>
-            <li><img src="catalog/view/theme/default/image/fg-client6.jpg" alt="Clients" /></li>
-            <li><img src="catalog/view/theme/default/image/fg-client7.jpg" alt="Clients" /></li>
-            <li><img src="catalog/view/theme/default/image/fg-client8.jpg" alt="Clients" /></li>
-            <li><img src="catalog/view/theme/default/image/fg-client9.jpg" alt="Clients" /></li>
-            <li><img src="catalog/view/theme/default/image/fg-client10.jpg" alt="Clients" /></li>
-            <li><img src="catalog/view/theme/default/image/fg-client11.jpg" alt="Clients" /></li>
-            <li><img src="catalog/view/theme/default/image/fg-client12.jpg" alt="Clients" /></li>          
+            <li><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/fg-client1.jpg" alt="Clients" /></li>
+            <li><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/fg-client2.jpg" alt="Clients" /></li>
+            <li><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/fg-client3.jpg" alt="Clients" /></li>
+            <li><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/fg-client4.jpg" alt="Clients" /></li>
+            <li><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/fg-client5.jpg" alt="Clients" /></li>
+            <li><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/fg-client6.jpg" alt="Clients" /></li>
+            <li><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/fg-client7.jpg" alt="Clients" /></li>
+            <li><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/fg-client8.jpg" alt="Clients" /></li>
+            <li><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/fg-client9.jpg" alt="Clients" /></li>
+            <li><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/fg-client10.jpg" alt="Clients" /></li>
+            <li><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/fg-client11.jpg" alt="Clients" /></li>
+            <li><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/fg-client12.jpg" alt="Clients" /></li>          
             </ul>
             </div>
           </div>
@@ -223,7 +223,7 @@
           <div class="slide">
             <a href="/kids/boys">
               <div class="best-seller-pd-col">
-                <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Cake-for-Boys.jpg" alt="Cake designed with blue icing and toy cars, ideal for celebrating a boy's special day.">
+                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Cake-for-Boys.jpg" alt="Cake designed with blue icing and toy cars, ideal for celebrating a boy's special day.">
                 <div class="text-center">
                   <h4 class="product-name-title mt-20 mb-20">Cake for Boys</h4>
                   <div class="home-secondary-btn">
@@ -236,7 +236,7 @@
           <div class="slide">
             <a href="/kids/girls">
               <div class="best-seller-pd-col">
-                <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Cake-for-Girls.jpg" alt=" A cake decorated with a girl holding balloons and a rainbow, perfect for a girl's celebration.">
+                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Cake-for-Girls.jpg" alt=" A cake decorated with a girl holding balloons and a rainbow, perfect for a girl's celebration.">
                 <div class="text-center">
                   <h4 class="product-name-title mt-20 mb-20">Cake for Girls</h4>
                   <div class="home-secondary-btn">
@@ -249,7 +249,7 @@
           <div class="slide">
             <a href="/birthday/1st-birthday">
               <div class="best-seller-pd-col">
-                <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/First-Birthday.jpg" alt=" A cake with a teddy bear on top and a number one on the side. Perfect for a first birthday celebration.">
+                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/First-Birthday.jpg" alt=" A cake with a teddy bear on top and a number one on the side. Perfect for a first birthday celebration.">
                 <div class="text-center">
                   <h4 class="product-name-title mt-20 mb-20">First Birthday</h4>
                   <div class="home-secondary-btn">
@@ -262,7 +262,7 @@
           <div class="slide">
             <a href="/birthday/half-birthday">
               <div class="best-seller-pd-col">
-                <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Half-Birthday.jpg" alt="Half Birthday cakes">
+                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Half-Birthday.jpg" alt="Half Birthday cakes">
                 <div class="text-center">
                   <h4 class="product-name-title mt-20 mb-20">Half Birthday</h4>
                   <div class="home-secondary-btn">

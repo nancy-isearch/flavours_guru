@@ -3,8 +3,8 @@
 	<div class="product-thumb">
 		<div class="image">
 			<a href="<?php echo $product['href']; ?>">
-				<img src="<?php echo $placeholder_img; ?>" data-src="<?php echo $product['thumb']; ?>" alt="<?php echo (isset($cit_status) && $cit_status && $product['image_alt'] != '') ? $product['image_alt'] : $product['name']; ?>" title="<?php echo (isset($cit_status) && $cit_status && $product['image_title'] != '') ? $product['image_title'] : $product['name']; ?>" class="img-responsive img-lazy" />
-				<noscript><img src="<?php echo $product['thumb']; ?>" alt="<?php echo (isset($cit_status) && $cit_status && $product['image_alt'] != '') ? $product['image_alt'] : $product['name']; ?>" title="<?php echo (isset($cit_status) && $cit_status && $product['image_title'] != '') ? $product['image_title'] : $product['name']; ?>" class="img-responsive" /></noscript>
+				<img loading="lazy" decoding="async"src="<?php echo $placeholder_img; ?>" data-src="<?php echo $product['thumb']; ?>" alt="<?php echo (isset($cit_status) && $cit_status && $product['image_alt'] != '') ? $product['image_alt'] : $product['name']; ?>" title="<?php echo (isset($cit_status) && $cit_status && $product['image_title'] != '') ? $product['image_title'] : $product['name']; ?>" class="img-responsive img-lazy" />
+				<noscript><img loading="lazy" decoding="async"src="<?php echo $product['thumb']; ?>" alt="<?php echo (isset($cit_status) && $cit_status && $product['image_alt'] != '') ? $product['image_alt'] : $product['name']; ?>" title="<?php echo (isset($cit_status) && $cit_status && $product['image_title'] != '') ? $product['image_title'] : $product['name']; ?>" class="img-responsive" /></noscript>
 			</a>
 		</div>
 		<div>

@@ -10,7 +10,7 @@
         <p style="text-align:center;">
           <span style="font-family:arial; font-size:12px; font-weight:bold;"><?php echo $text_secure_connection; ?></span>
         </p>
-        <img alt="" border="0" src="https://www.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+        <img loading="lazy" decoding="async"alt="" border="0" src="https://www.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1">
       </form>
       <script type="text/javascript"><!--
         document.forms["ppform"].submit();

@@ -478,7 +478,7 @@ body.product-category-65.offermsg .container.top_positionn{
       <!-- <h1><?php echo $heading_title; ?></h1>
       <p><?php echo $text_error; ?></p> -->
       <div class="text-center xs-pl-15 xs-pr-15">
-          <img src="catalog/view/theme/default/image/empaty-cart.svg" alt="" style="width: 150px;">
+          <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/empaty-cart.svg" alt="" style="width: 150px;">
           <h3 style="font-weight: 600">Your Shopping cart is currently empty</h3>
           <p style="margin-bottom: 20px;">Looks like you haven’t added anything to cart yet, let’s go and find some amazing cakes.</p>
           <p style="margin-bottom: 20px;">
@@ -506,7 +506,7 @@ body.product-category-65.offermsg .container.top_positionn{
         </div>
       </div>
       <?php /* <div class=" xs-pl-15 xs-pr-15">
-        <img style="border-radius: 10px;" src="catalog/view/theme/default/image/custom-cake.jpg" alt="" class="img-responsive img-lazy">
+        <img loading="lazy" decoding="async"style="border-radius: 10px;" src="catalog/view/theme/default/image/custom-cake.jpg" alt="" class="img-responsive img-lazy">
       </div> */ ?>
 
       <div class="">
@@ -518,7 +518,7 @@ body.product-category-65.offermsg .container.top_positionn{
                   <?php if($product['purchased'] > 5){ ?>
                     <div class="best-seller">Best Seller</div>
                   <?php } ?>
-                  <div class="image"><a href="<?php echo $product['href']; ?>" target="_blank"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive img-zoom" /></a></div>
+                  <div class="image"><a href="<?php echo $product['href']; ?>" target="_blank"><img loading="lazy" decoding="async"src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive img-zoom" /></a></div>
                   <div class="add_wish_list">
                     <button type="button" data-toggle="" title="<?php //echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');">
                       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">

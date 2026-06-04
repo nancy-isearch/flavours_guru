@@ -178,7 +178,7 @@
     
     <div class="row chooseLocation">
     	<div class="pull-left">
-        	<img src="catalog/view/theme/default/image/choose-location.png" alt="Choose Location" /> Check your location 
+        	<img loading="lazy" decoding="async"src="catalog/view/theme/default/image/choose-location.png" alt="Choose Location" /> Check your location 
             <div class="clSelect"><select>
             	<option selected="selected">Delhi</option>
             	<option>Mumbai</option>
@@ -187,7 +187,7 @@
             </select></div>
         </div>
         <div class="pull-right">
-        	<a href="#"><img src="catalog/view/theme/default/image/faceBook-icon.png" alt="Facebook" /></a>
+        	<a href="#"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/faceBook-icon.png" alt="Facebook" /></a>
         </div>
     </div>
     

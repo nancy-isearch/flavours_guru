@@ -48,7 +48,7 @@
       <div class="col-md-6 col-sm-6 col-xs-12">
         <div class="display-flex">
           <div class="m-r-15 hidden-xs">
-            <img style="width: 30px;margin-top: 14px;" src="catalog/view/theme/default/image/Home/new-images/email-icon.svg" alt="">
+            <img loading="lazy" decoding="async"style="width: 30px;margin-top: 14px;" src="catalog/view/theme/default/image/Home/new-images/email-icon.svg" alt="">
           </div>
           <div class="news_letter_title">
             <h3>Join Our Newsletter Now</h3>
@@ -81,10 +81,10 @@
   <div class="container">
     <div class="row">
       <div class="text-center pt-40 pb-40">
-        <img class="img-responsive center-block hidden-xs" src="catalog/view/theme/default/image/Home/new-images/payment-source.png" alt="">
+        <img loading="lazy" decoding="async" class="img-responsive center-block hidden-xs" src="catalog/view/theme/default/image/Home/new-images/payment-source.png" alt="">
         <div>
           <p class="text-white visible-xs">SECURE ORDERING & TRANSACTIONS</p>
-          <img class="img-responsive center-block visible-xs" src="catalog/view/theme/default/image/Home/new-images/payment-source-mob.webp" alt="">
+          <img loading="lazy" decoding="async" class="img-responsive center-block visible-xs" src="catalog/view/theme/default/image/Home/new-images/payment-source-mob.webp" alt="">
         </div>
       </div>
     </div>
@@ -186,7 +186,7 @@
     <div class="row">
       <div class="col-md-4 col-sm-4 col-xs-12  p-l-0 p-r-0 ft-btm-addrs-info">
         <div class="mb-15">
-          <img style="width: 130px;" class="img-responsive" src="catalog/view/theme/default/image/Home/FGLogoWhite.png" alt="">
+          <img loading="lazy" decoding="async"style="width: 130px;" class="img-responsive" src="catalog/view/theme/default/image/Home/FGLogoWhite.png" alt="">
         </div>
         <div>
           <p class="text-white" style="font-weight: 400;">Delhi | Gurgaon | Noida | Ghaziabad | Faridabad 
@@ -214,12 +214,12 @@ Greater Noida | Chandigarh | Lucknow | Varanasi | Hyderabad | Mohali | Panchkula
         </div>
         <div>
           <div class="socialIcon">
-           <a href="https://www.facebook.com/flavoursgurubakery" target="_blank"> <img src="catalog/view/theme/default/image/Home/new-images/facebook.png" alt="Facebook" /></a>
-           <a href="https://twitter.com/flavoursguru" target="_blank"><img src="catalog/view/theme/default/image/Home/new-images/twitter.png" alt="Twitter" /></a>
-           <a href="https://www.linkedin.com/company/flavoursguru/" target="_blank"><img src="catalog/view/theme/default/image/Home/new-images/linkdin.png" alt="Linkdin" /></a>
-           <a href="https://www.youtube.com/@flavoursguru6543" target="_blank"><img src="catalog/view/theme/default/image/Home/new-images/youtube.png" alt="youtube" /></a>
-           <a href="https://www.instagram.com/flavoursguru/" target="_blank"><img src="catalog/view/theme/default/image/Home/new-images/instagram.png" alt="Instagram" /></a>
-           <!-- <a href="https://www.pinterest.com/flavoursguru/" target="_blank"><img src="catalog/view/theme/default/image/new-images/pintrest-icon.png" alt="Instagram" /></a> -->
+           <a href="https://www.facebook.com/flavoursgurubakery" target="_blank"> <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/Home/new-images/facebook.png" alt="Facebook" /></a>
+           <a href="https://twitter.com/flavoursguru" target="_blank"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/Home/new-images/twitter.png" alt="Twitter" /></a>
+           <a href="https://www.linkedin.com/company/flavoursguru/" target="_blank"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/Home/new-images/linkdin.png" alt="Linkdin" /></a>
+           <a href="https://www.youtube.com/@flavoursguru6543" target="_blank"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/Home/new-images/youtube.png" alt="youtube" /></a>
+           <a href="https://www.instagram.com/flavoursguru/" target="_blank"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/Home/new-images/instagram.png" alt="Instagram" /></a>
+           <!-- <a href="https://www.pinterest.com/flavoursguru/" target="_blank"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/new-images/pintrest-icon.png" alt="Instagram" /></a> -->
           </div>
         </div>
       </div>
@@ -236,7 +236,7 @@ Greater Noida | Chandigarh | Lucknow | Varanasi | Hyderabad | Mohali | Panchkula
       <div class="col-md-6 col-sm-6 col-xs-12 p-l-0 p-r-0">
         <div class="display-flex india-logo-ft align-items-center">
           <div class="m-r-10">
-            <img src="catalog/view/theme/default/image/Home/new-images/india-flag.png" alt="">
+            <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/Home/new-images/india-flag.png" alt="">
           </div>
           <div>
             <p style="margin-bottom: 0;color: #ffffff;" class="hidden-xs">Built with Love <br>Made in India</p>
@@ -252,11 +252,11 @@ Greater Noida | Chandigarh | Lucknow | Varanasi | Hyderabad | Mohali | Panchkula
 <div class="login-popup" style="display: none;">
   <div class="login-popup-inner">
     <div class="login-close-popup">
-      <img style="width: 25px;" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/offer-close.svg" alt="">
+      <img loading="lazy" decoding="async"style="width: 25px;" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/offer-close.svg" alt="">
     </div>
     <div class="display-flex">
       <div class="login-left-img-col">
-        <img src="catalog/view/theme/default/image/login-popup-img.webp" alt="" class="img-responsive" loading="lazy" decoding="async">
+        <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/login-popup-img.webp" alt="" class="img-responsive" loading="lazy" decoding="async">
         <div class="img-overlay-col"></div> 
       </div>
       <div class="login-right-col">
@@ -285,10 +285,10 @@ Greater Noida | Chandigarh | Lucknow | Varanasi | Hyderabad | Mohali | Panchkula
                 </div>
                 <div class="display-flex align-items-center justify-content-center">
                   <a href="#" class="m-r-15">
-                    <img alt="">
+                    <img loading="lazy" decoding="async"alt="">
                   </a>
                   <a href="#">
-                    <img alt="">
+                    <img loading="lazy" decoding="async"alt="">
                   </a>
                 </div>
               </div>
@@ -304,7 +304,7 @@ Greater Noida | Chandigarh | Lucknow | Varanasi | Hyderabad | Mohali | Panchkula
               </a>
             </div>
             <div class="text-center mb-20"> 
-              <img style="width: 70px;" src="catalog/view/theme/default/image/password.svg" alt="" class="img-responsive center-block password-img">
+              <img loading="lazy" decoding="async"style="width: 70px;" src="catalog/view/theme/default/image/password.svg" alt="" class="img-responsive center-block password-img">
             </div>
             <div class="text-center">
               <div class="mb-20">
@@ -419,10 +419,10 @@ Greater Noida | Chandigarh | Lucknow | Varanasi | Hyderabad | Mohali | Panchkula
                 </div>
                 <div class="display-flex align-items-center justify-content-center">
                   <a href="#" class="m-r-15">
-                    <img src="catalog/view/theme/default/image/fb-login-img.svg" alt="">
+                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/fb-login-img.svg" alt="">
                   </a>
                   <a href="#">
-                    <img src="catalog/view/theme/default/image/g-login-img.svg" alt="">
+                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/g-login-img.svg" alt="">
                   </a>
                 </div>
               </div> */ ?>
@@ -435,7 +435,7 @@ Greater Noida | Chandigarh | Lucknow | Varanasi | Hyderabad | Mohali | Panchkula
 <div class="popup login-success-popup" style="display: none;">
   <div class="custom-popup text-center">
     <div class="mb-15">
-      <img src="catalog/view/theme/default/image/login-success.svg" alt="">
+      <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/login-success.svg" alt="">
     </div>
     <div class="mb-30">
       <h3>Login Successful!</h3>
@@ -881,7 +881,7 @@ if(isset($_GET['utm_campaign']) && $_GET['utm_campaign']!="")
 ?>
 
 <div class="loadingbox" style="display: none;">
-  <span><img class="visa_paypal" src="catalog/view/theme/default/image/loading.gif" alt="loader" /></span>
+  <span><img loading="lazy" decoding="async" class="visa_paypal" src="catalog/view/theme/default/image/loading.gif" alt="loader" /></span>
 </div>
 <script>
     var options = {

@@ -98,7 +98,7 @@
 <div class="container top_positionn">
   <div class="place-order-success">
     <div class="text-center mb-30">
-      <img src="catalog/view/theme/default/image/ord-success-icon.svg" alt="" class="mb-15">
+      <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/ord-success-icon.svg" alt="" class="mb-15">
       <h1 class="section-title"><?php echo $heading_title; ?></h1>
     </div>
     <div class="display-flex flex-wrap">
@@ -132,7 +132,7 @@
           </div>
           <div class="display-flex mb-15">
             <div class="rec-snd-left-img-col">
-              <img class="img-responsive" src="catalog/view/theme/default/image/sender-icon.svg" alt="">
+              <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/sender-icon.svg" alt="">
             </div>
             <div style="width: calc(100% - 40px);" class="p-l-15">
               <p class="font-size-14 font-weight-600 mb-5"><?php echo $Userdetails['payment_firstname'];?></p>
@@ -145,7 +145,7 @@
           </div>
           <div class="display-flex mb-0">
             <div class="rec-snd-left-img-col">
-              <img class="img-responsive" src="catalog/view/theme/default/image/recipient-icon.svg" alt="">
+              <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/recipient-icon.svg" alt="">
             </div>
             <div style="width: calc(100% - 40px);" class="p-l-15">
               <p class="font-size-14 font-weight-600 mb-5"><?php echo $Userdetails['shipping_firstname'].' '.$Userdetails['shipping_lastname'];?></p>
@@ -165,7 +165,7 @@
         <div class="btm-card-cart mb-15">
           <div class="mb-15 display-flex align-items-center">
             <div class="cart-img-thumb text-left">
-              <img src="<?php echo $order['image']; ?>" alt="<?php echo $order['name']; ?>" title="<?php echo $order['name']; ?>" class="img-thumbnail">
+              <img loading="lazy" decoding="async"src="<?php echo $order['image']; ?>" alt="<?php echo $order['name']; ?>" title="<?php echo $order['name']; ?>" class="img-thumbnail">
             </div>
             <div class="text-left prod-title-col">
               <p class="fw-600 font-size-18"><?php echo $order['name']; ?></p>
@@ -326,7 +326,7 @@
           <?php  foreach($orders as $order) { ?>
               <tr>
          
-              <td class="text-left"><img class="imgSize" width="50px"  src="<?php echo $order['image']; ?>" ></td> 
+              <td class="text-left"><img loading="lazy" decoding="async" class="imgSize" width="50px"  src="<?php echo $order['image']; ?>" ></td> 
               <td class="text-right"><?php echo $order['name']; ?></td>
               <td class="text-left"><?php echo $order['qty']; ?></td>
               <td class="text-left"><?php  $shipInfo = json_decode($order['shipping_info']); foreach ($shipInfo as $key => $value) {

@@ -584,7 +584,7 @@ body.product-category-65.offermsg .container.top_positionn{
                   <?php if($product['purchased'] > 5){ ?>
                     <div class="best-seller">Best Seller</div>
                   <?php } ?>
-                  <div class="image"><a href="<?php echo $product['href']; ?>" target="_blank"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive img-zoom" /></a></div>
+                  <div class="image"><a href="<?php echo $product['href']; ?>" target="_blank"><img loading="lazy" decoding="async"src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive img-zoom" /></a></div>
                   <div class="add_wish_list">
                     <button type="button" data-toggle="" title="<?php //echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');">
                       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
@@ -678,7 +678,7 @@ body.product-category-65.offermsg .container.top_positionn{
             </div>
           </div>
           <div class=" xs-pl-15 xs-pr-15">
-            <img style="border-radius: 10px;" src="catalog/view/theme/default/image/custom-cake.jpg" alt="" class="img-responsive">
+            <img loading="lazy" decoding="async"style="border-radius: 10px;" src="catalog/view/theme/default/image/custom-cake.jpg" alt="" class="img-responsive">
           </div>
           <div class="">
             <h3 class=" xs-pl-15 xs-pr-15">Best Seller</h3>
@@ -689,7 +689,7 @@ body.product-category-65.offermsg .container.top_positionn{
                   <?php if($product['purchased'] > 5){ ?>
                     <div class="best-seller">Best Seller</div>
                   <?php } ?>
-                  <div class="image"><a href="<?php echo $product['href']; ?>" target="_blank"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive img-zoom" /></a></div>
+                  <div class="image"><a href="<?php echo $product['href']; ?>" target="_blank"><img loading="lazy" decoding="async"src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive img-zoom" /></a></div>
                   <div class="add_wish_list">
                     <button type="button" data-toggle="" title="<?php //echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');">
                       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">

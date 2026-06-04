@@ -555,13 +555,13 @@
                <?php if ($thumb || $images) { ?>
                <ul class="thumbnails">
                   <?php if ($thumb) { ?>
-                  <li style="position: relative;"><a class="thumbnail thumb-zoom" href="<?= $popup; ?>" title="<?= $heading_title; ?>"><img src="<?= $thumb; ?>" data-zoom-image="<?= $popup ?>" title="<?= $heading_title; ?>" alt="<?= $heading_title; ?>" /></a>
+                  <li style="position: relative;"><a class="thumbnail thumb-zoom" href="<?= $popup; ?>" title="<?= $heading_title; ?>"><img loading="lazy" decoding="async"src="<?= $thumb; ?>" data-zoom-image="<?= $popup ?>" title="<?= $heading_title; ?>" alt="<?= $heading_title; ?>" /></a>
                     <div class="open_similar_products">View Similar</div>
                   </li>
                   <?php } ?>
                   <?php if ($images) { ?>
                   <?php foreach ($images as $image) { ?>
-                  <li class="image-additional"><a class="thumbnail" href="<?= $image['popup']; ?>" title="<?= $heading_title; ?>"> <img src="<?= $image['thumb']; ?>" title="<?= $heading_title; ?>" alt="<?= $heading_title; ?>" /></a></li>
+                  <li class="image-additional"><a class="thumbnail" href="<?= $image['popup']; ?>" title="<?= $heading_title; ?>"> <img loading="lazy" decoding="async"src="<?= $image['thumb']; ?>" title="<?= $heading_title; ?>" alt="<?= $heading_title; ?>" /></a></li>
                   <?php } ?>
                   <?php } ?>
                </ul>
@@ -683,7 +683,7 @@
                            <label for="cake_<?= $option_value['product_option_value_id']; ?>" class="weight_cake_btn home-secondary-btn" price="<?= $option_value['simpleprice']; ?>" opttext="<?= $option_value['name']; ?>">
                            <input style="display: none;" id="cake_<?= $option_value['product_option_value_id']; ?>" type="radio" name="option[<?= $option['product_option_id']; ?>]" class="weightradio" value="<?= $option_value['product_option_value_id']; ?>" />
                            <?php if ($option_value['image']) { ?>
-                           <img src="<?= $option_value['image']; ?>" alt="<?= $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" class="img-thumbnail" /> 
+                           <img loading="lazy" decoding="async"src="<?= $option_value['image']; ?>" alt="<?= $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" class="img-thumbnail" /> 
                            <?php } ?>                    
                            <?= $option_value['name']; ?>
                            
@@ -1262,7 +1262,7 @@
                         </ul>
                      </div>
                      <a class="backtocalendar backtocalendar-1">
-                      <img style="width: 25px;" src="/image/back_icon1.jpg" class="material-icons back-arrow" alt="" /><!-- <i class="material-icons back-arrow fa fa-arrow-left"></i> --></a>
+                      <img loading="lazy" decoding="async"style="width: 25px;" src="/image/back_icon1.jpg" class="material-icons back-arrow" alt="" /><!-- <i class="material-icons back-arrow fa fa-arrow-left"></i> --></a>
                   </div>
 
                   <div class="timing-section hideppnew shipping-section" id="timimg-section">
@@ -1279,11 +1279,11 @@
                      </div> 
                     </div>
                      <a class="backtocalendar backtocalendar-2">
-                       <img style="width: 25px;" src="/image/back_icon1.jpg" class="material-icons back-arrow" alt="" />
+                       <img loading="lazy" decoding="async"style="width: 25px;" src="/image/back_icon1.jpg" class="material-icons back-arrow" alt="" />
                     </a>
                   </div>
                   <div class="loader-col">
-                    <img style="width: 40px;" src="catalog/view/theme/default/image/loader.gif" class="material-icons back-arrow" alt="" />
+                    <img loading="lazy" decoding="async"style="width: 40px;" src="catalog/view/theme/default/image/loader.gif" class="material-icons back-arrow" alt="" />
                   </div>
                </div>
 
@@ -1307,7 +1307,7 @@
                       <div style="color: green; display: none;" class="availablepincode">Delivery is available for this pincode.</div>
                       <div class="pincodelist custom-scroll">
                       </div>
-                      <!-- <img class="location-icon" src="catalog/view/theme/default/image/location.svg" alt="Select City"> -->
+                      <!-- <img loading="lazy" decoding="async" class="location-icon" src="catalog/view/theme/default/image/location.svg" alt="Select City"> -->
                       <div class="location-icon">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                       <path fill-rule="evenodd" clip-rule="evenodd" d="M9.61667 18.6258L9.675 18.6592L9.69833 18.6725C9.79086 18.7225 9.89439 18.7487 9.99958 18.7487C10.1048 18.7487 10.2083 18.7225 10.3008 18.6725L10.3242 18.66L10.3833 18.6258C10.7093 18.4326 11.0273 18.2263 11.3367 18.0075C12.1376 17.4421 12.8859 16.8056 13.5725 16.1058C15.1925 14.4475 16.875 11.9558 16.875 8.75C16.875 6.92664 16.1507 5.17795 14.8614 3.88864C13.572 2.59933 11.8234 1.875 10 1.875C8.17664 1.875 6.42795 2.59933 5.13864 3.88864C3.84933 5.17795 3.125 6.92664 3.125 8.75C3.125 11.955 4.80833 14.4475 6.4275 16.1058C7.11387 16.8056 7.86189 17.442 8.6625 18.0075C8.97214 18.2263 9.29045 18.4326 9.61667 18.6258ZM10 11.25C10.663 11.25 11.2989 10.9866 11.7678 10.5178C12.2366 10.0489 12.5 9.41304 12.5 8.75C12.5 8.08696 12.2366 7.45107 11.7678 6.98223C11.2989 6.51339 10.663 6.25 10 6.25C9.33696 6.25 8.70107 6.51339 8.23223 6.98223C7.76339 7.45107 7.5 8.08696 7.5 8.75C7.5 9.41304 7.76339 10.0489 8.23223 10.5178C8.70107 10.9866 9.33696 11.25 10 11.25Z" fill="#F65F73"/>
@@ -1330,7 +1330,7 @@
                       <div class="col-sm-12 calender">
                       <input type="text" class="for-animation select_date_time date"  readonly='true' autocomplete="off" id="newdelDate" placeholder="Select Delivery Date and Time">
                         <div class="location-icon">
-                          <img src="catalog/view/theme/default/image/calender.svg" alt="">
+                          <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/calender.svg" alt="">
                         </div>
                       </div>
                   </div>
@@ -1338,7 +1338,7 @@
                     <!-- <div class="col-sm-12 label" style="opacity: 0;">Selected time and date</div> -->
                      <div class="show-date-time-col col-sm-12 display-flex align-items-center">
                       <div class="location-icon">
-                        <img src="catalog/view/theme/default/image/calender.svg" alt="">
+                        <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/calender.svg" alt="">
                       </div>
                       <!-- <span class="deliverymonth"></span> -->
                       <div>
@@ -1368,7 +1368,7 @@
                      <?php foreach($linkedProducts as $lp){ ?>
                      <li class="<?= $lp['product_id']==$product_id?'current':'' ?>">
                         <a href="<?= $lp['href'] ?>">
-                           <div class="image"><img src="<?= $lp['image']?>" /></div>
+                           <div class="image"><img loading="lazy" decoding="async"src="<?= $lp['image']?>" /></div>
                            <div class="title"><?= $lp['name']?></div>
                            <div class="price"><?= $lp['price']?></div>
                         </a>
@@ -1402,7 +1402,7 @@
                           <?php } ?>
                        </select>
                       <div class="location-icon" style="top: 15px;">
-                          <img src="catalog/view/theme/default/image/flavour.svg" alt="">
+                          <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/flavour.svg" alt="">
                         </div>
                   </div>
                      <span style="font-size: 12px;color: #22303D;"><i>Flavour will not affect outer look of cake*</i></span>
@@ -1418,7 +1418,7 @@
                            <label>
                            <input type="checkbox" name="option[<?= $option['product_option_id']; ?>][]" value="<?= $option_value['product_option_value_id']; ?>" />
                            <?php if ($option_value['image']) { ?>
-                           <img src="<?= $option_value['image']; ?>" alt="<?= $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" class="img-thumbnail" /> 
+                           <img loading="lazy" decoding="async"src="<?= $option_value['image']; ?>" alt="<?= $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" class="img-thumbnail" /> 
                            <?php } ?>
                            <?= $option_value['name']; ?>
                            <?php if ($option_value['price']) { ?>
@@ -1459,7 +1459,7 @@
                        <input type="text" maxlength="30" name="option[<?= $option['product_option_id']; ?>]" placeholder="Text/Name for Cake" id="input-option<?= $option['product_option_id']; ?>" value="<?= $option['value']; ?>" class="form-control text-form cake_msg_valid">
                        <!-- <span style="font-size: 12px;color: #22303D">*Text mentioned here will be written on cake at the suitable spot.</span> -->
                        <div class="location-icon" style="top: 15px;">
-                        <img src="catalog/view/theme/default/image/message.svg" alt="">
+                        <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/message.svg" alt="">
                        </div>
                        <span style="font-size: 12px;color: #22303D;"><i>Will be written at a suitable spot*</i></span>
                    </div>
@@ -1530,9 +1530,9 @@
                      <input type="hidden" name="shipping_price" value="" id="shipping_price" />
                      <input type="hidden" name="addon" value="0" id="addon" />
                      <div class="product-ad-to-btn">
-                        <button type="button" id="button-cart" data-loading-text="<?= $text_loading; ?>" class="btn btn-primary btn_cart btn-lg btn-block btn-orange home-primary-btn"> <img src="catalog/view/theme/default/image/cart-icon.svg" class="mr-5" alt=""><span>Add to cart</span></button>
+                        <button type="button" id="button-cart" data-loading-text="<?= $text_loading; ?>" class="btn btn-primary btn_cart btn-lg btn-block btn-orange home-primary-btn"> <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/cart-icon.svg" class="mr-5" alt=""><span>Add to cart</span></button>
                        <?php if($quantity > 0) { ?>
-                       <button style="background: #4BB543 !important;" type="button" id="button-cart-2" data-loading-text="<?= $text_loading; ?>" class="btn btn-primary btn_cart btn-lg btn-block btn-orange  home-primary-btn"><img src="catalog/view/theme/default/image/order-now.svg" class="mr-5" alt=""> <span>Order Now</span></button>
+                       <button style="background: #4BB543 !important;" type="button" id="button-cart-2" data-loading-text="<?= $text_loading; ?>" class="btn btn-primary btn_cart btn-lg btn-block btn-orange  home-primary-btn"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/order-now.svg" class="mr-5" alt=""> <span>Order Now</span></button>
                        <!-- <button type="button" data-toggle="tooltip" title="<?= $button_wishlist; ?>" onclick="wishlist.add('<?= $product_id; ?>');"><i class="fa fa-heart"></i></button> -->
                      </div>
                      <?php } else { ?>
@@ -1744,7 +1744,7 @@
            <div class="category_main_row_col item">
               <div class="product-layout product-grid">
                   <div class="product-thumb hover-zoom-col">
-                     <div class="image"><a href="<?= $product['href']; ?>"><img src="<?= $product['thumb']; ?>" alt="<?= $product['name']; ?>" title="<?= $product['name']; ?>" class="img-responsive img-zoom" /></a></div>
+                     <div class="image"><a href="<?= $product['href']; ?>"><img loading="lazy" decoding="async"src="<?= $product['thumb']; ?>" alt="<?= $product['name']; ?>" title="<?= $product['name']; ?>" class="img-responsive img-zoom" /></a></div>
                      <div href="<?php echo $product['href']; ?>" target="_blank" class="product_sort_detail">
                     <div class="caption" style="margin-bottom: 0;">
                       <p class="cat_product_title" style="margin: 8px 0 10px 0;height:auto;"><a href="<?php echo $product['href']; ?>" target="_blank"><?php echo $product['name']; ?></a>
@@ -1823,7 +1823,7 @@
          <div class="<?= $class; ?> category_main_row_col">
             <div class="product-layout product-grid">
                 <div class="product-thumb hover-zoom-col">
-                   <div class="image"><a href="<?= $product['href']; ?>"><img src="<?= $product['thumb']; ?>" alt="<?= $product['name']; ?>" title="<?= $product['name']; ?>" class="img-responsive img-zoom" /></a></div>
+                   <div class="image"><a href="<?= $product['href']; ?>"><img loading="lazy" decoding="async"src="<?= $product['thumb']; ?>" alt="<?= $product['name']; ?>" title="<?= $product['name']; ?>" class="img-responsive img-zoom" /></a></div>
                    <div href="<?php echo $product['href']; ?>" target="_blank" class="product_sort_detail">
                   <div class="caption" style="margin-bottom: 0;">
                     <p class="cat_product_title" style="margin: 8px 0 10px 0;height:auto;"><a href="<?php echo $product['href']; ?>" target="_blank"><?php echo $product['name']; ?></a>
@@ -2073,7 +2073,7 @@
                       for(var e = 0; e < attri.length; e++){
                         attributes += '<li>'+attri[e]['name']+': '+attri[e]['text']+'</li>';
                       }
-                       showData1 += '<li><div class="pro_image"><img class="img_v" src="'+value[i].image+'" alt="Call"></div><div class="popup-price"><h3>'+value[i].name+'</h3><p class="add_popup_info_price">'+value[i].price+'</p><div class="product-info hide"><h4>Product Details:</h4><ul class="attrivuet-list-add-on">'+attributes+'</ul></div><div class="price-add-item-col"><div class="pricebox home-primary-btn" price="'+value[i].price+'">'+value[i].price+'</div><div class="input-group btn-block display-flex add-item-col" style="justify-content: end;margin-bottom: 0px;margin-top: 0px;">';
+                       showData1 += '<li><div class="pro_image"><img loading="lazy" decoding="async" class="img_v" src="'+value[i].image+'" alt="Call"></div><div class="popup-price"><h3>'+value[i].name+'</h3><p class="add_popup_info_price">'+value[i].price+'</p><div class="product-info hide"><h4>Product Details:</h4><ul class="attrivuet-list-add-on">'+attributes+'</ul></div><div class="price-add-item-col"><div class="pricebox home-primary-btn" price="'+value[i].price+'">'+value[i].price+'</div><div class="input-group btn-block display-flex add-item-col" style="justify-content: end;margin-bottom: 0px;margin-top: 0px;">';
                        if(parseInt(value[i].product_id) == 9380){
                         showData1 += '<small>Enter Age</small><input type="number" name="candle" value="" size="1" class="form-control item-add-candle" placeholder="eg: 2" proId="'+value[i].product_id+'"><button type="button" style="display:none;" class="rmcartitem">-</button><input type="text" name="quantity" value="0" size="1" class="form-control item-add-input"  style="display:none;" proId="'+value[i].product_id+'"><button type="button"  style="display:none;" class="addcartitem">+</button>'; 
                        } else {
@@ -2520,7 +2520,7 @@
                      cache: false,
                      success: function(data){
                           var url =   $('#siturl').val();  
-                          $('#loaderEtra').html('<img src="'+url+'" class="" width="25" style="float:left">');
+                          $('#loaderEtra').html('<img loading="lazy" decoding="async"src="'+url+'" class="" width="25" style="float:left">');
                           j++;
                           if(totalAddon == j){
                             if(btnCartButton == 0){
@@ -2964,7 +2964,7 @@
                $('.text-success').show();
                $('.text-success').text(json['success']);
                $("#image-to-place").empty();
-               $("#image-to-place").append('<img src="'+json['imagePath']+'" height="82" width="100" />');
+               $("#image-to-place").append('<img loading="lazy" decoding="async"src="'+json['imagePath']+'" height="82" width="100" />');
                $(node).parent().find('input').val(json['code']);
              }
            },
@@ -3167,7 +3167,7 @@
 <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
 <noscript>
    <div style="display:inline;">
-      <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/989949273/?guid=ON&amp;script=0"/>
+      <img loading="lazy" decoding="async"height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/989949273/?guid=ON&amp;script=0"/>
    </div>
 </noscript>
 <!--popup end -->
@@ -3246,7 +3246,7 @@
               <?php /*<span class="loaderEtra" id="loaderEtra"></span>*/ ?>  <span>Add on something to make it extra special!</span>
               <span style="float:right; cursor: pointer;" class="clspopup"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
                 <path d="M16.4673 14.9982L20.9422 10.5338C21.1381 10.3378 21.2482 10.072 21.2482 9.79492C21.2482 9.51779 21.1381 9.25201 20.9422 9.05605C20.7462 8.86009 20.4804 8.75 20.2033 8.75C19.9262 8.75 19.6604 8.86009 19.4644 9.05605L15 13.5309L10.5356 9.05605C10.3396 8.86009 10.0738 8.75 9.7967 8.75C9.51957 8.75 9.25379 8.86009 9.05783 9.05605C8.86187 9.25201 8.75178 9.51779 8.75178 9.79492C8.75178 10.072 8.86187 10.3378 9.05783 10.5338L13.5327 14.9982L9.05783 19.4627C8.96029 19.5594 8.88287 19.6745 8.83003 19.8013C8.7772 19.9281 8.75 20.0641 8.75 20.2015C8.75 20.3389 8.7772 20.4749 8.83003 20.6017C8.88287 20.7286 8.96029 20.8437 9.05783 20.9404C9.15457 21.0379 9.26967 21.1154 9.39648 21.1682C9.5233 21.221 9.65932 21.2482 9.7967 21.2482C9.93407 21.2482 10.0701 21.221 10.1969 21.1682C10.3237 21.1154 10.4388 21.0379 10.5356 20.9404L15 16.4656L19.4644 20.9404C19.5612 21.0379 19.6763 21.1154 19.8031 21.1682C19.9299 21.221 20.0659 21.2482 20.2033 21.2482C20.3407 21.2482 20.4767 21.221 20.6035 21.1682C20.7303 21.1154 20.8454 21.0379 20.9422 20.9404C21.0397 20.8437 21.1171 20.7286 21.17 20.6017C21.2228 20.4749 21.25 20.3389 21.25 20.2015C21.25 20.0641 21.2228 19.9281 21.17 19.8013C21.1171 19.6745 21.0397 19.5594 20.9422 19.4627L16.4673 14.9982Z" fill="white"/>
-                </svg> <?php /*<img src="catalog/view/theme/default/image/Home/new-images/addon-back.svg" class="clspopup" style="float:right; cursor: pointer;">*/ ?>
+                </svg> <?php /*<img loading="lazy" decoding="async"src="catalog/view/theme/default/image/Home/new-images/addon-back.svg" class="clspopup" style="float:right; cursor: pointer;">*/ ?>
               </span>
             </h2>
             <div class="occassions">
@@ -3508,7 +3508,7 @@
           <div class="similar_product_row item">
             <a href="<?= $product['href']; ?>">
               <div class="similar_product_img_col">
-                <img src="<?= $product['thumb']; ?>" alt="<?= $product['name']; ?>" title="<?= $product['name']; ?>" class="img-responsive" />
+                <img loading="lazy" decoding="async"src="<?= $product['thumb']; ?>" alt="<?= $product['name']; ?>" title="<?= $product['name']; ?>" class="img-responsive" />
                 <?php if ($product['rating']) { ?>            
                 <div class="rating-count" style="display: none;">
                   <?php for ($j = 1; $j <= 5; $j++) { ?>
@@ -3548,10 +3548,10 @@
         <?php } ?>
         <div class="item similar_product_row position-relative ">
         <div class="similar_product_img_col">
-          <img src="catalog/view/theme/default/image/Home/white-img.jpg" alt="" class="img-responsive">
+          <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/Home/white-img.jpg" alt="" class="img-responsive">
         </div>
         <div class="slide-view-all-testimonial">
-                <a href="/<?php echo $parent_cat_url['keyword'] ?>" tabindex="0">View All  &nbsp; <img class="view-arrow" src="catalog/view/theme/default/image/Home/arrow-right-black.png" alt=""></a>
+                <a href="/<?php echo $parent_cat_url['keyword'] ?>" tabindex="0">View All  &nbsp; <img loading="lazy" decoding="async" class="view-arrow" src="catalog/view/theme/default/image/Home/arrow-right-black.png" alt=""></a>
             </div>
         <div class="similar_product_name_col similar_text_height"></div>
         </div>

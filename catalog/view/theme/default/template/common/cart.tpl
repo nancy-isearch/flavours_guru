@@ -11,7 +11,7 @@
 <div id="cart" class="btn-group btn-block">
   <a href="/cart">
     <?php /* <button type="button" data-toggle="dropdown" data-loading-text="<?php echo $text_loading; ?>" */?>
-  <button type="button" class="dropdown-toggle display-flex align-items-center header-action-btn position-relative"><img src="catalog/view/theme/default/image/Home/new-images/cart.svg" class="cart-img black-cart-icon mr-5" alt="shopping cart black" /> 
+  <button type="button" class="dropdown-toggle display-flex align-items-center header-action-btn position-relative"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/Home/new-images/cart.svg" class="cart-img black-cart-icon mr-5" alt="shopping cart black" /> 
     <span class="hidden-xs">My Cart</span>
     <span id="cart-total" class="icon-with-text cart-count"><?php echo $text_items; ?></span>
     </button></a>
@@ -22,7 +22,7 @@
         <?php foreach ($products as $product) { ?>
         <tr>
           <td class="text-center"><?php if ($product['thumb']) { ?>
-            <a <?php /* ?> href="<?php echo $product['href']; ?>" <?php */ ?>><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-thumbnail" loading="lazy" /></a>
+            <a <?php /* ?> href="<?php echo $product['href']; ?>" <?php */ ?>><img loading="lazy" decoding="async"src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-thumbnail" loading="lazy" /></a>
             <?php } ?></td>
           <td class="text-left"><a <?php /* ?> href="<?php echo $product['href']; ?>" <?php */ ?>><?php echo $product['name']; ?></a>
             <?php if ($product['option']) { ?>

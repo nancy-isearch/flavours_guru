@@ -3,23 +3,23 @@
   <?php foreach ($banners as $banner) { ?>
   <div class="item">
     <?php if ($banner['link']) { ?>
-    <a href="<?php echo $banner['link']; ?>"><img src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" class="img-responsive" /></a>
+    <a href="<?php echo $banner['link']; ?>"><img loading="lazy" decoding="async"src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" class="img-responsive" /></a>
     <?php } else { ?>
-    <img src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" class="img-responsive" />
+    <img loading="lazy" decoding="async"src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" class="img-responsive" />
     <?php } ?>
   </div>
   <?php } ?>
 </div></div>
 
 <div class="col-sm-3" id="homeSideBanner">
-	<!-- <div class="col-sm-12"><img src="catalog/view/theme/default/image/sidebanner1.jpg" alt="banner" /></div>
-	<div class="col-sm-12"><img src="catalog/view/theme/default/image/sidebanner2.jpg" alt="banner" /></div>
-	<div class="col-sm-12"><img src="catalog/view/theme/default/image/sidebanner3.jpg" alt="banner" /></div> -->
+	<!-- <div class="col-sm-12"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/sidebanner1.jpg" alt="banner" /></div>
+	<div class="col-sm-12"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/sidebanner2.jpg" alt="banner" /></div>
+	<div class="col-sm-12"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/sidebanner3.jpg" alt="banner" /></div> -->
 	<?php foreach ($sidebanners as $banner) { ?>
 		<?php if ($banner['link']) { ?>
-			<div class="col-sm-12"><a href="<?php echo $banner['link'] ?>"><img src="<?php echo $banner['image'] ?>" alt="banner" /></a></div>
+			<div class="col-sm-12"><a href="<?php echo $banner['link'] ?>"><img loading="lazy" decoding="async"src="<?php echo $banner['image'] ?>" alt="banner" /></a></div>
 		<?php } else { ?>
-			<div class="col-sm-12"><img src="<?php echo $banner['image'] ?>" alt="banner" /></div>
+			<div class="col-sm-12"><img loading="lazy" decoding="async"src="<?php echo $banner['image'] ?>" alt="banner" /></div>
 		<?php } ?>
 	<?php } ?>
 	

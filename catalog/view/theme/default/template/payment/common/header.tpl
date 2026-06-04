@@ -71,7 +71,7 @@
         </li>
       <?php   } ?>
         <li><a href="#"><span class="webRupee"></span> <?php echo $currency; ?> </a></li>
-      	<!--<li>Shipping to: <img src="catalog/view/theme/default/image/india-flag.jpg" alt="India" /></li> -->
+      	<!--<li>Shipping to: <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/india-flag.jpg" alt="India" /></li> -->
         
       
         <?php /* ?>
@@ -91,7 +91,7 @@
       <div class="col-sm-4 logobox">
         <div id="logo">
           <?php if ($logo) { ?>
-          <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" /></a>
+          <a href="<?php echo $home; ?>"><img loading="lazy" decoding="async"src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" /></a>
           <?php } else { ?>
           <h1><a href="<?php echo $home; ?>"><?php echo $name; ?></a></h1>
           <?php } ?>

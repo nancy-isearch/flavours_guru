@@ -16,7 +16,7 @@
  				type : 'POST',
  				url :  '<?php echo $actionSearch; ?>/searchProduct',
  				data :  'searchProduct='+search, 
- 				beforeSend : function(){$("#Hajaxtargetresult").html('<img src="image/loader.gif" class="" id="" />');},
+ 				beforeSend : function(){$("#Hajaxtargetresult").html('<img loading="lazy" decoding="async"src="image/loader.gif" class="" id="" />');},
  				success : function (rslt){ console.log(rslt);
 					var obj = jQuery.parseJSON(rslt);  
 		              var suggestions = '';

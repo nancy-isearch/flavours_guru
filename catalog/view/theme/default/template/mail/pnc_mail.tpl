@@ -12,7 +12,7 @@
 				<table style="width:100%;max-width:600px;height:auto;padding-top: 10px;padding-bottom: 10px">
 					<tr>
 						<td>
-							<a style="display: inline-block;text-align: center;font-size:0;width: 100%; " href="https://www.flavoursguru.com/"><img alt="" src="https://www.flavoursguru.com/catalog/view/theme/default/image/Home/FGLogoBlack.png" style="width: 200px;" title="" /> </a>	
+							<a style="display: inline-block;text-align: center;font-size:0;width: 100%; " href="https://www.flavoursguru.com/"><img loading="lazy" decoding="async"alt="" src="https://www.flavoursguru.com/catalog/view/theme/default/image/Home/FGLogoBlack.png" style="width: 200px;" title="" /> </a>	
 						</td>
 					</tr>
 				</table>
@@ -62,7 +62,7 @@
 									<table align="left" border="0" cellpadding="0" cellspacing="0" style="width:35%;padding-right: 15px;">
 										<tbody>
 											<tr>
-												<td><a href="#"><img alt="" src="https://www.flavoursguru.com/image/<?php echo $pro['image']; ?>" style="max-width:100%; height:auto;" title="" /></a></td>
+												<td><a href="#"><img loading="lazy" decoding="async"alt="" src="https://www.flavoursguru.com/image/<?php echo $pro['image']; ?>" style="max-width:100%; height:auto;" title="" /></a></td>
 											</tr>
 										</tbody>
 									</table>
@@ -225,7 +225,7 @@
 						<td style="text-align: center;">
 							<h4 style="font-size: 24px; font-weight: 500;color: #7a7a7a;margin-top: 0;">What Our Customer Say</h4>
 							<p style="margin-top: 0;">
-								<img src="https://www.flavoursguru.com/catalog/view/theme/default/image/emailer/google-rating-img.jpg" alt="">
+								<img loading="lazy" decoding="async"src="https://www.flavoursguru.com/catalog/view/theme/default/image/emailer/google-rating-img.jpg" alt="">
 							</p>
 						</td>
 					</tr>
@@ -249,14 +249,14 @@
 					<tr>
 						<td style="border-right: 2px solid #e2e2e2;width: 50%;">
 							<a href="tel:+918130961414" style="color: #000000;text-decoration: none;display: flex;align-items: center;">
-								<img style="width: 35px;margin-right: 10px;" src="https://www.flavoursguru.com/catalog/view/theme/default/image/emailer/phone-img.png" alt=""> 
+								<img loading="lazy" decoding="async"style="width: 35px;margin-right: 10px;" src="https://www.flavoursguru.com/catalog/view/theme/default/image/emailer/phone-img.png" alt=""> 
 								<span style="font-size: 14px;">+91 8130961414</span>
 							</a>
 						</td>
 						<td style="width: 50%;padding-left: 15px;">
 							<a href="https://api.whatsapp.com/send?phone=+918130961414" style="color: #000000;text-decoration: none;display: inline-block;padding: 7px 0 7px 10px;border-radius: 5px;border: 1px solid #e2e2e2;font-size: 14px;">
 								<span style="margin-right: 10px;width: calc(100% - 45px);">Hello! Tap here if you need any help</span>
-								<img style="width: 35px;" src="https://www.flavoursguru.com/catalog/view/theme/default/image/emailer/whatsapp-img.png" alt="">
+								<img loading="lazy" decoding="async"style="width: 35px;" src="https://www.flavoursguru.com/catalog/view/theme/default/image/emailer/whatsapp-img.png" alt="">
 							</a>
 						</td>
 					</tr>

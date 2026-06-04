@@ -5,7 +5,7 @@
 <title> <?php echo $title; ?> </title>
 </head>
 <body style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #000000;">
-<div style="width: 680px;"><a href="  $store_url; " title="  $store_name; "><img src="  $logo; " alt="  $store_name; " style="margin-bottom: 20px; border: none;" /></a>
+<div style="width: 680px;"><a href="  $store_url; " title="  $store_name; "><img loading="lazy" decoding="async"src="  $logo; " alt="  $store_name; " style="margin-bottom: 20px; border: none;" /></a>
   <p style="margin-top: 0px; margin-bottom: 20px;"> <?php echo $text_greeting; ?> </p>
    <?php if ($customer_id) { ?>
   <p style="margin-top: 0px; margin-bottom: 20px;"> <?php echo $text_link; ?></p>
@@ -18,7 +18,7 @@
   <table style="border-collapse: collapse; width: 100%; border-top: 1px solid #DDDDDD; border-left: 1px solid #DDDDDD; margin-bottom: 20px;">
     <thead>
      <tr>
-     <td><img class="img_v" src="image/catalog/images/logo.png" alt="logo" /> </td>
+     <td><img loading="lazy" decoding="async" class="img_v" src="image/catalog/images/logo.png" alt="logo" /> </td>
      </tr>
       <tr>
         <td style="font-size: 12px; border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; background-color: #EFEFEF; font-weight: bold; text-align: left; padding: 7px; color: #222222;" colspan="2"><?php echo $text_order_detail; ?></td>
@@ -132,7 +132,7 @@
                                   <td width="100%" align="center"><table width="100%">
                                       <tbody><tr>
                                         <td align="right"><a href="tel:+91 8130961414" style="font-size:18px; font-weight:400; line-height:30px; color:#565656; font-family:Georgia, 'Times New Roman', Times, serif; text-decoration:none;">
-<img src="image/catalog/images/need-help.png" alt="" style="width:100%; max-width:150px;"></a></td>
+<img loading="lazy" decoding="async"src="image/catalog/images/need-help.png" alt="" style="width:100%; max-width:150px;"></a></td>
                                         <td align="left" valign="top"><a href="tel:+91 8130961414" style="font-size:16px; font-weight:400; line-height:30px; color:#565656; font-family:Georgia, 'Times New Roman', Times, serif; text-decoration:none;">+91 8130961414</a></td>
                                       </tr>
                                     </tbody></table></td>

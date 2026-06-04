@@ -49,7 +49,7 @@
     <div id="top-links" class="nav pull-right">
     <?php echo $currency; ?>
       <ul class="list-inline">
-      	<li>Shipping to: <img src="catalog/view/theme/default/image/india-flag.jpg" alt="India" /></li>
+      	<li>Shipping to: <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/india-flag.jpg" alt="India" /></li>
         <li><a href="<?php echo $contact; ?>">Contact Us</a></li>
         <li><a href="#">Order Tracking</a></li>
         <li><a href="#">FAQs</a></li>
@@ -85,7 +85,7 @@
       <div class="col-sm-4">
         <div id="logo">
           <?php if ($logo) { ?>
-          <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" /></a>
+          <a href="<?php echo $home; ?>"><img loading="lazy" decoding="async"src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" /></a>
           <?php } else { ?>
           <h1><a href="<?php echo $home; ?>"><?php echo $name; ?></a></h1>
           <?php } ?>

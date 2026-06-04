@@ -137,7 +137,7 @@
             <a href="mailto:cs@flavoursguru.com" style="color: rgba(255,255,255,0.5);">cs@flavoursguru.com</a>
           </div>
           <div class="cont_ordser_email_call_colum">
-            <img style="width: 25px;" src="catalog/view/theme/default/image/track_your_orders_white.png" alt="track order" />
+            <img loading="lazy" decoding="async"style="width: 25px;" src="catalog/view/theme/default/image/track_your_orders_white.png" alt="track order" />
             <p>
               <a style="color: rgba(255,255,255,0.5);text-decoration: underline;" href="<?php echo $link; ?>" data-reveal-id="myModal">TRACK ORDER</a>
             </p>

@@ -11,38 +11,38 @@
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?><?php echo $content_bottom; ?>
     
     <div class="col-sm-12 giftBlocks">
-    	<div class="col-sm-2"><img src="catalog/view/theme/default/image/gift-icon.png" alt="Under - Rs 499" /> <span>Under - Rs499</span></div>
-    	<div class="col-sm-2"><img src="catalog/view/theme/default/image/gift-hamper.png" alt="gift-hamper" /><span>Gift Hamper</span></div>
-    	<div class="col-sm-2"><img src="catalog/view/theme/default/image/gift-for-her.png" alt="gift-for-her" /><span>Gift for her</span></div>
-    	<div class="col-sm-2"><img src="catalog/view/theme/default/image/gift-for-him.png" alt="gift-for-him" /><span>Gift for him</span></div>
-    	<div class="col-sm-2"><img src="catalog/view/theme/default/image/sameday-delivery.png" alt="sameday-delivery" /><span>Same day<br />Delivery</span></div>
-    	<div class="col-sm-2"><img src="catalog/view/theme/default/image/world-wide-delivery.png" alt="world-wide-delivery" /><span>Worldwide<br />Delivery</span></div>                                        
+    	<div class="col-sm-2"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/gift-icon.png" alt="Under - Rs 499" /> <span>Under - Rs499</span></div>
+    	<div class="col-sm-2"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/gift-hamper.png" alt="gift-hamper" /><span>Gift Hamper</span></div>
+    	<div class="col-sm-2"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/gift-for-her.png" alt="gift-for-her" /><span>Gift for her</span></div>
+    	<div class="col-sm-2"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/gift-for-him.png" alt="gift-for-him" /><span>Gift for him</span></div>
+    	<div class="col-sm-2"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/sameday-delivery.png" alt="sameday-delivery" /><span>Same day<br />Delivery</span></div>
+    	<div class="col-sm-2"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/world-wide-delivery.png" alt="world-wide-delivery" /><span>Worldwide<br />Delivery</span></div>                                        
     </div>
     
     <div class="col-sm-12 homeCategoryBlocks">
     	<h2><span>Best Sellers</span> <a href="#">View All</a></h2>
         
         <div class="col-sm-3">
-        	<img src="catalog/view/theme/default/image/category-img1.jpg" alt="category images" />
+        	<img loading="lazy" decoding="async"src="catalog/view/theme/default/image/category-img1.jpg" alt="category images" />
             <div class="productName">Archipelago Joy Tin Candle</div>
             <div class="price">78.96</div>
             <a href="#" class="buynow">Buy Now</a>
         </div>
         <div class="col-sm-3">
-        	<img src="catalog/view/theme/default/image/category-img2.jpg" alt="category images" />
+        	<img loading="lazy" decoding="async"src="catalog/view/theme/default/image/category-img2.jpg" alt="category images" />
             <div class="productName">Archipelago Joy Tin Candle</div>
             <div class="price">78.96</div>
             <a href="#" class="buynow">Buy Now</a>
         </div>
 
 		<div class="col-sm-3">
-        	<img src="catalog/view/theme/default/image/category-img3.jpg" alt="category images" />
+        	<img loading="lazy" decoding="async"src="catalog/view/theme/default/image/category-img3.jpg" alt="category images" />
             <div class="productName">Archipelago Joy Tin Candle</div>
             <div class="price">78.96</div>
             <a href="#" class="buynow">Buy Now</a>
         </div>
 		<div class="col-sm-3">
-        	<img src="catalog/view/theme/default/image/category-img4.jpg" alt="category images" />
+        	<img loading="lazy" decoding="async"src="catalog/view/theme/default/image/category-img4.jpg" alt="category images" />
             <div class="productName">Archipelago Joy Tin Candle</div>
             <div class="price">78.96</div>
             <a href="#" class="buynow">Buy Now</a>
@@ -56,26 +56,26 @@
     	<h2><span>Birthday</span> <a href="#">View All</a></h2>
         
         <div class="col-sm-3">
-        	<img src="catalog/view/theme/default/image/category-img1.jpg" alt="category images" />
+        	<img loading="lazy" decoding="async"src="catalog/view/theme/default/image/category-img1.jpg" alt="category images" />
             <div class="productName">Archipelago Joy Tin Candle</div>
             <div class="price">78.96</div>
             <a href="#" class="buynow">Buy Now</a>
         </div>
         <div class="col-sm-3">
-        	<img src="catalog/view/theme/default/image/category-img2.jpg" alt="category images" />
+        	<img loading="lazy" decoding="async"src="catalog/view/theme/default/image/category-img2.jpg" alt="category images" />
             <div class="productName">Archipelago Joy Tin Candle</div>
             <div class="price">78.96</div>
             <a href="#" class="buynow">Buy Now</a>
         </div>
 
 		<div class="col-sm-3">
-        	<img src="catalog/view/theme/default/image/category-img3.jpg" alt="category images" />
+        	<img loading="lazy" decoding="async"src="catalog/view/theme/default/image/category-img3.jpg" alt="category images" />
             <div class="productName">Archipelago Joy Tin Candle</div>
             <div class="price">78.96</div>
             <a href="#" class="buynow">Buy Now</a>
         </div>
 		<div class="col-sm-3">
-        	<img src="catalog/view/theme/default/image/category-img4.jpg" alt="category images" />
+        	<img loading="lazy" decoding="async"src="catalog/view/theme/default/image/category-img4.jpg" alt="category images" />
             <div class="productName">Archipelago Joy Tin Candle</div>
             <div class="price">78.96</div>
             <a href="#" class="buynow">Buy Now</a>
@@ -89,26 +89,26 @@
     	<h2><span>Best Selling Cakes</span> <a href="#">View All</a></h2>
         
         <div class="col-sm-3">
-        	<img src="catalog/view/theme/default/image/category-img1.jpg" alt="category images" />
+        	<img loading="lazy" decoding="async"src="catalog/view/theme/default/image/category-img1.jpg" alt="category images" />
             <div class="productName">Archipelago Joy Tin Candle</div>
             <div class="price">78.96</div>
             <a href="#" class="buynow">Buy Now</a>
         </div>
         <div class="col-sm-3">
-        	<img src="catalog/view/theme/default/image/category-img2.jpg" alt="category images" />
+        	<img loading="lazy" decoding="async"src="catalog/view/theme/default/image/category-img2.jpg" alt="category images" />
             <div class="productName">Archipelago Joy Tin Candle</div>
             <div class="price">78.96</div>
             <a href="#" class="buynow">Buy Now</a>
         </div>
 
 		<div class="col-sm-3">
-        	<img src="catalog/view/theme/default/image/category-img3.jpg" alt="category images" />
+        	<img loading="lazy" decoding="async"src="catalog/view/theme/default/image/category-img3.jpg" alt="category images" />
             <div class="productName">Archipelago Joy Tin Candle</div>
             <div class="price">78.96</div>
             <a href="#" class="buynow">Buy Now</a>
         </div>
 		<div class="col-sm-3">
-        	<img src="catalog/view/theme/default/image/category-img4.jpg" alt="category images" />
+        	<img loading="lazy" decoding="async"src="catalog/view/theme/default/image/category-img4.jpg" alt="category images" />
             <div class="productName">Archipelago Joy Tin Candle</div>
             <div class="price">78.96</div>
             <a href="#" class="buynow">Buy Now</a>
@@ -122,26 +122,26 @@
     	<h2><span>Flower Combos</span> <a href="#">View All</a></h2>
         
         <div class="col-sm-3">
-        	<img src="catalog/view/theme/default/image/category-img1.jpg" alt="category images" />
+        	<img loading="lazy" decoding="async"src="catalog/view/theme/default/image/category-img1.jpg" alt="category images" />
             <div class="productName">Archipelago Joy Tin Candle</div>
             <div class="price">78.96</div>
             <a href="#" class="buynow">Buy Now</a>
         </div>
         <div class="col-sm-3">
-        	<img src="catalog/view/theme/default/image/category-img2.jpg" alt="category images" />
+        	<img loading="lazy" decoding="async"src="catalog/view/theme/default/image/category-img2.jpg" alt="category images" />
             <div class="productName">Archipelago Joy Tin Candle</div>
             <div class="price">78.96</div>
             <a href="#" class="buynow">Buy Now</a>
         </div>
 
 		<div class="col-sm-3">
-        	<img src="catalog/view/theme/default/image/category-img3.jpg" alt="category images" />
+        	<img loading="lazy" decoding="async"src="catalog/view/theme/default/image/category-img3.jpg" alt="category images" />
             <div class="productName">Archipelago Joy Tin Candle</div>
             <div class="price">78.96</div>
             <a href="#" class="buynow">Buy Now</a>
         </div>
 		<div class="col-sm-3">
-        	<img src="catalog/view/theme/default/image/category-img4.jpg" alt="category images" />
+        	<img loading="lazy" decoding="async"src="catalog/view/theme/default/image/category-img4.jpg" alt="category images" />
             <div class="productName">Archipelago Joy Tin Candle</div>
             <div class="price">78.96</div>
             <a href="#" class="buynow">Buy Now</a>
@@ -155,26 +155,26 @@
     	<h2><span>Personalised Gifts</span> <a href="#">View All</a></h2>
         
         <div class="col-sm-3">
-        	<img src="catalog/view/theme/default/image/category-img1.jpg" alt="category images" />
+        	<img loading="lazy" decoding="async"src="catalog/view/theme/default/image/category-img1.jpg" alt="category images" />
             <div class="productName">Archipelago Joy Tin Candle</div>
             <div class="price">78.96</div>
             <a href="#" class="buynow">Buy Now</a>
         </div>
         <div class="col-sm-3">
-        	<img src="catalog/view/theme/default/image/category-img2.jpg" alt="category images" />
+        	<img loading="lazy" decoding="async"src="catalog/view/theme/default/image/category-img2.jpg" alt="category images" />
             <div class="productName">Archipelago Joy Tin Candle</div>
             <div class="price">78.96</div>
             <a href="#" class="buynow">Buy Now</a>
         </div>
 
 		<div class="col-sm-3">
-        	<img src="catalog/view/theme/default/image/category-img3.jpg" alt="category images" />
+        	<img loading="lazy" decoding="async"src="catalog/view/theme/default/image/category-img3.jpg" alt="category images" />
             <div class="productName">Archipelago Joy Tin Candle</div>
             <div class="price">78.96</div>
             <a href="#" class="buynow">Buy Now</a>
         </div>
 		<div class="col-sm-3">
-        	<img src="catalog/view/theme/default/image/category-img4.jpg" alt="category images" />
+        	<img loading="lazy" decoding="async"src="catalog/view/theme/default/image/category-img4.jpg" alt="category images" />
             <div class="productName">Archipelago Joy Tin Candle</div>
             <div class="price">78.96</div>
             <a href="#" class="buynow">Buy Now</a>
@@ -186,25 +186,25 @@
     
     <div class="col-sm-12 mainInfo">
     <div class="col-sm-3">
-        <img src="catalog/view/theme/default/image/cities-covered.png" alt="More Than 250+ Cities Covered" />
+        <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/cities-covered.png" alt="More Than 250+ Cities Covered" />
         <span>
             More Than<br /> <strong>250+</strong><br /> Cities Covered
         </span>
     </div>
     <div class="col-sm-3">
-        <img src="catalog/view/theme/default/image/choose-products.png" alt="Choose From 50,000+ Products" />
+        <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/choose-products.png" alt="Choose From 50,000+ Products" />
         <span>
             Choose From<br /> <strong>50,000+</strong><br /> Products
         </span>
     </div>
     <div class="col-sm-3">
-                <img src="catalog/view/theme/default/image/delivery-countries.png" alt="Delivery in 100+ Countries" />
+                <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/delivery-countries.png" alt="Delivery in 100+ Countries" />
                 <span>
                     Delivery in<br /> <strong>100+</strong><br /> Countries
                 </span>
             </div>
     <div class="col-sm-3">
-                <img src="catalog/view/theme/default/image/happy-customers.png" alt="More Than 2,00000+ Happy Customers" />
+                <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/happy-customers.png" alt="More Than 2,00000+ Happy Customers" />
                 <span>
                     More Than<br /> <strong>2,00000+</strong><br /> Happy Customers
                 </span>

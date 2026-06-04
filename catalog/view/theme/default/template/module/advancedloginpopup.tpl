@@ -24,7 +24,7 @@
  <div id="loginpopup_form">
  <div class="advancedlogin">
  <p align="center"><?php echo $fbheading; ?></p>
- <img alt="" src="<?php echo $headerimage; ?>" align="middle"/>
+ <img loading="lazy" decoding="async"alt="" src="<?php echo $headerimage; ?>" align="middle"/>
  <div align="center">
 
 
@@ -37,11 +37,11 @@
 			<div align="center">
 	
 		<?php if ($fbenable==1) { ?>
-				<a class="box-advancedlogin" href="<?php echo $advancedlogin_url; ?>"><img alt="" src="<?php echo $fbbutton; ?>"/></a>
+				<a class="box-advancedlogin" href="<?php echo $advancedlogin_url; ?>"><img loading="lazy" decoding="async"alt="" src="<?php echo $fbbutton; ?>"/></a>
 	<br />		<?php } ?>						
 
 <?php if ($genable==1) { ?>
-								<a class="box-advancedloging" href="<?php echo $advancedlogin_furl; ?>"><img alt="" src="<?php echo $gbutton; ?>"/></a>
+								<a class="box-advancedloging" href="<?php echo $advancedlogin_furl; ?>"><img loading="lazy" decoding="async"alt="" src="<?php echo $gbutton; ?>"/></a>
 			<?php } ?>
 			
 			</div>

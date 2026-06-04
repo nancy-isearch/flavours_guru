@@ -5,7 +5,7 @@
 <title> <?php echo $title; ?> </title>
 </head>
 <body style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #000000;">
-<div style="width: 680px;"><div style=" width:100%; float:left; text-align:center; padding-top:15px; border-top:3px solid #ddd;"><a href="<?php echo $store_url; ?>" title=" <?php echo $store_name; ?>"><img src="https://www.flavoursguru.com/image/logo.png" alt="<?php echo $store_name; ?>" style="margin-bottom: 20px; width:200px; border:none;" /></a></div>
+<div style="width: 680px;"><div style=" width:100%; float:left; text-align:center; padding-top:15px; border-top:3px solid #ddd;"><a href="<?php echo $store_url; ?>" title=" <?php echo $store_name; ?>"><img loading="lazy" decoding="async"src="https://www.flavoursguru.com/image/logo.png" alt="<?php echo $store_name; ?>" style="margin-bottom: 20px; width:200px; border:none;" /></a></div>
 <tr>
   <td style="border-top:1px solid #fff" width="620">
      <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#495461">
@@ -69,7 +69,7 @@
     <td><table width="100%" cellspacing="0" cellpadding="0" border="0">
   <tbody><tr>
     <td width="10">&nbsp;</td>
-    <td align="center"><a href="https://www.flavoursguru.com/index.php?route=ordertrack/ordertrack" target="_blank" style="text-decoration:none; color:#fff; font-size:15px; width:12px;"><img src="https://flavoursguru.com/image/catalog/images/track-your-order.jpg"></a></td>
+    <td align="center"><a href="https://www.flavoursguru.com/index.php?route=ordertrack/ordertrack" target="_blank" style="text-decoration:none; color:#fff; font-size:15px; width:12px;"><img loading="lazy" decoding="async"src="https://flavoursguru.com/image/catalog/images/track-your-order.jpg"></a></td>
     <td width="10">&nbsp;</td>
   </tr>
 </tbody></table>
@@ -238,7 +238,7 @@
   <tbody><tr>
     <td width="10">&nbsp;</td>
     <td valign="top"><a target="_blank" href="https://www.flavoursguru.com/valentines.php">
-<img alt="Designer christmas cake delivery all across !" src="https://flavoursguru.com/image/catalog/banner/mday24.png" id="_x0000_i1030" class="banner" width="100%" border="0"></a></td>
+<img loading="lazy" decoding="async"alt="Designer christmas cake delivery all across !" src="https://flavoursguru.com/image/catalog/banner/mday24.png" id="_x0000_i1030" class="banner" width="100%" border="0"></a></td>
     <td width="10">&nbsp;</td>
   </tr>
 </tbody></table>
@@ -269,7 +269,7 @@
   <tbody><tr>
     <td width="10">&nbsp;</td>
     <td><span style="color:#000000;"><strong>Team Flavoursguru</strong></span><br> <a href=""https://www.flavoursguru.com/" style="text-decoration:none" target="_blank">www.flavorsguru.com</a></td>
-     <td width="50%" align="right"><a href="https://salesiq.zoho.com/signaturesupport.ls?widgetcode=c02c4a4ca6ecef3ba2db96f8d2f38bf4e8cc14e5a50e99157a41f3b3b0174878ffa5c993dbbd8f58c1d52fddd9cc18d3" target="_blank"><img src="https://flavoursguru.com/image/catalog/images/signature.png"></a></td>  
+     <td width="50%" align="right"><a href="https://salesiq.zoho.com/signaturesupport.ls?widgetcode=c02c4a4ca6ecef3ba2db96f8d2f38bf4e8cc14e5a50e99157a41f3b3b0174878ffa5c993dbbd8f58c1d52fddd9cc18d3" target="_blank"><img loading="lazy" decoding="async"src="https://flavoursguru.com/image/catalog/images/signature.png"></a></td>  
 	<td width="10">&nbsp;</td>
   </tr>
 </tbody></table>

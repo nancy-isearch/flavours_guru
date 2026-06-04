@@ -1,4 +1,5 @@
 <?php echo $header; ?>
+
 <?php $allg4 = array(); $ab = 0; foreach ($products as $product) {
   $arr = array();
   $arr['item_id'] = $product['sku'];
@@ -611,7 +612,7 @@ body.product-category-65.offermsg .container.top_positionn{
     </div>
 </div>
 <!-- <div class="new_year_banner">
-  <img class="img-responsive" src="catalog/view/theme/default/image/newyearsale.webp" alt="New Year Cakes - Flavours Guru" />
+  <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/newyearsale.webp" alt="New Year Cakes - Flavours Guru" />
 </div> -->
 <div class="container top_positionn category_main_row_col">
   <ul class="breadcrumb">
@@ -641,12 +642,12 @@ body.product-category-65.offermsg .container.top_positionn{
   </ul>
   <?php if ($show_wedding_banner) { ?>
   <!-- <div class="categories_banner wedding_cakes">
-    <a href="bachelorette-cake"><img class="img-responsive" src="catalog/view/theme/default/image/Naughty-Cakes-for-bachelorette-Online.webp" alt="" /></a>
+    <a href="bachelorette-cake"><img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Naughty-Cakes-for-bachelorette-Online.webp" alt="" /></a>
   </div> -->
   <?php } ?>
   <?php if ($show_bachelorette_banner) { ?>
   <div class="categories_banner bachelorette_cakes">
-    <a href="naughty-cakes"><img class="img-responsive" src="catalog/view/theme/default/image/Naughty-Cakes.webp" alt="" /></a>
+    <a href="naughty-cakes"><img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Naughty-Cakes.webp" alt="" /></a>
   </div>
   <?php } ?>
   <?php if ($show_kids_tabs) { ?>
@@ -656,37 +657,37 @@ body.product-category-65.offermsg .container.top_positionn{
 			<ul>
 				<li>
 					<a href="/1st-birthday" class="hover-zoom-col">
-					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/first-birthday-cakes.webp" alt="a customised three-layered orange cake">
+					<img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/first-birthday-cakes.webp" alt="a customised three-layered orange cake">
 					</a>
 					<p>1st Birthday</p>
 				</li>
 				<li>
 					<a href="/birthday/half-birthday" class="hover-zoom-col">
-					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/half-birthday.webp" alt="Flower and cake combos ">
+					<img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/half-birthday.webp" alt="Flower and cake combos ">
 					</a>
 					<p>1/2 Birthday</p>
 				</li>
 				<li>
 					<a href="/birthday/twins-cake" class="hover-zoom-col">
-					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/twins-kids-cake.webp" alt="Fresh Arrivals cakes">
+					<img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/twins-kids-cake.webp" alt="Fresh Arrivals cakes">
 					</a>
 					<p>Twins</p>
 				</li>
 				<li>
 					<a href="/cartoon-cakes" class="hover-zoom-col">
-					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/cartoon-cakes-2.webp" alt="Red heart-shaped cake topped with strawberries">
+					<img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/cartoon-cakes-2.webp" alt="Red heart-shaped cake topped with strawberries">
 					</a>
 					<p>Cartoon</p>
 				</li>
 				<li>
 					<a href="/balloon-decorations" class="hover-zoom-col">
-					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/balloon-decor.webp" alt="Gift ideas for special occassions">
+					<img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/balloon-decor.webp" alt="Gift ideas for special occassions">
 					</a>
 					<p>Balloon Decor</p>
 				</li>
 				<li>
 					<a href="/pinata-cakes" class="hover-zoom-col">
-					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/pinata-cakes.webp" alt="Delicious cake under 600 calories, adorned with fresh berries">
+					<img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/pinata-cakes.webp" alt="Delicious cake under 600 calories, adorned with fresh berries">
 					</a>
 					<p>Pinata</p>
 				</li>
@@ -702,37 +703,37 @@ body.product-category-65.offermsg .container.top_positionn{
 			<ul>
 				<li>
 					<a href="/kids" class="hover-zoom-col">
-					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/cake-for-kids.webp" alt="a customised three-layered orange cake">
+					<img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/cake-for-kids.webp" alt="a customised three-layered orange cake">
 					</a>
 					<p>Kids</p>
 				</li>
 				<li>
 					<a href="/classic-cakes" class="hover-zoom-col">
-					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/premium-flavours.webp" alt="Flower and cake combos ">
+					<img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/premium-flavours.webp" alt="Flower and cake combos ">
 					</a>
 					<p>Premium</p>
 				</li>
 				<li>
 					<a href="/regular-cakes" class="hover-zoom-col">
-					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/regular-cakes.webp" alt="Fresh Arrivals cakes">
+					<img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/regular-cakes.webp" alt="Fresh Arrivals cakes">
 					</a>
 					<p>Regular</p>
 				</li>
 				<li>
 					<a href="/cartoon-cakes" class="hover-zoom-col">
-					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/cartoon-cakes.webp" alt="Red heart-shaped cake topped with strawberries">
+					<img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/cartoon-cakes.webp" alt="Red heart-shaped cake topped with strawberries">
 					</a>
 					<p>Cartoon</p>
 				</li>
 				<li>
 					<a href="/birthday/girlfriend" class="hover-zoom-col">
-					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/cake-for-girlfriend.webp" alt="Gift ideas for special occassions">
+					<img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/cake-for-girlfriend.webp" alt="Gift ideas for special occassions">
 					</a>
 					<p>Girlfriend</p>
 				</li>
 				<li>
 					<a href="/birthday/husband" class="hover-zoom-col">
-					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/cake-for-husband.webp" alt="Delicious cake under 600 calories, adorned with fresh berries">
+					<img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/cake-for-husband.webp" alt="Delicious cake under 600 calories, adorned with fresh berries">
 					</a>
 					<p>Husband</p>
 				</li>
@@ -748,37 +749,37 @@ body.product-category-65.offermsg .container.top_positionn{
   			<ul>
   				<li>
   					<a href="/heart-shape" class="hover-zoom-col">
-  					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/heart-shape-cakes.webp" alt="">
+  					<img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/heart-shape-cakes.webp" alt="">
   					</a>
   					<p>Heart Shape</p>
   				</li>
   				<li>
   					<a href="/classic-cakes" class="hover-zoom-col">
-  					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/premium-flavours-2.webp" alt="">
+  					<img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/premium-flavours-2.webp" alt="">
   					</a>
   					<p>Premium</p>
   				</li>
   				<li>
   					<a href="/premium-cakes" class="hover-zoom-col">
-  					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/luxury-design-cakes.webp" alt="">
+  					<img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/luxury-design-cakes.webp" alt="">
   					</a>
   					<p>Luxury</p>
   				</li>
   				<li>
   					<a href="/fusion-cakes" class="hover-zoom-col">
-  					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/fusion-cakes.webp" alt="">
+  					<img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/fusion-cakes.webp" alt="">
   					</a>
   					<p>Fusion</p>
   				</li>
   				<li>
   					<a href="/multi-tier-cakes" class="hover-zoom-col">
-  					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/multi-tier-cakes.webp" alt="">
+  					<img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/multi-tier-cakes.webp" alt="">
   					</a>
   					<p>Multi Tier</p>
   				</li>
   				<li>
   					<a href="/regular-cakes" class="hover-zoom-col">
-  					<img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/regular-cakes.webp" alt="">
+  					<img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/regular-cakes.webp" alt="">
   					</a>
   					<p>Regular</p>
   				</li>
@@ -794,37 +795,37 @@ body.product-category-65.offermsg .container.top_positionn{
         <ul>
           <li>
             <a href="/christmas/christmas-cup-cake" class="hover-zoom-col">
-              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/christmas-cupcake.jpg" alt="Christmas cake">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/christmas-cupcake.jpg" alt="Christmas cake">
             </a>
             <p>Cup Cake</p>
           </li>
           <li>
             <a href="/christmas/plum-cakes" class="hover-zoom-col">
-              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/plum-cakes.jpg" alt="Christmas cake">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/plum-cakes.jpg" alt="Christmas cake">
             </a>
             <p>Plum Cakes</p>
           </li>
           <li>
             <a href="/new-year-1st-jan" class="hover-zoom-col">
-              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-year-cake.jpg" alt="New year cake">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-year-cake.jpg" alt="New year cake">
             </a>
             <p>New Year</p>
           </li>
           <li>
             <a href="/flower-combo" class="hover-zoom-col">
-              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/flower-combos.png" alt="Flower and cake combos ">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/flower-combos.png" alt="Flower and cake combos ">
             </a>
             <p>Combos</p>
           </li>
           <li>
             <a href="/regular-cakes" class="hover-zoom-col">
-            <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/regular-cakes.webp" alt="">
+            <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/regular-cakes.webp" alt="">
             </a>
             <p>Regular</p>
           </li>
           <li>
             <a href="/classic-cakes" class="hover-zoom-col">
-            <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/premium-flavours-2.webp" alt="">
+            <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/premium-flavours-2.webp" alt="">
             </a>
             <p>Premium</p>
           </li>
@@ -840,37 +841,37 @@ body.product-category-65.offermsg .container.top_positionn{
         <ul>
           <!-- <li>
             <a href="/new-year-1st-jan" class="hover-zoom-col">
-              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-year-cake.jpg" alt="New year cake">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-year-cake.jpg" alt="New year cake">
             </a>
             <p>New Year</p>
           </li> -->
           <li>
             <a href="/christmas" class="hover-zoom-col">
-              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/christmas.jpg" alt="Christmas cake">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/christmas.jpg" alt="Christmas cake">
             </a>
             <p>Christmas</p>
           </li>
           <li>
             <a href="/christmas/plum-cakes" class="hover-zoom-col">
-              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/plum-cakes.jpg" alt="Christmas cake">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/plum-cakes.jpg" alt="Christmas cake">
             </a>
             <p>Plum Cakes</p>
           </li>
           <li>
             <a href="/flower-combo" class="hover-zoom-col">
-              <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/flower-combos.png" alt="Flower and cake combos ">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/flower-combos.png" alt="Flower and cake combos ">
             </a>
             <p>Combos</p>
           </li>
           <li>
             <a href="/regular-cakes" class="hover-zoom-col">
-            <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/regular-cakes.webp" alt="">
+            <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/regular-cakes.webp" alt="">
             </a>
             <p>Regular</p>
           </li>
           <li>
             <a href="/classic-cakes" class="hover-zoom-col">
-            <img class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/premium-flavours-2.webp" alt="">
+            <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/premium-flavours-2.webp" alt="">
             </a>
             <p>Premium</p>
           </li>
@@ -891,10 +892,10 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
   <div class="regular_cakes_category">
   	<div class="row">
   		<div class="col-md-6 col-sm-6 col-xs-6 xs-mb-15">
-  			<a href="https://www.flavoursguru.com/rasmalai-cake"><img style="width: 100%;border-radius: 15px;" class="img-responsive" src="catalog/view/theme/default/image/rasmail-cakes-2.jpg" alt="" /></a>
+  			<a href="https://www.flavoursguru.com/rasmalai-cake"><img loading="lazy" decoding="async"style="width: 100%;border-radius: 15px;" class="img-responsive" src="catalog/view/theme/default/image/rasmail-cakes-2.jpg" alt="" /></a>
   		</div>
   		<div class="col-md-6 col-sm-6 col-xs-6">
-  			<a href="https://www.flavoursguru.com/ferrero-rocher-cakes"><img style="width: 100%;border-radius: 15px;" class="img-responsive" src="catalog/view/theme/default/image/ferrero-2.jpg" alt="" /></a>
+  			<a href="https://www.flavoursguru.com/ferrero-rocher-cakes"><img loading="lazy" decoding="async"style="width: 100%;border-radius: 15px;" class="img-responsive" src="catalog/view/theme/default/image/ferrero-2.jpg" alt="" /></a>
   		</div>
   	</div>
   </div>
@@ -918,7 +919,7 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
       <?php if ($thumb || $category_content) { ?>
       <div class="row">
         <?php if ($thumb) { ?>
-        <div class="col-sm-12"><img src="<?php echo $thumb; ?>" <?php if (!$is_mobile) { ?>srcset="<?php echo $thumb_mobile; ?> <?php echo $category_image_width_mobile; ?>w, <?php echo $thumb; ?> <?php echo $category_image_width; ?>w" sizes="(max-width: 767px) 100vw, <?php echo $category_image_width; ?>px"<?php } ?> alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" class="img-thumbnail" width="<?php echo $category_image_width; ?>" height="<?php echo $category_image_height; ?>" loading="eager" fetchpriority="high" decoding="async" /></div>
+        <div class="col-sm-12"><img loading="lazy" decoding="async"src="<?php echo $thumb; ?>" <?php if (!$is_mobile) { ?>srcset="<?php echo $thumb_mobile; ?> <?php echo $category_image_width_mobile; ?>w, <?php echo $thumb; ?> <?php echo $category_image_width; ?>w" sizes="(max-width: 767px) 100vw, <?php echo $category_image_width; ?>px"<?php } ?> alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" class="img-thumbnail" width="<?php echo $category_image_width; ?>" height="<?php echo $category_image_height; ?>" loading="eager" fetchpriority="high" decoding="async" /></div>
         <?php } ?>
         <?php if ($category_content) { ?>
         <!--<div class="col-sm-10 catDescription"><?php //echo $category_content; ?></div>-->
@@ -973,7 +974,7 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
           <div class="home-primary-btn cursor-pointer view-all-cat-tab">
             <span class="view_all_text">View All</span>
             <span class="view_less_text">View Less</span>
-            <img src="catalog/view/theme/default/image/Home/new-images/arrow-down-icon.svg" alt="">
+            <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/Home/new-images/arrow-down-icon.svg" alt="">
           </div>
         </div>
       <?php } ?>
@@ -1129,6 +1130,7 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
           $now = new DateTime();
           $hour = (int)$now->format('H');
         ?>
+       
         <?php foreach ($products as $product_index => $product) { ?>
         <div class="product-layout product-list col-xs-6">
           <div class="add_wish_list">
@@ -1140,11 +1142,12 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
             </button>
             <?php /*<button type="button" data-toggle="tooltip" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-exchange"></i></button> */?>
           </div>
+           
           <a href="<?php echo $product['href']; ?>" target="_blank" class="product-thumb hover-zoom-col">
             <?php if($product['purchased'] > 5){ ?>
               <div class="best-seller">Best Seller</div>
             <?php } ?>
-            <div class="image"><img src="<?php echo $product['thumb']; ?>" <?php if (!$is_mobile) { ?>srcset="<?php echo $product['thumb_mobile']; ?> <?php echo $product_image_width_mobile; ?>w, <?php echo $product['thumb']; ?> <?php echo $product_image_width; ?>w" sizes="(max-width: 767px) 50vw, (max-width: 991px) 33vw, 25vw"<?php } ?> alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive img-zoom" width="<?php echo $product_image_width; ?>" height="<?php echo $product_image_height; ?>" loading="<?php echo $product_index < 2 ? 'eager' : 'lazy'; ?>" fetchpriority="<?php echo $product_index === 0 ? 'high' : 'auto'; ?>" decoding="async" /></div>
+            <div class="image"><img class"testing " loading="lazy" decoding="async"src="<?php echo $product['thumb']; ?>" <?php if (!$is_mobile) { ?>srcset="<?php echo $product['thumb_mobile']; ?> <?php echo $product_image_width_mobile; ?>w, <?php echo $product['thumb']; ?> <?php echo $product_image_width; ?>w" sizes="(max-width: 767px) 50vw, (max-width: 991px) 33vw, 25vw"<?php } ?> alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive img-zoom" width="<?php echo $product_image_width; ?>" height="<?php echo $product_image_height; ?>" loading="<?php echo $product_index < 2 ? 'eager' : 'lazy'; ?>" fetchpriority="<?php echo $product_index === 0 ? 'high' : 'auto'; ?>" decoding="async" /></div>
             <div class="product_sort_detail">
               <div class="caption" style="margin-bottom: 0;">
                 <p class="cat_product_title" style="margin: 8px 0 10px 0;height:auto;"><span class="cat-mob-prd-title"><?php echo $product['name']; ?></span>
@@ -1254,7 +1257,7 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
             <div class="home-primary-btn cursor-pointer view-all-cat-tab">
               <span class="view_all_text">View All</span>
               <span class="view_less_text">View Less</span>
-              <img src="catalog/view/theme/default/image/Home/new-images/arrow-down-icon.svg" alt="">
+              <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/Home/new-images/arrow-down-icon.svg" alt="">
             </div>
           </div>
       <?php } ?>
@@ -1278,7 +1281,7 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
                 <div class="text-center border-btm-1 border-color-primary">
                   <div class="mb-30 xs-mb-15 text-right">
                     <p style="color: #BABFC3;" class="mb-0"><span><?php echo date('d-M-Y', strtotime($value['date_added'])) ?> </span></p>
-                    <!-- <img src="catalog/view/theme/default/image/Home/new-images/google-img.png" alt=""> -->
+                    <!-- <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/Home/new-images/google-img.png" alt=""> -->
                   </div>
                   <div class="mb-30 xs-mb-15 text-left">
                     <p><?php echo ucfirst($value['text']) ?></p>
@@ -1288,7 +1291,7 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
               <div class="">
                 <div class="display-flex m-b-20 review_inner_2">
                   <div class="m-r-15">
-                    <img class="img-responsive img-circle" src="<?php echo $value['image'] ?>" alt="" loading="lazy" decoding="async">
+                    <img loading="lazy" decoding="async" class="img-responsive img-circle" src="<?php echo $value['image'] ?>" alt="" loading="lazy" decoding="async">
                   </div>
                   <div class="text-left">
                     <p class="review_name"><?php echo ucwords($value['author']) ?></p>
@@ -1328,7 +1331,7 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
           <?php $x++; } ?>
           <div class="review-col slide">
               <div class="slide-view-all-testimonial">
-                <a href="https://www.flavoursguru.com/testimonial">View All &nbsp; <img class="view-arrow" src="catalog/view/theme/default/image/Home/arrow-right-black.png" alt="arrow right" loading="lazy" decoding="async" /></a>
+                <a href="https://www.flavoursguru.com/testimonial">View All &nbsp; <img loading="lazy" decoding="async" class="view-arrow" src="catalog/view/theme/default/image/Home/arrow-right-black.png" alt="arrow right" loading="lazy" decoding="async" /></a>
               </div>
           </div>
         </div>

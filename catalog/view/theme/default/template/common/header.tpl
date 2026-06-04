@@ -448,7 +448,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="col-sm-3 col-xs-4 logobox">
         <div id="logo">
           <?php if ($logo) { ?>
-          <a href="https://www.flavoursguru.com/"><!-- <img src="<?php echo $logo; ?>" --><img src="catalog/view/theme/default/image/Home/FGLogoWhite.png"  title="Send Cakes Online - Flavours Guru" alt="<?php echo $name; ?>" class="img-responsive" /></a>
+          <a href="https://www.flavoursguru.com/"><!-- <img src="<?php echo $logo; ?>" -->
+          <img src="catalog/view/theme/default/image/Home/FGLogoWhite.png"  title="Send Cakes Online - Flavours Guru" alt="<?php echo $name; ?>" class="img-responsive" />
+          </a>
           <?php } else { ?>
           <h1><a href="https://www.flavoursguru.com/"><?php echo $name; ?></a></h1>
           <?php } ?>
@@ -499,7 +501,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li class="dropdown">
               <a class="login-click" href="javascript:void(0)" title="<?php echo $text_account; ?>" >
                 <div class="header-action-btn display-flex align-items-center">
-                  <img class="mr-5" src="catalog/view/theme/default/image/Home/new-images/user-icon.svg" alt="user icon black">
+                  <img  class="mr-5" src="catalog/view/theme/default/image/Home/new-images/user-icon.svg" alt="user icon black">
                   <span class="hidden-xs">Login</span>
                 </div>
               </a>
@@ -508,7 +510,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             { ?>
             <li class="dropdown"><a href="<?php echo $login; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown">
               <div class="header-action-btn display-flex align-items-center">
-                  <img class="mr-5" src="catalog/view/theme/default/image/Home/new-images/user-icon.svg" alt="user icon black"> <span class="hidden-xs">My account <span class="caret"></span></span>
+                  <img  class="mr-5" src="catalog/view/theme/default/image/Home/new-images/user-icon.svg" alt="user icon black"> <span class="hidden-xs">My account <span class="caret"></span></span>
                 </div> 
                 <!-- <p class="icon-with-text"><?php echo $text_account; ?> <span class="caret"></span></p> -->
                 </a>
@@ -544,7 +546,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="dotmenu_top">
             <div class="header-action-btn display-flex align-items-center">
               <span class="hidden-xs mr-5">More</span>
-              <img class="" src="catalog/view/theme/default/image/Home/new-images/more-icon.svg" alt="humber icon">
+              <img  class="" src="catalog/view/theme/default/image/Home/new-images/more-icon.svg" alt="humber icon">
             </div>
           </div>
           <div class="mob_t-link">
@@ -628,13 +630,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </li>
                 <li class="visible-xs">
                   <a href="/blogs">
-                    <div class="top_nav_menu_icon_col"><img class="img-responsive" src="catalog/view/theme/default/image/about-us.png" alt="about 2"></div>
+                    <div class="top_nav_menu_icon_col"><img  class="img-responsive" src="catalog/view/theme/default/image/about-us.png" alt="about 2"></div>
                     <div>Blog</div>
                   </a>
                 </li>
                 <li class="visible-xs">
                   <a href="https://api.whatsapp.com/send/?phone=+918130961414&text=Hello&app_absent=0">
-                    <div class="top_nav_menu_icon_col"><img class="img-responsive" src="catalog/view/theme/default/image/WhatsApp.png" alt="whatsapp"></div>
+                    <div class="top_nav_menu_icon_col"><img  class="img-responsive" src="catalog/view/theme/default/image/WhatsApp.png" alt="whatsapp"></div>
                     <div>Whatsapp</div>
                   </a>
                 </li>
@@ -781,7 +783,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="offer-close-btn">
     <img style="width: 25px;" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/offer-close.svg" alt="offer popup">
   </div>
-    <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/offer-popup-img.webp" alt="offer popup">
+    <img  class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/offer-popup-img.webp" alt="offer popup">
 </div>
 <div class="bg-popup" style="display: none;">
 	<div class="pincode_popup">

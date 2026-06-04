@@ -79,7 +79,7 @@
           <?php  foreach($orders as $order) { ?>
               <tr>
          
-              <td class="text-left"><img class="imgSize" width="50px"  src="<?php echo $order['image']; ?>" ></td> 
+              <td class="text-left"><img loading="lazy" decoding="async" class="imgSize" width="50px"  src="<?php echo $order['image']; ?>" ></td> 
               <td class="text-right"><?php echo $order['name']; ?></td>
               <td class="text-left"><?php echo $order['qty']; ?></td>
               <td class="text-left"><?php  $shipInfo = json_decode($order['shipping_info']); foreach ($shipInfo as $key => $value) {

@@ -13,7 +13,7 @@
 		
 			<td colspan="2">
 			
-<img alt="" src="<?php echo $headerimage; ?>" align="middle"/>
+<img loading="lazy" decoding="async"alt="" src="<?php echo $headerimage; ?>" align="middle"/>
 			</td>
 		</tr><br />
 		<tr>
@@ -28,11 +28,11 @@
 
 
 			
-			<a class="box-advancedlogin" href="<?php echo $advancedlogin_url; ?>"><img alt="" src="<?php echo $fbbutton; ?>"/></a>
+			<a class="box-advancedlogin" href="<?php echo $advancedlogin_url; ?>"><img loading="lazy" decoding="async"alt="" src="<?php echo $fbbutton; ?>"/></a>
 			<?php } ?>						
 
 <?php if ($genable==1) { ?>
-								<a class="box-advancedloging" href="<?php echo $advancedlogin_furl; ?>"><img alt="" src="<?php echo $gbutton; ?>"/></a>
+								<a class="box-advancedloging" href="<?php echo $advancedlogin_furl; ?>"><img loading="lazy" decoding="async"alt="" src="<?php echo $gbutton; ?>"/></a>
 			<?php } ?>
 			</div>
 <P ALIGN="CENTER"><?php echo $fbmessgebottom; ?></P>

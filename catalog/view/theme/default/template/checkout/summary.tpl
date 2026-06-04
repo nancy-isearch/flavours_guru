@@ -41,7 +41,7 @@
       ?>
       <tr>
         <td class="text-center img-thumb-col"><?php if ($product['thumb']) { ?>
-          <a <?php /* ?> href="<?php echo $product['href']; ?>" <?php */ ?>><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-thumbnail" /></a>
+          <a <?php /* ?> href="<?php echo $product['href']; ?>" <?php */ ?>><img loading="lazy" decoding="async"src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-thumbnail" /></a>
           <?php } ?>
         </td>
         <td class="text-left prod-title-col"><a <?php /* ?> href="<?php echo $product['href']; ?>" <?php */ ?>><?php echo $product['name']; ?> - <span><?= $product['actualPrice']; ?></span></a>

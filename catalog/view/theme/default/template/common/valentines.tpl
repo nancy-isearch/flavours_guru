@@ -183,7 +183,7 @@ a[x-apple-data-detectors='true'] {
   <tr>
     <td style="padding-right: 0px;padding-left: 0px;" align="center">
       <a href="valentines-day/gifts-for-her" target="_self">
-      <img align="center" border="0" src="public_html/image/catalog/Vale/Her.png" alt="Best Valentine&#039;s Cake for Girlfriend - Flavours Guru" title="Best Valentine&#039;s Cake for Girlfriend - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
+      <img loading="lazy" decoding="async"align="center" border="0" src="public_html/image/catalog/Vale/Her.png" alt="Best Valentine&#039;s Cake for Girlfriend - Flavours Guru" title="Best Valentine&#039;s Cake for Girlfriend - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
       </a>
     </td>
   </tr>
@@ -212,7 +212,7 @@ a[x-apple-data-detectors='true'] {
   <tr>
     <td style="padding-right: 0px;padding-left: 0px;" align="center">
       <a href="valentines-day/gifts-for-him" target="_self">
-      <img align="center" border="0" src="public_html/image/catalog/Vale/Him.png" alt="Best Valentine&#039;s Cake for Boyfriend - Flavours Guru" title="Best Valentine&#039;s Cake for Boyfriend - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
+      <img loading="lazy" decoding="async"align="center" border="0" src="public_html/image/catalog/Vale/Him.png" alt="Best Valentine&#039;s Cake for Boyfriend - Flavours Guru" title="Best Valentine&#039;s Cake for Boyfriend - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
       </a>
     </td>
   </tr>
@@ -329,7 +329,7 @@ a[x-apple-data-detectors='true'] {
   <tr>
     <td style="padding-right: 0px;padding-left: 0px;" align="center">
       <a href="rose-day" target="_self">
-      <img align="center" border="0" src="public_html/image/catalog/Vale/Rose Day.png" alt="Rose Day Specials - Flavours Guru" title="Rose Day Specials - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
+      <img loading="lazy" decoding="async"align="center" border="0" src="public_html/image/catalog/Vale/Rose Day.png" alt="Rose Day Specials - Flavours Guru" title="Rose Day Specials - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
       </a>
     </td>
   </tr>
@@ -358,7 +358,7 @@ a[x-apple-data-detectors='true'] {
   <tr>
     <td style="padding-right: 0px;padding-left: 0px;" align="center">
       <a href="propose-day" target="_self">
-      <img align="center" border="0" src="public_html/image/catalog/Vale/Propose Day.png" alt="Propose Day Special - Flavours Guru" title="Propose Day Special - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
+      <img loading="lazy" decoding="async"align="center" border="0" src="public_html/image/catalog/Vale/Propose Day.png" alt="Propose Day Special - Flavours Guru" title="Propose Day Special - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
       </a>
     </td>
   </tr>
@@ -387,7 +387,7 @@ a[x-apple-data-detectors='true'] {
   <tr>
     <td style="padding-right: 0px;padding-left: 0px;" align="center">
       <a href="chocolate-day" target="_self">
-      <img align="center" border="0" src="public_html/image/catalog/Vale/Choco Day.png" alt="Valentine&#039;s Special Chocolates - Flavours Guru" title="Valentine&#039;s Special Chocolates - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
+      <img loading="lazy" decoding="async"align="center" border="0" src="public_html/image/catalog/Vale/Choco Day.png" alt="Valentine&#039;s Special Chocolates - Flavours Guru" title="Valentine&#039;s Special Chocolates - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
       </a>
     </td>
   </tr>
@@ -416,7 +416,7 @@ a[x-apple-data-detectors='true'] {
   <tr>
     <td style="padding-right: 0px;padding-left: 0px;" align="center">
       <a href="teddy-day" target="_self">
-      <img align="center" border="0" src="public_html/image/catalog/Vale/Teddy Day.png" alt="Teddy Day Special - Flavours Guru" title="Teddy Day Special - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
+      <img loading="lazy" decoding="async"align="center" border="0" src="public_html/image/catalog/Vale/Teddy Day.png" alt="Teddy Day Special - Flavours Guru" title="Teddy Day Special - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
       </a>
     </td>
   </tr>
@@ -457,7 +457,7 @@ a[x-apple-data-detectors='true'] {
   <tr>
     <td style="padding-right: 0px;padding-left: 0px;" align="center">
       <a href="hug-day" target="_self">
-      <img align="center" border="0" src="public_html/image/catalog/Vale/Hug Day.png" alt="Hug Day Special Gifting - Flavours Guru" title="Hug Day Special Gifting - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
+      <img loading="lazy" decoding="async"align="center" border="0" src="public_html/image/catalog/Vale/Hug Day.png" alt="Hug Day Special Gifting - Flavours Guru" title="Hug Day Special Gifting - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
       </a>
     </td>
   </tr>
@@ -486,7 +486,7 @@ a[x-apple-data-detectors='true'] {
   <tr>
     <td style="padding-right: 0px;padding-left: 0px;" align="center">
       <a href="kiss-day" target="_blank">
-      <img align="center" border="0" src="public_html/image/catalog/Vale/Kiss Day.png" alt="Kiss Day Specials - Flavours Guru" title="Kiss Day Specials - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
+      <img loading="lazy" decoding="async"align="center" border="0" src="public_html/image/catalog/Vale/Kiss Day.png" alt="Kiss Day Specials - Flavours Guru" title="Kiss Day Specials - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
       </a>
     </td>
   </tr>
@@ -515,7 +515,7 @@ a[x-apple-data-detectors='true'] {
   <tr>
     <td style="padding-right: 0px;padding-left: 0px;" align="center">
       <a href="valentines-day/valentines-day-cake/" target="_self">
-      <img align="center" border="0" src="public_html/image/catalog/Vale/V Day.png" alt="Cakes for Valentine&#039;s Day - Flavours Guru" title="Cakes for Valentine&#039;s Day - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
+      <img loading="lazy" decoding="async"align="center" border="0" src="public_html/image/catalog/Vale/V Day.png" alt="Cakes for Valentine&#039;s Day - Flavours Guru" title="Cakes for Valentine&#039;s Day - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
       </a>
     </td>
   </tr>
@@ -652,7 +652,7 @@ a[x-apple-data-detectors='true'] {
   <tr>
     <td style="padding-right: 0px;padding-left: 0px;" align="center">
       <a href="regular-cakes/red-velvet" target="_self">
-      <img align="center" border="0" src="public_html/image/catalog/Vale/Red Velvet.png" alt="Red Velvet Cakes - Flavours Guru" title="Red Velvet Cakes - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
+      <img loading="lazy" decoding="async"align="center" border="0" src="public_html/image/catalog/Vale/Red Velvet.png" alt="Red Velvet Cakes - Flavours Guru" title="Red Velvet Cakes - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
       </a>
     </td>
   </tr>
@@ -681,7 +681,7 @@ a[x-apple-data-detectors='true'] {
   <tr>
     <td style="padding-right: 0px;padding-left: 0px;" align="center">
       <a href="regular-cakes/chocolate-cakes" target="_blank">
-      <img align="center" border="0" src="public_html/image/catalog/Vale/Choco.png" alt="Chocolate Cakes - Flavours Guru" title="Chocolate Cakes - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
+      <img loading="lazy" decoding="async"align="center" border="0" src="public_html/image/catalog/Vale/Choco.png" alt="Chocolate Cakes - Flavours Guru" title="Chocolate Cakes - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
       </a>
     </td>
   </tr>
@@ -710,7 +710,7 @@ a[x-apple-data-detectors='true'] {
   <tr>
     <td style="padding-right: 0px;padding-left: 0px;" align="center">
       <a href="regular-cakes/strawberry-cakes" target="_blank">
-      <img align="center" border="0" src="public_html/image/catalog/Vale/Strawberry.png" alt="Strawberry Cakes - Flavours Guru" title="Strawberry Cakes - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
+      <img loading="lazy" decoding="async"align="center" border="0" src="public_html/image/catalog/Vale/Strawberry.png" alt="Strawberry Cakes - Flavours Guru" title="Strawberry Cakes - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
       </a>
     </td>
   </tr>
@@ -786,7 +786,7 @@ a[x-apple-data-detectors='true'] {
   <tr>
     <td style="padding-right: 0px;padding-left: 0px;" align="center">
       <a href="heart-shape" target="_self">
-      <img align="center" border="0" src="public_html/image/catalog/Vale/Heart Cakes.png" alt="Heart Shape Cakes - Flavours Guru" title="Heart Shape Cakes - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
+      <img loading="lazy" decoding="async"align="center" border="0" src="public_html/image/catalog/Vale/Heart Cakes.png" alt="Heart Shape Cakes - Flavours Guru" title="Heart Shape Cakes - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
       </a>
     </td>
   </tr>
@@ -815,7 +815,7 @@ a[x-apple-data-detectors='true'] {
   <tr>
     <td style="padding-right: 0px;padding-left: 0px;" align="center">
       <a href="valentines-day/valentines-day-cake" target="_blank">
-      <img align="center" border="0" src="public_html/image/catalog/Vale/Cupcakes.png" alt="Valentine&#039;s Special Cakes - Flavours Guru" title="Valentine&#039;s Special Cakes - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
+      <img loading="lazy" decoding="async"align="center" border="0" src="public_html/image/catalog/Vale/Cupcakes.png" alt="Valentine&#039;s Special Cakes - Flavours Guru" title="Valentine&#039;s Special Cakes - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
       </a>
     </td>
   </tr>
@@ -844,7 +844,7 @@ a[x-apple-data-detectors='true'] {
   <tr>
     <td style="padding-right: 0px;padding-left: 0px;" align="center">
       <a href="valentines-day/valentines-day-combo" target="_self">
-      <img align="center" border="0" src="public_html/image/catalog/Vale/Gift Combo.png" alt="Valentine&#039;s Special Gift Combos - Flavours Guru" title="Valentine&#039;s Special Gift Combos - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
+      <img loading="lazy" decoding="async"align="center" border="0" src="public_html/image/catalog/Vale/Gift Combo.png" alt="Valentine&#039;s Special Gift Combos - Flavours Guru" title="Valentine&#039;s Special Gift Combos - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
       </a>
     </td>
   </tr>
@@ -885,7 +885,7 @@ a[x-apple-data-detectors='true'] {
   <tr>
     <td style="padding-right: 0px;padding-left: 0px;" align="center">
       <a href="valentines-day/valentines-day-flowers" target="_self">
-      <img align="center" border="0" src="public_html/image/catalog/Vale/Flowers & Choco.png" alt="Flowers for Valentines Day - Flavours Guru" title="Flowers for Valentines Day - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
+      <img loading="lazy" decoding="async"align="center" border="0" src="public_html/image/catalog/Vale/Flowers & Choco.png" alt="Flowers for Valentines Day - Flavours Guru" title="Flowers for Valentines Day - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
       </a>
     </td>
   </tr>
@@ -914,7 +914,7 @@ a[x-apple-data-detectors='true'] {
   <tr>
     <td style="padding-right: 0px;padding-left: 0px;" align="center">
       <a href="pinata-cakes" target="_blank">
-      <img align="center" border="0" src="public_html/image/catalog/Vale/Jar Cakes.png" alt="Pinata Cakes - Premium Valentines Day Cakes by Flavours Guru" title="Pinata Cakes - Premium Valentines Day Cakes by Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
+      <img loading="lazy" decoding="async"align="center" border="0" src="public_html/image/catalog/Vale/Jar Cakes.png" alt="Pinata Cakes - Premium Valentines Day Cakes by Flavours Guru" title="Pinata Cakes - Premium Valentines Day Cakes by Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
       </a>
     </td>
   </tr>
@@ -943,7 +943,7 @@ a[x-apple-data-detectors='true'] {
   <tr>
     <td style="padding-right: 0px;padding-left: 0px;" align="center">
       <a href="photo-cakes" target="_self">
-      <img align="center" border="0" src="public_html/image/catalog/Vale/Photo Cakes.png" alt="Photo Cakes - Flavours Guru" title="Photo Cakes - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
+      <img loading="lazy" decoding="async"align="center" border="0" src="public_html/image/catalog/Vale/Photo Cakes.png" alt="Photo Cakes - Flavours Guru" title="Photo Cakes - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
       </a>
     </td>
   </tr>
@@ -1060,7 +1060,7 @@ a[x-apple-data-detectors='true'] {
   <tr>
     <td style="padding-right: 0px;padding-left: 0px;" align="center">
       <a href="five-senses-gift-for-her-silver" target="_self">
-      <img align="center" border="0" src="public_html/image/catalog/Vale/SG Her.png" alt="5 Sense Gifting for Her - Flavours Guru" title="5 Sense Gifting for Her - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
+      <img loading="lazy" decoding="async"align="center" border="0" src="public_html/image/catalog/Vale/SG Her.png" alt="5 Sense Gifting for Her - Flavours Guru" title="5 Sense Gifting for Her - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
       </a>
     </td>
   </tr>
@@ -1089,7 +1089,7 @@ a[x-apple-data-detectors='true'] {
   <tr>
     <td style="padding-right: 0px;padding-left: 0px;" align="center">
       <a href="five-senses-gift-for-him-silver" target="_self">
-      <img align="center" border="0" src="public_html/image/catalog/Vale/SG Him.png" alt="5 Sense Gifting for Him - Flavours Guru" title="5 Sense Gifting for Him - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
+      <img loading="lazy" decoding="async"align="center" border="0" src="public_html/image/catalog/Vale/SG Him.png" alt="5 Sense Gifting for Him - Flavours Guru" title="5 Sense Gifting for Him - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
       </a>
     </td>
   </tr>
@@ -1118,7 +1118,7 @@ a[x-apple-data-detectors='true'] {
   <tr>
     <td style="padding-right: 0px;padding-left: 0px;" align="center">
       <a href="five-senses-gift-for-him-silver" target="_blank">
-      <img align="center" border="0" src="public_html/image/catalog/Vale/SG Couple.png" alt="5 Sense Gifting for Couple - Flavours Guru" title="5 Sense Gifting for Couple - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
+      <img loading="lazy" decoding="async"align="center" border="0" src="public_html/image/catalog/Vale/SG Couple.png" alt="5 Sense Gifting for Couple - Flavours Guru" title="5 Sense Gifting for Couple - Flavours Guru" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 100%;" class="v-src-width v-src-max-width"/>
       </a>
     </td>
   </tr>

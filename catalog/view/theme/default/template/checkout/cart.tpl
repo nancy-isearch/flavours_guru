@@ -202,7 +202,7 @@
                   <div class="display-flex align-items-center xs-align-items-start">
                     <div class="cart-img-thumb text-left">
                       <?php if ($product['thumb']) { ?>
-                      <a <?php /* ?> href="<?= $product['href']; ?>" <?php */ ?>><img src="<?= $product['thumb']; ?>" alt="<?= $product['name']; ?>" title="<?= $product['name']; ?>" class="img-thumbnail" /></a>
+                      <a <?php /* ?> href="<?= $product['href']; ?>" <?php */ ?>><img loading="lazy" decoding="async"src="<?= $product['thumb']; ?>" alt="<?= $product['name']; ?>" title="<?= $product['name']; ?>" class="img-thumbnail" /></a>
                       <?php } ?>
                     </div>
                     <div class="text-left prod-title-col">

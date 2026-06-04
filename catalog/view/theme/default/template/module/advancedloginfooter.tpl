@@ -17,10 +17,10 @@
 			
 				
 <?php if ($fbenable==1) { ?>
-<a class="box-advancedlogin-a" href="<?php echo $advancedlogin_url; ?>"><img alt="" src="<?php echo $fbbutton; ?>"/></a>
+<a class="box-advancedlogin-a" href="<?php echo $advancedlogin_url; ?>"><img loading="lazy" decoding="async"alt="" src="<?php echo $fbbutton; ?>"/></a>
 <?php } ?>
 <?php if ($genable==1) { ?>
-<a class="box-advancedloging" href="<?php echo $advancedlogin_furl; ?>"><img alt="" src="<?php echo $gbutton; ?>"/></a>
+<a class="box-advancedloging" href="<?php echo $advancedlogin_furl; ?>"><img loading="lazy" decoding="async"alt="" src="<?php echo $gbutton; ?>"/></a>
 <?php } ?>
 				
 

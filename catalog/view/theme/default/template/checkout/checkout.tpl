@@ -594,7 +594,7 @@ div#payment-method {
                           <input type="number" name="" value="" placeholder="Enter 10 digit mobile number" id="gst_phone" class="full-width form-input phone phone-enter" inputmode='decimal' pattern='[0–9]*' />
                         </div>
                         <div class="envlope-icon" style="top: 40px;">
-                          <img src="catalog/view/theme/default/image/phone-icon.png" alt="" style="width: 12px;">
+                          <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/phone-icon.png" alt="" style="width: 12px;">
                         </div>
                       </div>
                       <span id="error" style="color: red"></span>
@@ -761,7 +761,7 @@ div#payment-method {
                           <input type="number" class="form-input full-width pd-width-icon sender_phone phone-enter" value="<?php echo $sender_phone ?>" name="" placeholder="Enter 10 digit mobile number">
                           <span id="error" style="color:red"></span>
                           <div class="envlope-icon" style="top: 40px;">
-                            <img src="catalog/view/theme/default/image/phone-icon.png" alt="" style="width: 12px;">
+                            <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/phone-icon.png" alt="" style="width: 12px;">
                           </div>
                         </div>
                       </div>
@@ -805,7 +805,7 @@ div#payment-method {
                   <div class="display-flex align-items-center xs-align-items-start">
                     <div class="cart-img-thumb text-left">
                       <?php if ($product['thumb']) { ?>
-                      <a <?php /* ?> href="<?= $product['href']; ?>" <?php */ ?>><img src="<?= $product['thumb']; ?>" alt="<?= $product['name']; ?>" title="<?= $product['name']; ?>" class="img-thumbnail" /></a>
+                      <a <?php /* ?> href="<?= $product['href']; ?>" <?php */ ?>><img loading="lazy" decoding="async"src="<?= $product['thumb']; ?>" alt="<?= $product['name']; ?>" title="<?= $product['name']; ?>" class="img-thumbnail" /></a>
                       <?php } ?>
                     </div>
                     <div class="text-left prod-title-col">
@@ -837,7 +837,7 @@ div#payment-method {
                   <div class="display-flex align-items-center xs-align-items-start">
                     <div class="cart-img-thumb text-left">
                       <?php if ($product['thumb']) { ?>
-                      <a <?php /* ?> href="<?= $product['href']; ?>" <?php */ ?>><img src="<?= $product['thumb']; ?>" alt="<?= $product['name']; ?>" title="<?= $product['name']; ?>" class="img-thumbnail" /></a>
+                      <a <?php /* ?> href="<?= $product['href']; ?>" <?php */ ?>><img loading="lazy" decoding="async"src="<?= $product['thumb']; ?>" alt="<?= $product['name']; ?>" title="<?= $product['name']; ?>" class="img-thumbnail" /></a>
                       <?php } ?>
                     </div>
                     <div class="text-left prod-title-col">
@@ -1152,7 +1152,7 @@ $(document).ready(function() {
         success: function(html) {
            $('#collapse-checkout-option .panel-body').html(html);
 
-      $('#collapse-checkout-option').parent().find('.panel-heading .panel-title').html('<a href="#collapse-checkout-option" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle"><div class="info_svg_icon"><img src="catalog/view/theme/default/image/user_login.svg" alt="" /></div><div class="panel_title_col"><div class="checkout-step">Step 1</div><div class="checkout-title">Login Details</div></div><span class="edit_info_checkout">Edit</span></a>');
+      $('#collapse-checkout-option').parent().find('.panel-heading .panel-title').html('<a href="#collapse-checkout-option" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle"><div class="info_svg_icon"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/user_login.svg" alt="" /></div><div class="panel_title_col"><div class="checkout-step">Step 1</div><div class="checkout-title">Login Details</div></div><span class="edit_info_checkout">Edit</span></a>');
 
       $('a[href=\'#collapse-checkout-option\']').trigger('click');
         },

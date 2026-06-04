@@ -112,7 +112,7 @@
         <?php foreach ($products as $product) { ?>
         <div class="product-layout product-list col-xs-6">
           <div class="product-thumb">
-            <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" loading="lazy" /></a></div>
+            <div class="image"><a href="<?php echo $product['href']; ?>"><img loading="lazy" decoding="async"src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" loading="lazy" /></a></div>
             <div>
               <div class="caption">
                 <h4 style="margin: 8px 0 5px 0;height:auto;"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>

@@ -178,14 +178,14 @@
     
     <div class="row chooseLocation">
     	<div class="pull-left">
-        	<img src="catalog/view/theme/default/image/choose-location.png" alt="Choose Location" /> Check your location 
+        	<img loading="lazy" decoding="async"src="catalog/view/theme/default/image/choose-location.png" alt="Choose Location" /> Check your location 
             <div class="clSelect"><input name="location" value="" /></div>
         </div>
         <div class="pull-right socialIcon">
-        	<a href="#"><img src="catalog/view/theme/default/image/fb-icon.png" alt="Facebook" /></a>
-        	<a href="#"><img src="catalog/view/theme/default/image/twitter-icon.png" alt="Twitter" /></a>
-        	<a href="#"><img src="catalog/view/theme/default/image/pintrest-icon.png" alt="Pintrest" /></a>
-        	<a href="#"><img src="catalog/view/theme/default/image/google-icon.png" alt="Google Plus" /></a>
+        	<a href="#"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/fb-icon.png" alt="Facebook" /></a>
+        	<a href="#"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/twitter-icon.png" alt="Twitter" /></a>
+        	<a href="#"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/pintrest-icon.png" alt="Pintrest" /></a>
+        	<a href="#"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/google-icon.png" alt="Google Plus" /></a>
         </div>
     </div>
     

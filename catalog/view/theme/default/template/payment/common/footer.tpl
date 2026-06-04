@@ -17,14 +17,14 @@
                 <div class="footer-col">
                 <h6>CONNECT WITH US</h6>
                 <div class="socialIcon">
-        	<a href="https://www.facebook.com/flavoursgurubakery" target="_blank"> <img src="catalog/view/theme/default/image/fb-icon.png" alt="Facebook" /></a>
-        	<a href="https://twitter.com/flavoursguru" target="_blank"><img src="catalog/view/theme/default/image/twitter-icon.png" alt="Twitter" /></a>
+        	<a href="https://www.facebook.com/flavoursgurubakery" target="_blank"> <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/fb-icon.png" alt="Facebook" /></a>
+        	<a href="https://twitter.com/flavoursguru" target="_blank"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/twitter-icon.png" alt="Twitter" /></a>
         	
         </div>
                 </div>
                 <div class="footer-col">
                 <h6>SECURE ORDERING & TRANSACTIONS</h6>
-                <img class="visa_paypal" src="catalog/view/theme/default/image/payment-getway.png" alt="Google Plus" />
+                <img loading="lazy" decoding="async" class="visa_paypal" src="catalog/view/theme/default/image/payment-getway.png" alt="Google Plus" />
                 </div>                
 </div>
 <script type="text/javascript">

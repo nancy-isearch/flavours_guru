@@ -1,7 +1,7 @@
 <?php if ($error_warning) { ?>
 <div class="alert alert-warning"><?php echo $error_warning; ?></div>
 <?php } ?>
-<p><img src="https://cdn.klarna.com/public/images/<?php echo $iso_code_2; ?>/badges/v1/account/<?php echo $iso_code_2; ?>_account_badge_std_blue.png?width=150&eid=<?php echo $merchant; ?>" /></p>
+<p><img loading="lazy" decoding="async"src="https://cdn.klarna.com/public/images/<?php echo $iso_code_2; ?>/badges/v1/account/<?php echo $iso_code_2; ?>_account_badge_std_blue.png?width=150&eid=<?php echo $merchant; ?>" /></p>
 <form id="payment" class="form-horizontal">
   <fieldset>
     <legend><?php echo $text_payment_option; ?></legend>
@@ -15,7 +15,7 @@
         <input type="radio" name="code" value="<?php echo $payment_option['code']; ?>" />
         <?php } ?>
         <?php if ($iso_code_3 == 'NLD') { ?>
-        <img src="catalog/view/theme/default/image/klarna_nld_banner.png" />
+        <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/klarna_nld_banner.png" />
         <?php } ?>
         <?php echo $payment_option['title']; ?></label>
     </div>

@@ -13,12 +13,12 @@
     <h1 class="maintitle">Innovative products for every occasion</h1>
     
     <div class="col-sm-12 giftBlocks">
-        <div class="col-sm-2"><img src="catalog/view/theme/default/image/gifts.png" alt="Under - Rs 499" /> <span><a href="<?php echo $category_content['under'] ; ?>">Under - Rs499</a></span></div>
-    	<div class="col-sm-2"><img src="catalog/view/theme/default/image/giftshamper.png" alt="gift-hamper" /><span><a href="<?php echo $category_content['gifthamper'] ; ?>">Gift Hamper</a></span></div>
-    	<div class="col-sm-2"><img src="catalog/view/theme/default/image/female.png" alt="gift-for-her" /><span><a href="<?php echo $category_content['giftforher'] ; ?>">Gift for her</a></span></div>
-    	<div class="col-sm-2"><img src="catalog/view/theme/default/image/male.png" alt="gift-for-him" /><span><a href="<?php echo $category_content['giftforhim'] ; ?>">Gift for him</a></span></div>
-    	<div class="col-sm-2"><img src="catalog/view/theme/default/image/sameday.png" alt="sameday-delivery" /><span><a href="<?php echo $category_content['samedaydelivery'] ; ?>">Same day<br />Delivery</a></span></div>
-    	<div class="col-sm-2"><img src="catalog/view/theme/default/image/worldwide.png" alt="world-wide-delivery" /><span><a href="<?php echo $category_content['worldwidedelivery'] ; ?>">Worldwide<br />Delivery</a></span></div>                                        
+        <div class="col-sm-2"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/gifts.png" alt="Under - Rs 499" /> <span><a href="<?php echo $category_content['under'] ; ?>">Under - Rs499</a></span></div>
+    	<div class="col-sm-2"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/giftshamper.png" alt="gift-hamper" /><span><a href="<?php echo $category_content['gifthamper'] ; ?>">Gift Hamper</a></span></div>
+    	<div class="col-sm-2"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/female.png" alt="gift-for-her" /><span><a href="<?php echo $category_content['giftforher'] ; ?>">Gift for her</a></span></div>
+    	<div class="col-sm-2"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/male.png" alt="gift-for-him" /><span><a href="<?php echo $category_content['giftforhim'] ; ?>">Gift for him</a></span></div>
+    	<div class="col-sm-2"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/sameday.png" alt="sameday-delivery" /><span><a href="<?php echo $category_content['samedaydelivery'] ; ?>">Same day<br />Delivery</a></span></div>
+    	<div class="col-sm-2"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/worldwide.png" alt="world-wide-delivery" /><span><a href="<?php echo $category_content['worldwidedelivery'] ; ?>">Worldwide<br />Delivery</a></span></div>                                        
     </div>
     
     <div class="col-sm-12 homeCategoryBlocks">
@@ -26,7 +26,7 @@
    <div class="homeHeading"><h2><?php echo $category_content['first_cat_data'][0]['catname']; ?></h2> <a href="<?php echo $category_content['first_cat_data'][0]['category_id']; ?>">View All</a></div>
         <?php foreach($category_content['first_cat_data'] as $catproductContent){ ?>
             <div class="col-sm-3">
-            <a href="<?php echo $catproductContent['href']; ?>"><img src="<?php echo 'image/'.$catproductContent['image'];?>" alt="<?php echo $catproductContent['name'];?>" /></a>
+            <a href="<?php echo $catproductContent['href']; ?>"><img loading="lazy" decoding="async"src="<?php echo 'image/'.$catproductContent['image'];?>" alt="<?php echo $catproductContent['name'];?>" /></a>
             <a href="<?php echo $catproductContent['href']; ?>"><div class="productName"><?php echo $catproductContent['name'];?></div></a>
             <div class="price"><?php echo $catproductContent['price'];?></div>
             <a href="<?php echo $catproductContent['href']; ?>" class="buynow">Buy Now</a>
@@ -39,7 +39,7 @@
         <div class="homeHeading"><h2><?php echo $category_content['second_cat_data'][0]['catname']; ?></h2> <a href="<?php echo $category_content['second_cat_data'][0]['category_id']; ?>">View All</a></div>
         <?php foreach($category_content['second_cat_data'] as $catproductContent){ ?>
             <div class="col-sm-3">
-            <a href="<?php echo $catproductContent['href']; ?>"><img src="<?php echo 'image/'.$catproductContent['image'];?>" alt="<?php echo $catproductContent['name'];?>" /></a>
+            <a href="<?php echo $catproductContent['href']; ?>"><img loading="lazy" decoding="async"src="<?php echo 'image/'.$catproductContent['image'];?>" alt="<?php echo $catproductContent['name'];?>" /></a>
             <a href="<?php echo $catproductContent['href']; ?>"><div class="productName"><?php echo $catproductContent['name'];?></div></a>
             <div class="price"><?php echo $catproductContent['price'];?></div>
             <a href="<?php echo $catproductContent['href']; ?>" class="buynow">Buy Now</a>
@@ -52,7 +52,7 @@
         
         <?php foreach($category_content['third_cat_data'] as $catproductContent){ ?>
             <div class="col-sm-3">
-            <a href="<?php echo $catproductContent['href']; ?>"><img src="<?php echo 'image/'.$catproductContent['image'];?>" alt="<?php echo $catproductContent['name'];?>" /></a>
+            <a href="<?php echo $catproductContent['href']; ?>"><img loading="lazy" decoding="async"src="<?php echo 'image/'.$catproductContent['image'];?>" alt="<?php echo $catproductContent['name'];?>" /></a>
             <a href="<?php echo $catproductContent['href']; ?>"><div class="productName"><?php echo $catproductContent['name'];?></div></a>
             <div class="price"><?php echo $catproductContent['price'];?></div>
             <a href="<?php echo $catproductContent['href']; ?>" class="buynow">Buy Now</a>
@@ -65,7 +65,7 @@
         
         <?php foreach($category_content['fourth_cat_data'] as $catproductContent){ ?>
             <div class="col-sm-3">
-            <a href="<?php echo $catproductContent['href']; ?>"><img src="<?php echo 'image/'.$catproductContent['image'];?>" alt="<?php echo $catproductContent['name'];?>" /></a>
+            <a href="<?php echo $catproductContent['href']; ?>"><img loading="lazy" decoding="async"src="<?php echo 'image/'.$catproductContent['image'];?>" alt="<?php echo $catproductContent['name'];?>" /></a>
             <a href="<?php echo $catproductContent['href']; ?>"><div class="productName"><?php echo $catproductContent['name'];?></div></a>
             <div class="price"><?php echo $catproductContent['price'];?></div>
             <a href="<?php echo $catproductContent['href']; ?>" class="buynow">Buy Now</a>
@@ -78,7 +78,7 @@
         
     <?php foreach($category_content['fifth_cat_data'] as $catproductContent){ ?>
             <div class="col-sm-3">
-            <a href="<?php echo $catproductContent['href']; ?>"><img src="<?php echo 'image/'.$catproductContent['image'];?>" alt="<?php echo $catproductContent['name'];?>" /></a>
+            <a href="<?php echo $catproductContent['href']; ?>"><img loading="lazy" decoding="async"src="<?php echo 'image/'.$catproductContent['image'];?>" alt="<?php echo $catproductContent['name'];?>" /></a>
             <a href="<?php echo $catproductContent['href']; ?>"><div class="productName"><?php echo $catproductContent['name'];?></div></a>
             <div class="price"><?php echo $catproductContent['price'];?></div>
             <a href="<?php echo $catproductContent['href']; ?>" class="buynow">Buy Now</a>
@@ -88,25 +88,25 @@
         
     <div class="col-sm-12 mainInfo">
     <div class="col-sm-3">
-        <img src="catalog/view/theme/default/image/cities-covered.png" alt="More Than 250+ Cities Covered" />
+        <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/cities-covered.png" alt="More Than 250+ Cities Covered" />
         <span>
             More Than<br /> <strong>250+</strong><br /> Cities Covered
         </span>
     </div>
     <div class="col-sm-3">
-        <img src="catalog/view/theme/default/image/choose-products.png" alt="Choose From 50,000+ Products" />
+        <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/choose-products.png" alt="Choose From 50,000+ Products" />
         <span>
             Choose From<br /> <strong>50,000+</strong><br /> Products
         </span>
     </div>
     <div class="col-sm-3">
-                <img src="catalog/view/theme/default/image/delivery-countries.png" alt="Delivery in 100+ Countries" />
+                <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/delivery-countries.png" alt="Delivery in 100+ Countries" />
                 <span>
                     Delivery in<br /> <strong>100+</strong><br /> Countries
                 </span>
             </div>
     <div class="col-sm-3">
-                <img src="catalog/view/theme/default/image/happy-customers.png" alt="More Than 2,00000+ Happy Customers" />
+                <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/happy-customers.png" alt="More Than 2,00000+ Happy Customers" />
                 <span>
                     More Than<br /> <strong>2,00000+</strong><br /> Happy Customers
                 </span>
