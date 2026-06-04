@@ -1,5 +1,22 @@
 <?php
 class ControllerCommonHeader extends Controller {
+	private function resolveImagePath($image) {
+		if (!$image) {
+			return '';
+		}
+		// Original image exists
+		if (is_file(DIR_IMAGE . $image)) {
+			return $image;
+		}
+		// Try WebP fallback
+		$webp = preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', $image);
+		if ($webp !== $image && is_file(DIR_IMAGE . $webp)) {
+			return $webp;
+		}
+
+		return '';
+	}
+
 	public function index() {
 		// Analytics
 		$this->load->model('extension/extension');
@@ -20,8 +37,17 @@ class ControllerCommonHeader extends Controller {
 			$server = $this->config->get('config_url');
 		}
 
-		if (is_file(DIR_IMAGE . $this->config->get('config_icon'))) {
-			$this->document->addLink($server . 'image/' . $this->config->get('config_icon'), 'icon');
+		// if (is_file(DIR_IMAGE . $this->config->get('config_icon'))) {
+		// 	$this->document->addLink($server . 'image/' . $this->config->get('config_icon'), 'icon');
+		// }
+
+		$icon = $this->resolveImagePath($this->config->get('config_icon'));
+
+		if ($icon) {
+			$this->document->addLink(
+				$server . 'image/' . $icon,
+				'icon'
+			);
 		}
 
 		if (!isset($this->request->get['_route_']) || $this->request->get['_route_'] == 'home') {
@@ -38,8 +64,16 @@ class ControllerCommonHeader extends Controller {
 		$data['direction'] = $this->language->get('direction');
 		$data['name'] = $this->config->get('config_name');
 
-		if (is_file(DIR_IMAGE . $this->config->get('config_logo'))) {
-			$data['logo'] = $server . 'image/' . $this->config->get('config_logo');
+		// if (is_file(DIR_IMAGE . $this->config->get('config_logo'))) {
+		// 	$data['logo'] = $server . 'image/' . $this->config->get('config_logo');
+		// } else {
+		// 	$data['logo'] = '';
+		// }
+
+		$logo = $this->resolveImagePath($this->config->get('config_logo'));
+
+		if ($logo) {
+			$data['logo'] = $server . 'image/' . $logo;
 		} else {
 			$data['logo'] = '';
 		}
@@ -154,8 +188,28 @@ class ControllerCommonHeader extends Controller {
 				$category_image_width_mobile = min($category_image_width, 360);
 				$category_image_height_mobile = ($category_image_width > 0) ? (int)round(($category_image_height * $category_image_width_mobile) / $category_image_width) : $category_image_height;
 
-				$data['category_preload_image'] = $this->model_tool_image->resize($preload_category_info['image'], $category_image_width, $category_image_height);
-				$data['category_preload_image_mobile'] = $this->model_tool_image->resize($preload_category_info['image'], $category_image_width_mobile, $category_image_height_mobile);
+				// $data['category_preload_image'] = $this->model_tool_image->resize($preload_category_info['image'], $category_image_width, $category_image_height);
+				// $data['category_preload_image_mobile'] = $this->model_tool_image->resize($preload_category_info['image'], $category_image_width_mobile, $category_image_height_mobile);
+
+				$category_image = $this->resolveImagePath(
+					$preload_category_info['image']
+				);
+
+				if ($category_image) {
+
+					$data['category_preload_image'] = $this->model_tool_image->resize(
+						$category_image,
+						$category_image_width,
+						$category_image_height
+					);
+
+					$data['category_preload_image_mobile'] = $this->model_tool_image->resize(
+						$category_image,
+						$category_image_width_mobile,
+						$category_image_height_mobile
+					);
+				}
+
 				$data['category_preload_sizes'] = '(max-width: 767px) 100vw, ' . $category_image_width . 'px';
 			}
 		}
