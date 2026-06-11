@@ -594,7 +594,7 @@ div#payment-method {
                           <input type="number" name="" value="" placeholder="Enter 10 digit mobile number" id="gst_phone" class="full-width form-input phone phone-enter" inputmode='decimal' pattern='[0–9]*' />
                         </div>
                         <div class="envlope-icon" style="top: 40px;">
-                          <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/phone-icon.png" alt="" style="width: 12px;">
+                          <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/phone-icon.webp" alt="" style="width: 12px;">
                         </div>
                       </div>
                       <span id="error" style="color: red"></span>
@@ -761,7 +761,7 @@ div#payment-method {
                           <input type="number" class="form-input full-width pd-width-icon sender_phone phone-enter" value="<?php echo $sender_phone ?>" name="" placeholder="Enter 10 digit mobile number">
                           <span id="error" style="color:red"></span>
                           <div class="envlope-icon" style="top: 40px;">
-                            <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/phone-icon.png" alt="" style="width: 12px;">
+                            <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/phone-icon.webp" alt="" style="width: 12px;">
                           </div>
                         </div>
                       </div>

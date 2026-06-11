@@ -506,7 +506,7 @@ body.product-category-65.offermsg .container.top_positionn{
         </div>
       </div>
       <?php /* <div class=" xs-pl-15 xs-pr-15">
-        <img loading="lazy" decoding="async"style="border-radius: 10px;" src="catalog/view/theme/default/image/custom-cake.jpg" alt="" class="img-responsive img-lazy">
+        <img loading="lazy" decoding="async"style="border-radius: 10px;" src="catalog/view/theme/default/image/custom-cake.webp" alt="" class="img-responsive img-lazy">
       </div> */ ?>
 
       <div class="">

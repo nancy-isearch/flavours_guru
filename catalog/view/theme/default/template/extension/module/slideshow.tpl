@@ -20,9 +20,9 @@
 </div></div>
 
 <?php /*?><div class="col-sm-3" id="homeSideBanner">
-	<!-- <div class="col-sm-12"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/sidebanner1.jpg" alt="banner" /></div>
-	<div class="col-sm-12"><img src="catalog/view/theme/default/image/sidebanner2.jpg" alt="banner" /></div>
-	<div class="col-sm-12"><img src="catalog/view/theme/default/image/sidebanner3.jpg" alt="banner" /></div> -->
+	<!-- <div class="col-sm-12"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/sidebanner1.webp" alt="banner" /></div>
+	<div class="col-sm-12"><img src="catalog/view/theme/default/image/sidebanner2.webp" alt="banner" /></div>
+	<div class="col-sm-12"><img src="catalog/view/theme/default/image/sidebanner3.webp" alt="banner" /></div> -->
 	<?php foreach ($sidebanners as $banner) { ?>
 		<?php if ($banner['link']) { ?>
 			<div class="col-sm-12"><a href="<?php echo $banner['link'] ?>"><img loading="lazy" decoding="async"src="<?php echo $banner['image'] ?>" alt="banner" /></a></div>

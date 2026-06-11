@@ -404,7 +404,7 @@ class ControllerCommonHeader extends Controller {
 	}
 
 	private function getFilteredStyles($styles, $route_name) {
-		if ($route_name !== 'product/category') {
+		if ($route_name === 'common/home') {
 			return $styles;
 		}
 
@@ -428,7 +428,7 @@ class ControllerCommonHeader extends Controller {
 	}
 
 	private function getFilteredScripts($scripts, $route_name) {
-		if ($route_name !== 'product/category') {
+		if ($route_name === 'common/home') {
 			return $scripts;
 		}
 

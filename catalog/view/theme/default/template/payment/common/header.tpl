@@ -71,7 +71,7 @@
         </li>
       <?php   } ?>
         <li><a href="#"><span class="webRupee"></span> <?php echo $currency; ?> </a></li>
-      	<!--<li>Shipping to: <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/india-flag.jpg" alt="India" /></li> -->
+      	<!--<li>Shipping to: <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/india-flag.webp" alt="India" /></li> -->
         
       
         <?php /* ?>

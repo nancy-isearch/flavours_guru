@@ -15,7 +15,7 @@
         <input type="radio" name="code" value="<?php echo $payment_option['code']; ?>" />
         <?php } ?>
         <?php if ($iso_code_3 == 'NLD') { ?>
-        <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/klarna_nld_banner.png" />
+        <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/klarna_nld_banner.webp" />
         <?php } ?>
         <?php echo $payment_option['title']; ?></label>
     </div>

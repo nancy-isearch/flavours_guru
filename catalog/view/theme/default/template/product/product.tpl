@@ -1283,7 +1283,7 @@
                     </a>
                   </div>
                   <div class="loader-col">
-                    <img loading="lazy" decoding="async"style="width: 40px;" src="catalog/view/theme/default/image/loader.gif" class="material-icons back-arrow" alt="" />
+                    <img loading="lazy" decoding="async"style="width: 40px;" src="catalog/view/theme/default/image/loader.webp" class="material-icons back-arrow" alt="" />
                   </div>
                </div>
 
@@ -3548,10 +3548,10 @@
         <?php } ?>
         <div class="item similar_product_row position-relative ">
         <div class="similar_product_img_col">
-          <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/Home/white-img.jpg" alt="" class="img-responsive">
+          <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/Home/white-img.webp" alt="" class="img-responsive">
         </div>
         <div class="slide-view-all-testimonial">
-                <a href="/<?php echo $parent_cat_url['keyword'] ?>" tabindex="0">View All  &nbsp; <img loading="lazy" decoding="async" class="view-arrow" src="catalog/view/theme/default/image/Home/arrow-right-black.png" alt=""></a>
+                <a href="/<?php echo $parent_cat_url['keyword'] ?>" tabindex="0">View All  &nbsp; <img loading="lazy" decoding="async" class="view-arrow" src="catalog/view/theme/default/image/Home/arrow-right-black.webp" alt=""></a>
             </div>
         <div class="similar_product_name_col similar_text_height"></div>
         </div>

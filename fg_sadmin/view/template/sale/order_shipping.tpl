@@ -15,7 +15,7 @@
   <?php foreach ($orders as $order) { ?>
   <div style="page-break-after: always;">
     <div class="logo" style="text-align: center; padding: 10px 0;">
-      <img style="width: 200px;margin-bottom: 10px;" src="https://www.flavoursguru.com/catalog/view/theme/default/image/Home/FGLogoBlack.png" alt="">
+      <img style="width: 200px;margin-bottom: 10px;" src="https://www.flavoursguru.com/catalog/view/theme/default/image/Home/FGLogoBlack.webp" alt="">
       <div style="text-align: center;font-size: 18px; display: none;">
         <strong>Delivery boy:</strong> abcdefg
       </div>

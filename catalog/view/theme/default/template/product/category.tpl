@@ -795,25 +795,25 @@ body.product-category-65.offermsg .container.top_positionn{
         <ul>
           <li>
             <a href="/christmas/christmas-cup-cake" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/christmas-cupcake.jpg" alt="Christmas cake">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/christmas-cupcake.webp" alt="Christmas cake">
             </a>
             <p>Cup Cake</p>
           </li>
           <li>
             <a href="/christmas/plum-cakes" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/plum-cakes.jpg" alt="Christmas cake">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/plum-cakes.webp" alt="Christmas cake">
             </a>
             <p>Plum Cakes</p>
           </li>
           <li>
             <a href="/new-year-1st-jan" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-year-cake.jpg" alt="New year cake">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-year-cake.webp" alt="New year cake">
             </a>
             <p>New Year</p>
           </li>
           <li>
             <a href="/flower-combo" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/flower-combos.png" alt="Flower and cake combos ">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/flower-combos.webp" alt="Flower and cake combos ">
             </a>
             <p>Combos</p>
           </li>
@@ -841,25 +841,25 @@ body.product-category-65.offermsg .container.top_positionn{
         <ul>
           <!-- <li>
             <a href="/new-year-1st-jan" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-year-cake.jpg" alt="New year cake">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-year-cake.webp" alt="New year cake">
             </a>
             <p>New Year</p>
           </li> -->
           <li>
             <a href="/christmas" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/christmas.jpg" alt="Christmas cake">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/christmas.webp" alt="Christmas cake">
             </a>
             <p>Christmas</p>
           </li>
           <li>
             <a href="/christmas/plum-cakes" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/plum-cakes.jpg" alt="Christmas cake">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/plum-cakes.webp" alt="Christmas cake">
             </a>
             <p>Plum Cakes</p>
           </li>
           <li>
             <a href="/flower-combo" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/flower-combos.png" alt="Flower and cake combos ">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/flower-combos.webp" alt="Flower and cake combos ">
             </a>
             <p>Combos</p>
           </li>
@@ -892,10 +892,10 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
   <div class="regular_cakes_category">
   	<div class="row">
   		<div class="col-md-6 col-sm-6 col-xs-6 xs-mb-15">
-  			<a href="https://www.flavoursguru.com/rasmalai-cake"><img loading="lazy" decoding="async"style="width: 100%;border-radius: 15px;" class="img-responsive" src="catalog/view/theme/default/image/rasmail-cakes-2.jpg" alt="" /></a>
+  			<a href="https://www.flavoursguru.com/rasmalai-cake"><img loading="lazy" decoding="async"style="width: 100%;border-radius: 15px;" class="img-responsive" src="catalog/view/theme/default/image/rasmail-cakes-2.webp" alt="" /></a>
   		</div>
   		<div class="col-md-6 col-sm-6 col-xs-6">
-  			<a href="https://www.flavoursguru.com/ferrero-rocher-cakes"><img loading="lazy" decoding="async"style="width: 100%;border-radius: 15px;" class="img-responsive" src="catalog/view/theme/default/image/ferrero-2.jpg" alt="" /></a>
+  			<a href="https://www.flavoursguru.com/ferrero-rocher-cakes"><img loading="lazy" decoding="async"style="width: 100%;border-radius: 15px;" class="img-responsive" src="catalog/view/theme/default/image/ferrero-2.webp" alt="" /></a>
   		</div>
   	</div>
   </div>
@@ -1281,7 +1281,7 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
                 <div class="text-center border-btm-1 border-color-primary">
                   <div class="mb-30 xs-mb-15 text-right">
                     <p style="color: #BABFC3;" class="mb-0"><span><?php echo date('d-M-Y', strtotime($value['date_added'])) ?> </span></p>
-                    <!-- <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/Home/new-images/google-img.png" alt=""> -->
+                    <!-- <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/Home/new-images/google-img.webp" alt=""> -->
                   </div>
                   <div class="mb-30 xs-mb-15 text-left">
                     <p><?php echo ucfirst($value['text']) ?></p>
@@ -1331,7 +1331,7 @@ if($actual_link == 'https://www.flavoursguru.com/christmas') { ?>
           <?php $x++; } ?>
           <div class="review-col slide">
               <div class="slide-view-all-testimonial">
-                <a href="https://www.flavoursguru.com/testimonial">View All &nbsp; <img loading="lazy" decoding="async" class="view-arrow" src="catalog/view/theme/default/image/Home/arrow-right-black.png" alt="arrow right" loading="lazy" decoding="async" /></a>
+                <a href="https://www.flavoursguru.com/testimonial">View All &nbsp; <img loading="lazy" decoding="async" class="view-arrow" src="catalog/view/theme/default/image/Home/arrow-right-black.webp" alt="arrow right" loading="lazy" decoding="async" /></a>
               </div>
           </div>
         </div>

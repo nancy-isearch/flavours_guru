@@ -8,7 +8,7 @@
   <title></title>
   
 </head> -->
-<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<script defer src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 <style type="text/css">
   /*@media screen and (min-width: 1367px){
     .container {
@@ -17,7 +17,7 @@
     body{
       overflow-x: hidden;
     }
-    .gif-icon{
+    .webp-icon{
     	position: absolute;
 	    top: 50%;
 	    left: 50%;
@@ -58,7 +58,7 @@
       }
     }
     @media screen and (max-width: 767px){
-    	.gif-icon{
+    	.webp-icon{
     		width: 60px !important;
     	}
       .banner-first-title{
@@ -90,7 +90,7 @@
         <ul>
           <?php /*<li>
             <a href="/halloween-cakes" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/halloween.png" alt="">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/halloween.webp" alt="">
             </a>
             <p>Halloween</p>
           </li> */ ?>
@@ -104,14 +104,14 @@
           </li>
           <li>
             <a href="/new-year-1st-jan" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-year-cake.jpg" alt="New year cake">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-year-cake.webp" alt="New year cake">
             </a>
             <p>New Year</p>
           </li>  
           <li>
             <a href="/womens-day" class="hover-zoom-col">
               <div class="position-relative">
-               <img loading="lazy" decoding="async"style="border-radius: 50%" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/icon-bg.jpg" alt=""> 
+               <img loading="lazy" decoding="async"style="border-radius: 50%" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/icon-bg.webp" alt=""> 
                <lottie-player class="gif-icon" src="catalog/view/theme/default/image/Home/women.json" background="transparent" speed="1" loop="" autoplay=""></lottie-player>
               </div>
             </a>
@@ -119,7 +119,7 @@
           </li>
           <li>
             <a href="/womens-day" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/womens-day.png" alt="a customised three-layered orange cake">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/womens-day.webp" alt="a customised three-layered orange cake">
             </a>
             <p>Women’s Day</p>
           </li>
@@ -137,7 +137,7 @@
           </li>
           <li>
             <a href="/friendship-day" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/friend-ship.png" alt="friend ship day cake online">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/friend-ship.webp" alt="friend ship day cake online">
             </a>
             <p>Friendship Day</p>
           </li>
@@ -155,38 +155,38 @@
           </li>
           <li>
             <a href="/teachers-day-cakes" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/teacher-day-icons.png" alt="a customised three-layered orange cake">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/teacher-day-icons.webp" alt="a customised three-layered orange cake">
             </a>
             <p>Teacher's Day</p>
           </li>
           <li>
             <a href="/christmas" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/christmas.jpg" alt="christmas cake online">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/christmas.webp" alt="christmas cake online">
             </a>
             <p>Christmas</p>
           </li>
           <li>
             <a href="/new-year-1st-jan" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-year-cake.jpg" alt="New year cake">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-year-cake.webp" alt="New year cake">
             </a>
             <p>New Year</p>
           </li>
           <li>
             <a href="/republic-day-cake" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/rep-day-icon.gif" alt="Republic Day">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/rep-day-icon.webp" alt="Republic Day">
             </a>
             <p>Republic Day</p>
           </li>
           <li>
             <a href="/gifts/flowers" class="hover-zoom-col">
-              <img loading="lazy" decoding="async"style="border-radius: 50%;" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/flowers.jpg" alt="flowers cake">
+              <img loading="lazy" decoding="async"style="border-radius: 50%;" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/flowers.webp" alt="flowers cake">
             </a>
             <p>Flowers</p>
           </li>
           <li>
             <a href="/valentines.php" class="hover-zoom-col">
               <div class="position-relative">
-                <img loading="lazy" decoding="async"style="border-radius: 50%" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/icon-bg.jpg" alt="">
+                <img loading="lazy" decoding="async"style="border-radius: 50%" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/icon-bg.webp" alt="">
                 <lottie-player class="gif-icon" src="catalog/view/theme/default/image/Home/valenrine-heart.json" background="transparent" speed="1" loop="" autoplay=""></lottie-player>
               </div>
             </a>
@@ -194,7 +194,7 @@
           </li>
           <li>
             <a href="/womens-day" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/womens-day.png" alt="a customised three-layered orange cake">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/womens-day.webp" alt="a customised three-layered orange cake">
             </a>
             <p>Women’s Day</p>
           </li>
@@ -206,79 +206,79 @@
           </li>*/ ?>
           <li>
             <a href="/customize" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/custom-cakes.png" alt="a customised three-layered orange cake">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/custom-cakes.webp" alt="a customised three-layered orange cake">
             </a>
             <p>Customized</p>
           </li>
           <li>
             <a href="/flower-combo" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/flower-combos.png" alt="Flower and cake combos ">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/flower-combos.webp" alt="Flower and cake combos ">
             </a>
             <p>Combos</p>
           </li>
           <li>
             <a href="/birthday" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/birthday.jpg" alt="Birthday Cakes">  
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/birthday.webp" alt="Birthday Cakes">  
             </a>
             <p>Birthday</p>
           </li>
           <li>
             <a href="/anniversary" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/anniversary-cake.png" alt="Anniversary Cakes">  
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/anniversary-cake.webp" alt="Anniversary Cakes">  
             </a>
             <p>Anniversary</p>
           </li>
           <li>
             <a href="/new-arrival-cakes" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/fresh-arrivals.png" alt="Fresh Arrivals cakes">  
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/fresh-arrivals.webp" alt="Fresh Arrivals cakes">  
             </a>
             <p>Fresh Arrivals</p>
           </li>
           <li>
             <a href="/heart-shape" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/heart-shape.png" alt="Red heart-shaped cake topped with strawberries">  
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/heart-shape.webp" alt="Red heart-shaped cake topped with strawberries">  
             </a>
             <p>Heart Shape</p>
           </li>
           <li>
             <a href="/gifts" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/gift-hamper.png" alt="Gift ideas for special occassions">  
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/gift-hamper.webp" alt="Gift ideas for special occassions">  
             </a>
             <p>Gifts</p>
           </li>
           <li>
             <a href="/cakes-below-600" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/cakes-under-500.png" alt="Delicious cake under 600 calories, adorned with fresh berries">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/cakes-under-500.webp" alt="Delicious cake under 600 calories, adorned with fresh berries">
             </a>
             <p>Under 600</p>
           </li>
            <!--<li>
             <a href="/classic-cakes" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/premium-flavours.png" alt="A cherry-topped premium cake in the picture">  
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/premium-flavours.webp" alt="A cherry-topped premium cake in the picture">  
             </a>
             <p>Premium</p>
           </li> -->
           <!-- <li>
             <a href="/photo-cakes" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/photo-cake.png" alt="A photo frame featuring a cake and cupcakes">  
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/photo-cake.webp" alt="A photo frame featuring a cake and cupcakes">  
             </a>
             <p>Photo Cakes</p>
           </li> -->
            <?php /*<li>
             <a href="/custom-theme-cakes" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/theme-cake.png" alt="Theme Cakes">  
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/theme-cake.webp" alt="Theme Cakes">  
             </a>
             <p>Theme<br> Cakes</p>
           </li>
           <li>
             <a href="/regular-cakes/cheese-cakes" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/cheese-cakes.png" alt="">  
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/cheese-cakes.webp" alt="">  
             </a>
             <p>Cheese Cakes</p>
           </li>
           <li>
             <a href="/gifts/plants" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/desktop-icons.png" alt="">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/desktop-icons.webp" alt="">
             </a>
             <p>Birthday<br> Plants</p>
           </li> */ ?>
@@ -431,7 +431,7 @@
       <a href="/birthday">
         <picture>
           <source media="(max-width: 767px)" srcset="catalog/view/theme/default/image/Home/new-images/birthday-cake-mob.webp">
-          <img class="img-responsive main-banner-border" src="catalog/view/theme/default/image/Home/new-images/birthday-cake-desk.webp" alt="birthday cake" fetchpriority="high">
+          <img class="img-responsive main-banner-border" src="catalog/view/theme/default/image/Home/new-images/birthday-cake-desk.webp" alt="birthday cake" fetchpriority="high" loading="eager" decoding="async">
         </picture>
         <div class="banner-overlay-content">
           <div class="banner-title-row">
@@ -448,7 +448,7 @@
       <a href="/anniversary">
         <picture>
           <source media="(max-width: 767px)" srcset="catalog/view/theme/default/image/Home/new-images/anniversary-cake-mob.webp">
-          <img class="img-responsive main-banner-border" src="catalog/view/theme/default/image/Home/new-images/anniversary-cake-desk.webp" alt="anniversary cake">
+          <img class="img-responsive main-banner-border" src="catalog/view/theme/default/image/Home/new-images/anniversary-cake-desk.webp" alt="anniversary cake" fetchpriority="high" loading="eager" decoding="async">
         </picture>
         <div class="banner-overlay-content">
           <div class="banner-title-row">
@@ -465,7 +465,7 @@
       <a href="/customize">
         <picture>
           <source media="(max-width: 767px)" srcset="catalog/view/theme/default/image/Home/new-images/designer-cake-mob.webp">
-          <img class="img-responsive main-banner-border" src="catalog/view/theme/default/image/Home/new-images/designer-cake-desk.webp" alt="birthday cake">
+          <img class="img-responsive main-banner-border" src="catalog/view/theme/default/image/Home/new-images/designer-cake-desk.webp" alt="birthday cake" fetchpriority="high" loading="eager" decoding="async">
         </picture>
         <div class="banner-overlay-content">
           <div class="banner-title-row">
@@ -500,7 +500,7 @@
           <div class="slide tag-section-btm tag-section-bottom-1">
             <div class="display-flex align-items-center">
               <div style="width: 65px;padding-right: 15px;">
-                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/rated-icon.png" alt="Rated 4.8">
+                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/rated-icon.webp" alt="Rated 4.8">
               </div>
               <div style="width: calc(100% - 65px);">
                 <h3 style="font-weight: 600" class="m-t-0 mb-5">Rated 4.8*</h3>
@@ -511,7 +511,7 @@
           <div class="slide tag-section-btm tag-section-bottom-1">
             <div class="display-flex align-items-center">
               <div style="width: 65px;padding-right: 15px;">
-                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/egg-less.png" alt="Fresh &amp; Eggless 100%">
+                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/egg-less.webp" alt="Fresh &amp; Eggless 100%">
               </div>
               <div style="width: calc(100% - 65px);">
                 <h3 style="font-weight: 600" class="m-t-0 mb-5">100%</h3>
@@ -522,7 +522,7 @@
           <div class="slide tag-section-btm tag-section-bottom-1">
             <div class="display-flex align-items-center">
               <div style="width: 65px;padding-right: 15px;">
-                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/fast-delivery.png" alt="Fast Delivery">
+                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/fast-delivery.webp" alt="Fast Delivery">
               </div>
               <div style="width: calc(100% - 65px);">
                 <h3 style="font-weight: 600" class="m-t-0 mb-5">Fast Delivery</h3>
@@ -549,8 +549,8 @@
             <div class="slide">
               <a href="/surprise-cake-box">
                 <div class="tranding-vector-img">
-                  <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/treanding-vector-bg-min.png" alt="A colorful cake box with a big red bow reveal a surprise inside">
-                  <img loading="lazy" decoding="async" class="img-responsive trending-circl-img" src="catalog/view/theme/default/image/Home/new-images/surprise-box.png" alt="A colorful cake box with a big red bow reveal a surprise inside">
+                  <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/treanding-vector-bg-min.webp" alt="A colorful cake box with a big red bow reveal a surprise inside">
+                  <img loading="lazy" decoding="async" class="img-responsive trending-circl-img" src="catalog/view/theme/default/image/Home/new-images/surprise-box.webp" alt="A colorful cake box with a big red bow reveal a surprise inside">
                   <div class="home-primary-btn trending-btn">Surprise Box</div>
                 </div>
               </a>
@@ -558,8 +558,8 @@
             <div class="slide">
               <a href="/floral-birthday-cakes">
                 <div class="tranding-vector-img">
-                  <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/treanding-vector-bg-min.png" alt="Pull Me up - Flavours Guru">
-                  <img loading="lazy" decoding="async" class="img-responsive trending-circl-img" src="catalog/view/theme/default/image/Home/new-images/floral-cakes.png" alt="floral cakes - Flavours Guru">
+                  <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/treanding-vector-bg-min.webp" alt="Pull Me up - Flavours Guru">
+                  <img loading="lazy" decoding="async" class="img-responsive trending-circl-img" src="catalog/view/theme/default/image/Home/new-images/floral-cakes.webp" alt="floral cakes - Flavours Guru">
                   <div class="home-primary-btn trending-btn">Floral Cakes</div>
                 </div>
               </a>
@@ -567,8 +567,8 @@
             <div class="slide">
               <a href="/designer-cream-cake">
                 <div class="tranding-vector-img">
-                  <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/treanding-vector-bg-min.png" alt="A black cake adorned with a boom sign, resembling a bomb cake.">
-                  <img loading="lazy" decoding="async" class="img-responsive trending-circl-img" src="catalog/view/theme/default/image/Home/new-images/designer-cakes.png" alt="designer cakes ">
+                  <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/treanding-vector-bg-min.webp" alt="A black cake adorned with a boom sign, resembling a bomb cake.">
+                  <img loading="lazy" decoding="async" class="img-responsive trending-circl-img" src="catalog/view/theme/default/image/Home/new-images/designer-cakes.webp" alt="designer cakes ">
                   <div class="home-primary-btn trending-btn">Designer Cakes</div>
                 </div>
               </a>
@@ -576,8 +576,8 @@
             <div class="slide">
               <a href="/fault-line-cake">
                 <div class="tranding-vector-img">
-                  <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/treanding-vector-bg-min.png" alt="Green fault line birthday cake with white flowers">
-                  <img loading="lazy" decoding="async" class="img-responsive trending-circl-img" src="catalog/view/theme/default/image/Home/new-images/fault-line-min.png" alt="Green fault line birthday cake with white flowers">
+                  <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/treanding-vector-bg-min.webp" alt="Green fault line birthday cake with white flowers">
+                  <img loading="lazy" decoding="async" class="img-responsive trending-circl-img" src="catalog/view/theme/default/image/Home/new-images/fault-line-min.webp" alt="Green fault line birthday cake with white flowers">
                   <div class="home-primary-btn trending-btn">Fault Line Cakes</div>
                 </div>
               </a>
@@ -585,8 +585,8 @@
             <div class="slide">
               <a href="/balloon-cakes">
                 <div class="tranding-vector-img">
-                  <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/treanding-vector-bg-min.png" alt="A pink color balloon cake reveal a surprise inside.">
-                  <img loading="lazy" decoding="async" class="img-responsive trending-circl-img" src="catalog/view/theme/default/image/Home/new-images/ballon-cake-min.png" alt="A pink color balloon cake reveal a surprise inside.">
+                  <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/treanding-vector-bg-min.webp" alt="A pink color balloon cake reveal a surprise inside.">
+                  <img loading="lazy" decoding="async" class="img-responsive trending-circl-img" src="catalog/view/theme/default/image/Home/new-images/ballon-cake-min.webp" alt="A pink color balloon cake reveal a surprise inside.">
                   <div class="home-primary-btn trending-btn">Ballon Cakes</div>
                 </div>
               </a>
@@ -594,8 +594,8 @@
             <div class="slide">
               <a href="/isomalt-cakes">
                 <div class="tranding-vector-img">
-                  <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/treanding-vector-bg-min.png" alt="Isomalt Cakes - Flavours Guru">
-                  <img loading="lazy" decoding="async" class="img-responsive trending-circl-img" src="catalog/view/theme/default/image/Home/new-images/isomalt-min.png" alt="Isomalt Cakes - Flavours Guru">
+                  <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/treanding-vector-bg-min.webp" alt="Isomalt Cakes - Flavours Guru">
+                  <img loading="lazy" decoding="async" class="img-responsive trending-circl-img" src="catalog/view/theme/default/image/Home/new-images/isomalt-min.webp" alt="Isomalt Cakes - Flavours Guru">
                   <div class="home-primary-btn trending-btn">Isomalt Cakes</div>
                 </div>
               </a>
@@ -603,8 +603,8 @@
             <div class="slide">
               <a href="/pinata-cakes">
                 <div class="tranding-vector-img">
-                  <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/treanding-vector-bg-min.png" alt="Pinata Cakes - Flavours Guru">
-                  <img loading="lazy" decoding="async" class="img-responsive trending-circl-img" src="catalog/view/theme/default/image/Home/new-images/pinata.png" alt="Pinata Cakes - Flavours Guru">
+                  <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/treanding-vector-bg-min.webp" alt="Pinata Cakes - Flavours Guru">
+                  <img loading="lazy" decoding="async" class="img-responsive trending-circl-img" src="catalog/view/theme/default/image/Home/new-images/pinata.webp" alt="Pinata Cakes - Flavours Guru">
                   <div class="home-primary-btn trending-btn">Pinata</div>
                 </div>
               </a>
@@ -670,49 +670,49 @@
         <ul>
           <li>
             <a href="/cakes-by-profession/doctor" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Doctor.png" alt="doctor presenting a heart cake">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Doctor.webp" alt="doctor presenting a heart cake">
             </a>
             <p>Doctor</p>
           </li>
           <li>
             <a href="/cakes-by-profession/engineers" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Engineer.png" alt="A man holding a wrench, with a cake for an engineer.">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Engineer.webp" alt="A man holding a wrench, with a cake for an engineer.">
             </a>
             <p>Engineer</p>
           </li>
           <li>
             <a href="/cakes-by-profession/entrepreneur" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Entrepreneur.png" alt="An elegant cake adorned with edible gold flakes for an Entrepreneur.">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Entrepreneur.webp" alt="An elegant cake adorned with edible gold flakes for an Entrepreneur.">
             </a>
             <p>Entrepreneur</p>
           </li>
           <li>
             <a href="/cakes-by-profession/blogger" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Blogger.png" alt="Beautifully decorated cake with edible flowers, ideal for a blogger's social media feed.">  
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Blogger.webp" alt="Beautifully decorated cake with edible flowers, ideal for a blogger's social media feed.">  
             </a>
             <p>Blogger</p>
           </li>
           <li>
             <a href="/cakes-by-profession/teacher" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Teacher.png" alt="A man with glasses standing next to a cake for teacher.">  
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Teacher.webp" alt="A man with glasses standing next to a cake for teacher.">  
             </a>
             <p>Teacher</p>
           </li>
           <li>
             <a href="/custom-theme-cakes/makeup-cakes" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Makeup.png" alt="A beautifully decorated cake with makeup-themed decorations for a makeup artist.">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Makeup.webp" alt="A beautifully decorated cake with makeup-themed decorations for a makeup artist.">
             </a>
             <p>Makeup</p>
           </li>
           <li>
             <a href="/cakes-by-profession/soldier" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Soldier.png" alt="A soldier-themed cake with camouflage pattern.">  
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Soldier.webp" alt="A soldier-themed cake with camouflage pattern.">  
             </a>
             <p>Soldier</p>
           </li>
           <li>
             <a href="/cakes-by-profession/traveller" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Traveller.png" alt="Suitcase with beach chair and palm tree, perfect cake for traveler">  
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Traveller.webp" alt="Suitcase with beach chair and palm tree, perfect cake for traveler">  
             </a>
             <p>Traveller</p>
           </li>
@@ -723,7 +723,7 @@
 </div>
 
 <div class="contact-less-section col-md-12 col-sm-12 col-xs-12 section-m-b p-r-0 p-l-0 mt-40">
-  <?php /*<img style="border-radius: 15px;" class="img-responsive" src="catalog/view/theme/default/image/Home/Covid-Safe-Delivery-Banner.jpg" alt="Eggless cakes - Flavours Guru">  
+  <?php /*<img style="border-radius: 15px;" class="img-responsive" src="catalog/view/theme/default/image/Home/Covid-Safe-Delivery-Banner.webp" alt="Eggless cakes - Flavours Guru">  
   <a href="/experience-gift-ideas"><img class="img-responsive mb-20 hidden-xs" src="catalog/view/theme/default/image/Home/new-images/desktop-experience-banner.webp" alt="experience cakes - Flavours Guru"></a>
   <a href="/experience-gift-ideas"><img class="img-responsive mb-20 visible-xs" src="catalog/view/theme/default/image/Home/new-images/mobile-experience-banner.webp" alt="experience cakes 2 - Flavours Guru"></a>*/ ?>
   <div class="container">
@@ -753,7 +753,7 @@
       <div class="col-md-6 col-md-6 col-xs-12 xs-p-r-0 xs-p-l-0">
         <div class="row">
           <div class="col-md-6 mb-15 position-relative">
-            <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Birthday-Cakes.jpg" alt="A colorful mixture of birthday cakes with various designs and decorations">
+            <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Birthday-Cakes.webp" alt="A colorful mixture of birthday cakes with various designs and decorations">
             <a class="overlay-occasions-col text-center" href="/birthday">
               <div class="inner-overlay-cta-col"> 
                 <p>Birthday Cakes</p>
@@ -772,7 +772,7 @@
             </a>
           </div>
           <div class="col-md-6 mb-15 position-relative">
-            <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Anniversary-Cakes.jpg" alt="Anniversary Cake featuring a couple, held by a hand">
+            <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Anniversary-Cakes.webp" alt="Anniversary Cake featuring a couple, held by a hand">
             <a class="overlay-occasions-col text-center" href="/anniversary">
               <div class="inner-overlay-cta-col"> 
                 <p>Anniversary Cakes</p>
@@ -793,7 +793,7 @@
         </div>
         <div class="row">
           <div class="position-relative col-md-12 col-sm-12 col-xs-12">
-            <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Bachelorette-Party.jpg" alt="A cake with a woman sitting on top, celebrating a Bachelorette Party">
+            <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Bachelorette-Party.webp" alt="A cake with a woman sitting on top, celebrating a Bachelorette Party">
             <a class="overlay-occasions-col text-center" href="/bachelorette-cake">
                 <div class="inner-overlay-cta-col"> 
                   <p>Bachelorette Party</p>
@@ -814,7 +814,7 @@
         </div>
       </div>
       <div class="col-md-3 col-sm-3 col-xs-12 position-relative  mb-15">
-        <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Romantic-Love.jpg" alt="A selection of beautifully decorated cakes perfect for celebrating romantic love">
+        <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Romantic-Love.webp" alt="A selection of beautifully decorated cakes perfect for celebrating romantic love">
         <a class="overlay-occasions-col text-center" href="/anniversary/love-anniversary">
           <div class="inner-overlay-cta-col"> 
             <p>Romantic Love</p>
@@ -835,7 +835,7 @@
       <div class="col-md-3">
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12 position-relative  mb-15">
-            <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Wedding-Cakes.jpg" alt="Newlyweds slicing into a wedding cake together">
+            <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Wedding-Cakes.webp" alt="Newlyweds slicing into a wedding cake together">
             <a class="overlay-occasions-col text-center" href="/wedding">
                 <div class="inner-overlay-cta-col"> 
                   <p>Wedding Cakes</p>
@@ -854,7 +854,7 @@
             </a>
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12 position-relative">
-            <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Baby-Shower-Cakes.jpg" alt="A baby shower cake beautifully decorated for the celebration.">
+            <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Baby-Shower-Cakes.webp" alt="A baby shower cake beautifully decorated for the celebration.">
             <a class="overlay-occasions-col text-center" href="/baby-shower-cakes">
                 <div class="inner-overlay-cta-col"> 
                   <p>Baby Shower Cakes</p>
@@ -879,7 +879,7 @@
       <div class="treanding-slide col-md-12 col-sm-12 col-xs-12 p-l-0 p-r-0 shop_by_occasions_slide">
         <div class="slide">
           <div class="mb-15 position-relative">
-            <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Birthday-Cakes.jpg" alt="Flavours Guru">
+            <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Birthday-Cakes.webp" alt="Flavours Guru">
             <a class="overlay-occasions-col text-center" href="/birthday">
               <div class="inner-overlay-cta-col"> 
                 <p>Birthday Cakes</p>
@@ -900,7 +900,7 @@
         </div>
         <div class="slide">
           <div class="mb-15 position-relative">
-            <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/anniversary-cake-mob.jpg" alt="Anniversary Cake featuring a couple, held by a hand">
+            <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/anniversary-cake-mob.webp" alt="Anniversary Cake featuring a couple, held by a hand">
             <a class="overlay-occasions-col text-center" href="/anniversary">
               <div class="inner-overlay-cta-col"> 
                 <p>Anniversary Cakes</p>
@@ -1025,7 +1025,7 @@
           <div class="slide">
             <a href="/kids/boys">
               <div class="best-seller-pd-col">
-                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Cake-for-Boys.jpg" alt="Cake designed with blue icing and toy cars, ideal for celebrating a boy's special day.">
+                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Cake-for-Boys.webp" alt="Cake designed with blue icing and toy cars, ideal for celebrating a boy's special day.">
                 <div class="text-center">
                   <h4 class="product-name-title mt-20 mb-20">Cake for Boys</h4>
                   <div class="home-secondary-btn">
@@ -1038,7 +1038,7 @@
           <div class="slide">
             <a href="/kids/girls">
               <div class="best-seller-pd-col">
-                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Cake-for-Girls.jpg" alt=" A cake decorated with a girl holding balloons and a rainbow, perfect for a girl's celebration.">
+                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Cake-for-Girls.webp" alt=" A cake decorated with a girl holding balloons and a rainbow, perfect for a girl's celebration.">
                 <div class="text-center">
                   <h4 class="product-name-title mt-20 mb-20">Cake for Girls</h4>
                   <div class="home-secondary-btn">
@@ -1051,7 +1051,7 @@
           <div class="slide">
             <a href="/birthday/1st-birthday">
               <div class="best-seller-pd-col">
-                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/First-Birthday.jpg" alt=" A cake with a teddy bear on top and a number one on the side. Perfect for a first birthday celebration.">
+                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/First-Birthday.webp" alt=" A cake with a teddy bear on top and a number one on the side. Perfect for a first birthday celebration.">
                 <div class="text-center">
                   <h4 class="product-name-title mt-20 mb-20">First Birthday</h4>
                   <div class="home-secondary-btn">
@@ -1064,7 +1064,7 @@
           <div class="slide">
             <a href="/birthday/half-birthday">
               <div class="best-seller-pd-col">
-                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Half-Birthday.jpg" alt="Half Birthday cakes">
+                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Half-Birthday.webp" alt="Half Birthday cakes">
                 <div class="text-center">
                   <h4 class="product-name-title mt-20 mb-20">Half Birthday</h4>
                   <div class="home-secondary-btn">
@@ -1093,49 +1093,49 @@
       <ul>
         <li>
           <a href="/custom-theme-cakes/unicorn-cakes" class="hover-zoom-col">
-            <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Peppa-Pig.jpg" alt="Unicorn cakes">
+            <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Peppa-Pig.webp" alt="Unicorn cakes">
           </a>
           <p>Unicorn</p>
         </li>
         <li>
           <a href="/cartoon-cakes/peppa-pig" class="hover-zoom-col">
-            <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Unicorn.jpg" alt="A Peppa Pig cake with pink frosting">
+            <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Unicorn.webp" alt="A Peppa Pig cake with pink frosting">
           </a>
           <p>Peppa Pig</p>
         </li>
         <li>
           <a href="/cartoon-cakes/avengers" class="hover-zoom-col">
-            <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Avengers.jpg" alt="Cake adorned with Avengers logo and hammer motif.">
+            <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Avengers.webp" alt="Cake adorned with Avengers logo and hammer motif.">
           </a>
           <p>Avengers</p>
         </li>
         <li>
           <a href="/cartoon-cakes/masha-and-the-bear-cake" class="hover-zoom-col">
-            <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Masha-Bear.jpg" alt="A delightful Masha and the Bear cake beautifully decorated.">  
+            <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Masha-Bear.webp" alt="A delightful Masha and the Bear cake beautifully decorated.">  
           </a>
           <p>Masha Bear</p>
         </li>
         <li>
           <a href="/cartoon-cakes/jurassic-park" class="hover-zoom-col">
-            <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Dinosaur.jpg" alt="A cake decorated with dinosaurs and a volcano design, perfect for a dinosaur-themed party.">  
+            <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Dinosaur.webp" alt="A cake decorated with dinosaurs and a volcano design, perfect for a dinosaur-themed party.">  
           </a>
           <p>Dinosaur</p>
         </li>
         <li>
           <a href="/cartoon-cakes/shin-chan-cakes" class="hover-zoom-col">
-            <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Shin-Chan.jpg" alt="A delicious Shin Chan-themed cake with colorful icing">
+            <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Shin-Chan.webp" alt="A delicious Shin Chan-themed cake with colorful icing">
           </a>
           <p>Shin Chan</p>
         </li>
         <li>
           <a href="/cartoon-cakes/panda" class="hover-zoom-col">
-            <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Panda.jpg" alt="A panda cake with a cute panda face decoration on top">  
+            <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Panda.webp" alt="A panda cake with a cute panda face decoration on top">  
           </a>
           <p>Panda</p>
         </li>
         <li>
           <a href="/cartoon-cakes/barbie" class="hover-zoom-col">
-            <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Barbie.jpg" alt="A Barbie doll cake with a pink dress and pink icing, perfect for any celebration.">
+            <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Barbie.webp" alt="A Barbie doll cake with a pink dress and pink icing, perfect for any celebration.">
           </a>
           <p>Barbie</p>
         </li>
@@ -1163,49 +1163,49 @@
         <ul>
           <li>
             <a href="/cake-by-traits/lazy-man" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Lazy.png" alt="Yellow emoticon wearing a red hat, representing 'Cake For lazy">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Lazy.webp" alt="Yellow emoticon wearing a red hat, representing 'Cake For lazy">
             </a>
             <p>Lazy</p>
           </li>
           <li>
             <a href="/cake-by-traits/gamer" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Gamer.png" alt="A purple controller with four buttons on it, designed for gamers.">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Gamer.webp" alt="A purple controller with four buttons on it, designed for gamers.">
             </a>
             <p>Gamer</p>
           </li>
           <li>
             <a href="/custom-theme-cakes/shopping-cakes" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Shopping.png" alt="Shopping Cakes">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Shopping.webp" alt="Shopping Cakes">
             </a>
             <p>Shopping</p>
           </li>
           <li>
             <a href="/custom-theme-cakes/gym-cakes" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Gym-Lover.png" alt="Gym-themed cake with a yellow dumbbell and red bottle">  
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Gym-Lover.webp" alt="Gym-themed cake with a yellow dumbbell and red bottle">  
             </a>
             <p>Gym Lover</p>
           </li>
           <li>
             <a href="/custom-theme-cakes/car" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Car-Lover.png" alt="Yellow car with black roof on dark background, perfect for car lovers.">  
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Car-Lover.webp" alt="Yellow car with black roof on dark background, perfect for car lovers.">  
             </a>
             <p>Car Lover</p>
           </li>
           <li>
             <a href="/custom-theme-cakes/football-cakes" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Football.png" alt="Cake decorated with football field design">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Football.webp" alt="Cake decorated with football field design">
             </a>
             <p>Football</p>
           </li>
           <li>
             <a href="/cake-by-traits/foodie" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Foodie.png" alt="Hamburger on dark background">  
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Foodie.webp" alt="Hamburger on dark background">  
             </a>
             <p>Foodie</p>
           </li>
           <li>
             <a href="/cake-by-traits/workaholic" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Workaholic.png" alt="A man multitasking with headphones looks workholic cake">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/Workaholic.webp" alt="A man multitasking with headphones looks workholic cake">
             </a>
             <p>Workaholic</p>
           </li>
@@ -1224,7 +1224,7 @@
           <div class="col-md-3 col-sm-3 col-xs-6 mb-40 visible">
             <a href="/regular-cakes/chocolate-cakes/">
               <div class="best-seller-pd-col">
-                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Rich-Chocolate.jpg" alt=" Chocolate cake with whipped cream a decadent treat for chocolate lovers.">
+                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Rich-Chocolate.webp" alt=" Chocolate cake with whipped cream a decadent treat for chocolate lovers.">
                 <div class="text-center">
                   <h4 class="product-name-title mt-20 mb-20">Rich Chocolate</h4>
                   <div class="home-secondary-btn">
@@ -1237,7 +1237,7 @@
           <div class="col-md-3 col-sm-3 col-xs-6 mb-40 visible">
             <a href="/regular-cakes/red-velvet/">
               <div class="best-seller-pd-col">
-                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Premium-Red-Velvet.jpg" alt="A cherry-topped premium red velvet cake in the picture">
+                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Premium-Red-Velvet.webp" alt="A cherry-topped premium red velvet cake in the picture">
                 <div class="text-center">
                   <h4 class="product-name-title mt-20 mb-20">Premium Red Velvet</h4>
                   <div class="home-secondary-btn">
@@ -1250,7 +1250,7 @@
           <div class="col-md-3 col-sm-3 col-xs-6 mb-40 visible">
             <a href="/regular-cakes/black-forest-cakes/">
               <div class="best-seller-pd-col">
-                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Exotic-Black-Forest.jpg" alt="Black Forest Cakes ecadent dessert with layers of rich chocolate cake">
+                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Exotic-Black-Forest.webp" alt="Black Forest Cakes ecadent dessert with layers of rich chocolate cake">
                 <div class="text-center">
                   <h4 class="product-name-title mt-20 mb-20">Exotic Black Forest</h4>
                   <div class="home-secondary-btn">
@@ -1263,7 +1263,7 @@
           <div class="col-md-3 col-sm-3 col-xs-6 mb-40 visible">
             <a href="/regular-cakes/pineapple-cakes/">
               <div class="best-seller-pd-col">
-                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Sweet-Pineapple.jpg" alt="Delicious pineapple cakes with a sweet and tropical flavor">
+                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Sweet-Pineapple.webp" alt="Delicious pineapple cakes with a sweet and tropical flavor">
                 <div class="text-center">
                   <h4 class="product-name-title mt-20 mb-20">Sweet Pineapple</h4>
                   <div class="home-secondary-btn">
@@ -1276,7 +1276,7 @@
           <div class="col-md-3 col-sm-3 col-xs-6 mb-40 visible">
             <a href="/regular-cakes/fruit-cakes/">
               <div class="best-seller-pd-col">
-                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Cravy-Fruit-Cake.jpg" alt=" A close-up photo of a delicious fruit cake with colorful fruits on top, making it look irresistibly cravy.">
+                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Cravy-Fruit-Cake.webp" alt=" A close-up photo of a delicious fruit cake with colorful fruits on top, making it look irresistibly cravy.">
                 <div class="text-center hide-title-col">
                   <h4 class="product-name-title mt-20 mb-20">Cravy Fruit Cake</h4>
                   <div class="home-secondary-btn">
@@ -1289,7 +1289,7 @@
           <div class="col-md-3 col-sm-3 col-xs-6 mb-40 visible">
             <a href="/regular-cakes/blueberry-cakes/">
               <div class="best-seller-pd-col">
-                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Fab-Blueberry.jpg" alt="blueberry cakes topped with powdered sugar and fresh blueberries">
+                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Fab-Blueberry.webp" alt="blueberry cakes topped with powdered sugar and fresh blueberries">
                 <div class="text-center hide-title-col">
                   <h4 class="product-name-title mt-20 mb-20">Fab Blueberry</h4>
                   <div class="home-secondary-btn">
@@ -1302,7 +1302,7 @@
           <div class="col-md-3 col-sm-3 col-xs-6 mb-40">
             <a href="/regular-cakes/vanilla-cakes/">
               <div class="best-seller-pd-col">
-                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Yummy-Vanilla.jpg" alt="Vanilla cake topped with frosting and sprinkles.">
+                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Yummy-Vanilla.webp" alt="Vanilla cake topped with frosting and sprinkles.">
                 <div class="text-center">
                   <h4 class="product-name-title mt-20 mb-20">Yummy Vanilla</h4>
                   <div class="home-secondary-btn">
@@ -1315,7 +1315,7 @@
           <div class="col-md-3 col-sm-3 col-xs-6 mb-40">
             <a href="/regular-cakes/butterscotch-cakes/">
               <div class="best-seller-pd-col">
-                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Yay-Butterscotch.jpg" alt="Delicious butterscotch cakes with a golden brown crust and a creamy caramel filling">
+                <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/Yay-Butterscotch.webp" alt="Delicious butterscotch cakes with a golden brown crust and a creamy caramel filling">
                 <div class="text-center">
                   <h4 class="product-name-title mt-20 mb-20">Yay Butterscotch</h4>
                   <div class="home-secondary-btn">
@@ -1345,7 +1345,7 @@
         <div class="img-preview-slide-col">
           <div class="items">
             <div class="img-preview-slide">
-              <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/prev-img-slide.jpg" alt="">
+              <img loading="lazy" decoding="async" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/prev-img-slide.webp" alt="">
             </div>
           </div>
         </div>
@@ -1379,7 +1379,7 @@
                 <?php /* ?<label for="upload_img" class="home_contact_textarea position-relative file-upload-label">
                   <p class="mb-0">Upload Reference Image</p>
                   <p class="mb-0" style="color: #011149;font-size: 10px;opacity: 0.4;">Supported Formats: JPEG. PNG, PDF</p>
-                  <p class="mb-0" style="color: #011149;font-size: 10px;display: none;">abcdefgfhh.....jpg</p>
+                  <p class="mb-0" style="color: #011149;font-size: 10px;display: none;">abcdefgfhh.....webp</p>
                   <div class="file-img-upload">
                     <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/Home/new-images/file-upload-icon.svg" alt="">
                   </div>
@@ -1416,7 +1416,7 @@
               <div class="home-google-review">
                 <div class="text-center border-btm-1 border-color-primary">
                   <div class="mb-30 xs-mb-15">
-                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/Home/new-images/google-img.png" alt="">
+                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/Home/new-images/google-img.webp" alt="">
                   </div>
                   <div class="mb-30 xs-mb-15">
                     <p><?php echo ucfirst($value['text']) ?></p>
@@ -1434,7 +1434,7 @@
                       ?>
                       <span><?php echo $first ?> </span>
                     </div>
-                    <!-- <img loading="lazy" decoding="async" class=" img-responsive img-circle" src="catalog/view/theme/default/image/Home/new-images/review-user-img.jpg" alt=""> -->
+                    <!-- <img loading="lazy" decoding="async" class=" img-responsive img-circle" src="catalog/view/theme/default/image/Home/new-images/review-user-img.webp" alt=""> -->
                   </div>
                   <div>
                     <p class="review_name"><?php echo ucwords($value['author']) ?></p>
@@ -1469,7 +1469,7 @@
           <?php $x++; } ?>
           <div class="review-col slide">
               <div class="slide-view-all-testimonial">
-                <a href="https://www.flavoursguru.com/testimonial">View All &nbsp; <img loading="lazy" decoding="async" class="view-arrow" src="catalog/view/theme/default/image/Home/arrow-right-black.png" alt="arrow right" /></a>
+                <a href="https://www.flavoursguru.com/testimonial">View All &nbsp; <img loading="lazy" decoding="async" class="view-arrow" src="catalog/view/theme/default/image/Home/arrow-right-black.webp" alt="arrow right" /></a>
               </div>
           </div>
         </div>
@@ -1829,7 +1829,7 @@
 .occassions li.column.column-block { float: none; display: inline-grid }
 .slider-mobile{ display: none;}
 .column.column-block span a { font-size: 13px !important; font-weight: 500 !important;}
-.giftBlocks div span a {color: #81340e !important;}
+.webptBlocks div span a {color: #81340e !important;}
 form#contactForm{
   background:none !important;
   padding: 0 !important; 
@@ -1840,7 +1840,7 @@ form#contactForm div.form-group div.col-sm-6 {
 
 @media screen and (max-width:767px){
 .slider-mobile{display: block; }
-.giftBlocks{ display: none; }
+.webptBlocks{ display: none; }
 .column.column-block img { width: 58px; margin: auto; display: block; }
 .column.column-block span a { font-size: 13px !important; font-weight: 600 !important; color: #5e1d1d !important;}
   }
@@ -1853,7 +1853,7 @@ form#contactForm div.form-group div.col-sm-6 {
   <div itemscope itemtype="http://schema.org/Organization">
     <span itemprop="name">Flavours Guru</span>
     <span itemprop="url">https://www.flavoursguru.com/</span>
-    <spanitemprop="logo">https://www.flavoursguru.com/image/catalog/Flavours%20Guru/logo.png</span>
+    <spanitemprop="logo">https://www.flavoursguru.com/image/catalog/Flavours%20Guru/logo.webp</span>
     <span itemprop="sameAs">["https://www.facebook.com/flavoursgurubakery",
     "https://twitter.com/flavoursguru"
     "https://www.instagram.com/flavoursguru/"

@@ -128,7 +128,7 @@
               <div class="type-card-wrapper">
                 <div class="type-card">
                  <div class="tmls-testimonial">
-                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/05-min.jpg" alt="Cake"/>
+                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/05-min.webp" alt="Cake"/>
                   </div>
                 </div>
               </div>
@@ -136,14 +136,14 @@
               <div class="type-card-wrapper">
                 <div class="type-card">
                  <div class="tmls-testimonial">
-                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/11-min.jpg" alt="Cake"/>
+                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/11-min.webp" alt="Cake"/>
                   </div>
                 </div>
               </div>
               <!-- <div class="type-card-wrapper">
                 <div class="type-card">
                  <div class="tmls-testimonial">
-                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/cust-cake3.jpg" alt="Cake"/>
+                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/cust-cake3.webp" alt="Cake"/>
                   </div>
                 </div>
               </div> -->
@@ -151,7 +151,7 @@
               <div class="type-card-wrapper">
                 <div class="type-card">
                 <div class="tmls-testimonial">
-                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/01-min.jpg" alt="Cake"/>
+                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/01-min.webp" alt="Cake"/>
                   </div>
                 </div>
               </div>
@@ -159,7 +159,7 @@
               <!-- <div class="type-card-wrapper">
                 <div class="type-card">
                  <div class="tmls-testimonial">
-                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/02-min.jpg" alt="Cake"/>
+                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/02-min.webp" alt="Cake"/>
                   </div>
                 </div>
               </div> -->
@@ -167,69 +167,69 @@
               <!-- <div class="type-card-wrapper">
                 <div class="type-card">
                  <div class="tmls-testimonial">
-                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/03-min.jpg" alt="Cake"/>
+                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/03-min.webp" alt="Cake"/>
                   </div>
                 </div>
               </div> -->
               <div class="type-card-wrapper">
                 <div class="type-card">
                  <div class="tmls-testimonial">
-                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/04-min.jpg" alt="Cake"/>
+                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/04-min.webp" alt="Cake"/>
                   </div>
                 </div>
               </div>
               <!-- <div class="type-card-wrapper">
                 <div class="type-card">
                  <div class="tmls-testimonial">
-                  <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/cust-cake1.jpg" alt="Cake"/>
+                  <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/cust-cake1.webp" alt="Cake"/>
                   </div>
                 </div>
               </div>
               <div class="type-card-wrapper">
                 <div class="type-card">
                  <div class="tmls-testimonial">
-                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/06-min.jpg" alt="Cake"/>
+                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/06-min.webp" alt="Cake"/>
                   </div>
                 </div>
               </div>
               <div class="type-card-wrapper">
                 <div class="type-card">
                  <div class="tmls-testimonial">
-                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/07-min.jpg" alt="Cake"/>
+                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/07-min.webp" alt="Cake"/>
                   </div>
                 </div>
               </div>
               <div class="type-card-wrapper">
                 <div class="type-card">
                  <div class="tmls-testimonial">
-                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/08-min.jpg" alt="Cake"/>
+                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/08-min.webp" alt="Cake"/>
                   </div>
                 </div>
               </div>
               <div class="type-card-wrapper">
                 <div class="type-card">
                  <div class="tmls-testimonial">
-                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/09-min.jpg" alt="Cake"/>
+                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/09-min.webp" alt="Cake"/>
                   </div>
                 </div>
               </div>
               <div class="type-card-wrapper">
                 <div class="type-card">
                  <div class="tmls-testimonial">
-                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/10-min.jpg" alt="Cake"/>
+                    <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/10-min.webp" alt="Cake"/>
                   </div>
                 </div>
               </div>
               <div class="type-card-wrapper">
                 <div class="type-card">
                  <div class="tmls-testimonial">
-                  <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/cust-cake2.jpg" alt="Cake"/>
+                  <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/cust-cake2.webp" alt="Cake"/>
                   </div>
                 </div>
               </div> -->
               <div class="slide type-card-wrapper">
                   <div class="slide-view-all-testimonial">
-                    <a href="https://www.flavoursguru.com/blogs/customised-cake-images/">View All &nbsp; <img loading="lazy" decoding="async"style="border: 0;" class="view-arrow" src="catalog/view/theme/default/image/Home/arrow-right-black.png" alt="" /></a>
+                    <a href="https://www.flavoursguru.com/blogs/customised-cake-images/">View All &nbsp; <img loading="lazy" decoding="async"style="border: 0;" class="view-arrow" src="catalog/view/theme/default/image/Home/arrow-right-black.webp" alt="" /></a>
                   </div>
               </div>
             </div>
@@ -423,9 +423,9 @@
 <!-- <div class="contact_right __web-inspector-hide-shortcut__">
 <div class="cont_ordser_email_call ">
   <div style="clear: both; margin: 0; padding: 0; height: 0;"></div>
-  <div class="col-sm-12 cakebox"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/cust-cake1.jpg" alt="Cake"/></div>
-  <div class="col-sm-12 cakebox"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/cust-cake2.jpg" alt="Cake"/></div>
-  <div class="col-sm-12 cakebox"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/cust-cake3.jpg" alt="Cake"/></div>  
+  <div class="col-sm-12 cakebox"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/cust-cake1.webp" alt="Cake"/></div>
+  <div class="col-sm-12 cakebox"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/cust-cake2.webp" alt="Cake"/></div>
+  <div class="col-sm-12 cakebox"><img loading="lazy" decoding="async"src="catalog/view/theme/default/image/cust-cake3.webp" alt="Cake"/></div>  
 </div>
 </div> -->
       <?php echo $content_bottom; ?>

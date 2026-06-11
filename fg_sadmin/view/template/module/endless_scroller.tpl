@@ -689,7 +689,7 @@ $_[&#039;text_back_to_top&#039;]  = &#039;YOUR_LANGUAGE_TRANSLATION&#039;;
 
 													<ul>
 														<li>admin/view/stylesheet/es/fonts/*</li>
-														<li>catalog/view/theme/default/image/loading_circle.gif</li>
+														<li>catalog/view/theme/default/image/loading_circle.webp</li>
 													</ul>
 												</blockquote>
 											</div>

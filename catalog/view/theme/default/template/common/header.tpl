@@ -18,12 +18,15 @@
 <?php if ($keywords) { ?>
 <meta name="keywords" content= "<?php echo $keywords; ?>" />
 <?php } ?>
-<link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
-<link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link rel="preload" href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" as="style" onload="this.rel='stylesheet'" media="screen" />
+<noscript><link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" /></noscript>
+<link rel="preload" href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" as="style" onload="this.rel='stylesheet'" type="text/css" />
+<noscript><link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" /></noscript>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="catalog/view/theme/default/stylesheet/stylesheet_1.min.css?v=<?php echo $theme_stylesheet_version; ?>" rel="stylesheet">
+<link rel="preload" href="catalog/view/theme/default/stylesheet/stylesheet_1.min.css?v=<?php echo $theme_stylesheet_version; ?>" as="style" onload="this.rel='stylesheet'">
+<noscript><link href="catalog/view/theme/default/stylesheet/stylesheet_1.min.css?v=<?php echo $theme_stylesheet_version; ?>" rel="stylesheet"></noscript>
 <link href="catalog/view/theme/default/stylesheet/ie11.min.css" rel="stylesheet" media="print" onload="this.media='all'">
 <link href="catalog/view/theme/default/stylesheet/nprogress.min.css" rel="stylesheet" media="print" onload="this.media='all'">
 <?php if ($category_preload_image) { ?>
@@ -47,15 +50,15 @@
 <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
 
 <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="catalog/view/javascript/nprogress.min.js" type="text/javascript"></script>
+<script defer src="catalog/view/javascript/nprogress.min.js" type="text/javascript"></script>
 <?php if ($is_product_page) { ?>
-<script src="catalog/view/javascript/jquery.elevatezoom.min.js" type="text/javascript"></script>
+<script defer src="catalog/view/javascript/jquery.elevatezoom.min.js" type="text/javascript"></script>
 <?php } ?>
-<script src="catalog/view/javascript/common.min.js" type="text/javascript"></script>
+<script defer src="catalog/view/javascript/common.min.js" type="text/javascript"></script>
 <?php foreach ($scripts as $script) { ?>
 <script src="<?php echo $script; ?>" type="text/javascript"></script>
 <?php } ?>
-<script src="catalog/view/javascript/custom.min.js?v=<?php echo $custom_js_version; ?>" type="text/javascript"></script>
+<script defer src="catalog/view/javascript/custom.min.js?v=<?php echo $custom_js_version; ?>" type="text/javascript"></script>
 
 <?php foreach ($analytics as $analytic) { ?>
 <?php echo $analytic; ?>
@@ -449,7 +452,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div id="logo">
           <?php if ($logo) { ?>
           <a href="https://www.flavoursguru.com/"><!-- <img src="<?php echo $logo; ?>" -->
-          <img src="catalog/view/theme/default/image/Home/FGLogoWhite.png"  title="Send Cakes Online - Flavours Guru" alt="<?php echo $name; ?>" class="img-responsive" />
+          <img src="catalog/view/theme/default/image/Home/FGLogoWhite.webp"  title="Send Cakes Online - Flavours Guru" alt="<?php echo $name; ?>" class="img-responsive" />
           </a>
           <?php } else { ?>
           <h1><a href="https://www.flavoursguru.com/"><?php echo $name; ?></a></h1>
@@ -460,7 +463,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       	<div class="m-r-15 city-name-col-hd" style="display: none;">
       		<div class="display-flex align-items-center open-pincode-popup">
 	          <div class="mr-5">
-	            <img style="width: 26px;" src="catalog/view/theme/default/image/Home/new-images/india-flag.png" alt="">
+	            <img style="width: 26px;" src="catalog/view/theme/default/image/Home/new-images/india-flag.webp" alt="">
 	          </div>
 	          <div class="position-relative">
 	          	<span class="pincode-city-arrow-icon">
@@ -630,13 +633,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </li>
                 <li class="visible-xs">
                   <a href="/blogs">
-                    <div class="top_nav_menu_icon_col"><img  class="img-responsive" src="catalog/view/theme/default/image/about-us.png" alt="about 2"></div>
+                    <div class="top_nav_menu_icon_col"><img  class="img-responsive" src="catalog/view/theme/default/image/about-us.webp" alt="about 2"></div>
                     <div>Blog</div>
                   </a>
                 </li>
                 <li class="visible-xs">
                   <a href="https://api.whatsapp.com/send/?phone=+918130961414&text=Hello&app_absent=0">
-                    <div class="top_nav_menu_icon_col"><img  class="img-responsive" src="catalog/view/theme/default/image/WhatsApp.png" alt="whatsapp"></div>
+                    <div class="top_nav_menu_icon_col"><img  class="img-responsive" src="catalog/view/theme/default/image/WhatsApp.webp" alt="whatsapp"></div>
                     <div>Whatsapp</div>
                   </a>
                 </li>
@@ -712,13 +715,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="row">
     <nav id="menu" class="navbar">
       <div class="navbar-header"><span id="category" class="visible-xs ctgrynmchng"><?php echo $text_category; ?></span>
-        <button type="button" class="btn btn-navbar navbar-toggle new-nav-bar"><!-- <i class="fa fa-bars"></i> --><img style="transform: rotate(180deg);" class="menu-bar" src="catalog/view/theme/default/image/Home/humberger-icon-white.png" alt="humber-icon 2" /></button>
+        <button type="button" class="btn btn-navbar navbar-toggle new-nav-bar"><!-- <i class="fa fa-bars"></i> --><img style="transform: rotate(180deg);" class="menu-bar" src="catalog/view/theme/default/image/Home/humberger-icon-white.webp" alt="humber-icon 2" /></button>
       </div>
       <div class="menu-overlay"></div>
       <div class="collapse navbar-collapse navbar-ex1-collapse">
         <div class="slide-menu-user-col">
           <div class="guest-col text-white">
-            <p style="margin-bottom: 0;"><img style="width: 25px;margin-right: 5px;" src="catalog/view/theme/default/image/Home/user-guest.png" alt="Hi Guest"> Hi Guest</p>
+            <p style="margin-bottom: 0;"><img style="width: 25px;margin-right: 5px;" src="catalog/view/theme/default/image/Home/user-guest.webp" alt="Hi Guest"> Hi Guest</p>
           </div>
           <div class="guest-col-phone">
             <a href="tel:+918130961414"><i class="fa fa-phone mr-5"></i>+91 8130 961 414</a>
