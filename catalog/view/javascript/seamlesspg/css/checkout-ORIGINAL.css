@@ -1,0 +1,368 @@
+@font-face {
+    font-family: 'rupeesign';
+    src: url('../rupee-font/rupee_foradian-webfont.eot');
+    src: url('../rupee-font/rupee_foradian-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../rupee-font/rupee_foradian-webfont.woff') format('x-font-woff'),
+         url('../rupee-font/rupee_foradian-webfont.ttf') format('truetype'),
+         url('../rupee-font/rupee_foradian-webfont.svg#rupeesign') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+.pricefont{font-family:rupeesign}
+
+/*html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, hr, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figure, figcaption, hgroup, menu, footer, header, nav, section, summary, time, mark, audio, video { 
+		margin: 0; padding: 0; border: 0; outline:none;
+}*/
+ul{margin: 0; padding: 0; border: 0; outline:none;}
+/* set image max width to 100% */
+img { max-width:100%; border:0; height:auto; width:auto; }
+
+/* set html5 elements to block */
+
+@font-face {
+    font-family: 'rupee_foradianregular';
+    src: url('../rupee-font/regualr/rupee_foradian-webfont.eot');
+    src: url('../rupee-font/regualr/rupee_foradian-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../rupee-font/regualr/rupee_foradian-webfont.woff') format('x-font-woff'),
+         url('../rupee-font/regualr/rupee_foradian-webfont.ttf') format('truetype'),
+         url('../rupee-font/regualr/rupee_foradian-webfont.svg#rupee_foradianregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+select, select:focus{
+	width:100px;
+	padding:5px;
+	font-family:calibri, Arial, sans-serif;
+	color: #757575;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	-webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12);
+	-moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12);
+	-moz-box-shadow: 0 1px 4px 0 rgba(168, 168, 168, 0.6) inset; 
+	-webkit-box-shadow: 0 1px 4px 0 rgba(168, 168, 168, 0.6) inset; 
+	box-shadow: 0 1px 4px 0 rgba(190, 190, 190, 0.6) inset;
+	height: 28px;}
+select:focus{border: 1px solid #ddd;}
+
+/*select:hover{
+	border:1px solid #e7e7e7;
+}*/
+
+.flt{float:left;}
+.frt{float:right;}
+
+
+.paymenttabs{width:100%; height:auto; float:left; position:relative; border:1px solid #cfcfcf; color:#333; padding-bottom:20px; z-index: 1; font:12px Arial,Helvetica,sans-serif; max-width:675px;}
+.paymenttabs .tabbutton{width:172px; float:left;}
+
+
+ul.tabs{width:173px;}
+ul.tabs li{
+	width:152px; border:1px solid #cfcfcf; color:#696969; font-weight:bold; border-left:0; border-top:1px solid #fff; list-style:none; padding:20px 10px; cursor:pointer;
+    background: #f2f2f2; /* Old browsers */
+background: -moz-linear-gradient(top,  #f2f2f2 0%, #d9d9d9 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2f2f2), color-stop(100%,#d9d9d9)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #f2f2f2 0%,#d9d9d9 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #f2f2f2 0%,#d9d9d9 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #f2f2f2 0%,#d9d9d9 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #f2f2f2 0%,#d9d9d9 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#d9d9d9',GradientType=0 ); /* IE6-9 */
+  
+}
+
+ul.tabs li.active{
+	background:none; border-right:0;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff, endColorstr=#ffffff);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff, endColorstr=#ffffff)";    
+}
+
+ul.tabs li.amex-ezeclick{padding:5px 10px;text-align:center;}
+
+.paymenttabs .tabbody{width:450px; float:right; margin-right:20px; padding-top:20px;}
+.qchkout .paymenttabs .tabbody{width:360px;}
+.paymenttabs .tabbody input.form-text{width:240px;*width:240px; width:240px \9;}
+.paymenttabs .tabbody .billingDetailsContainer input.form-text{width:100%;}
+form .billingDetailsContainer .form-field3x{width:30% !important}
+form .billingDetailsContainer select{width:175px;}
+
+.paymenttabs .tabbody input.ccCVV{width:100px;}
+.paymenttabs .tabbody input.valid{background: url('/images/images/checkoutFlow/tick.png') 216px center no-repeat;}
+.options{ float: right; position: absolute; right: 0; top:0px;max-width:50%}
+ul.cards {width:100%;  margin-bottom:20px;}
+ul.cards li{list-style:none; display:inline-block; float:right; margin-right:8px; background-image:url('../images/card_logos.png'); width:42px; height:26px; text-indent:-9999px; -webkit-transition: all 0.2s; -moz-transition: all 0.2s; -ms-transition: all 0.2s; -o-transition: all 0.2s; transition: all 0.2s;}
+ul.cards li.visa_electron{background-position:171px 0}
+ul.cards li.mastercard{background-position:128px 0}
+ul.cards li.maestro{background-position:85px 0}
+ul.cards li.amex{background-position:42px 0}
+
+ul.cards li.visa.off{background-position:0 26px}
+ul.cards li.visa_electron.off{background-position:171px 26px}
+ul.cards li.mastercard.off{background-position:128px 26px}
+ul.cards li.maestro.off{background-position:85px 26px}
+ul.cards li.amex.off{background-position:42px 26px}
+#checkout .checkSecondRow .options_CVV .questionImage, #checkout .checkSecondRow .options .questionImage, .questionImage {
+    background: url("../images/checkout.gif") no-repeat scroll 0 -1461px transparent;
+    cursor: pointer;
+    display: inline-block;
+    height: 25px;
+    margin: -3px 0 0;
+    vertical-align: top;
+    width: 25px;
+}
+.domestic-cards-only{text-align: right; padding: 0px 9px 10px 0px; font-size: 11px; color: rgb(85, 85, 85);}
+span.cvvhelp{display:inline-block; width:25px; height:25px; position:fixed; top:5px; left:120px; cursor:hand;z-index:99}
+.newccpay span.cvvhelp, .emiform span.cvvhelp{position:absolute}
+span.cvvhelp .cvvhelp {position:fixed}
+span.cvvhelp:hover .questionImage span.cvvhelp{display:block}
+.questionImage span.cvvhelp{width:auto; display:none; margin-left:35px; left:0px}
+.qchkoutcontent .questionImage span.cvvhelp, .questionImage span.cvvhelp{width:434px; height:135px; background: url('/images/card-cvv.gif') 0 0 no-repeat}
+.questionImage span.cvvhelp img{width:434px; height:135px; }
+
+.col2x .rightCol{width:240px; float:right; display:inline;}
+ul.paymentfeatures{margin:20px 0 0 0; border-top:1px solid #cfcfcf;}
+ul.paymentfeatures li{width:198px; padding:20px; border:1px solid #cfcfcf; list-style:none; text-transform:uppercase; font-size:16px; font-weight:bold; color:#343434; border-top:0;}
+ul.paymentfeatures li p{font-size:10px; font-weight:normal; color:#8d8d8d;}
+/*.note{margin:20px 0;}*/
+
+.netbanking{background:url('../images/netbanking-logo.png') 0 0 no-repeat; width:92px; height:52px;}
+.netbanking.icici{background-position:-20px -26px;}
+.netbanking.hdfc{background-position:-141px -26px;}
+.netbanking.citi{background-position:-262px -26px;}
+.netbanking.hsbc{background-position:-382px -26px;}
+.netbanking.sbi{background-position:-20px -97px;}
+.netbanking.axis{background-position:-141px -97px;}
+.netbanking.kotak{background-position:-262px -97px;}
+.netbanking.sc{background-position:-382px -97px;}
+.netbanking.bob{background-position:-20px -168px;}
+.netbanking.union{}
+.netbanking.yes{}
+.netbanking.idbi{background-position: -382px -168px;}
+.netbanking.corporation{}
+.netbanking.pnb{}
+.netbanking.syndicate{}
+.netbanking.obc{}
+.netbanking.boi{}
+.netbanking.canara{}
+.netbanking.vijaya{}
+.netbanking.amex{background-position:-20px -403px}
+
+
+.qchkemitable .netbanking{background:url('../images/netbanking-logo.png') 0 0 no-repeat; width:92px; height:35px;display:block;border-radius:3px}
+.qchkemitable .netbanking.icici{background-position:-20px -34px}
+.qchkemitable .netbanking.hdfc{background-position:-141px -34px;}
+.qchkemitable .netbanking.citi{background-position:-262px -34px;}
+.qchkemitable .netbanking.hsbc{background-position:-382px -34px;}
+.qchkemitable .netbanking.sbi{background-position:-20px -105px;}
+.qchkemitable .netbanking.axis{background-position:-141px -106px}
+.qchkemitable .netbanking.kotak{background-position:-262px -105px;}
+.qchkemitable .netbanking.sc{background-position:-382px -105px;}
+.qchkemitable .netbanking.bob{background-position:-20px -176px;}
+.qchkemitable .netbanking.union{background-position:-141px -176px}
+.qchkemitable .netbanking.yes{background-position:-262px -176px}
+.qchkemitable .netbanking.idbi{background-position: -382px -176px;}
+.qchkemitable .netbanking.corporation{background-position:-20px -250px}
+.qchkemitable .netbanking.pnb{background-position:-141px -250px}
+.qchkemitable .netbanking.syndicate{}
+.qchkemitable .netbanking.obc{}
+.qchkemitable .netbanking.boi{}
+.qchkemitable .netbanking.canara{}
+.qchkemitable .netbanking.vijaya{}
+.qchkemitable .netbanking.amex{background-position:-20px -403px}
+
+
+
+ul.cardemioptions{width:100%; float:left; margin:0 0 10px 0;}
+ul.cardemioptions input[type="radio"]{margin:0 1px 0 10px}
+ul.cardemioptions li{list-style:none;}
+ul.cardemioptions li.row{width:100%;float:left;position:relative;}
+ul.cardemioptions li ul li{display:inline-block; float:left; height:52px; vertical-align:top; padding:3px 0; color:#888888;}
+.secondemi{padding-left: 15px!Important;}
+ul.cardemioptions li ul li span{display:block; font-size:13px; margin-top:20px;}
+
+.ccemimessage {width:100%; float:left; padding:10px 0; font-size:11px;}
+
+ul.nbcardoptions{width:100%; float:left; margin:0 0 20px 0;}
+ul.nbcardoptions input[type="radio"]{margin:0 5px}
+ul.nbcardoptions li{list-style:none; position:relative;} 
+ul.nbcardoptions li ul li{width:118px; height:52px; float:left; display:inline-block; vertical-align:top; padding: 5px 30px 0 0;}
+ul.nbcardoptions li ul li label{display:block; position:absolute; top:0; left:26px; cursor:pointer}
+
+#nbanking_content select{width:auto;}
+#ddcheque_content label{font-weight:bold; color:#333; padding:0;}
+
+
+a.remove{background: url("/images/images/closePopup.gif") no-repeat 50% 0; height:12px; display:block; text-indent:-5000px}
+.cartitemsrow_stp3 td a.remove{background:none; display: block; font-size: 11px; font-weight: 400; text-indent: 0; text-decoration:underline; clear:both; margin:5px 0 0 0;width:50px}
+.cartitemsrow_stp3 td a:hover.remove{text-decoration:none}
+.editUpdate a{background:#5E5E5E; color: #FFFFFF; display: inline-block; padding: 1px 5px; font-size:11px}
+.editUpdate a:hover{background:#000}
+
+
+
+.checkoutfooter, .checkoutpaymentfooter{width:100%; height:83px; float:left;  padding-bottom:40px;}
+
+.checkoutfaq{width:100%; margin:80px 0 120px 0; /*float:left*/}
+.checkoutfaq h2{margin-bottom:10px;}
+.checkoutfaq li{margin-left:20px; font-size:11px; line-height:19px; color:#5E5E5E;}
+
+.checkoutfooter ul{margin:15px 0 0 60px;}
+.checkoutfooter ul li{list-style:none; display:inline; float:left; margin-right:10px; color:#666;}
+.checkoutfooter ul li.freeshipping{width:66px; height:58px; background-position: 0 -102px;}
+.checkoutfooter ul li.warranty{width:105px; height:58px; background-position: -79px -102px;}
+.checkoutfooter ul li.cod{width:94px; height:58px; background-position: -194px -102px;}
+.checkoutfooter ul li.emi{width:70px; height:58px; background-position: -143px -161px;}
+.checkoutfooter ul li.thawte{ background:none; line-height:43px; margin-right:20px; float:right;}
+.checkoutfooter ul li.thawte p.thawte{background-position:0 -161px; width:143px; height:44px; display:inline-block;}
+
+
+.checkoutfooter ul{width:950px; height:90px; overflow:auto; clear:both; margin:0 auto;}
+.checkoutfooter ul li{float:left; padding:17px 0 0 70px; display:inline-block; color:#999; font-size:12px; width:17%; height:50px; background-repeat: no-repeat; margin:10px 0 0 0px; background-image:url('/images/images/gitanjali/promisesprite.png'); text-align: left;}
+.checkoutfooter ul li.promise-freeship{background-position:0 -363px; width:155px;}
+.checkoutfooter ul li.promise-satisfaction{background-position:0 -295px;}
+.checkoutfooter ul li.promise-zeroemi{background-position:0 -428px; width:155px;}
+.checkoutfooter ul li.promise-paymentoptions{background-position:0 -495px; width:155px;}
+.checkoutfooter ul li.promise-cod{background-position:0 -225px; margin-left:25px; width:155px}
+.checkoutfooter ul li p{color:#222; font-weight:bold; text-transform:uppercase;}
+/* shopping promise */
+.shoppingpromises span{background-image:url("/images/newHome/images/promises_new.png"); background-position: 0 0; background-repeat:no-repeat}
+.shoppingpromises{background:#fff;  margin:10px 0; text-align:center; height:47px;  padding:20px 0 0 0;  width:100%;}
+.shoppingpromises span{display:inline-block; width:124px; height:47px; margin:0 25px; color:transparent; font-size:1px; overflow:hidden}
+span.sp_freeshipping{background-position:-11px -7px; width:150px }
+span.sp_cod{background-position:-196px -7px; width:145px}
+span.sp_emi{background-position:-416px -7px; width:180px}
+span.sp_flexipay{background-position:-655px -7px; width:220px}
+
+
+.checkoutfooter ul li span.promiseicon_hd{color:#635c02; font-weight:bold}
+.checkoutfooter ul li span.promise_text{float: left; padding-left: 70px;}
+.checkoutfooter_link{border-top: 1px solid #E6E6E6;bottom: 10px;clear: both;float: left;font-size: 11px;height: auto;left: 0;padding: 3px 0 4px 10px;position: absolute;width: 100%;}
+.checkoutfooter_linkleft{float:left;color:#aaa}
+.checkoutfooter_linkright{float:right; padding: 0 14px 0 0;}
+.checkoutfooter_linkright a {color:#3366CC; padding: 0 5px;color:#0066CC}	
+
+.thawte{background:none; line-height:43px; margin: 0 auto; font-size:14px; width: 950px;color:#aaa;  text-align:right}
+.thawte .flt{float:none}
+.thawte p.thawte{background-image:url('/images/images/gitanjali/formsprite.png');background-position:-1px -164px; width:144px; height:44px; display:inline-block; padding-right: 20px;}
+
+.checkoutpaymentfooter ul{margin:15px 0 0 10px;}
+.checkoutpaymentfooter ul li{list-style:none; display:inline; float:left; margin-right:10px; color:#666; background-position:0 -279px; padding:6px 0 0 34px; text-transform:uppercase; margin-left:20px}
+.checkoutpaymentfooter ul li h3{font-size:12px; color:#111;}
+.checkoutpaymentfooter ul li span{font-size:10px;}
+.checkoutpaymentfooter ul li.thawte{ background:none; line-height:43px; margin-right:20px; float:right; font-size:11px;}
+.checkoutpaymentfooter ul li.thawte p.thawte{background-position:0 -161px; width:143px; height:44px; display:inline-block;}
+
+
+
+/* captha styles*/
+
+  .capLink {
+    padding: 7px 0 18px;
+}
+  .capLink span {
+    float: left;
+}
+  .capLink .linkGetNewImage {
+    padding: 12px 0 0 10px;
+}
+  .capLink .linkGetNewImage a {
+    color: #0066CC;
+    font-size: 11px;
+    text-decoration: none;
+}
+  .capLink .linkGetNewImage a:hover {
+    color: #0066CC;
+    font-size: 11px;
+    text-decoration: underline;
+}
+  .captTxt {
+    padding: 0 0 10px;
+}
+  .captTxt .txtOption {
+    color: #666666;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 10px 0 0;
+}
+  .captTxt .txtboxCash {
+    background: url("/images/images/checkout.gif") no-repeat scroll 0 -985px transparent;
+    border: 0 none;
+    color: #666666;
+    float: left;
+    font-size: 12px;
+    height: 28px;
+    line-height: 25px;
+    outline: medium none;
+    padding: 0 5px;
+    width: 174px;
+}
+  .captTxt .txtboxCash input {
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    color: #666666;
+    font-size: 12px;
+    height: 28px;
+    line-height: 25px;
+    outline: medium none;
+    padding: 0 5px;
+    width: 166px;
+}
+  .captTxt .case-sensitive {
+    color: #999999;
+    font-size: 11px;
+    font-weight: normal;
+    padding: 4px 0 0 117px;
+}
+
+ .captTxt .errorMsg{ left: 115px; position: relative;}
+
+
+
+/* Redeem coupon style end */
+.billing_details_box label.inline{color:#333}
+#billingIntroText{display:block;padding:3px 0;clear:both;font-size:1em;}
+.tabbody .note {color: #333; font-size: 11px; padding: 10px 0;}
+.tabbody .hdfcemihelp{display:none;}
+.tabbody .seperator {border-bottom: 1px solid #E5E5E5; margin: 0 0 14px;}
+.paynowbutton{ margin: 20px 0 0 0}
+.maestro-info{display:none;padding:1px 0px !important;}
+
+
+/* Visa and master card logos*/
+.vbv{float:right; text-align: right;}
+.vbv img{max-width:150px;max-height:50px;}
+.vbv2{float:left; padding: 20px 0; width: 430px;}
+.vbv2 img{max-width:116px;max-height:31px; padding: 0 5px;}
+.vbv2 .dinnercard{  background: url("../images/footer_sprite.png") no-repeat scroll -71px -356px rgba(0, 0, 0, 0); height: 45px; width: 70px;}
+.pci{ position:relative; left: 0px; *left: 10px; top:5px; *top:5px; z-index: -1; display: block;}
+.pci img{height:40px!Important}
+.pci a{cursor:pointer;}
+.visacard_logo{float:left; width:auto}
+.vbv2 .learnmore{left: 20px;  position: relative; top: 17px;}
+.vbv2 .learnmore a{color: #0066CC; text-decoration: underline;}
+
+
+/* Quick checkout style end */
+#cardMessageContainer{color:#333; font-size:11px}
+h3.savedcardshead{color:#000;font-weight:700;font-size:13px;margin:10px 5px; padding: 0 0 5px;}
+
+
+.creditCardDiv .features, .creditCardemiDiv .features, .debitCardDiv .features{left:0px; top:23;margin:0;max-height:460px;overflow-y:scroll;}
+
+
+
+
+
+.paytm{line-height:18px;color:#333;padding:20px 0 15px 5px;}
+.paytm a{color:#0066CC}
+.paytmlogo{max-width:130px;margin-left:0px;}
+.paytmlogo-desc{ display: inline-block; font-size: 11px;font-weight: 700;padding-left: 5px;width: 195px;}
+
+
+

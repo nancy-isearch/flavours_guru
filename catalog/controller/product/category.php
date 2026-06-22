@@ -638,7 +638,225 @@ class ControllerProductCategory extends Controller {
 
 			//echo "<pre />"; print_r($data); die();
 			
-			$this->response->setOutput($this->load->view('product/category', $data));
+			// Detect city/locality pages and load the new premium city template
+			$_cat_name = isset($data['heading_title']) ? $data['heading_title'] : '';
+			$_is_city_page = (
+				stripos($_cat_name, 'Online Cake Delivery in') !== false ||
+				stripos($_cat_name, 'Cakes Online in') !== false ||
+				stripos($_cat_name, 'Cake Delivery in') !== false ||
+				stripos($_cat_name, 'Cakes in ') !== false
+			);
+			if ($_is_city_page) {
+				// Fetch dynamic content from home.tpl
+				$home_tpl_path = DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/home.tpl';
+				if (!file_exists($home_tpl_path)) {
+					$home_tpl_path = DIR_TEMPLATE . 'default/template/common/home.tpl';
+				}
+				$home_html = file_get_contents($home_tpl_path);
+				$home_html_clean = preg_replace('/<\?php\s*\/\*.*?\*\/\s*\?>/is', '', $home_html);
+				$home_html_clean = preg_replace('/<!--.*?-->/is', '', $home_html_clean);
+				
+				$data['home_quickcats'] = array();
+				$data['home_banners'] = array();
+				libxml_use_internal_errors(true);
+				$dom = new DOMDocument();
+				$dom->loadHTML($home_html_clean);
+				$xpath = new DOMXPath($dom);
+				
+				$q_nodes = $xpath->query('//div[contains(@class, "home-header-tab")]//ul/li/a');
+				$count = 0;
+				foreach ($q_nodes as $node) {
+					if ($count >= 8) break;
+					$href = $node->getAttribute('href');
+					$img_node = $xpath->query('.//img', $node)->item(0);
+					if (!$img_node) continue;
+					$img = '/' . ltrim($img_node->getAttribute('src'), '/');
+					$p_node = $xpath->query('./following-sibling::p', $node)->item(0);
+					$title = $p_node ? trim(strip_tags($p_node->nodeValue)) : '';
+					$data['home_quickcats'][] = array('href' => $href, 'img' => $img, 'title' => $title);
+					$count++;
+				}
+				
+				// Helper for profession, cartoon, traits
+				$parse_ul_li = function($xpath, $title) {
+					$res = array();
+					$nodes = $xpath->query('//div[contains(@class, "container")]//p[contains(text(), "'.$title.'")]/ancestor::div[contains(@class, "container")]/following-sibling::div[contains(@class, "container")]//ul/li/a | //p[contains(text(), "'.$title.'")]/ancestor::div[contains(@class, "container")]//ul/li/a');
+					foreach ($nodes as $node) {
+						$href = $node->getAttribute('href');
+						$img_node = $xpath->query('.//img', $node)->item(0);
+						if (!$img_node) continue;
+						$img = '/' . ltrim($img_node->getAttribute('src'), '/');
+						$p_node = $xpath->query('./following-sibling::p', $node)->item(0);
+						$t = $p_node ? trim(strip_tags($p_node->nodeValue)) : '';
+						$res[] = array('href' => $href, 'img' => $img, 'title' => $t);
+					}
+					return $res;
+				};
+
+				// 1. Trending Now
+				$data['home_trending'] = array();
+				$nodes = $xpath->query('//div[contains(@class, "teanding-section")]//div[contains(@class, "slide")]/a');
+				foreach ($nodes as $node) {
+					$href = $node->getAttribute('href');
+					$img_nodes = $xpath->query('.//img', $node);
+					$img = '';
+					if ($img_nodes->length > 1) {
+						$img = '/' . ltrim($img_nodes->item(1)->getAttribute('src'), '/');
+					} elseif ($img_nodes->length > 0) {
+						$img = '/' . ltrim($img_nodes->item(0)->getAttribute('src'), '/');
+					}
+					$title_node = $xpath->query('.//div[contains(@class, "trending-btn")]', $node)->item(0);
+					$title = $title_node ? trim(strip_tags($title_node->nodeValue)) : '';
+					$data['home_trending'][] = array('href' => $href, 'img' => $img, 'title' => $title);
+				}
+
+				// 2. Cakes by Profession
+				$data['home_profession'] = $parse_ul_li($xpath, 'Cakes by Profession');
+
+				// 3. Shop by Occasions
+				$data['home_occasions'] = array();
+				$nodes = $xpath->query('//p[contains(text(), "Shop by Occasions")]/ancestor::div[contains(@class, "row")]/following-sibling::div//a[contains(@class, "overlay-occasions-col")]');
+				foreach ($nodes as $node) {
+					$href = $node->getAttribute('href');
+					$img_node = $xpath->query('./preceding-sibling::img', $node)->item(0);
+					$img = $img_node ? '/' . ltrim($img_node->getAttribute('src'), '/') : '';
+					$title_node = $xpath->query('.//div[contains(@class, "inner-overlay-cta-col")]/p', $node)->item(0);
+					$title = $title_node ? trim(strip_tags($title_node->nodeValue)) : '';
+					$data['home_occasions'][] = array('href' => $href, 'img' => $img, 'title' => $title);
+				}
+
+				// 4. Cakes for Kids
+				$data['home_kids'] = array();
+				$nodes = $xpath->query('//p[contains(text(), "Cakes for Kids")]/ancestor::div[contains(@class, "container")]/following-sibling::div[contains(@class, "container")]//div[contains(@class, "slide")]/a | //p[contains(text(), "Cakes for Kids")]/ancestor::div[contains(@class, "row")]//div[contains(@class, "slide")]/a');
+				foreach ($nodes as $node) {
+					$href = $node->getAttribute('href');
+					$img_node = $xpath->query('.//img[contains(@class, "hidden-xs") or not(contains(@class, "visible-xs"))]', $node)->item(0);
+					$img = $img_node ? '/' . ltrim($img_node->getAttribute('src'), '/') : '';
+					$title_node = $xpath->query('.//h4[contains(@class, "product-name-title")]', $node)->item(0);
+					$title = $title_node ? trim(strip_tags($title_node->nodeValue)) : '';
+					if ($title) $data['home_kids'][] = array('href' => $href, 'img' => $img, 'title' => $title);
+				}
+
+				// 5. Cartoon Cakes
+				$data['home_cartoon'] = $parse_ul_li($xpath, 'Cartoon Cakes');
+
+				// 6. Cakes by Traits
+				$data['home_traits'] = $parse_ul_li($xpath, 'Cakes by Traits');
+
+				// 7. Shop by Flavours
+				$data['home_flavours'] = array();
+				$nodes = $xpath->query('//p[contains(text(), "Shop by Flavours")]/ancestor::div[contains(@class, "row")]/following-sibling::div//a | //p[contains(text(), "Shop by Flavours")]/ancestor::div[contains(@class, "row")]/following-sibling::div[contains(@class, "row")]//a');
+				foreach ($nodes as $node) {
+					$href = $node->getAttribute('href');
+					$img_node = $xpath->query('.//img', $node)->item(0);
+					$img = $img_node ? '/' . ltrim($img_node->getAttribute('src'), '/') : '';
+					$title_node = $xpath->query('.//h4[contains(@class, "product-name-title")]', $node)->item(0);
+					$title = $title_node ? trim(strip_tags($title_node->nodeValue)) : '';
+					if ($title) $data['home_flavours'][] = array('href' => $href, 'img' => $img, 'title' => $title);
+				}
+
+				// 8. Bestselling Cakes
+				$data['home_bestselling'] = array();
+				$home_csv = DIR_SYSTEM . 'data/home_category.csv';
+				$csv_mtime = file_exists($home_csv) ? (int)filemtime($home_csv) : 0;
+				$cache_dir = DIR_CACHE . 'home/';
+				if (!is_dir($cache_dir)) {
+					@mkdir($cache_dir, 0777, true);
+				}
+				$cache_file = $cache_dir . md5('home.category.' . (int)$this->config->get('config_store_id') . '.' . (int)$this->config->get('config_language_id')) . '.cache';
+
+				$csv_rows = array();
+				$products_by_sku = array();
+				$loaded_from_cache = false;
+
+				if (is_file($cache_file)) {
+					$payload = @unserialize(file_get_contents($cache_file));
+					if (is_array($payload) && isset($payload['csv_mtime']) && (int)$payload['csv_mtime'] === $csv_mtime) {
+						$csv_rows        = $payload['csv_rows'];
+						$products_by_sku = $payload['products_by_sku'];
+						$loaded_from_cache = true;
+					}
+				}
+
+				if (!$loaded_from_cache) {
+					if (is_file($home_csv) && ($file = fopen($home_csv, 'r')) !== false) {
+						$skiphead = true;
+						while (($line = fgetcsv($file)) !== false) {
+							if ($skiphead) { $skiphead = false; continue; }
+							$csv_rows[] = $line;
+						}
+						fclose($file);
+					}
+
+					$skus = array();
+					foreach ($csv_rows as $line) {
+						for ($col = 2; $col <= 7; $col++) {
+							if (!empty($line[$col])) {
+								$skus[] = $line[$col];
+							}
+						}
+					}
+					$products_by_sku = $skus ? $this->model_catalog_product->getProductsBySkus($skus) : array();
+
+					@file_put_contents($cache_file, serialize(array(
+						'csv_mtime'      => $csv_mtime,
+						'csv_rows'       => $csv_rows,
+						'products_by_sku' => $products_by_sku
+					)));
+				}
+
+				$this->load->model('tool/image');
+				$img_w = $this->config->get($this->config->get('config_theme') . '_image_product_width');
+				$img_h = $this->config->get($this->config->get('config_theme') . '_image_product_height');
+
+				$home_category = array();
+				foreach ($csv_rows as $line) {
+					$category_line = array('title' => $line[0], 'url' => $line[1], 'products' => array());
+					for ($col = 2; $col <= 7; $col++) {
+						if (empty($line[$col]) || !isset($products_by_sku[$line[$col]])) continue;
+						$catpro = $products_by_sku[$line[$col]];
+						$image  = $catpro['image']
+							? $this->model_tool_image->resize($catpro['image'], $img_w, $img_h)
+							: $this->model_tool_image->resize('placeholder.png', $img_w, $img_h);
+
+						$price   = $this->currency->format($this->tax->calculate($catpro['price'], $catpro['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+						$special = (float)$catpro['special']
+							? $this->currency->format($this->tax->calculate($catpro['special'], $catpro['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency'])
+							: false;
+
+						$category_line['products'][] = array(
+							'name'    => $catpro['name'],
+							'image'   => $image,
+							'price'   => $price,
+							'special' => $special,
+							'href'    => $this->url->link('product/product', 'product_id=' . $catpro['product_id'])
+						);
+					}
+					$home_category[] = $category_line;
+				}
+				
+				if (!empty($home_category) && isset($home_category[0]['products'])) {
+					$data['home_bestselling'] = $home_category[0]['products'];
+				}
+				
+				$b_nodes = $xpath->query('//div[contains(@class, "main-banner-slide")]//div[contains(@class, "banner-slide")]/a');
+				foreach ($b_nodes as $node) {
+					$href = $node->getAttribute('href');
+					$img_nodes = $xpath->query('.//img[contains(@class, "hidden-xs") or not(contains(@class, "visible-xs"))]', $node);
+					$img = '';
+					if ($img_nodes->length > 0) {
+						$img = '/' . ltrim($img_nodes->item(0)->getAttribute('src'), '/');
+					}
+					if ($img && $href) {
+						$data['home_banners'][] = array('href' => $href, 'img' => $img);
+					}
+				}
+				libxml_clear_errors();
+
+				$this->response->setOutput($this->load->view('product/city', $data));
+			} else {
+				$this->response->setOutput($this->load->view('product/category', $data));
+			}
 		} else {
 			$url = '';
 

@@ -2068,6 +2068,9 @@
                      showData += '<li class="slide-tab type-card-wrapper" rel="tab_'+j+'">'+key+'</li>';
                      showData1 += '<h3 class="d_active tab_drawer_heading" rel="tab_'+j+'">'+key+'</h3><div id="tab_'+j+'" class="tab_content"><div class="pro_list_box custom-scroll"><ul>';
                      for(var i = 0; i < value.length; i++){
+                      if(!value[i] || !value[i].product_id || !value[i].name || value[i].name == 'null' || !value[i].image){
+                        continue;
+                      }
                       var attri = value[i].attributes;
                       var attributes = '';
                       for(var e = 0; e < attri.length; e++){

@@ -12,23 +12,24 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title><?php echo $title; ?></title>
 <base href="<?php echo $base; ?>" />
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+<link rel="icon" type="image/png" sizes="32x32" href="catalog/view/theme/default/image/Home/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="catalog/view/theme/default/image/Home/favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="catalog/view/theme/default/image/Home/apple-touch-icon.png" />
 <?php if ($description) { ?>
 <meta name="description" content="<?php echo $description; ?>" />
 <?php } ?>
 <?php if ($keywords) { ?>
 <meta name="keywords" content= "<?php echo $keywords; ?>" />
 <?php } ?>
-<link rel="preload" href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" as="style" onload="this.rel='stylesheet'" media="screen" />
-<noscript><link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" /></noscript>
-<link rel="preload" href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" as="style" onload="this.rel='stylesheet'" type="text/css" />
-<noscript><link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" /></noscript>
+<link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+<link href="catalog/view/javascript/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="catalog/view/theme/default/stylesheet/stylesheet_1.min.css?v=<?php echo $theme_stylesheet_version; ?>" as="style" onload="this.rel='stylesheet'">
-<noscript><link href="catalog/view/theme/default/stylesheet/stylesheet_1.min.css?v=<?php echo $theme_stylesheet_version; ?>" rel="stylesheet"></noscript>
-<link href="catalog/view/theme/default/stylesheet/ie11.min.css" rel="stylesheet" media="print" onload="this.media='all'">
-<link href="catalog/view/theme/default/stylesheet/nprogress.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+<link href="catalog/view/theme/default/stylesheet/stylesheet_1.css?v=<?php echo $theme_stylesheet_version; ?>" rel="stylesheet">
+<link href="catalog/view/theme/default/stylesheet/ie11.css" rel="stylesheet" media="print" onload="this.media='all'">
+<link href="catalog/view/theme/default/stylesheet/nprogress.css" rel="stylesheet" media="print" onload="this.media='all'">
 <?php if ($category_preload_image) { ?>
 <link rel="preload" as="image" href="<?php echo $category_preload_image; ?>" imagesrcset="<?php echo $category_preload_image_mobile ? $category_preload_image_mobile : $category_preload_image; ?> 360w, <?php echo $category_preload_image; ?> 760w" imagesizes="<?php echo $category_preload_sizes; ?>" fetchpriority="high">
 <?php } ?>
@@ -50,15 +51,15 @@
 <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
 
 <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script defer src="catalog/view/javascript/nprogress.min.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/nprogress.js" type="text/javascript"></script>
 <?php if ($is_product_page) { ?>
-<script defer src="catalog/view/javascript/jquery.elevatezoom.min.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/jquery.elevatezoom.js" type="text/javascript"></script>
 <?php } ?>
-<script defer src="catalog/view/javascript/common.min.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/common.js" type="text/javascript"></script>
 <?php foreach ($scripts as $script) { ?>
 <script src="<?php echo $script; ?>" type="text/javascript"></script>
 <?php } ?>
-<script defer src="catalog/view/javascript/custom.min.js?v=<?php echo $custom_js_version; ?>" type="text/javascript"></script>
+<script src="catalog/view/javascript/custom.js?v=<?php echo $custom_js_version; ?>" type="text/javascript"></script>
 
 <?php foreach ($analytics as $analytic) { ?>
 <?php echo $analytic; ?>
@@ -387,6 +388,7 @@ Step 13: Review your details and secure payment to place your order."
 	}
 	.col-sm-2.search.display-flex.align-items-center{
 		flex-wrap: nowrap;
+    padding-left: 35px;
 	}
 	#search {
         width: calc(100% - 15px) !important;
@@ -450,20 +452,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="row">
       <div class="col-sm-3 col-xs-4 logobox">
         <div id="logo">
-          <?php if ($logo) { ?>
-          <a href="https://www.flavoursguru.com/"><!-- <img src="<?php echo $logo; ?>" -->
-          <img src="catalog/view/theme/default/image/Home/FGLogoWhite.webp"  title="Send Cakes Online - Flavours Guru" alt="<?php echo $name; ?>" class="img-responsive" />
-          </a>
-          <?php } else { ?>
-          <h1><a href="https://www.flavoursguru.com/"><?php echo $name; ?></a></h1>
-          <?php } ?>
-        </div>
+                    <a href="https://www.flavoursguru.com/"><!-- <img src="<?php echo $logo; ?>" --><img src="catalog/view/theme/default/image/Home/FGLogoWhite.png"  title="Send Cakes Online - Flavours Guru" alt="<?php echo $name; ?>" class="img-responsive" /></a>
+                  </div>
       </div>
       <div class="col-sm-2 search display-flex align-items-center">
       	<div class="m-r-15 city-name-col-hd" style="display: none;">
       		<div class="display-flex align-items-center open-pincode-popup">
 	          <div class="mr-5">
-	            <img style="width: 26px;" src="catalog/view/theme/default/image/Home/new-images/india-flag.webp" alt="">
+	            <img style="width: 26px;" src="catalog/view/theme/default/image/Home/new-images/india-flag.png" alt="">
 	          </div>
 	          <div class="position-relative">
 	          	<span class="pincode-city-arrow-icon">
@@ -504,7 +500,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li class="dropdown">
               <a class="login-click" href="javascript:void(0)" title="<?php echo $text_account; ?>" >
                 <div class="header-action-btn display-flex align-items-center">
-                  <img  class="mr-5" src="catalog/view/theme/default/image/Home/new-images/user-icon.svg" alt="user icon black">
+                  <img class="mr-5" src="catalog/view/theme/default/image/Home/new-images/user-icon.svg" alt="user icon black">
                   <span class="hidden-xs">Login</span>
                 </div>
               </a>
@@ -513,7 +509,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             { ?>
             <li class="dropdown"><a href="<?php echo $login; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown">
               <div class="header-action-btn display-flex align-items-center">
-                  <img  class="mr-5" src="catalog/view/theme/default/image/Home/new-images/user-icon.svg" alt="user icon black"> <span class="hidden-xs">My account <span class="caret"></span></span>
+                  <img class="mr-5" src="catalog/view/theme/default/image/Home/new-images/user-icon.svg" alt="user icon black"> <span class="hidden-xs">My account <span class="caret"></span></span>
                 </div> 
                 <!-- <p class="icon-with-text"><?php echo $text_account; ?> <span class="caret"></span></p> -->
                 </a>
@@ -549,7 +545,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="dotmenu_top">
             <div class="header-action-btn display-flex align-items-center">
               <span class="hidden-xs mr-5">More</span>
-              <img  class="" src="catalog/view/theme/default/image/Home/new-images/more-icon.svg" alt="humber icon">
+              <img class="" src="catalog/view/theme/default/image/Home/new-images/more-icon.svg" alt="humber icon">
             </div>
           </div>
           <div class="mob_t-link">
@@ -633,13 +629,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </li>
                 <li class="visible-xs">
                   <a href="/blogs">
-                    <div class="top_nav_menu_icon_col"><img  class="img-responsive" src="catalog/view/theme/default/image/about-us.webp" alt="about 2"></div>
+                    <div class="top_nav_menu_icon_col"><img class="img-responsive" src="catalog/view/theme/default/image/about-us.png" alt="about 2"></div>
                     <div>Blog</div>
                   </a>
                 </li>
                 <li class="visible-xs">
                   <a href="https://api.whatsapp.com/send/?phone=+918130961414&text=Hello&app_absent=0">
-                    <div class="top_nav_menu_icon_col"><img  class="img-responsive" src="catalog/view/theme/default/image/WhatsApp.webp" alt="whatsapp"></div>
+                    <div class="top_nav_menu_icon_col"><img class="img-responsive" src="catalog/view/theme/default/image/WhatsApp.png" alt="whatsapp"></div>
                     <div>Whatsapp</div>
                   </a>
                 </li>
@@ -715,13 +711,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="row">
     <nav id="menu" class="navbar">
       <div class="navbar-header"><span id="category" class="visible-xs ctgrynmchng"><?php echo $text_category; ?></span>
-        <button type="button" class="btn btn-navbar navbar-toggle new-nav-bar"><!-- <i class="fa fa-bars"></i> --><img style="transform: rotate(180deg);" class="menu-bar" src="catalog/view/theme/default/image/Home/humberger-icon-white.webp" alt="humber-icon 2" /></button>
+        <button type="button" class="btn btn-navbar navbar-toggle new-nav-bar"><!-- <i class="fa fa-bars"></i> --><img style="transform: rotate(180deg);" class="menu-bar" src="catalog/view/theme/default/image/Home/humberger-icon-white.png" alt="humber-icon 2" /></button>
       </div>
       <div class="menu-overlay"></div>
       <div class="collapse navbar-collapse navbar-ex1-collapse">
         <div class="slide-menu-user-col">
           <div class="guest-col text-white">
-            <p style="margin-bottom: 0;"><img style="width: 25px;margin-right: 5px;" src="catalog/view/theme/default/image/Home/user-guest.webp" alt="Hi Guest"> Hi Guest</p>
+            <p style="margin-bottom: 0;"><img style="width: 25px;margin-right: 5px;" src="catalog/view/theme/default/image/Home/user-guest.png" alt="Hi Guest"> Hi Guest</p>
           </div>
           <div class="guest-col-phone">
             <a href="tel:+918130961414"><i class="fa fa-phone mr-5"></i>+91 8130 961 414</a>
@@ -786,7 +782,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="offer-close-btn">
     <img style="width: 25px;" class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/offer-close.svg" alt="offer popup">
   </div>
-    <img  class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/offer-popup-img.webp" alt="offer popup">
+    <img class="img-responsive" src="catalog/view/theme/default/image/Home/new-images/offer-popup-img.webp" alt="offer popup">
 </div>
 <div class="bg-popup" style="display: none;">
 	<div class="pincode_popup">
@@ -939,4 +935,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       // }, 2000);
     <?php } ?>
   });
+
+  $(document).ready(function () {
+    const placeholders = [
+        "Search cakes by flavour, type, theme etc"
+        
+    ];
+
+    let textIndex = 0;
+    let charIndex = 0;
+
+    function typeEffect() {
+        const currentText = placeholders[textIndex];
+
+        if (charIndex <= currentText.length) {
+            $("#seacrchHeader").attr(
+                "placeholder",
+                currentText.substring(0, charIndex)
+            );
+            charIndex++;
+            setTimeout(typeEffect, 100);
+        } else {
+            setTimeout(eraseEffect, 1500);
+        }
+    }
+
+    function eraseEffect() {
+        const currentText = placeholders[textIndex];
+
+        if (charIndex >= 0) {
+            $("#seacrchHeader").attr(
+                "placeholder",
+                currentText.substring(0, charIndex)
+            );
+            charIndex--;
+            setTimeout(eraseEffect, 50);
+        } else {
+            textIndex = (textIndex + 1) % placeholders.length;
+            setTimeout(typeEffect, 300);
+        }
+    }
+
+    typeEffect();
+    });
 </script>

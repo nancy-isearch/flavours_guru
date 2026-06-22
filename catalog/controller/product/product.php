@@ -1217,8 +1217,15 @@ class ControllerProductProduct extends Controller {
 		  	if(is_array($pros) && count($pros) > 0){
 		  		foreach ($pros as $pro) {
 			  		$prodetail = $this->model_catalog_product->getProductBySku($pro);
-			  		$attributes = $this->model_catalog_product->getProductAttributes($prodetail['product_id']);
-			  		$addons[$line[0]][] = array(
+
+			  		if (!$prodetail) {
+			  			$log = new Log('addons_error.log');
+			  			$log->write('Invalid/disabled addon SKU "' . $pro . '" for cityId "' . $cityId . '" in category "' . $line[0] . '"');
+			  			continue;
+			  		} 
+					if($prodetail && ($prodetail['name'] != "null" || $prodetail['name'] != null)) {
+						$attributes = $this->model_catalog_product->getProductAttributes($prodetail['product_id']);
+			  			$addons[$line[0]][] = array(
 			  								'product_id' => $prodetail['product_id'],
 			  								'image' => $this->model_tool_image->resize($prodetail['image'], 250, 250),
 			  								'name' => $prodetail['name'],
@@ -1227,6 +1234,9 @@ class ControllerProductProduct extends Controller {
 			  								'tax_class_id' => $prodetail['tax_class_id'],
 			  								'attributes' => (isset($attributes[0]['attribute']) && !empty($attributes[0]['attribute'])) ? $attributes[0]['attribute'] : [],
 			  							);
+					}
+
+			  		
 			  	}	
 		  	}
 		}

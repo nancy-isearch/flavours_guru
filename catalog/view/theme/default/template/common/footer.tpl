@@ -231,7 +231,7 @@ Greater Noida | Chandigarh | Lucknow | Varanasi | Hyderabad | Mohali | Panchkula
   <div class="container xs-p-l-0 xs-p-r-0">
     <div class="row display-flex align-items-center">
       <div class="col-md-6 col-sm-6 col-xs-12 p-l-0 p-r-0 btm-reserves-col">
-        <p style="font-size: 12px;margin-bottom: 0;color: #ffffff;">© 2013 - 22. All Rights Reserved. Flavourguru Cake Bakes Pvt. Ltd.,  CIN - U52209HR2017PTC069279</p>
+        <p style="font-size: 12px;margin-bottom: 0;color: #ffffff;">© 2013 - 2026. All Rights Reserved. Flavourguru Cake Bakes Pvt. Ltd.,  CIN - U52209HR2017PTC069279</p>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-12 p-l-0 p-r-0">
         <div class="display-flex india-logo-ft align-items-center">
@@ -544,16 +544,18 @@ Greater Noida | Chandigarh | Lucknow | Varanasi | Hyderabad | Mohali | Panchkula
       formatNumber();
 
       if ($.trim(telInput.val())) {
-        if (telInput.intlTelInput("isValidNumber")) {
-          validMsg.removeClass("hide");
-          $('.register_contine').removeClass('disable-btn');
-          $("#is_mobile_validation, #checkout_is_mobile_validation").val(1);
-        } else {
-          errorMsg.removeClass("hide");
-          validMsg.addClass("hide");
-          $("#is_mobile_validation, #checkout_is_mobile_validation").val(2);
-          $('.register_contine').addClass('disable-btn');
-        }
+        var digitsOnly = telInput.val().replace(/\D/g, '');
+
+    if (/^[6-9]\d{9}$/.test(digitsOnly)) {
+      validMsg.removeClass("hide");
+      $('.register_contine').removeClass('disable-btn');
+      $("#is_mobile_validation, #checkout_is_mobile_validation").val(1);
+    } else {
+      errorMsg.removeClass("hide");
+      validMsg.addClass("hide");
+      $("#is_mobile_validation, #checkout_is_mobile_validation").val(2);
+      $('.register_contine').addClass('disable-btn');
+    }
       }
     });
 

@@ -205,6 +205,12 @@
             <p>Mother’s Day</p>
           </li>*/ ?>
           <li>
+            <a href="/fathers-day" class="hover-zoom-col">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/fathers-day-icons.webp" alt="Father day cake online">
+            </a>
+            <p>Fathers Day</p>
+          </li>
+          <li>
             <a href="/customize" class="hover-zoom-col">
               <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/custom-cakes.webp" alt="a customised three-layered orange cake">
             </a>
@@ -246,12 +252,12 @@
             </a>
             <p>Gifts</p>
           </li>
-          <li>
+          <!-- <li>
             <a href="/cakes-below-600" class="hover-zoom-col">
               <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/cakes-under-500.webp" alt="Delicious cake under 600 calories, adorned with fresh berries">
             </a>
             <p>Under 600</p>
-          </li>
+          </li> -->
            <!--<li>
             <a href="/classic-cakes" class="hover-zoom-col">
               <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/premium-flavours.webp" alt="A cherry-topped premium cake in the picture">  

@@ -1,22 +1,5 @@
 <?php
 class ControllerCommonHeader extends Controller {
-	private function resolveImagePath($image) {
-		if (!$image) {
-			return '';
-		}
-		// Original image exists
-		if (is_file(DIR_IMAGE . $image)) {
-			return $image;
-		}
-		// Try WebP fallback
-		$webp = preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', $image);
-		if ($webp !== $image && is_file(DIR_IMAGE . $webp)) {
-			return $webp;
-		}
-
-		return '';
-	}
-
 	public function index() {
 		// Analytics
 		$this->load->model('extension/extension');
@@ -37,20 +20,14 @@ class ControllerCommonHeader extends Controller {
 			$server = $this->config->get('config_url');
 		}
 
-		// if (is_file(DIR_IMAGE . $this->config->get('config_icon'))) {
-		// 	$this->document->addLink($server . 'image/' . $this->config->get('config_icon'), 'icon');
-		// }
-
-		$icon = $this->resolveImagePath($this->config->get('config_icon'));
-
-		if ($icon) {
-			$this->document->addLink(
-				$server . 'image/' . $icon,
-				'icon'
-			);
+		if (is_file(DIR_IMAGE . $this->config->get('config_icon'))) {
+			$this->document->addLink($server . 'image/' . $this->config->get('config_icon'), 'icon');
 		}
 
-		if (!isset($this->request->get['_route_']) || $this->request->get['_route_'] == 'home') {
+		if(!isset($_GET['_route_'])){
+			$this->document->setDescription($this->config->get('config_meta_description'));
+			$this->document->setKeywords($this->config->get('config_meta_keyword'));
+		} else if(isset($_GET['_route_']) && $_GET['_route_']=='home'){
 			$this->document->setDescription($this->config->get('config_meta_description'));
 			$this->document->setKeywords($this->config->get('config_meta_keyword'));
 		}
@@ -64,16 +41,8 @@ class ControllerCommonHeader extends Controller {
 		$data['direction'] = $this->language->get('direction');
 		$data['name'] = $this->config->get('config_name');
 
-		// if (is_file(DIR_IMAGE . $this->config->get('config_logo'))) {
-		// 	$data['logo'] = $server . 'image/' . $this->config->get('config_logo');
-		// } else {
-		// 	$data['logo'] = '';
-		// }
-
-		$logo = $this->resolveImagePath($this->config->get('config_logo'));
-
-		if ($logo) {
-			$data['logo'] = $server . 'image/' . $logo;
+		if (is_file(DIR_IMAGE . $this->config->get('config_logo'))) {
+			$data['logo'] = $server . 'image/' . $this->config->get('config_logo');
 		} else {
 			$data['logo'] = '';
 		}
@@ -142,10 +111,10 @@ class ControllerCommonHeader extends Controller {
 
 		$this->load->model('catalog/product');
 
-		if (!$this->cart->hasProducts()) {
-			unset($this->session->data['proData']);
-			unset($this->session->data['checkoutCity']);
-			unset($this->session->data['checkoutPincode']);
+		if(empty($this->cart->getProducts())){
+		 		unset($_SESSION['proData']);
+		 		unset($_SESSION['checkoutCity']);
+		 		unset($_SESSION['checkoutPincode']);
 		}
 		$header_menu_data = $this->getHeaderMenuData();
 		$data['menu_structure'] = $header_menu_data['menu_structure'];
@@ -167,10 +136,8 @@ class ControllerCommonHeader extends Controller {
 		$data['styles'] = $this->getFilteredStyles($this->document->getStyles(), $data['route_name']);
 		$data['scripts'] = $this->getFilteredScripts($this->document->getScripts(), $data['route_name']);
 		$data['show_global_faq_schema'] = true;
-		$css_file = DIR_CATALOG . 'view/theme/default/stylesheet/stylesheet_1.css';
-		$data['theme_stylesheet_version'] = file_exists($css_file) ? filemtime($css_file) : '1';
-		$js_file = DIR_CATALOG . 'view/javascript/custom.js';
-		$data['custom_js_version'] = file_exists($js_file) ? filemtime($js_file) : '1';
+		$data['theme_stylesheet_version'] = @filemtime(DIR_CATALOG . 'view/theme/default/stylesheet/stylesheet_1.css') ?: '1';
+		$data['custom_js_version'] = @filemtime(DIR_CATALOG . 'view/javascript/custom.js') ?: '1';
 		$data['category_preload_image'] = '';
 		$data['category_preload_image_mobile'] = '';
 		$data['category_preload_sizes'] = '';
@@ -188,28 +155,8 @@ class ControllerCommonHeader extends Controller {
 				$category_image_width_mobile = min($category_image_width, 360);
 				$category_image_height_mobile = ($category_image_width > 0) ? (int)round(($category_image_height * $category_image_width_mobile) / $category_image_width) : $category_image_height;
 
-				// $data['category_preload_image'] = $this->model_tool_image->resize($preload_category_info['image'], $category_image_width, $category_image_height);
-				// $data['category_preload_image_mobile'] = $this->model_tool_image->resize($preload_category_info['image'], $category_image_width_mobile, $category_image_height_mobile);
-
-				$category_image = $this->resolveImagePath(
-					$preload_category_info['image']
-				);
-
-				if ($category_image) {
-
-					$data['category_preload_image'] = $this->model_tool_image->resize(
-						$category_image,
-						$category_image_width,
-						$category_image_height
-					);
-
-					$data['category_preload_image_mobile'] = $this->model_tool_image->resize(
-						$category_image,
-						$category_image_width_mobile,
-						$category_image_height_mobile
-					);
-				}
-
+				$data['category_preload_image'] = $this->model_tool_image->resize($preload_category_info['image'], $category_image_width, $category_image_height);
+				$data['category_preload_image_mobile'] = $this->model_tool_image->resize($preload_category_info['image'], $category_image_width_mobile, $category_image_height_mobile);
 				$data['category_preload_sizes'] = '(max-width: 767px) 100vw, ' . $category_image_width . 'px';
 			}
 		}
@@ -337,34 +284,16 @@ class ControllerCommonHeader extends Controller {
 			}
 		}
 
-		$all_categories = $this->model_catalog_category->getAllCategoriesTree();
-		$categories = isset($all_categories[0]) ? $all_categories[0] : array();
-
-		// Fix #3: batch-fetch all child category product counts in one query
-		$category_counts = array();
-		if ($this->config->get('config_product_count')) {
-			$child_ids = array();
-			foreach ($categories as $category) {
-				if ($category['top']) {
-					$children = isset($all_categories[$category['category_id']]) ? $all_categories[$category['category_id']] : array();
-					foreach ($children as $child) {
-						$child_ids[] = (int)$child['category_id'];
-					}
-				}
-			}
-			if ($child_ids) {
-				$category_counts = $this->model_catalog_product->getTotalProductsByCategoryIds($child_ids);
-			}
-		}
+		$categories = $this->model_catalog_category->getCategories(0);
 
 		foreach ($categories as $category) {
 			if ($category['top']) {
 				$children_data = array();
-				$children = isset($all_categories[$category['category_id']]) ? $all_categories[$category['category_id']] : array();
+				$children = $this->model_catalog_category->getMultiParentCategories($category['category_id']);
 
 				foreach ($children as $child) {
 					$children_data2 = array();
-					$children2 = isset($all_categories[$child['category_id']]) ? $all_categories[$child['category_id']] : array();
+					$children2 = $this->model_catalog_category->getCategories($child['category_id']);
 
 					foreach ($children2 as $child2) {
 						$children_data2[] = array(
@@ -376,7 +305,12 @@ class ControllerCommonHeader extends Controller {
 					$child_name = $child['name'];
 
 					if ($this->config->get('config_product_count')) {
-						$child_name .= ' (' . (isset($category_counts[(int)$child['category_id']]) ? $category_counts[(int)$child['category_id']] : 0) . ')';
+						$filter_data = array(
+							'filter_category_id'  => $child['category_id'],
+							'filter_sub_category' => true
+						);
+
+						$child_name .= ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')';
 					}
 
 					$children_data[] = array(
@@ -404,7 +338,7 @@ class ControllerCommonHeader extends Controller {
 	}
 
 	private function getFilteredStyles($styles, $route_name) {
-		if ($route_name === 'common/home') {
+		if ($route_name !== 'product/category') {
 			return $styles;
 		}
 
@@ -428,7 +362,7 @@ class ControllerCommonHeader extends Controller {
 	}
 
 	private function getFilteredScripts($scripts, $route_name) {
-		if ($route_name === 'common/home') {
+		if ($route_name !== 'product/category') {
 			return $scripts;
 		}
 

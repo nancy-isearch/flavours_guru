@@ -748,7 +748,7 @@ class ModelSaleOrder extends Model {
 	public function getOrders($data = array()) {
 		/*$sql = "SELECT o.order_id, CONCAT(o.firstname, ' ', o.lastname) AS customer, o.shipping_city AS city, (SELECT os.name FROM " . DB_PREFIX . "order_status os WHERE os.order_status_id = o.order_status_id AND os.language_id = '" . (int)$this->config->get('config_language_id') . "') AS order_status, o.shipping_code, o.total, o.currency_code, o.currency_value, o.date_added, o.date_modified FROM `" . DB_PREFIX . "order` o";*/
 		$sql = "SELECT o.order_id, CONCAT(o.firstname, ' ', o.lastname) AS customer, o.shipping_city AS city, o.affiliate_id, (SELECT os.name FROM " . DB_PREFIX . "order_status os WHERE os.order_status_id = o.order_status_id AND os.language_id = '" . (int)$this->config->get('config_language_id') . "') AS order_status, o.shipping_code, o.total, o.currency_code, o.currency_value, o.date_added, o.date_modified, o.date_forshipping, o.slot_forshipping, o.shipping_postcode, o.vendor_id, o.added_by FROM `" . DB_PREFIX . "order` o";
-
+		
 		if (isset($data['filter_order_status'])) {
 			$implode = array();
 
@@ -1014,8 +1014,13 @@ class ModelSaleOrder extends Model {
 			$sql .= " AND o.telephone = '" . $this->db->escape($data['filter_phone']) . "'";
 		}
 
+		//commented bcoz giving issue in local
+		// if (!empty($data['filter_order_custom']) && $data['filter_order_custom'] == 1) {
+		// 	$sql .= " AND o.affiliate_id = '1'";
+		// }
+
 		if (!empty($data['filter_order_custom']) && $data['filter_order_custom'] == 1) {
-			$sql .= " AND o.affiliate_id = '1'";
+			$sql .= " AND affiliate_id = '1'";
 		}
 
 		if (!empty($data['filter_city'])) {
@@ -1045,7 +1050,7 @@ class ModelSaleOrder extends Model {
 		if (!empty($data['filter_slot_delivery'])) {
 			$sql .= " AND o.slot_forshipping = '" . $this->db->escape($data['filter_slot_delivery']) . "'";
 		}
-
+		
 		$query = $this->db->query($sql);
 		return $query->row['total'];
 

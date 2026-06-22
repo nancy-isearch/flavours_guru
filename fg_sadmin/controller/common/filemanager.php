@@ -46,13 +46,13 @@ class ControllerCommonFileManager extends Controller {
 
 			if(!$filter_name){
 				// Get files
-				$files = glob($directory . '/' . $filter_name . '*.{jpg,jpeg,png,gif,JPG,JPEG,PNG,GIF}', GLOB_BRACE);
+				$files = glob($directory . '/' . $filter_name . '*.{jpg,jpeg,png,gif,webp,JPG,JPEG,PNG,GIF,WEBP}', GLOB_BRACE);
 
 				if (!$files) {
 					$files = array();
-				}	
+				}
 			} else {
-				$files = glob($directory . '/*.{jpg,jpeg,png,gif,JPG,JPEG,PNG,GIF}', GLOB_BRACE);
+				$files = glob($directory . '/*.{jpg,jpeg,png,gif,webp,JPG,JPEG,PNG,GIF,WEBP}', GLOB_BRACE);
 
 				if (!$files) {
 					$files = array();

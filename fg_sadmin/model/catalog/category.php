@@ -344,19 +344,30 @@ class ModelCatalogCategory extends Model {
 		return $category_layout_data;
 	}
 
+	// public function getTotalCategories($data = array()) {
+	// 	$sql = '';
+	// 	if (!empty($data['filter_name'])) {
+	// 		$sql .= " WHERE cd2.name LIKE '" . $this->db->escape($data['filter_name']) . "%'";
+	// 	}
+	// 	$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "category c LEFT JOIN " . DB_PREFIX . "category_description cd2 ON (c.category_id = cd2.category_id)");
+
+	// 	if($sql){
+	// 		$query = $query + $sql;
+	// 	}
+
+	// 	return $query->row['total'];
+	// }
 	public function getTotalCategories($data = array()) {
-		$sql = '';
-		if (!empty($data['filter_name'])) {
-			$sql .= " WHERE cd2.name LIKE '" . $this->db->escape($data['filter_name']) . "%'";
-		}
-		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "category c LEFT JOIN " . DB_PREFIX . "category_description cd2 ON (c.category_id = cd2.category_id)");
+    $sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "category c LEFT JOIN " . DB_PREFIX . "category_description cd2 ON (c.category_id = cd2.category_id)";
 
-		if($sql){
-			$query = $query + $sql;
-		}
+    if (!empty($data['filter_name'])) {
+        $sql .= " WHERE cd2.name LIKE '" . $this->db->escape($data['filter_name']) . "%'";
+    }
 
-		return $query->row['total'];
-	}
+    $query = $this->db->query($sql);
+
+    return $query->row['total'];
+}
 	
 	public function getTotalCategoriesByLayoutId($layout_id) {
 		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "category_to_layout WHERE layout_id = '" . (int)$layout_id . "'");

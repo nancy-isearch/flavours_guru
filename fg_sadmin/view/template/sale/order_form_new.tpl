@@ -15,7 +15,7 @@
       <div class="proMaster">
          <div class="pop_main">
             <?php /*<a href="javascript:void(0)" class="remove">X</a>*/ ?>
-            <h2><img src="/image/back_icon1.webp" class="clspopup close_popup_addon" style="float:left; cursor: pointer;">&nbsp;&nbsp;<span class="loaderEtra" id="loaderEtra" style="width:8px"></span>  Add on !</h2>
+            <h2><img src="/image/back_icon1.jpg" class="clspopup close_popup_addon" style="float:left; cursor: pointer;">&nbsp;&nbsp;<span class="loaderEtra" id="loaderEtra" style="width:8px"></span>  Add on !</h2>
             <div class="occassions">
             <ul class="tabs addonsTab popup-tab-slide nav nav-tabs">
                <li class="type-card-wrapper active"><a class="" href="#tab1" data-toggle="tab">Tab 1</a></li>
@@ -63,7 +63,7 @@
           <div class="section-title">Select Delivery Date</div>
           <div class="order-calendar-date" autocomplete="off" id="datetimeshipping"></div>
           <a class="backtocalendar backtocalendar-1">
-            <img style="width: 25px;" src="/image/back_icon1.webp" class="material-icons back-arrow first-back" alt="" /></a>
+            <img style="width: 25px;" src="/image/back_icon1.jpg" class="material-icons back-arrow first-back" alt="" /></a>
         </div>
         
         <div class="shipping-section hideppnew" id="shippingmethoddiv">
@@ -75,7 +75,7 @@
               </ul>
            </div>
            <a class="backtocalendar backtocalendar-1">
-            <img style="width: 25px;" src="/image/back_icon1.webp" class="material-icons back-arrow back-two" alt="" /></a>
+            <img style="width: 25px;" src="/image/back_icon1.jpg" class="material-icons back-arrow back-two" alt="" /></a>
         </div>
 
         <div class="timing-section hideppnew shipping-section" id="timimg-section">
@@ -92,7 +92,7 @@
            </div> 
           </div>
            <a class="backtocalendar backtocalendar-2">
-             <img style="width: 25px;" src="/image/back_icon1.webp" class="material-icons back-arrow back-three" alt="" />
+             <img style="width: 25px;" src="/image/back_icon1.jpg" class="material-icons back-arrow back-three" alt="" />
           </a>
         </div>
         <input type="hidden" id="timeslotData" value='' />
