@@ -3293,211 +3293,276 @@
 </div>
 
 <style type="text/css">
-  .semilar_products_section{
-    position: fixed;
-    top: 100%;
-    left: 0;
+  /* ==========================================
+   1. MAIN POPUP & CONTAINER LAYOUT
+   ========================================== */
+.semilar_products_section {
+  position: fixed;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  z-index: 2222;
+  transition: 0.1s; 
+}
+
+.semilar_products_col {
+  background: #f8f8f8;
+  position: fixed;
+  bottom: -100%;
+  padding: 20px 0 10px 0;
+  min-height: 200px;
+  width: 100%;
+  left: 0;
+  z-index: 2223;
+  transition: 0.2s;
+}
+
+.semilar_products_col h3 {
+  padding-left: 15px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #222222;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.similar-close {
+  position: absolute;
+  right: 15px;
+  top: 18px;
+  width: 35px;
+  text-align: right;
+  cursor: pointer;
+}
+
+.similar-close i {
+  font-size: 25px;
+}
+
+/* ==========================================
+   2. SLICK SLIDER & EQUAL HEIGHT CORE LOGIC
+   ========================================== */
+.slick_slider_simlar {
+  padding-left: 15px;
+}
+
+/* Slick track ko flexbox banaya taaki saari slides equal height le sakein */
+.slick_slider_simlar .slick-track {
+  display: flex !important;
+  align-items: stretch !important;
+}
+
+/* Har slide container ko full height aur flex banaya */
+.slick_slider_simlar .slick-slide {
+  margin-right: 15px;
+  transition: 0.3s;
+  height: auto !important;
+  display: flex !important;
+  flex-direction: column;
+}
+
+/* Slick ke auto-generated inner div ko stretch karne ke liye */
+.slick_slider_simlar .slick-slide > div {
+  display: flex !important;
+  flex: 1;
+  height: 100%;
+}
+
+/* ==========================================
+   3. PRODUCT CARD LAYOUT (EQUAL HEIGHT FIXED)
+   ========================================== */
+.similar_product_row {
+  border: 1px solid #dcdcdc;
+  width: 250px; /* Desktop par strict width */
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  position: relative;
+  height: 100%;
+  
+  /* Flexbox settings taaki card ka inner content barabar stretch ho */
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.similar_product_img_col {
+  position: relative;
+}
+
+.similar_product_img_col img {
+  max-width: 100%;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  display: block;
+}
+
+/* Card ka text area auto-expand hoga bache hue space me */
+.similar_product_name_col {
+  padding: 15px;
+  background-color: #ffffff;
+  flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.similar_product_name_col h4 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.similar_text_height {
+  height: 76.5px;
+}
+
+/* ==========================================
+   4. BADGES, BUTTONS & UTILITIES
+   ========================================== */
+.rating-count {
+  background: #ffffff;
+  padding: 5px 10px;
+  border-radius: 20px;
+  position: absolute;
+  bottom: 10px;
+  box-shadow: 0px 0px 2px #00000099;
+  left: 5px;
+  color: #444444; 
+}
+
+.review_count {
+  position: absolute;
+  right: 5px;
+  bottom: 10px;
+  border-radius: 20px;
+  padding: 5px 10px;
+  background: #ffffff;
+  box-shadow: 0px 0px 2px #00000099;
+  color: #444444;
+}
+
+.open_similar_products {
+  padding: 8px 16px;
+  font-size: 14px;
+  text-transform: capitalize;
+  font-weight: 500 !important;
+  margin-bottom: 15px;
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  z-index: 1;
+  background: #fff;
+  border-radius: 50px;
+  border: 1px solid #F65F73;
+  color: #F65F73;
+}
+
+.open_similar_products:hover {
+  border-color: #f195b2;
+  color: #f195b2;
+  cursor: pointer;
+}
+
+.slide-view-all-testimonial.cc--slider {
+  all: unset;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.slide-view-all-testimonial a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.productTabs .tab-content {
+  width: 100%;
+}
+
+.mb-0 { margin-bottom: 0; }
+.mt-0 { margin-top: 0; }
+
+/* ==========================================
+   5. RESPONSIVE MEDIA QUERY (MOBILE FIXES)
+   ========================================== */
+@media screen and (max-width: 767px) {
+  .slick_slider_simlar .slick-slide {
+    margin-right: 7px;
+  }
+  
+  /* Purana inline-flex aur overflow-x hata diya taaki Slick crash na kare */
+  .slick_slider_simlar {
     width: 100%;
-    height: 100%;
-    background:rgba(0,0,0,0.8);
-    z-index: 2222;
-    transition: 0.1s; 
+    padding-left: 0;
   }
-  .semilar_products_col{
-    background:#f8f8f8;
-    position: fixed;
-    bottom: -100%;
-    padding: 20px 0 10px 0;
-    min-height: 200px;
-    width: 100%;
-    left: 0;
-    z-index: 2223;
-    transition: 0.2s;
+  
+  .relatedProducts {
+    padding-left: 0;
+    padding-right: 0;
   }
-  .similar-close{
-    position: absolute;
-    right: 15px;
-    top: 18px;
-    width: 35px;
-    text-align: right;
-    cursor: pointer;
+  
+  /* Mobile par responsive slides ke liye width 100% zaruri hai */
+  .slick_slider_simlar .similar_product_row.item, 
+  .slick_slider_simlar .category_main_row_col.item {
+    width: 100% !important;
+    max-width: none;
+    display: flex !important;
+    margin-right: 0;
   }
-  .slide-view-all-testimonial{
-    width: 100%;
-  }
-  .slide-view-all-testimonial a{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
-  .similar-close i{
-    font-size: 25px;
-  }
-  .semilar_products_col h3{
-    padding-left: 15px;
-    font-size: 20px;
-    font-weight: 600;
-    color: #222222;
-    margin-top: 0;
-    margin-bottom: 20px;
-  }
-  .rating-count{
-    background:#ffffff;
-    padding: 5px 10px;
-    border-radius: 20px;
-    position: absolute;
-    bottom: 10px;
-    box-shadow: 0px 0px 2px #00000099;
-    left: 5px;
-    color: #444444; 
-  }
-  .similar_product_img_col{
+  
+  .similar_product_img_col {
     position: relative;
-  }
-  .similar_product_img_col img{
-    max-width: 100%;
-    border-top-right-radius: 3px;
-    border-top-left-radius: 3px;
-  }
-  .review_count{
-    position: absolute;
-    right: 5px;
-    bottom: 10px;
-    border-radius: 20px;
-    padding: 5px 10px;
-    background:#ffffff;
-    box-shadow: 0px 0px 2px #00000099;
-    color: #444444;
-  }
-  .similar_product_row{
-    border: 1px solid #dcdcdc;
-    width: 250px;
-    border-top-right-radius: 3px;
-    border-top-left-radius: 3px;
-    position: relative;
-  }
-  .similar_product_name_col{
-    padding: 15px;
-    background-color: #ffffff;
-  }
-  .mb-0{
-    margin-bottom: 0;
-  }
-  .mt-0{
-    margin-top: 0;
-  }
-  .slick_slider_simlar{
-    padding-left: 15px;
-  }
-  .slick_slider_simlar .slick-slide{
-    margin-right: 15px;
-    transition: 0.3s;
-  }
-  .open_similar_products{
-    padding: 8px 16px;
-    font-size: 14px;
-    text-transform: capitalize;
-    font-weight: 500 !important;
-    margin-bottom: 15px;
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-    z-index: 1;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
     background: #fff;
-    border-radius: 50px;
-    border:1px solid #F65F73;
-    color: #F65F73;
+    height: 150px;
   }
-  .open_similar_products:hover{
-    border-color: #f195b2;
-    color: #f195b2;
-    cursor: pointer;
+  
+  .similar_product_img_col img {
+    margin: auto;
+    max-height: 100%;
   }
-  .similar_product_name_col h4{
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-  .similar_text_height{
-    height: 76.5px;
-  }
-  .productTabs .tab-content{
+  
+  .similar_product_row.item a {
     width: 100%;
   }
-  /*.image-additional a.thumbnail{
-  	border: 1px solid #ddd !important;
-  	margin-right: 10px;
-  	cursor: pointer;
+  
+  /* Mobile me fixed text height ki jagah auto text wrapping better hoti hai */
+  .similar_text_height {
+    height: auto;
+    min-height: 55px;
   }
-  .thumbnails > li{
-  	margin-left: 0;
+  
+  .review_count {
+    display: none;
   }
-  .thumbnails .image-additional{
-  	margin-left: 0;
-  }*/
-  @media screen and (max-width: 767px){
-    .slick_slider_simlar .slick-slide{
-      margin-right: 7px;
-    }
-    .slick_slider_simlar .slick-list{
-      overflow: initial;
-    }
-    .review_count{
-      display: none;
-    }
-    .semilar_products_col h3{
-      font-size: 16px;
-    }
-    .similar-close i {
-      font-size: 20px;
-    }
-    .slick_slider_simlar{
-      width: 100%;
-      overflow-x: auto;
-      white-space: nowrap;
-      display: flow-root;
-      padding-left: 0;
-    }
-    .relatedProducts{
-      padding-left: 0;
-      padding-right: 0;
-    }
-    .slick_slider_simlar .similar_product_row.item, .slick_slider_simlar .category_main_row_col.item{
-      width: 200px;
-      display: inline-block;
-      margin-right: 10px;
-    }
-    .similar_product_img_col {
-      position: relative;
-      width: 100%;
-      padding-left: 10px;
-      padding-right: 10px;
-      background: #fff;
-      height: 150px;
-    }
-    .similar_product_img_col img{
-      margin: auto;
-      max-height: 100%;
-    }
-    .similar_product_row.item a{
-      /*display: inline-block;*/
-      width: 100%;
-    }
-    .similar_text_height{
-      height: 55px;
-    }
-    .col-sm-5.product-img-box{
-    	top: 114px;
-      width: 100%;
-    }
-    .product-img-box a.thumbnail img{
-      width: 100%;
-    }
-    .col-sm-7.product-shop.product-shop-height{
-    	margin-top: calc(100vw - -80px);
-    }
+  
+  .semilar_products_col h3 {
+    font-size: 16px;
   }
+  
+  .similar-close i {
+    font-size: 20px;
+  }
+  
+  .col-sm-5.product-img-box {
+    top: 114px;
+    width: 100%;
+  }
+  
+  .product-img-box a.thumbnail img {
+    width: 100%;
+  }
+  
+  .col-sm-7.product-shop.product-shop-height {
+    margin-top: calc(100vw - -80px);
+  }
+}
 </style>
 <div class="semilar_products_section"></div>
 <div class="semilar_products_col" style="visibility:hidden;">
@@ -3549,14 +3614,10 @@
             </a>
           </div>
         <?php } ?>
-        <div class="item similar_product_row position-relative ">
-        <div class="similar_product_img_col">
-          <img loading="lazy" decoding="async"src="catalog/view/theme/default/image/Home/white-img.webp" alt="" class="img-responsive">
+        <div class="item similar_product_row">
+        <div class="slide-view-all-testimonial cc--slider">
+          <a href="/<?php echo $parent_cat_url['keyword'] ?>" tabindex="0">View All  &nbsp; <img loading="lazy" decoding="async" class="view-arrow" src="catalog/view/theme/default/image/Home/arrow-right-black.webp" alt=""></a>
         </div>
-        <div class="slide-view-all-testimonial">
-                <a href="/<?php echo $parent_cat_url['keyword'] ?>" tabindex="0">View All  &nbsp; <img loading="lazy" decoding="async" class="view-arrow" src="catalog/view/theme/default/image/Home/arrow-right-black.webp" alt=""></a>
-            </div>
-        <div class="similar_product_name_col similar_text_height"></div>
         </div>
       </div>
     </div>
@@ -3667,54 +3728,61 @@
       });
     },1000);*/
 
-  if($(window).width() > 767){
-    $('.slick_slider_simlar').slick({
-      infinite: false,
-      slidesToShow: 4,
-      slidesToScroll: 4,
-      arrows: true,
-      autoplay: false,
-      pauseOnHover: false,
-      speed:300,
-      responsive: [
-        {
-          breakpoint: 1190,
-          settings: {
-            slidesToShow: 4,
-            slidesToScroll: 4,
-            infinite: false,
-            dots: true
-          }
-        },
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 4,
-            slidesToScroll: 3,
-            infinite: false,
-            dots: true
-          }
-        },
-        {
-          breakpoint: 767,
-          settings: {
-            slidesToShow: 3.5,
-            infinite: false,
-            slidesToScroll: 2
-          }
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 2.1,
-            speed:100,
-            infinite: false,
-            slidesToScroll: 2
-          }
-        }
-      ]
-    });
-  }
+$('.slick_slider_simlar').slick({
+  infinite: false,
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  arrows: true,
+  autoplay: false,
+  pauseOnHover: false,
+  speed: 300,
+  swipeToSlide: true, 
+  touchThreshold: 20,
+  responsive: [
+    {
+      breakpoint: 1190,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        infinite: false,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 3,
+        infinite: false,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 768, 
+      settings: {
+        slidesToShow: 3.5,
+        slidesToScroll: 1,
+        infinite: false,
+        arrows: false,
+        swipeToSlide: true,   
+        touchThreshold: 100,  
+        cssEase: 'cubic-bezier(0.1, 0.57, 0.1, 1)' 
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 2.1,
+        slidesToScroll: 1,
+        infinite: false,
+        arrows: false,
+        swipeToSlide: true,   
+        touchThreshold: 100,  
+        cssEase: 'cubic-bezier(0.1, 0.57, 0.1, 1)'
+      }
+    }
+  ]
+});
 
   $(document).ready( function(){
   $('.show_review_slider').click(function(){

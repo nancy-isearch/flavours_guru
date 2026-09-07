@@ -17,6 +17,42 @@ class ControllerStartupSeoUrl extends Controller {
 
 
 			foreach ($parts as $part) {
+				if ($part == 'customize') {
+					$this->request->get['route'] = 'information/customize';
+					continue;
+				}
+
+				if (strpos($part, 'cakes-in-') === 0) {
+					// Extract potential city keyword
+					$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE '" . $this->db->escape($part) . "' LIKE CONCAT('cakes-in-%-', keyword) AND query LIKE 'category_id=%' ORDER BY LENGTH(keyword) DESC LIMIT 1");
+					if ($query->num_rows) {
+						$city_keyword = $query->row['keyword'];
+						$url_parts = explode('=', $query->row['query']);
+						if ($url_parts[0] == 'category_id') {
+							$cat_id = (int)$url_parts[1];
+							$locality_slug = substr($part, 9, -strlen('-' . $city_keyword));
+							
+							// find the area name from DB
+							$loc_query = $this->db->query("SELECT area_name FROM " . DB_PREFIX . "category_locality WHERE category_id = '" . $cat_id . "'");
+							$matched_locality = '';
+							foreach ($loc_query->rows as $lrow) {
+								$slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $lrow['area_name']), '-'));
+								if ($slug === $locality_slug) {
+									$matched_locality = $lrow['area_name'];
+									break;
+								}
+							}
+							
+							if ($matched_locality) {
+								$this->request->get['route'] = 'product/locality';
+								$this->request->get['category_id'] = $cat_id;
+								$this->request->get['locality'] = $matched_locality;
+								continue;
+							}
+						}
+					}
+				}
+
 				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE keyword = '" . $this->db->escape($part) . "'");
 
 				if ($query->num_rows) {
@@ -75,6 +111,11 @@ class ControllerStartupSeoUrl extends Controller {
 
 		parse_str($url_info['query'], $data);
 
+		if (isset($data['route']) && $data['route'] == 'information/customize') {
+			$url .= '/customize';
+			unset($data['route']);
+		}
+
 		foreach ($data as $key => $value) {
 			if (isset($data['route'])) {
 				if (($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/info' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id')) {
@@ -84,6 +125,16 @@ class ControllerStartupSeoUrl extends Controller {
 						$url .= '/' . $query->row['keyword'];
 
 						unset($data[$key]);
+					}
+				} elseif ($data['route'] == 'product/locality' && $key == 'locality') {
+					if (isset($data['category_id'])) {
+						$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = 'category_id=" . (int)$data['category_id'] . "'");
+						if ($query->num_rows && $query->row['keyword']) {
+							$locality_slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $value), '-'));
+							$url .= '/cakes-in-' . $locality_slug . '-' . $query->row['keyword'];
+							unset($data['locality']);
+							unset($data['category_id']);
+						}
 					}
 				} elseif ($key == 'path') {
 					$categories = explode('_', $value);

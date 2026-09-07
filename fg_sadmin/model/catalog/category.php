@@ -61,6 +61,14 @@ class ModelCatalogCategory extends Model {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "category_multiparent SET category_id = '" . (int)$category_id . "', parent_id = '0'");
 		}
 
+		if (isset($data['category_faq'])) {
+			foreach ($data['category_faq'] as $faq) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "category_faq SET category_id = '" . (int)$category_id . "', question = '" . $this->db->escape($faq['question']) . "', answer = '" . $this->db->escape($faq['answer']) . "', sort_order = '" . (int)$faq['sort_order'] . "'");
+			}
+		}
+
+
+
 		return $category_id;
 	}
 
@@ -181,6 +189,14 @@ class ModelCatalogCategory extends Model {
 		   }
 		}
 
+		$this->db->query("DELETE FROM " . DB_PREFIX . "category_faq WHERE category_id = '" . (int)$category_id . "'");
+		if (isset($data['category_faq'])) {
+			foreach ($data['category_faq'] as $faq) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "category_faq SET category_id = '" . (int)$category_id . "', question = '" . $this->db->escape($faq['question']) . "', answer = '" . $this->db->escape($faq['answer']) . "', sort_order = '" . (int)$faq['sort_order'] . "'");
+			}
+		}
+
+
 
 		$this->cache->delete('category');
 	}
@@ -204,6 +220,8 @@ class ModelCatalogCategory extends Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'category_id=" . (int)$category_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "coupon_category WHERE category_id = '" . (int)$category_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "category_multiparent WHERE category_id = '" . (int)$category_id . "'");
+		$this->db->query("DELETE FROM " . DB_PREFIX . "category_faq WHERE category_id = '" . (int)$category_id . "'");
+		$this->db->query("DELETE FROM " . DB_PREFIX . "category_locality WHERE category_id = '" . (int)$category_id . "'");
 
 		$this->cache->delete('category');
 	}
@@ -236,6 +254,18 @@ class ModelCatalogCategory extends Model {
 		$query = $this->db->query("SELECT DISTINCT *, (SELECT GROUP_CONCAT(cd1.name ORDER BY level SEPARATOR '&nbsp;&nbsp;&gt;&nbsp;&nbsp;') FROM " . DB_PREFIX . "category_path cp LEFT JOIN " . DB_PREFIX . "category_description cd1 ON (cp.path_id = cd1.category_id AND cp.category_id != cp.path_id) WHERE cp.category_id = c.category_id AND cd1.language_id = '" . (int)$this->config->get('config_language_id') . "' GROUP BY cp.category_id) AS path, (SELECT DISTINCT keyword FROM " . DB_PREFIX . "url_alias WHERE query = 'category_id=" . (int)$category_id . "') AS keyword FROM " . DB_PREFIX . "category c LEFT JOIN " . DB_PREFIX . "category_description cd2 ON (c.category_id = cd2.category_id) WHERE c.category_id = '" . (int)$category_id . "' AND cd2.language_id = '" . (int)$this->config->get('config_language_id') . "'");
 
 		return $query->row;
+	}
+
+	public function getCategoryFaqs($category_id) {
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "category_faq WHERE category_id = '" . (int)$category_id . "' ORDER BY sort_order ASC");
+
+		return $query->rows;
+	}
+
+	public function getCategoryLocalities($category_id) {
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "category_locality WHERE category_id = '" . (int)$category_id . "' ORDER BY sort_order ASC");
+
+		return $query->rows;
 	}
 
 	public function getCategories($data = array()) {

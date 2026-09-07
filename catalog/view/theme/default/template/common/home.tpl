@@ -1,4 +1,4 @@
-<?php echo $header; ?>
+﻿<?php echo $header; ?>
 
 <!-- <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -204,13 +204,14 @@
             </a>
             <p>Mother’s Day</p>
           </li>*/ ?>
-          <li>
-            <a href="/fathers-day" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/fathers-day-icons.webp" alt="Father day cake online">
+            <li>
+            <a href="/janmashtami-cakes" class="hover-zoom-col">
+              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/janmashtami-icon.png" alt="a customised three-layered orange cake">
             </a>
-            <p>Fathers Day</p>
+            <p>Janmashtami</p>
           </li>
-          <li>
+           
+           <li>
             <a href="/customize" class="hover-zoom-col">
               <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/custom-cakes.webp" alt="a customised three-layered orange cake">
             </a>
@@ -252,12 +253,12 @@
             </a>
             <p>Gifts</p>
           </li>
-          <!-- <li>
+          <li>
             <a href="/cakes-below-600" class="hover-zoom-col">
               <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/cakes-under-500.webp" alt="Delicious cake under 600 calories, adorned with fresh berries">
             </a>
             <p>Under 600</p>
-          </li> -->
+          </li>
            <!--<li>
             <a href="/classic-cakes" class="hover-zoom-col">
               <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/premium-flavours.webp" alt="A cherry-topped premium cake in the picture">  
@@ -434,6 +435,14 @@
           </div>
         </div>
       </a> */ ?>
+      
+      <a href="/janmashtami-cakes">
+        <picture>
+          <source media="(max-width: 767px)" srcset="catalog/view/theme/default/image/Home/new-images/janmashtami-banner-mob.png">
+          <img class="img-responsive main-banner-border" src="catalog/view/theme/default/image/Home/new-images/janmashtami-banner.jpeg" alt="rakshabandhan cake" fetchpriority="high" loading="eager" decoding="async">
+        </picture>
+        
+      </a>
       <a href="/birthday">
         <picture>
           <source media="(max-width: 767px)" srcset="catalog/view/theme/default/image/Home/new-images/birthday-cake-mob.webp">
@@ -1405,7 +1414,6 @@
     </div>
   </div>
 </div>
-	
 	<?php if($allreviews['cnt'] > 0){ ?>
   <div class="col-md-12 col-sm-12 col-xs-12 social-review-section">
     <div class="container xs-p-r-0">
@@ -1901,5 +1909,21 @@ form#contactForm div.form-group div.col-sm-6 {
 	</ul>	
 </div>
 
-
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(function(question) {
+        question.addEventListener('click', function() {
+            var faqItem = this.parentElement;
+            faqItem.classList.toggle('active');
+        });
+    });
+});
+</script>
+<noscript>
+<style>
+    .faq-answer { display: block !important; }
+    .faq-question span { display: none; } /* optional: hide the + icon since they can't toggle */
+</style>
+</noscript>
 <?php echo $footer; ?> 

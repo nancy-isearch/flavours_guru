@@ -95,32 +95,15 @@ class ControllerProductCategory extends Controller {
 				
 				
 			 
-				/*if ($category_info) {
+				if ($category_info) {
 					$data['breadcrumbs'][] = array(
 						'text' => $category_info['name'],
 						'href' => $this->url->link('product/category', 'path=' . $path . $url)
 					);
-				}*/
+				}
 
 				
 			}
-
-			$reverse_path=array_reverse($path_cats);
-			if(count($reverse_path) == 3){
-				$reverse_path=$path_cats;
-			}
-			//print_r($reverse_path);
-			foreach($reverse_path as $catid){
-				$cat_info = $this->model_catalog_category->getCategory($catid);
-				if ($cat_info) {
-					$data['breadcrumbs'][] = array(
-						'text' => $cat_info['name'],
-						'href' => $this->url->link('product/category', 'path=' . $cat_info['category_id'] . $url)
-					);
-				}
-			}
-
-			//print_r($data['breadcrumbs']);
 
 
 		} else { 
@@ -159,11 +142,22 @@ class ControllerProductCategory extends Controller {
 			$data['button_list'] = $this->language->get('button_list');
 			$data['button_grid'] = $this->language->get('button_grid');
 
+			// Automatically add 'Flavoursguru Cakes' if this is a city page and it wasn't in the path
+			if (stripos($category_info['name'], 'Cakes Online In') !== false && strpos((string)$this->request->get['path'], '259') === false) {
+				$parent_category_info = $this->model_catalog_category->getCategory(259);
+				if ($parent_category_info) {
+					$data['breadcrumbs'][] = array(
+						'text' => $parent_category_info['name'],
+						'href' => $this->url->link('product/category', 'path=259')
+					);
+				}
+			}
+
 			// Set the last category breadcrumb
-			/*$data['breadcrumbs'][] = array(
+			$data['breadcrumbs'][] = array(
 				'text' => $category_info['name'],
 				'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'])
-			);*/
+			);
 
 			if ($category_info['image']) {
 				if ($is_mobile) {
@@ -187,6 +181,22 @@ class ControllerProductCategory extends Controller {
 			$data['is_mobile'] = $is_mobile;
 
 			$data['description'] = html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8');
+			$data['category_faqs'] = $this->model_catalog_category->getCategoryFaqs($category_id);
+
+			$localities_raw = $this->model_catalog_category->getCategoryLocalities($category_id);
+			$data['category_localities'] = array();
+			if (!empty($localities_raw)) {
+				foreach ($localities_raw as &$loc) {
+					$loc['href'] = $this->url->link('product/locality', 'category_id=' . $category_id . '&locality=' . urlencode($loc['area_name']));
+				}
+				unset($loc);
+				$total = count($localities_raw);
+				$max_per_box = 5;
+				$num_boxes = ceil($total / $max_per_box);
+				$chunk_size = ceil($total / $num_boxes);
+				$data['category_localities'] = array_chunk($localities_raw, $chunk_size);
+			}
+
 			$data['compare'] = $this->url->link('product/compare');
 
 			$url = '';
@@ -644,8 +654,10 @@ class ControllerProductCategory extends Controller {
 				stripos($_cat_name, 'Online Cake Delivery in') !== false ||
 				stripos($_cat_name, 'Cakes Online in') !== false ||
 				stripos($_cat_name, 'Cake Delivery in') !== false ||
-				stripos($_cat_name, 'Cakes in ') !== false
+				stripos($_cat_name, 'Cakes in ') !== false ||
+				stripos($_cat_name, 'Cakes Shop in') !== false
 			);
+			
 			if ($_is_city_page) {
 				// Fetch dynamic content from home.tpl
 				$home_tpl_path = DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/home.tpl';
@@ -715,7 +727,7 @@ class ControllerProductCategory extends Controller {
 
 				// 3. Shop by Occasions
 				$data['home_occasions'] = array();
-				$nodes = $xpath->query('//p[contains(text(), "Shop by Occasions")]/ancestor::div[contains(@class, "row")]/following-sibling::div//a[contains(@class, "overlay-occasions-col")]');
+				$nodes = $xpath->query('//p[contains(text(), "Shop by Occasions")]/ancestor::div[contains(@class, "row")]/following-sibling::div[contains(@class, "shop_by_occasions_row")]//a[contains(@class, "overlay-occasions-col")]');
 				foreach ($nodes as $node) {
 					$href = $node->getAttribute('href');
 					$img_node = $xpath->query('./preceding-sibling::img', $node)->item(0);
@@ -745,7 +757,7 @@ class ControllerProductCategory extends Controller {
 
 				// 7. Shop by Flavours
 				$data['home_flavours'] = array();
-				$nodes = $xpath->query('//p[contains(text(), "Shop by Flavours")]/ancestor::div[contains(@class, "row")]/following-sibling::div//a | //p[contains(text(), "Shop by Flavours")]/ancestor::div[contains(@class, "row")]/following-sibling::div[contains(@class, "row")]//a');
+				$nodes = $xpath->query('//p[contains(text(), "Shop by Flavours")]/ancestor::div[contains(@class, "row")]//div[contains(@class, "for-mob-view-load-more")]//a | //p[contains(text(), "Shop by Flavours")]/ancestor::div[contains(@class, "row")]/following-sibling::div[contains(@class, "row")]//a');
 				foreach ($nodes as $node) {
 					$href = $node->getAttribute('href');
 					$img_node = $xpath->query('.//img', $node)->item(0);
@@ -825,6 +837,7 @@ class ControllerProductCategory extends Controller {
 							: false;
 
 						$category_line['products'][] = array(
+							'product_id' => $catpro['product_id'],
 							'name'    => $catpro['name'],
 							'image'   => $image,
 							'price'   => $price,

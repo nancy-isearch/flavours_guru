@@ -1,6 +1,6 @@
 <?php echo $header; ?>
 
-<link rel="stylesheet" href="/city%20page%20html/assets/css/city_scoped.css" />
+<link rel="stylesheet" href="/catalog/view/theme/default/stylesheet/city_scoped.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -42,28 +42,40 @@
 </svg>
 
 <main class="fg-city-page">
-  <!-- Breadcrumbs -->
-  <div class="fg-con" style="padding-top: 20px;">
-    <ul class="breadcrumb">
-      <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-      <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
-      <?php } ?>
-    </ul>
-  </div>
+<noscript>
+  <style>
+    .fg-city-page .seo__body {
+      max-height: none !important;
+      overflow: visible !important;
+    }
+    .fg-city-page .seo__body::after {
+      display: none !important;
+    }
+    .fg-city-page .seo__toggle {
+      display: none !important;
+    }
+    .fg-city-page .fg-more-faqs {
+      display: block !important;
+    }
+    .fg-city-page .fg-faq-btn {
+      display: none !important;
+    }
+  </style>
+</noscript>
 
 <section class="hero" aria-label="Featured promotions">
       <div class="hero__slider" id="heroSlider">
         <div class="hero__track" id="heroTrack">
           <article class="slide t-coral">
-            <img src="/city%20page%20html/assets/images/side-1.webp" alt="professional" class="slide__media" data-label="hero-birthday.webp" loading="lazy" width="100%"/>
+            <img src="catalog/view/theme/default/image/city_page/side-1.webp" alt="professional" class="slide__media" data-label="hero-birthday.webp" width="100%"/>
           </article>
 
-          <article class="slide t-coral">
-            <img src="/city%20page%20html/assets/images/father-day-banner-1.webp" alt="Father's Day" class="slide__media" data-label="hero-birthday.webp" loading="lazy" width="100%"/>
-          </article>
+          <!-- ============<article class="slide t-coral"> ============ -->
+            <!-- ============<img src="catalog/view/theme/default/image/city_page/anniversary-cake-banner.webp" alt="Anniversary Cake" class="slide__media" data-label="hero-birthday.webp" width="100%"/> ============ -->
+          <!-- ============</article> ============ -->
 
           <article class="slide t-coral">
-            <img src="/city%20page%20html/assets/images/side-2.webp" alt="Birthday" class="slide__media" data-label="hero-birthday.webp" loading="lazy" width="100%"/>
+            <img src="catalog/view/theme/default/image/city_page/side-2.webp" alt="Birthday" class="slide__media" data-label="hero-birthday.webp" width="100%"/>
           </article>
         </div>
         <button class="hero__nav hero__nav--prev" id="heroPrev" aria-label="Previous slide"><svg class="ic"><use href="#ic-chev-left"/></svg></button>
@@ -72,15 +84,29 @@
       </div>
   </section>
 
+  <!-- Breadcrumbs -->
+  <div class="fg-con" style="padding-top: 15px; padding-bottom: 10px;">
+    <h1 class="sec-title" style="margin: 0 0 5px 0; text-align: left; font-size: 28px;"><?php echo $heading_title; ?></h1>
+    <ul class="breadcrumb" style="margin-bottom: 0;">
+      <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+      <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
+      <?php } ?>
+    </ul>
+  </div>
   <!-- ============ QUICK CATEGORY CIRCLES ============ -->
   <section class="quickcats" aria-label="Shop by category">
     <div class="fg-con quickcats__row">
       <?php if (!empty($home_quickcats)) { ?>
-        <?php $colors = array('t-coral', 't-pink', 't-gold', 't-rose', 't-peach', 't-lilac', 't-mint'); $i = 0; ?>
+        <?php 
+          $static_imgs = array('customise-cake.webp', 'combos.webp', 'birthday-cake.webp', 'anniversary.webp', 'fresh-arrivals.webp', 'heart-shape.webp', 'gifts.webp', 'under-600.webp');
+          $colors = array('t-coral', 't-pink', 't-gold', 't-rose', 't-peach', 't-lilac', 't-mint'); 
+          $i = 0; 
+        ?>
         <?php foreach ($home_quickcats as $cat) { ?>
+          <?php $img = $static_imgs[$i % count($static_imgs)]; ?>
           <a class="qcat" href="<?php echo $cat['href']; ?>">
             <span class="qcat__img <?php echo $colors[$i % count($colors)]; ?>">
-              <img src="<?php echo $cat['img']; ?>" alt="<?php echo $cat['title']; ?>" width="100%" height="100%" style="object-fit: cover; border-radius: 50%;" />
+              <img src="catalog/view/theme/default/image/city_page/<?php echo $img; ?>" alt="<?php echo $cat['title']; ?>" width="100%" height="100%" />
             </span>
             <span><?php echo $cat['title']; ?></span>
           </a>
@@ -106,15 +132,20 @@
     <div class="fg-con">
       <div class="sec-head">
         <div><h2 class="sec-title">Trending Now</h2></div>
-        <a class="link-all" href="#">View all <svg class="ic ic--xs"><use href="#ic-chev-right"/></svg></a>
+        <a class="link-all" href="/trending-cakes">View all <svg class="ic ic--xs"><use href="#ic-chev-right"/></svg></a>
       </div>
       <div class="hscroll" data-scroller>
         <?php if (!empty($home_trending)) { ?>
-          <?php $colors = array('t-coral', 't-rose', 't-gold', 't-peach', 't-lilac', 't-pink'); $i=0; ?>
+          <?php 
+            $static_imgs = array('surprices-cake.webp', 'floral.webp', 'designer.webp', 'fault-line.webp', 'balloon.webp', 'isomalt.webp');
+            $colors = array('t-coral', 't-rose', 't-gold', 't-peach', 't-lilac', 't-pink'); 
+            $i=0; 
+          ?>
           <?php foreach ($home_trending as $item) { ?>
+            <?php $img = $static_imgs[$i % count($static_imgs)]; ?>
             <a class="tchip" href="<?php echo $item['href']; ?>">
               <span class="tchip__img img-ph <?php echo $colors[$i % count($colors)]; ?>">
-                <img src="<?php echo $item['img']; ?>" alt="<?php echo $item['title']; ?>" width="100%" height="100%" style="border-radius: 50%; object-fit: cover;"/>
+                <img src="catalog/view/theme/default/image/city_page/<?php echo $img; ?>" alt="<?php echo $item['title']; ?>" width="100%" height="100%" />
               </span>
               <span class="tchip__name"><?php echo $item['title']; ?></span>
             </a>
@@ -154,17 +185,22 @@
     <div class="fg-con">
       <div class="sec-head">
         <div><span class="eyebrow">Loved by thousands</span><h2 class="sec-title">Bestselling Cakes</h2></div>
-        <a class="link-all" href="#">View all <svg class="ic ic--xs"><use href="#ic-chev-right"/></svg></a>
       </div>
       <div class="treanding-slide" style="margin: 0 -10px; padding-bottom: 20px;">
         <?php if (!empty($home_bestselling)) { ?>
+          <?php 
+            $static_imgs = array('FGCCAKE562.webp', 'FGCCAKE722-1000x1000.webp', 'FGCCAKE792.webp', 'FGCCAKE726.webp', 'FGCCAKE735-1000x1000.webp');
+            $badges = array('Bestseller', 'New', 'Trending', 'Premium'); 
+            $i=0; 
+          ?>
           <?php foreach ($home_bestselling as $item) { ?>
+          <?php $img = $static_imgs[$i % count($static_imgs)]; ?>
           <div class="slide" style="padding: 0 10px;">
             <article class="pcard" style="height: 100%;">
               <div class="pcard__media">
-                <button class="pcard__wish" aria-label="Add to wishlist"><svg class="ic"><use href="#ic-heart"/></svg></button>
+                <span class="pcard__badge"><?php echo $badges[$i % count($badges)]; ?></span>
                 <a href="<?php echo $item['href']; ?>">
-                  <img src="<?php echo $item['image']; ?>" alt="<?php echo $item['name']; ?>" loading="lazy" />
+                  <img src="catalog/view/theme/default/image/city_page/<?php echo $img; ?>" alt="<?php echo $item['name']; ?>" loading="lazy" />
                 </a>
               </div>
               <div class="pcard__body">
@@ -177,12 +213,12 @@
                     <?php echo $item['special']; ?> <s><?php echo $item['price']; ?></s>
                     <?php } ?>
                   </span>
-                  <button class="pcard__add" type="button"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4V20M20 12H4"></path></svg></button>
+                  <button class="pcard__add" type="button" onclick="cart.add('<?php echo $item['product_id']; ?>', '1');"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4V20M20 12H4"></path></svg></button>
                 </div>
               </div>
             </article>
           </div>
-          <?php } ?>
+          <?php $i++; } ?>
         <?php } else { ?>
           <p style="padding-left:10px;">No products found.</p>
         <?php } ?>
@@ -190,35 +226,26 @@
     </div>
   </section>
 
-  <!-- ============ HOW IT WORKS (new) ============ -->
-  <!-- <section class="section" aria-label="How it works">
-    <div class="fg-con">
-      <div class="sec-head sec-head--center">
-        <div><span class="eyebrow">Simple &amp; quick</span><h2 class="sec-title">How It Works</h2></div>
-      </div>
-      <ol class="steps">
-        <li class="step"><span class="step__ic"><svg class="ic"><use href="#ic-search"/></svg></span><h3>Pick your cake</h3><p>Browse 5000+ designs by occasion, flavour, theme or profession.</p></li>
-        <li class="step"><span class="step__ic"><svg class="ic"><use href="#ic-cursor"/></svg></span><h3>Personalise it</h3><p>Add a message, photo or fully customise the design your way.</p></li>
-        <li class="step"><span class="step__ic"><svg class="ic"><use href="#ic-clock"/></svg></span><h3>Choose a slot</h3><p>Select fixed-time, same-day or midnight delivery that suits you.</p></li>
-        <li class="step"><span class="step__ic"><svg class="ic"><use href="#ic-truck"/></svg></span><h3>Fresh delivery</h3><p>We bake fresh &amp; deliver right to your loved one's doorstep.</p></li>
-      </ol>
-    </div>
-  </section> -->
 
   <!-- ============ CAKES BY PROFESSION ============ -->
   <section class="section section--tight" aria-label="Cakes by profession">
     <div class="fg-con">
       <div class="sec-head">
         <div><span class="eyebrow">Made personal</span><h2 class="sec-title">Cakes by Profession</h2></div>
-        <a class="link-all" href="#">View all <svg class="ic ic--xs"><use href="#ic-chev-right"/></svg></a>
+        <a class="link-all" href="/cakes-by-profession">View all <svg class="ic ic--xs"><use href="#ic-chev-right"/></svg></a>
       </div>
       <div class="hscroll" data-scroller>
         <?php if (!empty($home_profession)) { ?>
-          <?php $colors = array('t-coral', 't-peach', 't-gold', 't-lilac', 't-rose', 't-pink', 't-mint'); $i=0; ?>
+          <?php 
+            $static_imgs = array('doctor.webp', 'blogger.webp', 'engineer.webp', 'teacher.webp', 'entrepreneur.webp', 'makeup.webp', 'soldier.webp', 'traveler.webp');
+            $colors = array('t-coral', 't-peach', 't-gold', 't-lilac', 't-rose', 't-pink', 't-mint'); 
+            $i=0; 
+          ?>
           <?php foreach ($home_profession as $item) { ?>
+            <?php $img = $static_imgs[$i % count($static_imgs)]; ?>
             <a class="circle-cat" href="<?php echo $item['href']; ?>">
               <span class="circle-cat__img img-ph <?php echo $colors[$i % count($colors)]; ?>">
-                <img src="<?php echo $item['img']; ?>" alt="<?php echo $item['title']; ?>" width="100%" height="100%" style="object-fit: cover; border-radius: 50%;"/>
+                <img src="catalog/view/theme/default/image/city_page/<?php echo $img; ?>" alt="<?php echo $item['title']; ?>" width="100%" height="100%" />
               </span>
               <span><?php echo $item['title']; ?></span>
             </a>
@@ -231,14 +258,14 @@
   <!-- ============ FOR HER / FOR HIM ============ -->
   <section class="section section--tight added-space" aria-label="Gifts for her and him">
     <div class="fg-con split">
-      <a class="split-card img-ph t-rose for-her-bg" href="#" data-label="cake-for-her.webp">
+      <a class="split-card img-ph t-rose for-her-bg" href="/her" data-label="cake-for-her.webp">
         <div class="split-card__inner">
           <span class="eyebrow eyebrow--light">For Her</span>
           <h3>Cakes she'll adore</h3>
           <span class="btn btn--ghost-light">Shop For Her <svg class="ic ic--xs"><use href="#ic-arrow-right"/></svg></span>
         </div>
       </a>
-      <a class="split-card img-ph t-coral for-him-bg" href="#" data-label="cake-for-him.webp">
+      <a class="split-card img-ph t-coral for-him-bg" href="/cakes-for-him" data-label="cake-for-him.webp">
         <div class="split-card__inner">
           <span class="eyebrow eyebrow--light">For Him</span>
           <h3>Cakes he'll love</h3>
@@ -253,14 +280,18 @@
     <div class="fg-con">
       <div class="sec-head">
         <div><span class="eyebrow">Every celebration</span><h2 class="sec-title">Shop by Occasion</h2></div>
-        <a class="link-all" href="#">View all <svg class="ic ic--xs"><use href="#ic-chev-right"/></svg></a>
       </div>
       <div class="occ-grid">
         <?php if (!empty($home_occasions)) { ?>
-          <?php $colors = array('t-coral', 't-rose', 't-gold', 't-peach'); $i=0; ?>
+          <?php 
+            $static_imgs = array('birthday-image.webp', 'anniversary-cake.webp', 'bachelorette-image.webp', 'romantic-image.webp', 'wedding-image.webp', 'baby-shower-image.webp');
+            $colors = array('t-coral', 't-rose', 't-gold', 't-peach'); 
+            $i=0; 
+          ?>
           <?php foreach ($home_occasions as $item) { ?>
+            <?php $img = $static_imgs[$i % count($static_imgs)]; ?>
             <a class="occ-card img-ph <?php echo $colors[$i % count($colors)]; ?>" href="<?php echo $item['href']; ?>">
-              <img src="<?php echo $item['img']; ?>" alt="<?php echo $item['title']; ?>" width="100%" height="100%"/>
+              <img src="catalog/view/theme/default/image/city_page/<?php echo $img; ?>" alt="<?php echo $item['title']; ?>" width="100%" height="100%"/>
               <span class="occ-card__cap">
                 <strong><?php echo $item['title']; ?></strong>
                 <span>View more <svg class="ic ic--xs"><use href="#ic-chev-right"/></svg></span>
@@ -270,10 +301,6 @@
           <?php } ?>
         <?php } ?>
       </div>
-        <a class="occ-card img-ph t-lilac" href="#" data-label="romantic.webp"><img src="/city%20page%20html/assets/images/romantic-image.webp" alt="Romantic Love" width="100%" height="100%"/><span class="occ-card__cap"><strong>Romantic Love</strong><span>View more <svg class="ic ic--xs"><use href="#ic-chev-right"/></svg></span></span></a>
-        <a class="occ-card img-ph t-peach" href="#" data-label="wedding.webp"><img src="/city%20page%20html/assets/images/wedding-image.webp" alt="Wedding Cakes" width="100%" height="100%"/><span class="occ-card__cap"><strong>Wedding Cakes</strong><span>View more <svg class="ic ic--xs"><use href="#ic-chev-right"/></svg></span></span></a>
-        <a class="occ-card img-ph t-pink" href="#" data-label="baby-shower.webp"><img src="/city%20page%20html/assets/images/baby-shower-image.webp" alt="Baby Shower" width="100%" height="100%"/><span class="occ-card__cap"><strong>Baby Shower</strong><span>View more <svg class="ic ic--xs"><use href="#ic-chev-right"/></svg></span></span></a>
-      </div>
     </div>
   </section>
 
@@ -282,13 +309,23 @@
     <div class="fg-con"> 
       <div class="sec-head">
         <div><span class="eyebrow">Little ones</span><h2 class="sec-title">Cakes for Kids</h2></div>
-        <a class="link-all" href="#">View all <svg class="ic ic--xs"><use href="#ic-chev-right"/></svg></a>
       </div>
       <div class="kids-grid">
-        <a class="kid-card img-ph t-coral" href="#" data-label="boys.webp"><img src="/city%20page%20html/assets/images/boy-cake.webp" alt="Cake for Boys" width="100%" height="100%"/><span class="kid-card__cap">Cake for Boys</span></a>
-        <a class="kid-card img-ph t-rose" href="#" data-label="girls.webp"><img src="/city%20page%20html/assets/images/girl-cake.webp" alt="Cake for Girls" width="100%" height="100%"/><span class="kid-card__cap">Cake for Girls</span></a>
-        <a class="kid-card img-ph t-gold" href="#" data-label="first-birthday.webp"><img src="/city%20page%20html/assets/images/first-birthday.webp" alt="First Birthday" width="100%" height="100%"/><span class="kid-card__cap">First Birthday</span></a>
-        <a class="kid-card img-ph t-lilac" href="#" data-label="half-birthday.webp"><img src="/city%20page%20html/assets/images/half-month-cake.webp" alt="Half Birthday" width="100%" height="100%"/><span class="kid-card__cap">Half Birthday</span></a>
+        <?php if (!empty($home_kids)) { ?>
+          <?php 
+            $static_imgs = array('boy-cake.webp', 'girl-cake.webp', 'first-birthday.webp', 'half-month-cake.webp');
+            $i=0; 
+          ?>
+          <?php foreach ($home_kids as $item) { ?>
+            <?php $img = $static_imgs[$i % count($static_imgs)]; ?>
+            <a class="kid-card" href="<?php echo $item['href']; ?>">
+              <span class="kid-card__img"><img src="catalog/view/theme/default/image/city_page/<?php echo $img; ?>" alt="<?php echo $item['title']; ?>" width="100%" height="100%" loading="lazy"/></span>
+              <span class="kid-card__cap"><?php echo $item['title']; ?></span>
+              <span class="kid-card__btn">View All</span>
+            </a>
+            <?php $i++; ?>
+          <?php } ?>
+        <?php } ?>
       </div>
     </div>
   </section>
@@ -298,15 +335,20 @@
     <div class="fg-con">
       <div class="sec-head">
         <div><span class="eyebrow">For the kids at heart</span><h2 class="sec-title">Cartoon Cakes</h2></div>
-        <a class="link-all" href="#">View all <svg class="ic ic--xs"><use href="#ic-chev-right"/></svg></a>
+        <a class="btn--solid-red" href="/cartoon-cakes">View All</a>
       </div>
       <div class="hscroll" data-scroller>
         <?php if (!empty($home_cartoon)) { ?>
-          <?php $colors = array('t-lilac', 't-pink', 't-gold', 't-coral', 't-mint', 't-peach', 't-rose'); $i=0; ?>
+          <?php 
+            $static_imgs = array('unicorn.webp', 'Peppa-Pig.webp', 'Avengers.webp', 'Masha-Bear.webp', 'Dinosaur.webp', 'Shin-Chan.webp', 'panda.webp', 'Barbie.webp');
+            $colors = array('t-lilac', 't-pink', 't-gold', 't-coral', 't-mint', 't-peach', 't-rose'); 
+            $i=0; 
+          ?>
           <?php foreach ($home_cartoon as $item) { ?>
+            <?php $img = $static_imgs[$i % count($static_imgs)]; ?>
             <a class="circle-cat" href="<?php echo $item['href']; ?>">
               <span class="circle-cat__img img-ph <?php echo $colors[$i % count($colors)]; ?>">
-                <img src="<?php echo $item['img']; ?>" alt="<?php echo $item['title']; ?>" width="100%" height="100%" style="object-fit: cover; border-radius: 50%;"/>
+                <img src="catalog/view/theme/default/image/city_page/<?php echo $img; ?>" alt="<?php echo $item['title']; ?>" width="100%" height="100%" />
               </span>
               <span><?php echo $item['title']; ?></span>
             </a>
@@ -325,7 +367,7 @@
           <span class="eyebrow">100% Pure Veg</span>
           <h2 class="promo__title">Every Cake is Freshly Baked & Eggless</h2>
           <p>Premium ingredients, no compromise on taste — a perfect treat for everyone.</p>
-          <a class="btn btn--solid" href="#">Order Now <svg class="ic ic--xs"><use href="#ic-arrow-right"/></svg></a>
+          <a class="btn btn--solid" href="/">Order Now <svg class="ic ic--xs"><use href="#ic-arrow-right"/></svg></a>
         </div>
       </div>
     </div>
@@ -336,16 +378,21 @@
     <div class="fg-con">
       <div class="sec-head">
         <div><span class="eyebrow">Their personality</span><h2 class="sec-title">Cakes by Traits</h2></div>
-        <a class="link-all" href="#">View all <svg class="ic ic--xs"><use href="#ic-chev-right"/></svg></a>
+        <a class="btn--solid-red" href="/cake-by-traits">View All</a>
       </div>     
 
       <div class="hscroll" data-scroller>
         <?php if (!empty($home_traits)) { ?>
-          <?php $colors = array('t-gold', 't-lilac', 't-pink', 't-coral', 't-peach', 't-mint', 't-rose'); $i=0; ?>
+          <?php 
+            $static_imgs = array('lazy.webp', 'gamer.webp', 'shopping.webp', 'gym.webp', 'car.webp', 'football.webp', 'foodie.webp', 'Workholic.webp');
+            $colors = array('t-gold', 't-lilac', 't-pink', 't-coral', 't-peach', 't-mint', 't-rose'); 
+            $i=0; 
+          ?>
           <?php foreach ($home_traits as $item) { ?>
+            <?php $img = $static_imgs[$i % count($static_imgs)]; ?>
             <a class="circle-cat" href="<?php echo $item['href']; ?>">
               <span class="circle-cat__img img-ph <?php echo $colors[$i % count($colors)]; ?>">
-                <img src="<?php echo $item['img']; ?>" alt="<?php echo $item['title']; ?>" width="100%" height="100%" style="object-fit: cover; border-radius: 50%;"/>
+                <img src="catalog/view/theme/default/image/city_page/<?php echo $img; ?>" alt="<?php echo $item['title']; ?>" width="100%" height="100%" />
               </span>
               <span><?php echo $item['title']; ?></span>
             </a>
@@ -361,15 +408,19 @@
     <div class="fg-con">
       <div class="sec-head">
         <div><span class="eyebrow">Taste first</span><h2 class="sec-title">Shop by Flavour</h2></div>
-        <a class="link-all" href="#">View all <svg class="ic ic--xs"><use href="#ic-chev-right"/></svg></a>
       </div>
 
       <div class="flav-grid">
         <?php if (!empty($home_flavours)) { ?>
-          <?php $colors = array('t-gold', 't-peach', 't-lilac', 't-pink', 't-mint', 't-gold'); $i=0; ?>
+          <?php 
+            $static_imgs = array('Rich-Chocolate.webp', 'Premium-Red-Velvet.webp', 'Exotic-Black-Forest.webp', 'Sweet-Pineapple.webp', 'Cravy-Fruit-Cake.webp', 'Fab-Blueberry.webp', 'Yummy-Vanilla.webp', 'Yay-Butterscotch.webp');
+            $colors = array('t-gold', 't-peach', 't-lilac', 't-pink', 't-mint', 't-gold'); 
+            $i=0; 
+          ?>
           <?php foreach ($home_flavours as $item) { ?>
+            <?php $img = $static_imgs[$i % count($static_imgs)]; ?>
             <a class="flav-card img-ph <?php echo $colors[$i % count($colors)]; ?>" href="<?php echo $item['href']; ?>">
-              <img src="<?php echo $item['img']; ?>" alt="<?php echo $item['title']; ?>" width="100%" height="100%"/>
+              <img src="catalog/view/theme/default/image/city_page/<?php echo $img; ?>" alt="<?php echo $item['title']; ?>" width="100%" height="100%"/>
               <span class="flav-card__cap"><?php echo $item['title']; ?></span>
             </a>
             <?php $i++; ?>
@@ -383,12 +434,12 @@
   <section class="section section--tight" aria-label="Customise your cake">
     <div class="fg-con">
       <div class="custom-cta">
-        <div class="custom-cta__media img-ph t-rose" data-label="customise.webp" role="img" aria-label="Customised cake"><img src="/city%20page%20html/assets/images/bachelorette-image2.webp" alt="Customised cake" width="100%" height="100%"/></div>
+        <div class="custom-cta__media img-ph t-rose" data-label="customise.webp" role="img" aria-label="Customised cake"><img src="/catalog/view/theme/default/image/city_page/bachelorette-image2.webp" alt="Customised cake" width="100%" height="100%"/></div>
         <div class="custom-cta__text">
           <span class="eyebrow">Make it yours</span>
           <h2 class="sec-title">Design your dream cake with our customisation studio</h2>
           <p>Upload a photo, pick a theme, choose the flavour &amp; size — our master bakers turn your idea into an edible masterpiece.</p>
-          <a class="btn btn--solid" href="#">Start Customising <svg class="ic ic--xs"><use href="#ic-arrow-right"/></svg></a>
+          <a class="btn btn--solid" href="/customize">Start Customising <svg class="ic ic--xs"><use href="#ic-arrow-right"/></svg></a>
         </div>
       </div>
     </div>
@@ -416,68 +467,44 @@
   </section> -->
 
   <!-- Localities Of Delhi Where We Deliver -->
+<?php if (!empty($category_localities)) { ?>
   <section class="fg-localities" aria-labelledby="fg-localities-title">
     <div class="fg-localities__wrap">
+      <?php 
+        $extracted_city = trim(preg_replace('/^(Online Cake Delivery in|Cakes Online in|Cake Delivery in|Cakes Shop in|Cakes in)\s+/i', '', $heading_title)); 
+      ?>
       <div class="fg-localities__head">
-        <span class="fg-eyebrow">Fast Cake Delivery Across Delhi</span>
+        <span class="fg-eyebrow">Fast Cake Delivery Across <?php echo $extracted_city; ?></span>
         <h2 class="sec-title" id="fg-localities-title">
-          Localities Of Delhi Where Flavours Guru Provides Cake Delivery In Delhi
+          Localities Of <?php echo $extracted_city; ?> Where Flavours Guru Provides Cake Delivery In <?php echo $extracted_city; ?>
         </h2>
         <p>
-          Order fresh eggless cakes online and enjoy quick doorstep delivery across popular Delhi localities.
+          Order fresh eggless cakes online and enjoy quick doorstep delivery across popular <?php echo $extracted_city; ?> localities.
         </p>
       </div>
 
       <div class="fg-location-grid">
+        <?php foreach ($category_localities as $region_name => $localities) { ?>
         <div class="fg-location-card">
-          <h3>West Delhi</h3>
           <ul>
-            <li><a href="#">Uttam Nagar</a><span>110059</span></li>
-            <li><a href="#">Janakpuri</a><span>110058</span></li>
-            <li><a href="#">Mayur Vihar</a><span>110091</span></li>
-            <li><a href="#">Rajouri Garden</a><span>110027</span></li>
+            <?php foreach ($localities as $locality) { ?>
+            <li><a href="<?php echo $locality['href']; ?>"><?php echo $locality['area_name']; ?></a><span><?php echo $locality['pin_code']; ?></span></li>
+            <?php } ?>
           </ul>
         </div>
-
-        <div class="fg-location-card">
-          <h3>Central Delhi</h3>
-          <ul>
-            <li><a href="#">Karol Bagh</a><span>110005</span></li>
-            <li><a href="#">Connaught Place</a><span>110001</span></li>
-            <li><a href="#">Laxmi Nagar</a><span>110092</span></li>
-            <li><a href="#">Kalbaji</a><span>110019</span></li>
-          </ul>
-        </div>
-
-        <div class="fg-location-card">
-          <h3>South Delhi</h3>
-          <ul>
-            <li><a href="#">Vasant Kunj</a><span>110070</span></li>
-            <li><a href="#">Saket</a><span>110017</span></li>
-            <li><a href="#">Hauz Khas</a><span>110016</span></li>
-            <li><a href="#">New Friends Colony</a><span>110018</span></li>
-          </ul>
-        </div>
-
-        <div class="fg-location-card">
-          <h3>North Delhi</h3>
-          <ul>
-            <li><a href="#">Pitampura</a><span>110034</span></li>
-            <li><a href="#">Rohini</a><span>110085</span></li>
-            <li><a href="#">Rithala</a><span>110023</span></li>
-            <li><a href="#">Dwarka</a><span>110045</span></li>
-          </ul>
-        </div>
+        <?php } ?>
       </div>
 
       <p class="fg-localities__note">
-        And many more areas in Delhi NCR are served with same-day and midnight cake delivery.
+        And many more areas are served with same-day and midnight cake delivery.
       </p>
     </div>
-</section>
+  </section>
+<?php } ?>
   <!-- Localities Of Delhi Where We Deliver -->
 
 <!-- FAQs -->
+<?php if (!empty($category_faqs)) { ?>
  <section class="fg-faq-section">
   <div class="fg-faq-container">
 
@@ -487,7 +514,7 @@
         Find answers about eggless cakes, same-day delivery, midnight delivery, custom cakes and online ordering at Flavours Guru.
       </p>
       <div class="">
-        <img src="/city%20page%20html/assets/images/Avengers.webp" alt="Avengers" width="350" height="100%">
+        <img src="/catalog/view/theme/default/image/city_page/Avengers.webp" alt="Avengers" width="350" height="100%">
       </div>
     </div>
 
@@ -495,110 +522,99 @@
       <input type="checkbox" id="fg-faq-toggle">
 
       <div class="fg-faq-list">
-
-        <details open>
-          <summary>Does Flavours Guru provide same-day cake delivery in Delhi?</summary>
-          <p>Yes, Flavours Guru offers same-day cake delivery across Delhi NCR, helping you send fresh cakes quickly for birthdays, anniversaries and special occasions.</p>
-        </details>
-
-        <details>
-          <summary>Are the cakes at Flavours Guru eggless?</summary>
-          <p>Yes, Flavours Guru offers 100% eggless cakes made with fresh and premium ingredients.</p>
-        </details>
-
-        <details>
-          <summary>Can I order midnight cake delivery?</summary>
-          <p>Yes, midnight cake delivery is available so you can surprise your loved ones right at the celebration time.</p>
-        </details>
-
-        <details>
-          <summary>Can I customise my cake design?</summary>
-          <p>Yes, you can customise your cake by choosing the theme, flavour, size and design as per your celebration requirement.</p>
-        </details>
-
-        <details>
-          <summary>Which cake flavours are available?</summary>
-          <p>Popular flavours include chocolate, red velvet, black forest, pineapple, blueberry, vanilla and butterscotch.</p>
-        </details>
-
-        <div class="fg-more-faqs">
-          <details>
-            <summary>Does Flavours Guru deliver cakes in Delhi NCR?</summary>
-            <p>Yes, cake delivery is available across Delhi NCR including Delhi, Gurgaon, Noida, Ghaziabad, Faridabad and Greater Noida.</p>
-          </details>
-
-          <details>
-            <summary>Can I order birthday and anniversary cakes online?</summary>
-            <p>Yes, you can order birthday cakes, anniversary cakes, designer cakes, theme cakes and cartoon cakes online.</p>
-          </details>
-
-          <details>
-            <summary>Are designer and theme cakes available?</summary>
-            <p>Yes, Flavours Guru offers designer cakes, theme cakes, cartoon cakes and cakes by profession for different celebrations.</p>
-          </details>
-
-          <details>
-            <summary>How do I place an online cake order?</summary>
-            <p>You can select your cake, choose flavour and size, add delivery details and place your order online in a few simple steps.</p>
-          </details>
-        </div>
-
+          <?php $faq_count = 0; ?>
+          <?php foreach ($category_faqs as $faq) { ?>
+            <?php if ($faq_count == 5) { ?>
+              <div class="fg-more-faqs">
+            <?php } ?>
+            <details open>
+              <summary><?php echo $faq['question']; ?></summary>
+              <p><?php echo nl2br($faq['answer']); ?></p>
+            </details>
+            <?php $faq_count++; ?>
+          <?php } ?>
+          <?php if ($faq_count > 5) { ?>
+              </div>
+          <?php } ?>
       </div>
 
+      <script>
+        // If JS is enabled, close all FAQs except the first one.
+        document.addEventListener('DOMContentLoaded', function() {
+          var details = document.querySelectorAll('.fg-faq-list details');
+          for (var i = 1; i < details.length; i++) {
+            details[i].removeAttribute('open');
+          }
+        });
+      </script>
+
+      <?php if (!empty($category_faqs) && count($category_faqs) > 5) { ?>
       <label for="fg-faq-toggle" class="fg-faq-btn">
         <span class="fg-read-more">Read More FAQs</span>
         <span class="fg-read-less">Show Less</span>
       </label>
+      <?php } ?>
     </div>
 
   </div>
 </section>
+<?php } ?>
 <!-- FAQs -->
 
   <!-- ============ TESTIMONIALS ============ -->
-  <section class="section section--tight" aria-label="Customer reviews">
+  <section class="section" aria-label="Customer reviews" style="background:#fff;">
     <div class="fg-con">
-      <div class="sec-head sec-head--center">
-        <div><span class="eyebrow">Real celebrations</span><h2 class="sec-title">What our customers say</h2>
-        <p class="sec-sub"><strong>4.8/5</strong> average rating · 5000+ Google reviews</p></div>
+      <div class="sec-head sec-head--center mb-40">
+        <h2 class="sec-title" style="color:#111; text-align:center;">What our customers say about us!</h2>
       </div>
-      <div class="hscroll hscroll--reviews" data-scroller>
+      
+      <div class="review-slider-city" style="padding: 0 40px;">
         <?php if(isset($allreviews) && $allreviews['cnt'] > 0){ ?>
           <?php $x = 0; foreach ($allreviews['all'] as $value) { if($x == 5) { break; } ?>
-          <figure class="review">
-            <div class="review__stars">★★★★★</div>
-            <blockquote><?php echo ucfirst($value['text']); ?></blockquote>
-            <figcaption>
-              <span class="review__av t-coral"><?php echo substr($value['author'], 0, 1); ?></span>
-              <span><strong><?php echo ucwords($value['author']); ?></strong><small><?php echo date('d-M-Y', strtotime($value['date_added'])); ?></small></span>
-            </figcaption>
-          </figure>
+          <div class="slide" style="padding:10px;">
+            <div style="background:#fff; border:1px solid #eaeaea; box-shadow:0 4px 12px rgba(0,0,0,0.05); border-radius:12px; padding:30px 20px; color:#333; text-align:center; height:100%; display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <img src="catalog/view/theme/default/image/Home/new-images/google-img.webp" alt="Google" style="margin:0 auto 20px auto; width:80px;" loading="lazy">
+                <p style="font-size:14px; line-height:1.6; margin-bottom:15px; color:#444; font-weight:400;"><?php echo ucfirst($value['text']); ?></p>
+                <p style="font-size:12px; color:#888; margin-bottom:20px;"><?php echo date('d-M-Y h.i A', strtotime($value['date_added'])); ?></p>
+              </div>
+              <div style="display:flex; align-items:center; justify-content:center; border-top:1px solid #eaeaea; padding-top:20px; text-align:left;">
+                <?php 
+                  $cus_first_char = $value['author'];
+                  $first = substr($cus_first_char, 0, 1);
+                  $colors = ['#FC5B62', '#F59E0B', '#10B981', '#3B82F6', '#8B5CF6'];
+                  $bgColor = $colors[$x % count($colors)];
+                ?>
+                <div style="width:40px; height:40px; border-radius:50%; background:<?php echo $bgColor; ?>; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:18px; margin-right:15px; flex-shrink:0;">
+                  <?php echo strtoupper($first); ?>
+                </div>
+                <div>
+                  <h4 style="margin:0 0 5px 0; color:#111; font-size:16px; font-weight:600;"><?php echo ucwords($value['author']); ?></h4>
+                  <div style="color:#FBBF24; font-size:14px;">
+                    <span style="color:#333; font-weight:bold; margin-right:5px;"><?php echo round($value['rating']); ?>/5</span>
+                    <?php for($i=1; $i<=5; $i++) { ?>
+                      <?php if($i <= round($value['rating'])) { ?>★<?php } else { ?>☆<?php } ?>
+                    <?php } ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <?php $x++; } ?>
         <?php } ?>
       </div>
     </div>
   </section>
-
   <!-- ============ SEO CONTENT ============ -->
   <section class="seo" aria-label="About online cake delivery">
     <div class="fg-con">
-      <h1 class="seo__h1"><?php echo $heading_title; ?></h1>
+      <?php 
+        $extracted_city_seo = trim(preg_replace('/^(Online Cake Delivery in|Cakes Online in|Cake Delivery in|Cakes Shop in|Cakes in)\s+/i', '', $heading_title)); 
+      ?>
+      <h2 class="seo__h1">Order Delightful Cakes Online in <?php echo $extracted_city_seo; ?> via FlavoursGuru</h2>
       <input type="checkbox" id="seoToggleCheck" />
       <div class="seo__body" id="seoBody">
-        <h2>Online Cakes: Delectable Desserts for Special Occasions</h2>
-        <p>Delving into a delicious, creamy extravaganza is the demand of every special occasion. Cakes uplift the mood of every celebration with their scrumptious flavours and attractive designs — the most anticipated gift expected by everyone from their dear ones. With the rising popularity of online cake shops offering home delivery at the doorstep, there is no need to rush to nearby bakeries. Orders can be placed online in just a few clicks while sitting in the comfort of your home or office, with flexible delivery time slots.</p>
-        <h2>Explore a Scrumptious Variety of Eggless Cakes</h2>
-        <p>Flavours Guru is a premium cake shop offering incredible online cake delivery across Delhi NCR. Our great assortment of eggless cakes is known for its delicious flavours and fresh textures. All cakes are prepared using the best quality ingredients to retain the right taste and richness without compromising on quality. Whether it is a birthday cake, an anniversary cake, or a Father's Day cake, our online cake shop has everything you are looking for.</p>
-        <h2>Send Cakes Across India in a Jiffy</h2>
-        <p>Wish to send love and best wishes to loved ones on their special occasion? Flavours Guru is a reliable online cake bakery boasting a magnificent range of cakes delivered swiftly through flawless online cake delivery in Delhi NCR — covering Gurgaon, Faridabad, Noida and Greater Noida. Now delicious cakes can be sent in a pocket-friendly manner, making every occasion memorable.</p>
-        <h2>Why choose Flavours Guru?</h2>
-        <ul>
-          <li>The freshest range of cakes in all shapes &amp; sizes</li>
-          <li>Midnight cake delivery available</li>
-          <li>A great amount of choices for every budget</li>
-          <li>Cash on delivery available</li>
-          <li>100% eggless cakes — a perfect treat for vegetarians</li>
-        </ul>
+        <?php if(!empty($description)) { echo html_entity_decode($description, ENT_QUOTES, 'UTF-8'); } ?>
       </div>
       <label for="seoToggleCheck" class="seo__toggle">
         <span class="seo-more">Read more <svg class="ic ic--xs"><use href="#ic-chev-down"/></svg></span>
@@ -606,36 +622,32 @@
       </label>
     </div>
   </section>
-
-  <!-- ============ NEWSLETTER ============ -->
-  <section class="newsletter" aria-label="Newsletter signup">
-    <div class="fg-con newsletter__row">
-      <div class="newsletter__head">
-        <span class="newsletter__ic"><svg class="ic"><use href="#ic-mail"/></svg></span>
-        <div><h2>Join our newsletter</h2><p>Get sweet updates &amp; exclusive offers straight to your inbox.</p></div>
-      </div>
-      <form class="newsletter__form" onsubmit="return false">
-        <input type="email" placeholder="Enter your email address" aria-label="Email address" required />
-        <button class="btn btn--solid" type="submit">Subscribe</button>
-      </form>
-    </div>
-  </section>
+  
 
 </main>
 
-<!-- Floating WhatsApp -->
-<a class="fab" href="#" aria-label="Chat on WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="currentColor" fill="none" stroke="currentColor" stroke-width="1.5">
-    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.3789 2.27907 14.6926 2.78382 15.8877C3.06278 16.5481 3.20226 16.8784 3.21953 17.128C3.2368 17.3776 3.16334 17.6521 3.01642 18.2012L2 22L5.79877 20.9836C6.34788 20.8367 6.62244 20.7632 6.87202 20.7805C7.12161 20.7977 7.45185 20.9372 8.11235 21.2162C9.30745 21.7209 10.6211 22 12 22Z" stroke-linejoin="round"></path>
-    <path d="M8.58815 12.3773L9.45909 11.2956C9.82616 10.8397 10.2799 10.4153 10.3155 9.80826C10.3244 9.65494 10.2166 8.96657 10.0008 7.58986C9.91601 7.04881 9.41086 7 8.97332 7C8.40314 7 8.11805 7 7.83495 7.12931C7.47714 7.29275 7.10979 7.75231 7.02917 8.13733C6.96539 8.44196 7.01279 8.65187 7.10759 9.07169C7.51023 10.8548 8.45481 12.6158 9.91948 14.0805C11.3842 15.5452 13.1452 16.4898 14.9283 16.8924C15.3481 16.9872 15.558 17.0346 15.8627 16.9708C16.2477 16.8902 16.7072 16.5229 16.8707 16.165C17 15.8819 17 15.5969 17 15.0267C17 14.5891 16.9512 14.084 16.4101 13.9992C15.0334 13.7834 14.3451 13.6756 14.1917 13.6845C13.5847 13.7201 13.1603 14.1738 12.7044 14.5409L11.6227 15.4118"></path>
-</svg></a>
+
 
 <!-- flying-to-cart element -->
 <span class="fly-dot" id="flyDot" aria-hidden="true"></span>
 
 
-  <script src="/city%20page%20html/assets/js/app.js"></script>
+  <script src="/catalog/view/theme/default/stylesheet/js/app.js"></script>
   <script>
-    $(document).ready(function(){
+    $(document).ready(function(){      if($.fn.slick) {
+        $('.review-slider-city').not('.slick-initialized').slick({
+          infinite: true,
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          arrows: true,
+          dots: false,
+          responsive: [
+            { breakpoint: 991, settings: { slidesToShow: 2 } },
+            { breakpoint: 768, settings: { slidesToShow: 1 } }
+          ]
+        });
+      }
+
       if($.fn.slick) {
         $('.treanding-slide').not('.slick-initialized').slick({
           infinite: false,
@@ -653,3 +665,4 @@
   </script>
 </div>
 <?php echo $footer; ?>
+

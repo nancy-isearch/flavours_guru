@@ -356,6 +356,7 @@ class ControllerCatalogCategory extends Controller {
 		$data['tab_general'] = $this->language->get('tab_general');
 		$data['tab_data'] = $this->language->get('tab_data');
 		$data['tab_design'] = $this->language->get('tab_design');
+		$data['tab_faq'] = 'FAQ';
 
 
 		/*multi category*/
@@ -459,6 +460,22 @@ class ControllerCatalogCategory extends Controller {
 			$data['category_description'] = $this->model_catalog_category->getCategoryDescriptions($this->request->get['category_id']);
 		} else {
 			$data['category_description'] = array();
+		}
+
+		if (isset($this->request->post['category_faq'])) {
+			$data['category_faqs'] = $this->request->post['category_faq'];
+		} elseif (isset($this->request->get['category_id'])) {
+			$data['category_faqs'] = $this->model_catalog_category->getCategoryFaqs($this->request->get['category_id']);
+		} else {
+			$data['category_faqs'] = array();
+		}
+
+		if (isset($this->request->post['category_locality'])) {
+			$data['category_localities'] = $this->request->post['category_locality'];
+		} elseif (isset($this->request->get['category_id'])) {
+			$data['category_localities'] = $this->model_catalog_category->getCategoryLocalities($this->request->get['category_id']);
+		} else {
+			$data['category_localities'] = array();
 		}
 
 		if (isset($this->request->post['path'])) {

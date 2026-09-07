@@ -25,8 +25,12 @@ class Image {
 			} elseif ($this->mime == 'image/jpeg') {
 				$this->image = imagecreatefromjpeg($file);
 			} elseif ($this->mime == 'image/webp') {
-			$this->image = imagecreatefromwebp($file);
-		}
+				if (function_exists('imagecreatefromwebp')) {
+					$this->image = imagecreatefromwebp($file);
+				} else {
+					exit('Error: WebP images are not supported in your PHP installation!');
+				}
+			}
 		} else {
 			exit('Error: Could not load image ' . $file . '!');
 		}
@@ -61,13 +65,17 @@ class Image {
 
 		$extension = strtolower($info['extension']);
 
-		if (is_resource($this->image)) {
+		if (is_resource($this->image) || (is_object($this->image) && get_class($this->image) == 'GdImage')) {
 			if ($extension == 'jpeg' || $extension == 'jpg') {
 				imagejpeg($this->image, $file, $quality);
 			} elseif ($extension == 'png') {
 				imagepng($this->image, $file);
 			} elseif ($extension == 'gif') {
 				imagegif($this->image, $file);
+			} elseif ($extension == 'webp') {
+				if (function_exists('imagewebp')) {
+					imagewebp($this->image, $file, $quality);
+				}
 			}
 
 			imagedestroy($this->image);

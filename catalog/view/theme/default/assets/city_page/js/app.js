@@ -22,7 +22,6 @@
         '<article class="pcard">' +
           '<div class="pcard__media">' +
             '<span class="pcard__badge">' + p.badge + '</span>' +
-            '<button class="pcard__wish" aria-label="Add to wishlist"><svg class="ic"><use href="#ic-heart"/></svg></button>' +
             '<img src="' + p.img + '" alt="' + p.name + '" loading="lazy">' +
           '</div>' +
           '<div class="pcard__body">' +

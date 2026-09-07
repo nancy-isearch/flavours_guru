@@ -6,6 +6,18 @@ class ModelCatalogCategory extends Model {
 		return $query->row;
 	}
 
+	public function getCategoryFaqs($category_id) {
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "category_faq WHERE category_id = '" . (int)$category_id . "' ORDER BY sort_order ASC");
+
+		return $query->rows;
+	}
+
+	public function getCategoryLocalities($category_id) {
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "category_locality WHERE category_id = '" . (int)$category_id . "' AND status = '1' ORDER BY sort_order ASC");
+
+		return $query->rows;
+	}
+
 	public function getAllCategoriesTree() {
 		$query = $this->db->query("
 			SELECT c.category_id, c.top, c.column, cmprt.parent_id, cd.name, c.sort_order

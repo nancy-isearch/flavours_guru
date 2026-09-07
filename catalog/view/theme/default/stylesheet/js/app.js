@@ -6,11 +6,12 @@
 
   /* ---------- Product data (bestsellers) ---------- */
   var PRODUCTS = [
-    { name: "Pearled Expressions Cake",      price: 949, mrp: 1499, rate: "4.9", tint: "t-coral", badge: "Bestseller", img: "assets/images/FGCCAKE562.webp" },
-    { name: "Dreamy Delights Cake",       price: 1749, mrp: 2299, rate: "4.7", tint: "t-lilac", badge: "New",        img: "assets/images/FGCCAKE722-1000x1000.webp" },
-    { name: "Husband Crossword Cake", price: 799, mrp: 899,  rate: "4.8", tint: "t-rose",  badge: "Trending",   img: "assets/images/FGCCAKE792.webp" },
-    { name: "Candlelit Wishes Cake",    price: 1749, mrp: 2049, rate: "4.9", tint: "t-gold",  badge: "Premium",    img: "assets/images/FGCCAKE726.webp" },    
-    { name: "Aww Little Baby Cake",       price: 1699, mrp: 1999, rate: "4.7", tint: "t-lilac", badge: "Bestseller",   img: "assets/images/FGCCAKE735-1000x1000.webp" }  ];
+    { name: "Pearled Expressions Cake",   price: 949,  mrp: 1499, rate: "4.9", tint: "t-coral", badge: "Bestseller", img: "/catalog/view/theme/default/image/city_page/FGCCAKE562.webp" },
+    { name: "Dreamy Delights Cake",       price: 1749, mrp: 2299, rate: "4.7", tint: "t-lilac", badge: "New",        img: "/catalog/view/theme/default/image/city_page/FGCCAKE722-1000x1000.webp" },
+    { name: "Husband Crossword Cake",     price: 799,  mrp: 899,  rate: "4.8", tint: "t-rose",  badge: "Trending",   img: "/catalog/view/theme/default/image/city_page/FGCCAKE792.webp" },
+    { name: "Candlelit Wishes Cake",      price: 1749, mrp: 2049, rate: "4.9", tint: "t-gold",  badge: "Premium",    img: "/catalog/view/theme/default/image/city_page/FGCCAKE726.webp" },
+    { name: "Aww Little Baby Cake",       price: 1699, mrp: 1999, rate: "4.7", tint: "t-lilac", badge: "Bestseller", img: "/catalog/view/theme/default/image/city_page/FGCCAKE735-1000x1000.webp" }
+  ];
 
   function rupee(n) { return "₹" + n.toLocaleString("en-IN"); }
 
@@ -190,7 +191,7 @@
 
   /* ---------- init ---------- */
   document.addEventListener("DOMContentLoaded", function () {
-    // renderProducts();
+    renderProducts();
     initSlider();
     initDrawer();
     initSeo();

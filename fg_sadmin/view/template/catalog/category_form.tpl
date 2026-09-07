@@ -29,6 +29,7 @@
             <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
             <li><a href="#tab-data" data-toggle="tab"><?php echo $tab_data; ?></a></li>
             <li><a href="#tab-design" data-toggle="tab"><?php echo $tab_design; ?></a></li>
+            <li><a href="#tab-faq" data-toggle="tab"><?php echo isset($tab_faq) ? $tab_faq : 'FAQ'; ?></a></li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab-general">
@@ -257,6 +258,43 @@
                 </table>
               </div>
             </div>
+
+            <div class="tab-pane" id="tab-faq">
+              <div class="table-responsive">
+                <table id="faq" class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <td class="text-left">Question</td>
+                      <td class="text-left">Answer</td>
+                      <td class="text-right">Sort Order</td>
+                      <td></td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php $faq_row = 0; ?>
+                    <?php if (isset($category_faqs)) { ?>
+                    <?php foreach ($category_faqs as $category_faq) { ?>
+                    <tr id="faq-row<?php echo $faq_row; ?>">
+                      <td class="text-left"><input type="text" name="category_faq[<?php echo $faq_row; ?>][question]" value="<?php echo $category_faq['question']; ?>" placeholder="Question" class="form-control" /></td>
+                      <td class="text-left"><textarea name="category_faq[<?php echo $faq_row; ?>][answer]" rows="3" placeholder="Answer" class="form-control"><?php echo $category_faq['answer']; ?></textarea></td>
+                      <td class="text-right"><input type="text" name="category_faq[<?php echo $faq_row; ?>][sort_order]" value="<?php echo $category_faq['sort_order']; ?>" placeholder="Sort Order" class="form-control" /></td>
+                      <td class="text-left"><button type="button" onclick="$('#faq-row<?php echo $faq_row; ?>').remove();" data-toggle="tooltip" title="Remove" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
+                    </tr>
+                    <?php $faq_row++; ?>
+                    <?php } ?>
+                    <?php } ?>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="3"></td>
+                      <td class="text-left"><button type="button" onclick="addFaq();" data-toggle="tooltip" title="Add FAQ" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+
+
           </div>
         </form>
       </div>
@@ -354,6 +392,21 @@ $('#product-category').delegate('.fa-minus-circle', 'click', function() {
 
 //--></script> 
   <script type="text/javascript"><!--
+var faq_row = <?php echo isset($faq_row) ? $faq_row : 0; ?>;
+
+function addFaq() {
+	html  = '<tr id="faq-row' + faq_row + '">';
+	html += '  <td class="text-left"><input type="text" name="category_faq[' + faq_row + '][question]" value="" placeholder="Question" class="form-control" /></td>';
+	html += '  <td class="text-left"><textarea name="category_faq[' + faq_row + '][answer]" rows="3" placeholder="Answer" class="form-control"></textarea></td>';
+	html += '  <td class="text-right"><input type="text" name="category_faq[' + faq_row + '][sort_order]" value="" placeholder="Sort Order" class="form-control" /></td>';
+	html += '  <td class="text-left"><button type="button" onclick="$(\'#faq-row' + faq_row + '\').remove();" data-toggle="tooltip" title="Remove" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
+	html += '</tr>';
+
+	$('#faq tbody').append(html);
+
+	faq_row++;
+}
+
 $('#language a:first').tab('show');
 //--></script></div>
 <?php echo $footer; ?>

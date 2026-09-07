@@ -145,26 +145,88 @@ src="https://www.facebook.com/tr?id=242538297952267&ev=PageView&noscript=1"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Flavoursguru",
-  "url": "https://www.flavoursguru.com",
-  "logo": "https://www.flavoursguru.com/image/catalog/images/short.png",
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+918130961414",
-    "contactType": "customer service",
-    "areaServed": "IN",
-    "availableLanguage": ["en","Hindi"]
-  },
-  "sameAs": [
-    "https://www.facebook.com/flavoursgurubakery",
-    "https://twitter.com/flavoursguru",
-    "https://www.instagram.com/flavoursguru/",
-    "https://www.pinterest.com/flavoursguru/",
-    "https://www.linkedin.com/company/flavoursguru/"
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.flavoursguru.com/#organization",
+      "name": "Flavours Guru",
+      "legalName": "Flavourguru Cake Bakes Pvt. Ltd.",
+      "url": "https://www.flavoursguru.com/",
+      "logo": "https://www.flavoursguru.com/image/catalog/Flavours%20Guru/logo.webp",
+      "image": "https://www.flavoursguru.com/image/catalog/Flavours%20Guru/logo.webp",
+      "description": "Flavours Guru is a premium online cake shop offering same-day and midnight cake delivery for birthdays, anniversaries, weddings, and other celebrations across Delhi NCR and other cities in India.",
+      "telephone": "+91-8130961414",
+      "email": "cs@flavoursguru.com",
+      "foundingDate": "2017",
+      "sameAs": [
+        "https://www.facebook.com/flavoursgurubakery",
+        "https://twitter.com/flavoursguru",
+        "https://www.instagram.com/flavoursguru/",
+        "https://www.linkedin.com/company/flavoursguru/",
+        "https://www.youtube.com/@flavoursguru6543",
+        "https://in.pinterest.com/flavoursgurudm/"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+91-8130961414",
+          "contactType": "customer service",
+          "email": "cs@flavoursguru.com",
+          "areaServed": "IN",
+          "availableLanguage": ["English", "Hindi"]
+        }
+      ],
+      "department": [
+        { "@id": "https://www.flavoursguru.com/locate#delhi" },
+        { "@id": "https://www.flavoursguru.com/locate#gurgaon" },
+        { "@id": "https://www.flavoursguru.com/locate#noida" },
+        { "@id": "https://www.flavoursguru.com/locate#chandigarh" },
+        { "@id": "https://www.flavoursguru.com/locate#sohna" },
+        { "@id": "https://www.flavoursguru.com/locate#hyderabad" },
+        { "@id": "https://www.flavoursguru.com/locate#varanasi" },
+        { "@id": "https://www.flavoursguru.com/locate#lucknow" },
+        { "@id": "https://www.flavoursguru.com/locate#patna" }
+      ]
+    },
+    {
+      "@type": "Bakery",
+      "@id": "https://www.flavoursguru.com/#localbusiness",
+      "name": "Flavours Guru - Bakery & Cake Shop",
+      "url": "https://www.flavoursguru.com/",
+      "image": "https://www.flavoursguru.com/image/catalog/Flavours%20Guru/logo.webp",
+      "telephone": "+91-8130961414",
+      "email": "cs@flavoursguru.com",
+      "priceRange": "₹₹",
+      "parentOrganization": { "@id": "https://www.flavoursguru.com/#organization" },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "R-59, Opposite Select City Walk, Near Sai Baba Temple, Malviya Nagar",
+        "addressLocality": "New Delhi",
+        "addressRegion": "Delhi",
+        "postalCode": "110017",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 28.533812295294346,
+        "longitude": 77.21476301446387
+      },
+      "sameAs": [
+        "https://www.facebook.com/flavoursgurubakery",
+        "https://www.instagram.com/flavoursguru/"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "5000",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    }
   ]
 }
 </script>
+
 
 <?php if ($show_global_faq_schema) { ?>
 <script type="application/ld+json">

@@ -1325,7 +1325,7 @@ $dataaa = (array)$shipInfo;
 					'order_product_id' => $product['order_product_id'],
 					'product_id'       => $product['product_id'],
 					'name'    	 	   => $product['name'],
-					'image'    	 	   => HTTPS_CATALOG.'image/'.$image['image'],
+					'image'    	 	   => HTTPS_CATALOG.'image/'.str_replace(' ', '%20', $image['image']),
 					'model'    		   => $product['model'],
 					'shipping_info' => $product['shipping_info'],
 					'option'   		   => $option_data,
@@ -2385,7 +2385,7 @@ $dataaa = (array)$shipInfo;
 							'jan'      => $product_info['jan'],
 							'isbn'     => $product_info['isbn'],
 							'mpn'      => $product_info['mpn'],
-							'image'      => HTTPS_CATALOG.'image/'.$product_info['image'],
+							'image'      => HTTPS_CATALOG.'image/'.str_replace(' ', '%20', $product_info['image']),
 							'shipping_info' => $product['shipping_info'],
 							'weight'   => $this->weight->format(($product_info['weight'] + $option_weight) * $product['quantity'], $product_info['weight_class_id'], $this->language->get('decimal_point'), $this->language->get('thousand_point'))
 						);
