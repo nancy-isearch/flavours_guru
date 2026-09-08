@@ -1,0 +1,62 @@
+Blog Module Development Details
+
+=============================
+FILES CREATED
+=============================
+
+1. Admin Language File
+Path: fg_sadmin/language/en-gb/catalog/blog_card.php
+Purpose: Contains the English text variables for the Blog Cards admin page.
+
+2. Admin Model File
+Path: fg_sadmin/model/catalog/blog_card.php
+Purpose: Contains the database queries to add, edit, delete, and list blog cards.
+
+3. Admin Controller File
+Path: fg_sadmin/controller/catalog/blog_card.php
+Purpose: Handles the logic for the Blog Cards admin page, saving data, and loading the views.
+
+4. Admin View (List) File
+Path: fg_sadmin/view/template/catalog/blog_card_list.tpl
+Purpose: Displays the HTML table list of all blog cards.
+
+5. Admin View (Form) File
+Path: fg_sadmin/view/template/catalog/blog_card_form.tpl
+Purpose: Displays the HTML form to add or edit a blog card with fields for Feature Image, Title, Description, Author, Publish Date, Blog Link, and Display Page.
+
+6. Database Setup Script
+Path: fg_sadmin/create_table.php
+Purpose: A small script to execute the necessary SQL queries.
+
+
+=============================
+FILES MODIFIED
+=============================
+
+1. Admin Menu
+Path: fg_sadmin/controller/common/column_left.php
+Changes: Added the "Blog Cards" menu link under the "Catalog" section so it appears in the left sidebar.
+
+
+=============================
+SQL QUERIES REQUIRED
+=============================
+(Note: If you visited http://flavoursguru.local/fg_sadmin/create_table.php in your browser, these queries were already executed for you automatically.)
+
+1. To create the database table:
+CREATE TABLE IF NOT EXISTS oc_blog_cards (
+    blog_id INT(11) NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    feature_image VARCHAR(255) DEFAULT NULL,
+    author VARCHAR(100) NOT NULL,
+    publish_date DATE NOT NULL,
+    blog_link VARCHAR(255) NOT NULL,
+    display_page VARCHAR(100) NOT NULL,
+    status TINYINT(1) NOT NULL DEFAULT 1,
+    sort_order INT(3) NOT NULL DEFAULT 0,
+    PRIMARY KEY (blog_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+2. To give Top Administrator (user_group_id = 1) permissions to view and edit this menu:
+You must add "catalog/blog_card" to both the "access" and "modify" arrays in the JSON column `permission` inside the `oc_user_group` table for `user_group_id` = 1.

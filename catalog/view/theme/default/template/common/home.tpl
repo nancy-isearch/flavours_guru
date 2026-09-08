@@ -204,12 +204,7 @@
             </a>
             <p>Mother’s Day</p>
           </li>*/ ?>
-            <li>
-            <a href="/janmashtami-cakes" class="hover-zoom-col">
-              <img loading="lazy" decoding="async" class="img-responsive img-zoom" src="catalog/view/theme/default/image/Home/new-images/janmashtami-icon.png" alt="a customised three-layered orange cake">
-            </a>
-            <p>Janmashtami</p>
-          </li>
+            
            
            <li>
             <a href="/customize" class="hover-zoom-col">
@@ -366,21 +361,7 @@
           </div>
         </div>
       </a>
-      <a href="/janmashtami-cakes">
-        <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/janmashtami-cakes-desktop.webp" alt="janmashtami cake">
-        <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/mobile-janmasthmi.webp" alt="janmashtami cake 1">
-        <div class="banner-overlay-content">
-          <div class="banner-title-row">
-            <p class="banner-first-title" style="background:rgba(4, 69, 149, 0.6);color: #ffffff;">HAPPY KRISHNA JANMASTHMI</p>
-            <h2 class="mb-30 banner-title">
-              <span class="" style="color: #044595;">A Treat for you as </span><br>
-              <span class="" style="color: #044595;">well as your Nandlal!</span>
-            </h2>
-            <p class="text-white banner-sm-title mb-30"></p>
-            <div class="home-primary-btn white-bg-btn" style="color: #4A4A4A;box-shadow: 0px 4px 0px 0px rgba(109, 174, 224, 1);background: #ffffff;">Order Now </div>  
-          </div>
-        </div>
-      </a>
+      
       <a href="/christmas">
         <img class="img-responsive main-banner-border hidden-xs" src="catalog/view/theme/default/image/Home/christmas-banner-web.webp" alt="christmas cake">
         <img class="img-responsive main-banner-border visible-xs" src="catalog/view/theme/default/image/Home/christmas-banner-mobile.webp" alt="christmas cake 1">
@@ -436,13 +417,7 @@
         </div>
       </a> */ ?>
       
-      <a href="/janmashtami-cakes">
-        <picture>
-          <source media="(max-width: 767px)" srcset="catalog/view/theme/default/image/Home/new-images/janmashtami-banner-mob.png">
-          <img class="img-responsive main-banner-border" src="catalog/view/theme/default/image/Home/new-images/janmashtami-banner.jpeg" alt="rakshabandhan cake" fetchpriority="high" loading="eager" decoding="async">
-        </picture>
-        
-      </a>
+      
       <a href="/birthday">
         <picture>
           <source media="(max-width: 767px)" srcset="catalog/view/theme/default/image/Home/new-images/birthday-cake-mob.webp">

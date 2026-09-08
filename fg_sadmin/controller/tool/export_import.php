@@ -71,10 +71,12 @@ class ControllerToolExportImport extends Controller {
 
 
 	public function download() {
+		
 		$this->load->language( 'tool/export_import' );
 		$this->document->setTitle($this->language->get('heading_title'));
 		$this->load->model( 'tool/export_import' );
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateDownloadForm()) {
+			
 			$export_type = $this->request->post['export_type'];
 			switch ($export_type) {
 				case 'c':
@@ -91,7 +93,9 @@ class ControllerToolExportImport extends Controller {
 					if (($min==null) || ($max==null)) {
 						$this->model_tool_export_import->download($export_type, null, null, null, null);
 					} else if ($this->request->post['range_type'] == 'id') {
+						
 						$this->model_tool_export_import->download($export_type, null, null, $min, $max);
+						echo "here i am1";die;
 					} else {
 						$this->model_tool_export_import->download($export_type, $min*($max-1-1), $min, null, null);
 					}

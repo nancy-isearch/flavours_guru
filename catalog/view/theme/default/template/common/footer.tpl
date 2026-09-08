@@ -42,6 +42,38 @@
     }
   }
 </style>
+<?php if(isset($debug_blog)) echo $debug_blog; ?>
+<?php if (!empty($blog_cards)) { ?>
+<div class="col-md-12 col-sm-12 col-xs-12 p-l-0 p-r-0 pt-40 pb-40 blog-cards-section" style="background-color: #111;">
+  <div class="container">
+    <div class="row text-center" style="margin-bottom: 30px;">
+      <h3 style="font-size: 24px; font-weight: bold; color: #fff;">Latest Blogs</h3>
+    </div>
+    <div class="row" style="display: flex; flex-wrap: wrap; justify-content: center;">
+      <?php foreach ($blog_cards as $blog) { ?>
+      <div class="col-md-4 col-sm-4 col-xs-12" style="margin-bottom: 30px;">
+        <div class="blog-card" style="border: 1px solid #333; border-radius: 8px; overflow: hidden; background: #1a1a1a; height: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+          <a href="<?php echo $blog['blog_link']; ?>" target="_blank">
+            <img loading="lazy" decoding="async" src="<?php echo $blog['thumb']; ?>" alt="<?php echo $blog['title']; ?>" style="width: 100%; height: 200px; object-fit: cover;">
+          </a>
+          <div class="blog-info" style="padding: 15px;">
+            <h4 style="font-size: 18px; margin-top: 0; margin-bottom: 10px; line-height: 1.4;">
+              <a href="<?php echo $blog['blog_link']; ?>" target="_blank" style="color: #fff; text-decoration: none;"><?php echo $blog['title']; ?></a>
+            </h4>
+            <div style="font-size: 12px; color: #999; margin-bottom: 10px;">
+              <span style="margin-right: 10px;"><i class="fa fa-user"></i> <?php echo $blog['author']; ?></span>
+              <span><i class="fa fa-calendar"></i> <?php echo $blog['publish_date']; ?></span>
+            </div>
+            <p style="font-size: 14px; color: #ccc; line-height: 1.5; margin-bottom: 15px;"><?php echo $blog['description']; ?></p>
+            <a href="<?php echo $blog['blog_link']; ?>" target="_blank" style="color: #f65f73; font-weight: bold; text-decoration: none;">Read More &raquo;</a>
+          </div>
+        </div>
+      </div>
+      <?php } ?>
+    </div>
+  </div>
+</div>
+<?php } ?>
 <div class="col-md-12 col-sm-12 col-xs-12 p-l-0 p-r-0 bg-black news-letter-col footer-deferred-section">
   <div class="container">
     <div class="newsletter-col row">

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?= $header; ?>
 <link href="https://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet">
 </link>
@@ -3935,3 +3934,4 @@ $(window).load(function(){
     }
 });
 </script>
+<?= $footer; ?>

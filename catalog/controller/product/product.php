@@ -414,7 +414,7 @@ class ControllerProductProduct extends Controller {
 			$data['meta_description'] = $product_info['meta_description'];
 			$data['pstock'] = $product_info['quantity'];
 			$data['prating'] = (int)$product_info['rating'];
-			$data['ptotalreviews'] = sprintf((int)$product_info['reviews']);
+			$data['ptotalreviews'] = (int)$product_info['reviews'];
 			$data['plink'] = $this->session->data['plink'];
 			$data['pprice'] = $this->session->data['pprice'];
 			$data['config_currency'] = $this->config->get('config_currency');

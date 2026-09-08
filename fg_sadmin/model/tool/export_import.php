@@ -8354,6 +8354,10 @@ class ModelToolExportImport extends Model {
 					$filename = $datetime.'.xlsx';
 					break;
 			}
+			while (ob_get_level() > 0) {
+				ob_end_clean();
+			}
+			error_reporting(0);
 			header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 			header('Content-Disposition: attachment;filename="'.$filename.'"');
 			header('Cache-Control: max-age=0');
