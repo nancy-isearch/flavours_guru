@@ -283,7 +283,7 @@ class ControllerShippingType extends Controller {
 		$pagination->total = $cities_total;
 		$pagination->page = $page;
 		$pagination->limit = $this->config->get('config_limit_admin');
-		$pagination->url = $this->url->link('shipping/cities', 'token=' . $this->session->data['token'] . $url . '&page={page}', true);
+		$pagination->url = $this->url->link('shipping/type', 'token=' . $this->session->data['token'] . $url . '&page={page}', true);
 
 		$data['pagination'] = $pagination->render();
 
@@ -455,7 +455,7 @@ class ControllerShippingType extends Controller {
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('shipping/cities', 'token=' . $this->session->data['token'] . $url, true)
+			'href' => $this->url->link('shipping/type', 'token=' . $this->session->data['token'] . $url, true)
 		);
 
 		if (!isset($this->request->get['type_id'])) {

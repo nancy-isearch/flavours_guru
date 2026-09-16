@@ -465,4 +465,77 @@ class ControllerCatalogBlogCard extends Controller {
 
 		return !$this->error;
 	}
+
+	public function fetchImage() {
+		$json = array();
+
+		if (!$this->user->hasPermission('modify', 'catalog/blog_card')) {
+			$json['error'] = 'Warning: You do not have permission to modify blog cards!';
+		} else {
+			if (isset($this->request->post['url']) && !empty($this->request->post['url'])) {
+				$url = html_entity_decode($this->request->post['url'], ENT_QUOTES, 'UTF-8');
+
+				// Fetch HTML
+				$ch = curl_init();
+				curl_setopt($ch, CURLOPT_URL, $url);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+				curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)');
+				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+				$html = curl_exec($ch);
+				curl_close($ch);
+
+				if ($html) {
+					$image_url = '';
+					if (preg_match('/<meta\s+(?:[^>]*?)\b(?:property|name)=["\']og:image["\'](?:[^>]*?)\bcontent=["\']([^"\']+)["\']/is', $html, $matches)) {
+						$image_url = $matches[1];
+					} elseif (preg_match('/<meta\s+(?:[^>]*?)\bcontent=["\']([^"\']+)["\'](?:[^>]*?)\b(?:property|name)=["\']og:image["\']/is', $html, $matches)) {
+						$image_url = $matches[1];
+					}
+
+					if ($image_url) {
+						// Download image
+						$ch = curl_init();
+						curl_setopt($ch, CURLOPT_URL, $image_url);
+						curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+						curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)');
+						curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+						$image_content = curl_exec($ch);
+						curl_close($ch);
+
+						if ($image_content) {
+							$filename = basename(parse_url($image_url, PHP_URL_PATH));
+							if (strpos($filename, '.') === false) {
+								$filename .= '.jpg'; // Fallback extension
+							}
+							$filename = 'catalog/blog/' . time() . '_' . $filename;
+							
+							$dir = DIR_IMAGE . 'catalog/blog/';
+							if (!is_dir($dir)) {
+								mkdir($dir, 0777, true);
+							}
+							
+							file_put_contents(DIR_IMAGE . $filename, $image_content);
+							
+							$this->load->model('tool/image');
+							$json['success'] = 'Success: Feature image automatically fetched!';
+							$json['image_path'] = $filename;
+							$json['thumb_path'] = $this->model_tool_image->resize($filename, 100, 100);
+						} else {
+							$json['error'] = 'Warning: Could not download image from the extracted URL!';
+						}
+					} else {
+						$json['error'] = 'Warning: No og:image meta tag found at the provided URL!';
+					}
+				} else {
+					$json['error'] = 'Warning: Could not fetch content from the provided URL!';
+				}
+			} else {
+				$json['error'] = 'Warning: No URL provided!';
+			}
+		}
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
 }

@@ -142,7 +142,7 @@ class ControllerShippingCitiesGroup extends Controller {
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('shipping/cities', 'token=' . $this->session->data['token'] . $url, true)
+			'href' => $this->url->link('shipping/cities_group', 'token=' . $this->session->data['token'] . $url, true)
 		);
 
 		$data['add'] = $this->url->link('shipping/cities_group/citygpadd', 'token=' . $this->session->data['token'] . $url, true);
@@ -239,12 +239,12 @@ class ControllerShippingCitiesGroup extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['sort_name'] = $this->url->link('shipping/cities', 'token=' . $this->session->data['token'] . '&sort=pd.name' . $url, true);
-		$data['sort_model'] = $this->url->link('shipping/cities', 'token=' . $this->session->data['token'] . '&sort=p.model' . $url, true);
-		$data['sort_price'] = $this->url->link('shipping/cities', 'token=' . $this->session->data['token'] . '&sort=p.price' . $url, true);
-		$data['sort_quantity'] = $this->url->link('shipping/cities', 'token=' . $this->session->data['token'] . '&sort=p.quantity' . $url, true);
-		$data['sort_status'] = $this->url->link('shipping/cities', 'token=' . $this->session->data['token'] . '&sort=p.status' . $url, true);
-		$data['sort_order'] = $this->url->link('shipping/cities', 'token=' . $this->session->data['token'] . '&sort=p.sort_order' . $url, true);
+		$data['sort_name'] = $this->url->link('shipping/cities_group', 'token=' . $this->session->data['token'] . '&sort=pd.name' . $url, true);
+		$data['sort_model'] = $this->url->link('shipping/cities_group', 'token=' . $this->session->data['token'] . '&sort=p.model' . $url, true);
+		$data['sort_price'] = $this->url->link('shipping/cities_group', 'token=' . $this->session->data['token'] . '&sort=p.price' . $url, true);
+		$data['sort_quantity'] = $this->url->link('shipping/cities_group', 'token=' . $this->session->data['token'] . '&sort=p.quantity' . $url, true);
+		$data['sort_status'] = $this->url->link('shipping/cities_group', 'token=' . $this->session->data['token'] . '&sort=p.status' . $url, true);
+		$data['sort_order'] = $this->url->link('shipping/cities_group', 'token=' . $this->session->data['token'] . '&sort=p.sort_order' . $url, true);
 
 		$url = '';
 
@@ -264,7 +264,7 @@ class ControllerShippingCitiesGroup extends Controller {
 		$pagination->total = $cities_total;
 		$pagination->page = $page;
 		$pagination->limit = $this->config->get('config_limit_admin');
-		$pagination->url = $this->url->link('shipping/cities', 'token=' . $this->session->data['token'] . $url . '&page={page}', true);
+		$pagination->url = $this->url->link('shipping/cities_group', 'token=' . $this->session->data['token'] . $url . '&page={page}', true);
 
 		$data['pagination'] = $pagination->render();
 
@@ -281,7 +281,7 @@ class ControllerShippingCitiesGroup extends Controller {
 	}
 
 	protected function validateForm() {
-		if (!$this->user->hasPermission('modify', 'shipping/cities')) {
+		if (!$this->user->hasPermission('modify', 'shipping/cities_group')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 
@@ -297,7 +297,7 @@ class ControllerShippingCitiesGroup extends Controller {
 	}
 
 	protected function validateDelete() {
-		if (!$this->user->hasPermission('modify', 'shipping/cities')) {
+		if (!$this->user->hasPermission('modify', 'shipping/cities_group')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 
@@ -305,7 +305,7 @@ class ControllerShippingCitiesGroup extends Controller {
 	}
 
 	protected function validateCopy() {
-		if (!$this->user->hasPermission('modify', 'shipping/cities')) {
+		if (!$this->user->hasPermission('modify', 'shipping/cities_group')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 
@@ -474,7 +474,7 @@ class ControllerShippingCitiesGroup extends Controller {
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('shipping/cities', 'token=' . $this->session->data['token'] . $url, true)
+			'href' => $this->url->link('shipping/cities_group', 'token=' . $this->session->data['token'] . $url, true)
 		);
 
 		if (!isset($this->request->get['group_id'])) {

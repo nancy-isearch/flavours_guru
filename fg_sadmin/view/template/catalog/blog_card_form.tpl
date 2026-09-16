@@ -74,7 +74,12 @@
           <div class="form-group required">
             <label class="col-sm-2 control-label" for="input-blog-link"><?php echo $entry_blog_link; ?></label>
             <div class="col-sm-10">
-              <input type="text" name="blog_link" value="<?php echo $blog_link; ?>" placeholder="<?php echo $entry_blog_link; ?>" id="input-blog-link" class="form-control" />
+              <div class="input-group">
+                <input type="text" name="blog_link" value="<?php echo $blog_link; ?>" placeholder="<?php echo $entry_blog_link; ?>" id="input-blog-link" class="form-control" />
+                <span class="input-group-btn">
+                  <button type="button" id="button-fetch-image" data-toggle="tooltip" title="Fetch Feature Image from URL" class="btn btn-info"><i class="fa fa-download"></i> Fetch Image</button>
+                </span>
+              </div>
               <?php if ($error_blog_link) { ?>
               <div class="text-danger"><?php echo $error_blog_link; ?></div>
               <?php } ?>
@@ -123,6 +128,42 @@
   <script type="text/javascript"><!--
 $('.date').datetimepicker({
 	pickTime: false
+});
+
+$('#button-fetch-image').on('click', function() {
+    var url = $('#input-blog-link').val();
+    if (!url) {
+        alert('Please enter a blog link first.');
+        return;
+    }
+    
+    $.ajax({
+        url: 'index.php?route=catalog/blog_card/fetchImage&token=<?php echo $token; ?>',
+        type: 'post',
+        data: 'url=' + encodeURIComponent(url),
+        dataType: 'json',
+        beforeSend: function() {
+            $('#button-fetch-image').button('loading');
+        },
+        complete: function() {
+            $('#button-fetch-image').button('reset');
+        },
+        success: function(json) {
+            $('.alert').remove();
+            
+            if (json['error']) {
+                $('#content > .container-fluid').prepend('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+            }
+            if (json['success'] && json['image_path'] && json['thumb_path']) {
+                $('#input-image').val(json['image_path']);
+                $('#thumb-image img').attr('src', json['thumb_path']);
+                $('#content > .container-fluid').prepend('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+            }
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        }
+    });
 });
 //--></script></div>
 <?php echo $footer; ?>
