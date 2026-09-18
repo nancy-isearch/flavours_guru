@@ -37,12 +37,25 @@
 <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
 <?php } ?>
 
-<?php foreach ($links as $link) { if($link['rel'] == 'next'){continue;} ?>
+<?php 
+$has_canonical = false;
+foreach ($links as $link) { 
+	if ($link['rel'] == 'next') { continue; } 
+	if ($link['rel'] == 'canonical') { $has_canonical = true; }
+?>
 <link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
 <?php } ?>
 
-<?php if(!isset($_GET['_route_']) && !isset($_GET['route'])){ ?>
-<link href="https://www.flavoursguru.com" rel="canonical" />
+<?php 
+if (!$has_canonical) { 
+	$current_path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+	if ($current_path == '/' || $current_path == '') {
+		$canonical_url = 'https://www.flavoursguru.com';
+	} else {
+		$canonical_url = 'https://www.flavoursguru.com' . $current_path;
+	}
+?>
+<link href="<?php echo $canonical_url; ?>" rel="canonical" />
 <?php } ?>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"></noscript>
